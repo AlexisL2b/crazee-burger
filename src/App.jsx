@@ -1,5 +1,6 @@
 import { useRef } from "react"
 import { useState } from "react"
+import LoginPages from "./components/pages/LoginPages"
 
 function App() {
   //state
@@ -19,18 +20,7 @@ function App() {
   //Affichage
   return (
     <div>
-      <h1>Bienvenue chez nous !</h1>
-      <h2>Connectez-vous</h2>
-      <form action="submit" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Entrez votre prénom"
-          required
-          value={firstName}
-          onChange={handlePrenom}
-        />
-        <button>Accédez à votre espace</button>
-      </form>
+      <LoginPages />
     </div>
   )
 }

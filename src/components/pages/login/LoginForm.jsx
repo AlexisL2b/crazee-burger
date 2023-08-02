@@ -7,8 +7,6 @@ export default function LoginForm() {
   //comportement
   const handleSubmit = (e) => {
     e.preventDefault()
-    alert(`Bonjour ${firstName}`)
-    setFirstName("")
   }
 
   const handlePrenom = (e) => {

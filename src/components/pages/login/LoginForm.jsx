@@ -7,6 +7,7 @@ export default function LoginForm() {
   //comportement
   const handleSubmit = (e) => {
     e.preventDefault()
+    window.location.href("/order")
   }
 
   const handlePrenom = (e) => {

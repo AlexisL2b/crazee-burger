@@ -14,7 +14,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<LoginPages />} />
-      <Route path="/order" element={<OrderPages />} />
+      <Route path="/order/:userName" element={<OrderPages />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   )

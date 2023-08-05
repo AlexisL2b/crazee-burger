@@ -1,3 +1,5 @@
+import "./fonts.css"
+
 const colors = {
   dark: "#17161a",
   incognito: "#333",
@@ -40,6 +42,10 @@ const fonts = {
   P5: "48px",
   P6: "60px",
 }
+const fontsFamily = {
+  amatic: " 'Amatic SC', cursive",
+  open: "'Open Sans', sans-serif",
+}
 const gridUnit = 8
 const borderRadius = {
   subtle: 1,
@@ -65,4 +71,5 @@ export const theme = {
   shadows,
   weights,
   spacing,
+  fontsFamily,
 }

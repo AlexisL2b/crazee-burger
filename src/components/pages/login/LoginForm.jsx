@@ -41,7 +41,7 @@ export default function LoginForm() {
         />
       </div>
       <button>
-        Accédez à mon espace <MdKeyboardArrowRight />
+        Accéder à mon espace <MdKeyboardArrowRight />
       </button>
     </LoginFormStyled>
   )

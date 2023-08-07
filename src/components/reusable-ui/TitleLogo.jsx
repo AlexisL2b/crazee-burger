@@ -9,7 +9,7 @@ export default class TitleLogo extends Component {
       <TitleLogoStyled>
         <h1>CRAZEE</h1>
         <i>
-          <img src="src\assets\F03 logo-orange.png" alt="" />
+          <img src="public\assets\F03 logo-orange.png" alt="" />
         </i>
         <h1>BURGER</h1>
       </TitleLogoStyled>

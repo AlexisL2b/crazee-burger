@@ -26,11 +26,7 @@ export default function LoginForm() {
       <div className="divider"></div>
       <h2>Connectez-vous</h2>
       <div className="input_icone">
-        <label htmlFor="input_name">
-          <i>
-            <PiUserCircleFill className="icone_user" />
-          </i>
-        </label>
+        <PiUserCircleFill className="icone_user" />
         <input
           name="input_name"
           type="text"
@@ -67,28 +63,29 @@ const LoginFormStyled = styled.form`
     color: ${theme.colors.white};
   }
   .input_icone {
-    position: relative;
-    width: 100%;
-  }
-  input {
-    text-indent: 24px;
-    align-items: center;
-    width: 100%;
-    margin: 18px 0px;
-    padding: 18px 24px;
+    background-color: #fff;
     border-radius: 5px;
-    border: none;
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
     margin: 18px 0px;
+
+    .icone_user {
+      font-size: 15px;
+      margin-right: 8px;
+      color: ${theme.colors.greyDark};
+    }
+    input {
+      border: none;
+      font-size: 15px;
+      color: black;
+    }
+    &::placeholder {
+      background-color: #fff;
+      color: ${theme.colors.greyLight};
+    }
   }
-  .icone_user {
-    margin: 0px 24px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    height: 15px;
-    width: 15px;
-  }
+
   button {
     font-size: 15px;
     border: none;

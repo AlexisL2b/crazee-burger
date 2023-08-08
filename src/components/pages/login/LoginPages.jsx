@@ -1,13 +1,13 @@
 import { useState } from "react"
 import LoginForm from "./LoginForm"
-import TitleLogo from "../../reusable-ui/TitleLogo"
+import Logo from "../../reusable-ui/Logo"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 
 export default function LoginPages() {
   return (
     <LoginPagesStyled>
-      <TitleLogo />
+      <Logo />
       <LoginForm />
     </LoginPagesStyled>
   )
@@ -23,8 +23,7 @@ const LoginPagesStyled = styled.div`
 
   ::before {
     content: "";
-    background: url("public/assets/F03 burger-background.jpg")
-      rgba(0, 0, 0, 0.7);
+    background: url("/assets/F03 burger-background.jpg") rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center center;
     background-blend-mode: darken;

@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { theme } from "../../theme"
 // import "../../theme/fonts.css"
 
-export default class TitleLogo extends Component {
+export default class Logo extends Component {
   render() {
     return (
       <TitleLogoStyled>

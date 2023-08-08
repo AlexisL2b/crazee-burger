@@ -1,13 +1,13 @@
 import { useState } from "react"
 import LoginForm from "./LoginForm"
-import TitleLogo from "../../reusable-ui/TitleLogo"
+import Logo from "../../reusable-ui/Logo"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 
 export default function LoginPages() {
   return (
     <LoginPagesStyled>
-      <TitleLogo />
+      <Logo />
       <LoginForm />
     </LoginPagesStyled>
   )

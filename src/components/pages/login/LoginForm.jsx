@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom"
 import { BsWalletFill } from "react-icons/bs"
 import styled from "styled-components"
 import { theme } from "../../../theme"
-import { PiUserCircleFill } from "react-icons/pi"
 import { MdKeyboardArrowRight } from "react-icons/md"
+import { PiUserCircleFill } from "react-icons/pi"
+import Input from "../../reusable-ui/Input"
 
 export default function LoginForm() {
   //state
@@ -16,7 +17,7 @@ export default function LoginForm() {
     navigate(`order/${firstName}`)
   }
 
-  const handlePrenom = (e) => {
+  const handleChange = (e) => {
     setFirstName(e.currentTarget.value)
   }
   //affichage
@@ -25,17 +26,13 @@ export default function LoginForm() {
       <h1>Bienvenue chez nous !</h1>
       <div className="divider"></div>
       <h2>Connectez-vous</h2>
-      <div className="input_icone">
-        <PiUserCircleFill className="icone_user" />
-        <input
-          name="input_name"
-          type="text"
-          placeholder="Entrez votre prénom"
-          required
-          value={firstName}
-          onChange={handlePrenom}
-        />
-      </div>
+      <Input
+        value={firstName}
+        onChange={handleChange}
+        placeholder="Entrez votre prénom"
+        Icon={<PiUserCircleFill className="icone_user" />}
+        required
+      />
       <button>
         Accédez à mon espace <MdKeyboardArrowRight />
       </button>
@@ -61,29 +58,6 @@ const LoginFormStyled = styled.form`
     font-family: ${theme.fontsFamily.amatic};
     font-size: 36px;
     color: ${theme.colors.white};
-  }
-  .input_icone {
-    background-color: #fff;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0px;
-
-    .icone_user {
-      font-size: 15px;
-      margin-right: 8px;
-      color: ${theme.colors.greyDark};
-    }
-    input {
-      border: none;
-      font-size: 15px;
-      color: black;
-    }
-    &::placeholder {
-      background-color: #fff;
-      color: ${theme.colors.greyLight};
-    }
   }
 
   button {

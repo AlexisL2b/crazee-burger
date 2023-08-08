@@ -6,6 +6,7 @@ import { theme } from "../../../theme"
 import { MdKeyboardArrowRight } from "react-icons/md"
 import { PiUserCircleFill } from "react-icons/pi"
 import TextInput from "../../reusable-ui/TextInput"
+import Button from "../../reusable-ui/Button"
 
 export default function LoginForm() {
   //state
@@ -33,9 +34,7 @@ export default function LoginForm() {
         Icon={<PiUserCircleFill className="icone_user" />}
         required
       />
-      <button>
-        Accédez à mon espace <MdKeyboardArrowRight />
-      </button>
+      <Button label="Accéder à mon espace" Icon={<MdKeyboardArrowRight />} />
     </LoginFormStyled>
   )
 }
@@ -58,27 +57,5 @@ const LoginFormStyled = styled.form`
     font-family: ${theme.fontsFamily.amatic};
     font-size: 36px;
     color: ${theme.colors.white};
-  }
-
-  button {
-    font-size: 15px;
-    border: none;
-    display: flex;
-    padding: 16px 0px;
-    border-radius: 5px;
-    border: none;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    background-color: ${theme.colors.primary};
-    color: ${theme.colors.white};
-    &:hover {
-      background-color: ${theme.colors.white};
-      color: ${theme.colors.primary};
-    }
-    &:active {
-      background-color: ${theme.colors.primary};
-      color: ${theme.colors.white};
-    }
   }
 `

@@ -42,23 +42,25 @@ export default function LoginForm() {
   )
 }
 const LoginFormStyled = styled.form`
-  padding: 32px 40px;
+  padding: ${theme.spacing.lg} 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: ${theme.borderRadius.round};
   h1 {
     text-align: center;
     color: ${theme.colors.white};
-    font-size: 48px;
+    font-size: ${theme.fonts.P5};
     font-family: ${theme.fontsFamily.amatic};
   }
   .divider {
-    border: 1px solid #f56a2c;
+    border: 1px solid ${theme.colors.divider};
+    margin-bottom: ${theme.gridUnit * 5}px;
   }
   h2 {
     text-align: center;
     font-family: ${theme.fontsFamily.amatic};
-    font-size: 36px;
+    font-size: ${theme.fonts.P4};
     color: ${theme.colors.white};
   }
 `

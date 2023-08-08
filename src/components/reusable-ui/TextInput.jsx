@@ -14,25 +14,25 @@ export default function TextInput({ value, onChange, Icon, ...restProps }) {
 }
 
 const InputStyled = styled.div`
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
-  padding: 18px 24px;
+  padding: 18px ${theme.gridUnit * 3}px;
   margin: 18px 0px;
 
   .icone_user {
-    font-size: 15px;
-    margin-right: 8px;
+    font-size: ${theme.fonts.P0};
+    margin-right: ${theme.spacing.xs};
     color: ${theme.colors.greyDark};
   }
   input {
     border: none;
-    font-size: 15px;
-    color: black;
+    font-size: ${theme.fonts.P0};
+    color: ${theme.colors.dark};
   }
   &::placeholder {
-    background-color: #fff;
+    background-color: ${theme.colors.white};
     color: ${theme.colors.greyLight};
   }
 `

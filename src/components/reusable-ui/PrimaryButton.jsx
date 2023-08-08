@@ -10,11 +10,11 @@ import styled from "styled-components"
 import { theme } from "../../theme"
 
 const PrimaryButtonStyled = styled.button`
-  font-size: 15px;
+  font-size: ${theme.fonts.P0};
   border: none;
   display: flex;
-  padding: 16px 0px;
-  border-radius: 5px;
+  padding: ${theme.gridUnit * 2}px 0px;
+  border-radius: ${theme.borderRadius.round};
   border: none;
   justify-content: center;
   align-items: center;

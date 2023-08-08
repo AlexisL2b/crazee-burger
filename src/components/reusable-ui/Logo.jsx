@@ -8,9 +8,9 @@ export default class Logo extends Component {
     return (
       <TitleLogoStyled>
         <h1>CRAZEE</h1>
-        <i>
-          <img src="public\assets\F03 logo-orange.png" alt="" />
-        </i>
+
+        <img src="public\assets\F03 logo-orange.png" alt="" />
+
         <h1>BURGER</h1>
       </TitleLogoStyled>
     )

@@ -1,17 +1,15 @@
-import React from "react"
-
-export default function Button({ label, Icon }) {
+export default function PrimaryButton({ label, Icon }) {
   return (
-    <ButtonStyled>
-      {label} {Icon}
-    </ButtonStyled>
+    <PrimaryButtonStyled>
+      {label} {Icon && Icon}
+    </PrimaryButtonStyled>
   )
 }
 
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-const ButtonStyled = styled.button`
+const PrimaryButtonStyled = styled.button`
   font-size: 15px;
   border: none;
   display: flex;

@@ -6,7 +6,7 @@ import { theme } from "../../../theme"
 import { MdKeyboardArrowRight } from "react-icons/md"
 import { PiUserCircleFill } from "react-icons/pi"
 import TextInput from "../../reusable-ui/TextInput"
-import Button from "../../reusable-ui/Button"
+import PrimaryButton from "../../reusable-ui/PrimaryButton"
 
 export default function LoginForm() {
   //state
@@ -34,7 +34,10 @@ export default function LoginForm() {
         Icon={<PiUserCircleFill className="icone_user" />}
         required
       />
-      <Button label="Accéder à mon espace" Icon={<MdKeyboardArrowRight />} />
+      <PrimaryButton
+        label="Accéder à mon espace"
+        Icon={<MdKeyboardArrowRight />}
+      />
     </LoginFormStyled>
   )
 }

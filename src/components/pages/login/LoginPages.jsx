@@ -1,27 +1,38 @@
 import { useState } from "react"
 import LoginForm from "./LoginForm"
-import TitleLogo from "../../title-logo/TitleLogo"
+import Logo from "../../reusable-ui/Logo"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 
 export default function LoginPages() {
   return (
     <LoginPagesStyled>
-      <TitleLogo />
+      <Logo />
       <LoginForm />
     </LoginPagesStyled>
   )
 }
 
 const LoginPagesStyled = styled.div`
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.251));
-  background-image: url("src/assets/F03 burger-background.jpg");
-  background-size: cover;
-  background-position: center center;
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
+  ::before {
+    content: "";
+    background: url("/assets/F03 burger-background.jpg") rgba(0, 0, 0, 0.7);
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: darken;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+  }
 `

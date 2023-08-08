@@ -3,14 +3,14 @@ import styled from "styled-components"
 import { theme } from "../../theme"
 // import "../../theme/fonts.css"
 
-export default class TitleLogo extends Component {
+export default class Logo extends Component {
   render() {
     return (
       <TitleLogoStyled>
         <h1>CRAZEE</h1>
-        <i>
-          <img src="src\assets\F03 logo-orange.png" alt="" />
-        </i>
+
+        <img src="\assets\F03 logo-orange.png" alt="" />
+
         <h1>BURGER</h1>
       </TitleLogoStyled>
     )

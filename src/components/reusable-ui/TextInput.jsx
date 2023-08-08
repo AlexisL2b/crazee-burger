@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export default function Input({ value, onChange, Icon, ...restProps }) {
+export default function TextInput({ value, onChange, Icon, ...restProps }) {
   //state
   //comportement
 

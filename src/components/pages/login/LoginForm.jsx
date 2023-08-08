@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import { MdKeyboardArrowRight } from "react-icons/md"
 import { PiUserCircleFill } from "react-icons/pi"
-import Input from "../../reusable-ui/Input"
+import TextInput from "../../reusable-ui/TextInput"
 
 export default function LoginForm() {
   //state
@@ -26,7 +26,7 @@ export default function LoginForm() {
       <h1>Bienvenue chez nous !</h1>
       <div className="divider"></div>
       <h2>Connectez-vous</h2>
-      <Input
+      <TextInput
         value={firstName}
         onChange={handleChange}
         placeholder="Entrez votre prénom"

@@ -34,13 +34,14 @@ export default function Navbar() {
 const NavBarStyled = styled.div`
   min-width: 1400px;
   display: flex;
-  border-radius: 15px 15px 0px 0px;
-  background: #fff;
+  border-radius: ${theme.borderRadius.extraRound}
+    ${theme.borderRadius.extraRound} 0px 0px;
+  background: ${theme.colors.white};
   height: auto;
   justify-content: space-between;
-  padding: 0px 70px 0px 20px;
+  padding: 0px 70px 0px ${theme.spacing.md};
   .left_side {
-    background-color: #fff;
+    background-color: ${theme.colors.white};
   }
   .right_side {
     display: flex;

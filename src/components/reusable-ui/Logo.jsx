@@ -3,10 +3,14 @@ import styled from "styled-components"
 import { theme } from "../../theme"
 // import "../../theme/fonts.css"
 
-export default function Logo({ className }) {
+export default function Logo({ className, onClick }) {
+  //state
+
+  //comportement
+
   {
     return (
-      <LogoStyled className={className}>
+      <LogoStyled className={className} onClick={onClick}>
         <h1>CRAZEE</h1>
 
         <img src="\assets\F03 logo-orange.png" alt="" />

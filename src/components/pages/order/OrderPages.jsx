@@ -1,7 +1,6 @@
-import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
-import Navbar from "../../reusable-ui/NavBar"
-import Main from "../../reusable-ui/Main"
+import Navbar from "./navbar/NavBar"
+import Main from "./Main"
 
 export default function OrderPages() {
   //state
@@ -23,4 +22,6 @@ const OrderPageStyled = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `

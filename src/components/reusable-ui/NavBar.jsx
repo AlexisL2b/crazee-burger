@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import Logo from "./reusable-ui/Logo"
+import Logo from "./Logo"
 import { PiUserCircleFill } from "react-icons/pi"
-import { theme } from "../theme"
+import { theme } from "../../theme"
 import { Link, useParams } from "react-router-dom"
 
 export default function Navbar() {
@@ -32,6 +32,7 @@ export default function Navbar() {
 }
 
 const NavBarStyled = styled.div`
+  min-width: 1400px;
   display: flex;
   border-radius: 15px 15px 0px 0px;
   background: #fff;
@@ -66,6 +67,7 @@ const NavBarStyled = styled.div`
       .disconect {
         font-size: ${theme.fonts.XXS};
         color: ${theme.colors.greyBlue};
+        text-decoration: none;
         &:visited {
           color: ${theme.colors.greyBlue};
         }

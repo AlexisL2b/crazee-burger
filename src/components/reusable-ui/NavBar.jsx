@@ -38,12 +38,15 @@ const NavBarStyled = styled.div`
     ${theme.borderRadius.extraRound} 0px 0px;
   background: ${theme.colors.white};
   height: auto;
-  justify-content: space-between;
   padding: 0px 70px 0px ${theme.spacing.md};
+  align-items: center;
   .left_side {
+    flex-shrink: 0;
     background-color: ${theme.colors.white};
   }
   .right_side {
+    margin-left: auto;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     .userinfos {

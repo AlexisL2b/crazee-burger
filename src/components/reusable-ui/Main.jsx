@@ -1,5 +1,5 @@
 export default function Main() {
-  return <MainStyled>Main</MainStyled>
+  return <MainStyled></MainStyled>
 }
 import styled from "styled-components"
 import { theme } from "../../theme"

@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme"
 import Card from "./cards/Card"
+import { theme } from "../../../../theme"
+import Card from "./card/Card"
 
 export default function Main() {
   return (

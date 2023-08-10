@@ -3,7 +3,7 @@ import styled from "styled-components"
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton"
 import { theme } from "../../../../../theme"
 
-export default function Desc({ priceProduct, title }) {
+export default function Desc({ priceProduct, title }) /*propsDrilling*/ {
   //State
 
   //comportement
@@ -32,11 +32,11 @@ const DescStyled = styled.div`
     height: 46px;
     flex-direction: column;
     justify-content: center;
-    color: #17161a;
+    color: ${theme.colors.dark};
     font-family: ${theme.fontsFamily.amatic};
-    font-size: 36px;
+    font-size: ${theme.fonts.P4};
     font-style: normal;
-    font-weight: 700;
+    font-weight: ${theme.weights.bold};
     line-height: normal;
   }
   .infos {
@@ -50,9 +50,10 @@ const DescStyled = styled.div`
       align-items: flex-start;
     }
     .card_button {
+      cursor: pointer;
       display: flex;
       height: 38px;
-      padding: 12px 26.3px 12px 26.5px;
+      padding: ${theme.spacing.sm} 26px ${theme.spacing.sm} 26px;
       justify-content: center;
       align-items: center;
       border: 1px solid ${theme.colors.primary};

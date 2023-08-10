@@ -22,12 +22,12 @@ export default function Card({
 const CardStyled = styled.div`
   display: flex;
   width: 240px;
-  padding: 50px 20px 10px 20px;
+  padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  border-radius: 15px;
-  background: #fff;
+  border-radius: ${theme.borderRadius.extraRound};
+  background: ${theme.borderRadius.extraRound};
   box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
 `

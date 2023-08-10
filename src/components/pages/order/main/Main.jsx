@@ -11,6 +11,10 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 25% 25% 25% 25%;
+
   background: ${theme.colors.background_white};
   box-shadow: 0px ${theme.spacing.xs} ${theme.spacing.md} ${theme.spacing.xs}
     rgba(0, 0, 0, 0.2) inset;

@@ -1,15 +1,17 @@
 import React from "react"
 import styled from "styled-components"
+import PrimaryButton from "../../../../reusable-ui/PrimaryButton"
+import { theme } from "../../../../../theme"
 
 export default function Card() {
   return (
     <CardStyled>
-      <div className="picture">IMAGE</div>
+      <div className="picture"></div>
       <div className="desc">
-        DESCRIPTION <div className="title">TITRE</div>
+        <h1>BURGER</h1>
         <div className="infos">
-          INFOS <div className="price">Price</div>
-          <div className="button">Button</div>
+          <div className="price">Price</div>
+          <PrimaryButton label="Ajouter" className="card_button" />
         </div>
       </div>
     </CardStyled>
@@ -25,13 +27,19 @@ const CardStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15px;
+
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
   .picture {
-    background-color: blue;
     width: 200px;
     height: 145px;
+    background-image: url("/images/burger-bacon-egg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
   .desc {
-    background-color: blue;
     display: flex;
     padding: 0px 5px 5px 5px;
     flex-direction: column;
@@ -39,32 +47,28 @@ const CardStyled = styled.div`
     gap: -7.5px;
   }
   .title {
-    background: green;
     display: flex;
     height: 46px;
     flex-direction: column;
     justify-content: center;
   }
   .infos {
-    background: green;
     display: flex;
     align-items: center;
 
     .price {
-      background: orange;
-
+      color: ${theme.colors.pri};
       display: flex;
       padding: 22.25px 50px 22.25px 0px;
       align-items: flex-start;
     }
-    .button {
-      background: orange;
+    .card_button {
       display: flex;
-      width: 95px;
       height: 38px;
       padding: 12px 26.3px 12px 26.5px;
       justify-content: center;
       align-items: center;
+      border: 1px solid ${theme.colors.primary};
     }
   }
 `

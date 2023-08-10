@@ -1,6 +1,6 @@
-export default function PrimaryButton({ label, Icon }) {
+export default function PrimaryButton({ label, Icon, className }) {
   return (
-    <PrimaryButtonStyled>
+    <PrimaryButtonStyled className={className}>
       {label} {Icon && Icon}
     </PrimaryButtonStyled>
   )

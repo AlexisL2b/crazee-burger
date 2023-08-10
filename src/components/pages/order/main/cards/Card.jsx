@@ -3,14 +3,16 @@ import styled from "styled-components"
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton"
 import { theme } from "../../../../../theme"
 
-export default function Card() {
+export default function Card({ id, imageSource, title, price }) {
   return (
-    <CardStyled>
-      <div className="picture"></div>
+    <CardStyled key={id}>
+      <div className="picture">
+        <img src={imageSource} alt="" />
+      </div>
       <div className="desc">
-        <h1>BURGER</h1>
+        <h1>{title}</h1>
         <div className="infos">
-          <div className="price">Price</div>
+          <div className="price">{price}</div>
           <PrimaryButton label="Ajouter" className="card_button" />
         </div>
       </div>
@@ -32,12 +34,20 @@ const CardStyled = styled.div`
   background: #fff;
   box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
   .picture {
+    position: relative;
     width: 200px;
     height: 145px;
-    background-image: url("/images/burger-bacon-egg.png");
+    background-image: url();
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* l'image couvre tout le conteneur */
+    }
   }
   .desc {
     display: flex;

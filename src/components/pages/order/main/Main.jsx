@@ -1,20 +1,28 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme"
 import Card from "./cards/Card"
+import { fakeMenu2 } from "../../../fakeData/fakeMenu"
 
 export default function Main() {
+  //state
+
+  //comportement
+
   return (
     <MainStyled>
-      <Card />
+      {fakeMenu2.map((produit) => (
+        <Card
+          key={produit.id}
+          imageSource={produit.imageSource}
+          title={produit.title}
+          price={produit.price}
+        />
+      ))}
     </MainStyled>
   )
 }
 
 const MainStyled = styled.div`
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-columns: 25% 25% 25% 25%;
-
   background: ${theme.colors.background_white};
   box-shadow: 0px ${theme.spacing.xs} ${theme.spacing.md} ${theme.spacing.xs}
     rgba(0, 0, 0, 0.2) inset;

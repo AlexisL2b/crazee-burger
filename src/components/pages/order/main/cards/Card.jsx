@@ -3,9 +3,19 @@ import styled from "styled-components"
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton"
 import { theme } from "../../../../../theme"
 
-export default function Card({ id, imageSource, title, price }) {
+export default function Card({
+  id,
+  imageSource,
+  title,
+  priceProduct,
+  className,
+}) {
+  const priceRounded = Math.ceil(priceProduct * 10) / 10
+  const price = priceRounded.toFixed(2)
+  console.log(price)
+
   return (
-    <CardStyled key={id}>
+    <CardStyled key={id} className={className}>
       <div className="picture">
         <img src={imageSource} alt="" />
       </div>
@@ -29,10 +39,10 @@ const CardStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15px;
-
   border-radius: 15px;
   background: #fff;
   box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
+
   .picture {
     position: relative;
     width: 200px;
@@ -56,18 +66,24 @@ const CardStyled = styled.div`
     align-items: flex-start;
     gap: -7.5px;
   }
-  .title {
+  h1 {
     display: flex;
     height: 46px;
     flex-direction: column;
     justify-content: center;
+    color: #17161a;
+    font-family: ${theme.fontsFamily.amatic};
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
   .infos {
     display: flex;
     align-items: center;
 
     .price {
-      color: ${theme.colors.pri};
+      color: ${theme.colors.primary};
       display: flex;
       padding: 22.25px 50px 22.25px 0px;
       align-items: flex-start;

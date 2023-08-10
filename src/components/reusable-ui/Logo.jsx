@@ -3,31 +3,44 @@ import styled from "styled-components"
 import { theme } from "../../theme"
 // import "../../theme/fonts.css"
 
-export default class Logo extends Component {
-  render() {
+export default function Logo({ className, onClick }) {
+  //state
+
+  //comportement
+
+  {
     return (
-      <TitleLogoStyled>
+      <LogoStyled className={className} onClick={onClick}>
         <h1>CRAZEE</h1>
 
         <img src="\assets\F03 logo-orange.png" alt="" />
 
         <h1>BURGER</h1>
-      </TitleLogoStyled>
+      </LogoStyled>
     )
   }
 }
 
-const TitleLogoStyled = styled.div`
+const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-
   h1 {
+    display: inline;
+    text-align: center;
     color: ${theme.colors.primary};
-    font-size: 110px;
-    font-family: ${theme.fontsFamily.amatic};
+    font-size: ${theme.fonts.P4};
+    line-height: 1em;
+    font-weight: ${theme.weights.bold};
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
   }
+
   img {
-    width: 200px;
-    height: 150px;
+    object-fit: contain;
+    object-position: center;
+    height: 60px;
+    width: 80px; // for Safari and Firefox
+    margin: 0 ${theme.gridUnit / 2}px;
   }
 `

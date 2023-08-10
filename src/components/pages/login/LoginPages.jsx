@@ -2,37 +2,37 @@ import { useState } from "react"
 import LoginForm from "./LoginForm"
 import Logo from "../../reusable-ui/Logo"
 import styled from "styled-components"
-import { theme } from "../../../theme"
 
 export default function LoginPages() {
   return (
-    <LoginPagesStyled>
-      <Logo />
+    <LoginPageStyled>
+      <Logo className="logo_login_page" />
       <LoginForm />
-    </LoginPagesStyled>
+    </LoginPageStyled>
   )
 }
 
-const LoginPagesStyled = styled.div`
+const LoginPageStyled = styled.div`
   height: 100vh;
-  width: 100vw;
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
-  ::before {
+  &::before {
     content: "";
     background: url("/assets/F03 burger-background.jpg") rgba(0, 0, 0, 0.7);
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-blend-mode: darken;
-
     position: absolute;
     top: 0;
-    bottom: 0;
-    right: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     z-index: -1;
+  }
+  .logo_login_page {
+    transform: scale(2.5);
   }
 `

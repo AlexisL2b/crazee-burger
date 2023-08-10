@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Navbar from "./navbar/NavBar"
-import Main from "./Main"
+import Main from "./main/main"
 
 export default function OrderPages() {
   //state

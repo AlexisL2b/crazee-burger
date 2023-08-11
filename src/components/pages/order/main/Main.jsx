@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { theme } from "../../../../theme"
 import Card from "./cards/Card"
 import { fakeMenu2 } from "../../../fakeData/fakeMenu"
+import Basket from "./Basket"
 
 export default function Main() {
   //state
@@ -10,6 +11,7 @@ export default function Main() {
 
   return (
     <MainStyled>
+      <Basket />
       {fakeMenu2.map((produit) => (
         <Card
           className={"cardProduct"}
@@ -33,7 +35,7 @@ const MainStyled = styled.div`
   overflow-y: scroll;
   scrollbar-width: none;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 4% 24% 24% 24% 24%;
   grid-template-rows: 2fr;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   padding: 50px 50px 150px;

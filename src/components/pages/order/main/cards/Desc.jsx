@@ -2,19 +2,17 @@ import React from "react"
 import styled from "styled-components"
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton"
 import { theme } from "../../../../../theme"
+import { formatMontant } from "../../../../../utils/maths"
 
 export default function Desc({ priceProduct, title }) /*propsDrilling*/ {
   //State
 
   //comportement
-
-  const priceRounded = Math.ceil(priceProduct * 10) / 10
-  const price = priceRounded.toFixed(2)
   return (
     <DescStyled>
       <h1>{title}</h1>
       <div className="infos">
-        <div className="price">{price}</div>
+        <div className="price">{formatMontant(priceProduct)}</div>
         <PrimaryButton label="Ajouter" className="card_button" />
       </div>
     </DescStyled>
@@ -25,19 +23,17 @@ const DescStyled = styled.div`
   display: flex;
   padding: 0px 5px 5px 5px;
   flex-direction: column;
-  align-items: flex-start;
-  gap: -7.5px;
   h1 {
-    display: flex;
-    height: 46px;
-    flex-direction: column;
-    justify-content: center;
     color: ${theme.colors.dark};
     font-family: ${theme.fontsFamily.amatic};
     font-size: ${theme.fonts.P4};
     font-style: normal;
     font-weight: ${theme.weights.bold};
     line-height: normal;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    overflow: hidden; /* Cache tout ce qui dépasse du conteneur */
+    text-overflow: ellipsis; /* Affiche une ellipse lorsque le texte est coupé */
+    max-width: 220px;
   }
   .infos {
     display: flex;

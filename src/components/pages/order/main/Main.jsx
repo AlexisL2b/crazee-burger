@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme"
-import Card from "./cards/Card"
 import { fakeMenu2 } from "../../../fakeData/fakeMenu"
-import Basket from "./Basket"
+import Basket from "./menu/Basket"
+import Menu from "./menu/Menu"
 
 export default function Main() {
   //state
@@ -12,15 +12,7 @@ export default function Main() {
   return (
     <MainStyled>
       <Basket />
-      {fakeMenu2.map((produit) => (
-        <Card
-          className={"cardProduct"}
-          key={produit.id}
-          imageSource={produit.imageSource}
-          title={produit.title}
-          priceProduct={produit.price}
-        />
-      ))}
+      <Menu />
     </MainStyled>
   )
 }
@@ -32,16 +24,11 @@ const MainStyled = styled.div`
   border-radius: 0px 0px 15px 15px;
   width: 1400px;
   height: 100vh;
+  justify-content: start;
+  align-items: start;
+  display: flex;
+  /*display:grid
+    grid-template-columns: 25% 75%*/
   overflow-y: scroll;
   scrollbar-width: none;
-  display: grid;
-  grid-template-columns: 4% 24% 24% 24% 24%;
-  grid-template-rows: 2fr;
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  padding: 50px 50px 150px;
-  grid-row-gap: 60px;
-  place-items: center;
-  .cardProduct {
-    grid-area: 0/1/3/4;
-  }
 `

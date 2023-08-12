@@ -24,7 +24,6 @@ export default function Logo({ className, onClick }) {
 const LogoStyled = styled.div`
   display: flex;
   place-items: center;
-  height: 100%;
   padding: 19px;
   h1 {
     display: inline;

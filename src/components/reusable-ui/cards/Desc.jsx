@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import PrimaryButton from "../../../../reusable-ui/PrimaryButton"
-import { theme } from "../../../../../theme"
-import { formatMontant } from "../../../../../utils/maths"
+import PrimaryButton from "../PrimaryButton"
+import { theme } from "../../../theme"
+import { formatMontant } from "../../../utils/maths"
 
 export default function Desc({ priceProduct, title }) /*propsDrilling*/ {
   //State

@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import PrimaryButton from "../PrimaryButton"
-import { theme } from "../../../theme"
 import { formatMontant } from "../../../utils/maths"
+import { theme } from "../../../theme"
+import PrimaryButton from "../PrimaryButton"
 
 export default function Desc({ priceProduct, title }) /*propsDrilling*/ {
   //State
@@ -25,6 +25,7 @@ const DescStyled = styled.div`
   display: grid;
   grid-template-rows: 30% 70%;
   padding: 5px;
+  gap: 10px;
   .title {
     margin: auto 0;
     font-size: ${theme.fonts.size.P4};
@@ -36,7 +37,8 @@ const DescStyled = styled.div`
     overflow: hidden;
     width: 100%;
     text-overflow: ellipsis;
-    font-family: ${theme.fontsFamily.amatic};
+    font-family: "Amatic SC";
+    font-weight: ${theme.fonts.weights.bold};
   }
 
   .infos {
@@ -64,7 +66,7 @@ const DescStyled = styled.div`
       .card_button {
         font-size: ${theme.fonts.size.XS};
         cursor: pointer;
-        padding: 12px;
+        padding: 12px 26.5px;
       }
     }
   }

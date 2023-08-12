@@ -1,10 +1,8 @@
 import React from "react"
-import { PiUserCircleFill } from "react-icons/pi"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { styled } from "styled-components"
-import { theme } from "../../../../theme"
-import AdminButton from "./AdminButton"
 import Profile from "./Profile"
+import AdminButton from "./AdminButton/AdminButton"
 
 export default function NavBarRightSide() {
   //state
@@ -15,7 +13,7 @@ export default function NavBarRightSide() {
   //comportement
   return (
     <NavBarRightSideStyled>
-      {/* <AdminButton /> */}
+      <AdminButton />
       <Profile firstValue={firstValue} />
     </NavBarRightSideStyled>
   )

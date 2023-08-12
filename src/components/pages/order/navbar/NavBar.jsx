@@ -2,12 +2,14 @@ import styled from "styled-components"
 import { theme } from "../../../../theme"
 import NavBarLeftSide from "./NavBarLeftSide"
 import NavBarRightSide from "./NavBarRightSide"
+import NavbarRightSideIncomplet from "./NavbarRightSideIncomplet"
 
 export default function Navbar() {
   return (
     <NavBarStyled>
       <NavBarLeftSide />
       <NavBarRightSide />
+      <NavbarRightSideIncomplet />
     </NavBarStyled>
   )
 }

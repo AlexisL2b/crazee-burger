@@ -66,7 +66,7 @@ const DescStyled = styled.div`
       .card_button {
         font-size: ${theme.fonts.size.XS};
         cursor: pointer;
-        padding: 12px 26.5px;
+        padding: 12px 26px;
       }
     }
   }

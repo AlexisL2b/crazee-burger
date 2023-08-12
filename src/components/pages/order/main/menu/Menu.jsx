@@ -1,18 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 import { styled } from "styled-components"
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu"
 import Card from "../cards/Card"
+import { theme } from "../../../../../theme"
 
 export default function Menu() {
+  const [products, setProducts] = useState(fakeMenu2)
+
   return (
     <MenuStyled>
-      {fakeMenu2.map((produit) => (
+      {products.map((products) => (
         <Card
           className={"cardProduct"}
-          key={produit.id}
-          imageSource={produit.imageSource}
-          title={produit.title}
-          priceProduct={produit.price}
+          key={products.id}
+          imageSource={products.imageSource}
+          title={products.title}
+          priceProduct={products.price}
         />
       ))}
     </MenuStyled>
@@ -20,15 +23,24 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
+  background: ${theme.colors.background_white};
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 60px;
+  padding: 50px 50px 150px;
+  justify-items: center;
+  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  /* display: grid;
+  background-color: purple;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 2fr;
   padding: 50px 50px 150px;
   row-gap: 85px;
   column-gap: 50px;
-  place-items: center;
-  .cardProduct {
-    grid-area: 0/1/3/4;
-  }
+  align-items: center;
+  justify-items: center; */
+  /* .cardProduct {
+    grid-area: 0/2/3/4;
+  } */
 `
 /**/

@@ -1,5 +1,3 @@
-import "./fonts.css"
-
 const colors = {
   dark: "#17161a",
   incognito: "#333",
@@ -17,7 +15,11 @@ const colors = {
   greySemiDark: "#93a2b1",
   greyDark: "#6f737e",
   greyBlue: "#747b91",
-  divider: "#f56a2c;",
+  loginLine: "#f56a2c",
+}
+const fontsFamily = {
+  amatic: " 'Amatic SC', cursive",
+  open: "'Open Sans', sans-serif",
 }
 
 const spacing = {
@@ -31,20 +33,26 @@ const spacing = {
 }
 
 const fonts = {
-  XXXS: "8px",
-  XXS: "10px",
-  XS: "12px",
-  P0: "15px",
-  P1: "18px",
-  P2: "20px",
-  P3: "24px",
-  P4: "36px",
-  P5: "48px",
-  P6: "60px",
-}
-const fontsFamily = {
-  amatic: " 'Amatic SC', cursive",
-  open: "'Open Sans', sans-serif",
+  size: {
+    XXXS: "8px",
+    XXS: "10px",
+    XS: "12px",
+    P0: "15px",
+    P1: "18px",
+    P2: "20px",
+    P3: "24px",
+    P4: "36px",
+    P5: "48px",
+    P6: "60px",
+  },
+  weights: {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
+    heavy: 800,
+  },
 }
 const gridUnit = 8
 const borderRadius = {
@@ -53,15 +61,8 @@ const borderRadius = {
   extraRound: "15px",
   circle: "50%",
 }
+
 const shadows = {}
-const weights = {
-  light: 300,
-  regular: 400,
-  medium: 500,
-  semiBold: 600,
-  bold: 700,
-  heavy: 800,
-}
 
 export const theme = {
   colors,
@@ -69,7 +70,6 @@ export const theme = {
   gridUnit,
   borderRadius,
   shadows,
-  weights,
   spacing,
   fontsFamily,
 }

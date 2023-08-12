@@ -1,10 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
 import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 
 export default function Card({
+  //state
+  //comportement
+
   id,
   imageSource,
   title,
@@ -20,14 +23,27 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  display: flex;
+  background: ${theme.colors.white};
   width: 240px;
-  padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+  height: 330px;
+  display: grid;
+  grid-template-rows: 65% 1fr;
+  padding: 20px;
+  padding-bottom: 10px;
+  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  border-radius: ${theme.borderRadius.extraRound};
+  /* background-color: red;
+  border: 1px solid red;
+  display: grid;
+  width: 200px;
+  height: 300px;
+  padding: 20px;
+  padding-bottom: 10px;
+  grid-template-rows: 65% 1fr;
   border-radius: ${theme.borderRadius.extraRound};
   background: ${theme.borderRadius.extraRound};
   box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  justify-items: center;
+  align-items: center; */
 `

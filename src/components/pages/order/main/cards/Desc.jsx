@@ -10,49 +10,62 @@ export default function Desc({ priceProduct, title }) /*propsDrilling*/ {
   //comportement
   return (
     <DescStyled>
-      <h1>{title}</h1>
+      <div className="title">{title}</div>
       <div className="infos">
-        <div className="price">{formatMontant(priceProduct)}</div>
-        <PrimaryButton label="Ajouter" className="card_button" />
+        <div className="left-description">{formatMontant(priceProduct)}</div>
+        <div className="right-description">
+          <PrimaryButton label="Ajouter" className="card_button" />
+        </div>
       </div>
     </DescStyled>
   )
 }
 
 const DescStyled = styled.div`
-  display: flex;
-  padding: 0px 5px 5px 5px;
-  flex-direction: column;
-  h1 {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  padding: 5px;
+  .title {
+    margin: auto 0;
+    font-size: ${theme.fonts.size.P4};
+    position: relative;
+    bottom: 10px;
     color: ${theme.colors.dark};
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
     font-family: ${theme.fontsFamily.amatic};
-    font-size: ${theme.fonts.P4};
-    font-style: normal;
-    font-weight: ${theme.weights.bold};
-    line-height: normal;
-    white-space: nowrap; /* Empêche le texte de passer à la ligne */
-    overflow: hidden; /* Cache tout ce qui dépasse du conteneur */
-    text-overflow: ellipsis; /* Affiche une ellipse lorsque le texte est coupé */
-    max-width: 220px;
   }
-  .infos {
-    display: flex;
-    align-items: center;
 
-    .price {
-      color: ${theme.colors.primary};
+  .infos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .left-description {
       display: flex;
-      padding: 22.25px 50px 22.25px 0px;
-      align-items: flex-start;
-    }
-    .card_button {
-      cursor: pointer;
-      display: flex;
-      height: 38px;
-      padding: ${theme.spacing.sm} 26px ${theme.spacing.sm} 26px;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      border: 1px solid ${theme.colors.primary};
+      font-weight: ${theme.fonts.weights.medium};
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: ${theme.fonts.weights.medium};
+      color: ${theme.colors.primary};
+    }
+
+    .right-description {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: ${theme.fonts.size.P1};
+
+      .card_button {
+        font-size: ${theme.fonts.size.XS};
+        cursor: pointer;
+        padding: 12px;
+      }
     }
   }
 `

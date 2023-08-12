@@ -22,6 +22,7 @@ const PrimaryButtonStyled = styled.button`
   background-color: ${theme.colors.primary};
   color: ${theme.colors.white};
   transition: background-color 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     background-color: ${theme.colors.white};

@@ -54,7 +54,7 @@ const LoginFormStyled = styled.form`
     font-family: ${theme.fontsFamily.amatic};
   }
   .divider {
-    border: 1px solid ${theme.colors.divider};
+    border: 1px solid ${theme.colors.primary};
     margin-bottom: ${theme.gridUnit * 5}px;
   }
   h2 {

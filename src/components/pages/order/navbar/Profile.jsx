@@ -27,7 +27,7 @@ const ProfileSyled = styled.div`
   font-family: ${theme.fontsFamily.open};
   font-size: 16px;
   font-style: normal;
-  font-weight: ${theme.weights.regular};
+  font-weight: ${theme.fonts.weights.regular};
   line-height: 22px;
   display: flex;
   color: ${theme.colors.greyBlue};
@@ -39,12 +39,12 @@ const ProfileSyled = styled.div`
       font-family: ${theme.fontsFamily.open};
       font-size: 16px;
       font-style: normal;
-      font-weight: ${theme.weights.bold};
+      font-weight: ${theme.fonts.weights.bold};
       line-height: 22px;
       color: ${theme.colors.primary};
     }
     .disconect {
-      font-size: ${theme.fonts.XXS};
+      font-size: ${theme.fonts.size.XXS};
       color: ${theme.colors.greyBlue};
       text-decoration: none;
       &:visited {
@@ -59,8 +59,8 @@ const ProfileSyled = styled.div`
   .picture {
     display: flex;
     margin-left: 10px;
-    height: auto;
-    font-size: ${theme.fonts.P4};
+
+    font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
   }
 `

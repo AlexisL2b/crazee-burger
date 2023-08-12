@@ -1,6 +1,6 @@
-export default function PrimaryButton({ label, Icon }) {
+export default function PrimaryButton({ label, Icon, className }) {
   return (
-    <PrimaryButtonStyled>
+    <PrimaryButtonStyled className={className}>
       {label} {Icon && Icon}
     </PrimaryButtonStyled>
   )
@@ -21,6 +21,8 @@ const PrimaryButtonStyled = styled.button`
   flex-shrink: 0;
   background-color: ${theme.colors.primary};
   color: ${theme.colors.white};
+  transition: background-color 0.3s ease;
+
   &:hover {
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary};

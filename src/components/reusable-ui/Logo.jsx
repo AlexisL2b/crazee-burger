@@ -23,17 +23,20 @@ export default function Logo({ className, onClick }) {
 
 const LogoStyled = styled.div`
   display: flex;
-  align-items: center;
+  place-items: center;
+  height: 100%;
+  padding: 19px;
   h1 {
     display: inline;
     text-align: center;
     color: ${theme.colors.primary};
-    font-size: ${theme.fonts.P4};
+    font-size: ${theme.fonts.size.P4};
     line-height: 1em;
-    font-weight: ${theme.weights.bold};
+    font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-family: "Amatic SC", cursive;
+    font-family: "Amatic SC";
+    font-weight: ${theme.fonts.weights.bold};
   }
 
   img {

@@ -20,13 +20,4 @@ const ImageWrapperStyled = styled.div`
     height: 100%;
     object-fit: contain;
   }
-  /* border: 1px solid blue;
-  margin-top: 30px;
-  width: 200px;
-  height: 145px;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  } */
 `

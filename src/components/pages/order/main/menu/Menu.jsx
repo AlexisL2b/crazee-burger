@@ -30,17 +30,4 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  /* display: grid;
-  background-color: purple;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 2fr;
-  padding: 50px 50px 150px;
-  row-gap: 85px;
-  column-gap: 50px;
-  align-items: center;
-  justify-items: center; */
-  /* .cardProduct {
-    grid-area: 0/2/3/4;
-  } */
 `
-/**/

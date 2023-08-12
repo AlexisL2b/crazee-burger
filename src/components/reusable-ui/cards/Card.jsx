@@ -32,18 +32,4 @@ const CardStyled = styled.div`
   padding-bottom: 10px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
-  /* background-color: red;
-  border: 1px solid red;
-  display: grid;
-  width: 200px;
-  height: 300px;
-  padding: 20px;
-  padding-bottom: 10px;
-  grid-template-rows: 65% 1fr;
-  border-radius: ${theme.borderRadius.extraRound};
-  background: ${theme.borderRadius.extraRound};
-  box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  justify-items: center;
-  align-items: center; */
 `

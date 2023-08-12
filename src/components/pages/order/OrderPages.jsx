@@ -33,13 +33,4 @@ const OrderPageStyled = styled.div`
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
   }
-
-  /* background-color: #ff9f1a;
-  height: 100vh;
-  padding: 25px 56px 25px 56px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
 `

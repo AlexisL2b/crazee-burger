@@ -1,12 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
+import { theme } from "../../theme"
 
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked = "DESACIVER LE MODE ADMIN",
-  labelIfUnchecked = "ACTIVER LE MODE ADMIN",
+  labelIfChecked,
+  labelIfUnchecked,
 }) {
   return (
     <ToggleButtonStyled>
@@ -28,8 +28,6 @@ export default function ToggleButton({
 }
 
 const ToggleButtonStyled = styled.div`
-  border: 1px solid red;
-
   display: flex;
   margin-right: 10px;
   input[type="checkbox"] {

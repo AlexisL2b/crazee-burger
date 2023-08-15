@@ -5,6 +5,7 @@ import { FiChevronDown } from "react-icons/fi"
 import { AiOutlinePlus } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
 import { theme } from "../../../../../theme"
+import Tab from "./Tab"
 
 export default function Pannel() {
   return (
@@ -22,7 +23,9 @@ export default function Pannel() {
           className="other_button"
         />
       </div>
-      <div className="pannel-table">PannelTab</div>
+      <div className="pannel-table">
+        <Tab />
+      </div>
     </PannelStyled>
   )
 }

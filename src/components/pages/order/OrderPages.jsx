@@ -2,17 +2,22 @@ import styled from "styled-components"
 import Navbar from "./navbar/NavBar"
 import Main from "./main/Main"
 import { theme } from "../../../theme"
+import Context from "../../../context/Context"
+import { useState } from "react"
 
 export default function OrderPages() {
   //state
-
+  const [role, setRole] = useState("user")
+  const contextRoleValue = { Role: role, setRole: setRole }
   //comportement
   //affichage
   return (
     <OrderPageStyled>
       <div className="container">
-        <Navbar />
-        <Main />
+        <Context.Provider value={contextRoleValue}>
+          <Navbar />
+          <Main />
+        </Context.Provider>
       </div>
     </OrderPageStyled>
   )
@@ -26,7 +31,6 @@ const OrderPageStyled = styled.div`
   align-items: center;
 
   .container {
-    background: red;
     height: 95vh;
     width: 1400px;
     display: flex;

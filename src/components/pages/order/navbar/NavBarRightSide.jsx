@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { useParams } from "react-router-dom"
 import { styled } from "styled-components"
 import "react-toastify/dist/ReactToastify.css"
@@ -6,14 +6,16 @@ import Profile from "./Profile"
 import { toast } from "react-toastify"
 import ToggleButton from "../../../reusable-ui/ToggleButton"
 import { FaUserSecret } from "react-icons/fa6"
+import Context from "../../../../context/Context"
 
 export default function NavBarRightSide() {
   //state
+
   const identifiant = useParams()
   const firstKey = Object.keys(identifiant)[0]
   const firstValue = identifiant[firstKey]
-
   const [isChecked, setIsChecked] = useState(0)
+  const { setRole } = useContext(Context)
   //comportement
 
   const onToggle = () => {
@@ -30,8 +32,10 @@ export default function NavBarRightSide() {
         draggable: true,
         progress: undefined,
       })
+      setRole("admin")
     } else {
       setIsChecked(0)
+      setRole("user")
     }
   }
 

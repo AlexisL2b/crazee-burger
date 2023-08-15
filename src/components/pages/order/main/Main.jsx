@@ -30,4 +30,10 @@ const MainStyled = styled.div`
 
   overflow-y: scroll;
   scrollbar-width: none;
+  .user {
+    display: none;
+  }
+  .admin {
+    display: block;
+  }
 `

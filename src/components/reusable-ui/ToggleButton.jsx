@@ -5,11 +5,12 @@ import { theme } from "../../theme"
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked,
-  labelIfUnchecked,
+  labelIfChecked = "ouvrir",
+  labelIfUnchecked = "fermer",
+  className,
 }) {
   return (
-    <ToggleButtonStyled>
+    <ToggleButtonStyled className={className}>
       <input
         type="checkbox"
         className="toggle"
@@ -74,6 +75,7 @@ const ToggleButtonStyled = styled.div`
       transform: translateY(-50%);
       text-overflow: ellipsis;
       overflow: hidden;
+      font-weight: ${theme.fonts.weights.bold};
     }
 
     // outside box

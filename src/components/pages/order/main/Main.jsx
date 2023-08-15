@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme"
-import { fakeMenu2 } from "../../../fakeData/fakeMenu"
 import Basket from "./menu/Basket"
 import Menu from "./menu/Menu"
 import Pannel from "./pannel/Pannel"

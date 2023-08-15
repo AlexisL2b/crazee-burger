@@ -16,7 +16,9 @@ export default function Pannel() {
 }
 const PannelStyled = styled.div`
   border: 1px solid red;
-
+  position: absolute;
+  top: 700px;
+  width: 1400px;
   .button-container {
     background: blue;
   }

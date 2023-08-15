@@ -3,6 +3,7 @@ import { theme } from "../../../../theme"
 import { fakeMenu2 } from "../../../fakeData/fakeMenu"
 import Basket from "./menu/Basket"
 import Menu from "./menu/Menu"
+import Pannel from "./pannel/Pannel"
 
 export default function Main() {
   //state
@@ -13,6 +14,7 @@ export default function Main() {
     <MainStyled>
       <Basket />
       <Menu />
+      <Pannel />
     </MainStyled>
   )
 }

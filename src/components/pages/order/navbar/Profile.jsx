@@ -22,6 +22,7 @@ export default function Profile({ firstValue }) {
   )
 }
 const ProfileSyled = styled.div`
+  padding-left: 50px;
   margin-right: 10px;
   text-align: right;
   font-family: ${theme.fontsFamily.open};

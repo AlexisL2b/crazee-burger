@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import { styled } from "styled-components"
 import PannelButton from "./PannelButton"
 import { FiChevronDown } from "react-icons/fi"
@@ -7,50 +7,52 @@ import { MdModeEditOutline } from "react-icons/md"
 import { theme } from "../../../../../theme"
 import Tab from "./Tab"
 import Context from "../../../../../context/Context"
+import StateButton from "./StateButton"
+import StateContext from "../../../../../context/StateContext"
 
 export default function Pannel() {
   //State
   const { Role } = useContext(Context)
+  const { State } = useContext(StateContext)
 
   //Comportement
 
   return (
     <PannelStyled className={Role}>
       <div className="button-container">
-        <PannelButton icons={<FiChevronDown />} className="chevron_button" />
+        <StateButton icons={<FiChevronDown />} />
         <PannelButton
           labbel={"Ajouter un produit"}
           icons={<AiOutlinePlus />}
           className="other_button"
+          onClick={() => {
+            console.log("clic")
+          }}
         />
         <PannelButton
           labbel={"Modifier un produit"}
           icons={<MdModeEditOutline />}
           className="other_button"
+          onClick={() => {
+            console.log("clic")
+          }}
         />
       </div>
-      <div className="pannel-table">
+      <div className={`pannel-table ${State}`}>
         <Tab />
       </div>
     </PannelStyled>
   )
 }
 const PannelStyled = styled.div`
-  position: absolute;
   top: 700px;
   width: 1400px;
-  .user {
-    display: none;
-  }
-  .admin {
-    display: block;
-  }
+
   .button-container {
     padding: 0px 70px;
     display: flex;
   }
   .pannel-table {
-    box-sizing: content-box;
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
     box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
@@ -63,5 +65,11 @@ const PannelStyled = styled.div`
     i {
       margin-right: 10px;
     }
+  }
+  .opened {
+    display: block;
+  }
+  .closed {
+    display: none;
   }
 `

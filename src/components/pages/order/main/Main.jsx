@@ -13,7 +13,9 @@ export default function Main() {
     <MainStyled>
       <Basket />
       <Menu />
-      <Pannel />
+      <div className="pannel">
+        <Pannel />
+      </div>
     </MainStyled>
   )
 }
@@ -21,13 +23,11 @@ export default function Main() {
 const MainStyled = styled.div`
   background: ${theme.colors.background_white};
   flex: 1; // or you can also use this : height: calc(95vh - 10vh);
-
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   display: grid;
   grid-template-columns: 1fr;
-
   overflow-y: scroll;
   scrollbar-width: none;
   .user {
@@ -35,5 +35,10 @@ const MainStyled = styled.div`
   }
   .admin {
     display: block;
+  }
+  .pannel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 `

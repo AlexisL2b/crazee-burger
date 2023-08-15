@@ -4,19 +4,25 @@ import Main from "./main/Main"
 import { theme } from "../../../theme"
 import Context from "../../../context/Context"
 import { useState } from "react"
+import StateContext from "../../../context/StateContext"
 
 export default function OrderPages() {
   //state
   const [role, setRole] = useState("user")
+  const [state, setState] = useState("opened")
   const contextRoleValue = { Role: role, setRole: setRole }
+  const contextStateValue = { State: state, setState: setState }
   //comportement
+
   //affichage
   return (
     <OrderPageStyled>
       <div className="container">
         <Context.Provider value={contextRoleValue}>
           <Navbar />
-          <Main />
+          <StateContext.Provider value={contextStateValue}>
+            <Main />
+          </StateContext.Provider>
         </Context.Provider>
       </div>
     </OrderPageStyled>
@@ -31,6 +37,7 @@ const OrderPageStyled = styled.div`
   align-items: center;
 
   .container {
+    position: relative;
     height: 95vh;
     width: 1400px;
     display: flex;

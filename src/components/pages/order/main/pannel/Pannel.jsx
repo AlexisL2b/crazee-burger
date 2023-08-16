@@ -12,7 +12,11 @@ import StateContext from "../../../../../context/StateContext"
 export default function Pannel() {
   //State
   const { Role } = useContext(Context)
-  const { State } = useContext(StateContext)
+  const { setState, State } = useContext(StateContext)
+
+  const handleClickOpen = () => {
+    setState("opened")
+  }
 
   //Comportement
 
@@ -27,12 +31,14 @@ export default function Pannel() {
           icons={<AiOutlinePlus />}
           className="other_button"
           id={1}
+          onClick={() => handleClickOpen()}
         />
         <PannelButton
           labbel={"Modifier un produit"}
           icons={<MdModeEditOutline />}
           className="other_button"
           id={2}
+          onClick={() => handleClickOpen()}
         />
       </div>
       <Tab className={State} />
@@ -58,5 +64,12 @@ const PannelStyled = styled.div`
   }
   .closed {
     display: none;
+  }
+  .active {
+    background-color: black;
+    color: white;
+  }
+  .inactive {
+    background-color: #e4e5e9;
   }
 `

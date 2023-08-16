@@ -5,7 +5,7 @@ import StateContext from "../../../../../context/StateContext"
 
 export default function StateButton({ icons }) {
   const { setState, State } = useContext(StateContext)
-  const handleClick = () => {
+  const handleClickState = () => {
     if (State === "opened") {
       setState("closed")
     } else {
@@ -14,7 +14,7 @@ export default function StateButton({ icons }) {
   }
 
   return (
-    <StateButtonStyled onClick={handleClick} currentstate={State}>
+    <StateButtonStyled onClick={() => handleClickState()} currentstate={State}>
       <i>{icons}</i>
     </StateButtonStyled>
   )

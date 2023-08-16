@@ -3,7 +3,13 @@ import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import ActiveContext from "../../../../../context/ActiveContext"
 
-export default function PannelButton({ labbel, icons, className, id }) {
+export default function PannelButton({
+  labbel,
+  icons,
+  className,
+  id,
+  onClick,
+}) {
   //State
 
   const { activeTab, setActiveTab } = useContext(ActiveContext)
@@ -16,7 +22,10 @@ export default function PannelButton({ labbel, icons, className, id }) {
   return (
     <PannelButtonStyled
       className={classNameCombined}
-      onClick={() => setActiveTab(id)}
+      onClick={() => {
+        setActiveTab(id)
+        onClick()
+      }}
     >
       <i>{icons}</i>
       {labbel && labbel}
@@ -42,5 +51,11 @@ const PannelButtonStyled = styled.button`
   cursor: pointer;
   &:hover {
     border-bottom: 2px solid white;
+  }
+  .active {
+    background-color: black;
+  }
+  .inactive {
+    background-color: #e4e5e9;
   }
 `

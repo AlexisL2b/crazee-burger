@@ -6,9 +6,9 @@ import Pannel from "./pannel/Pannel"
 import { useState } from "react"
 import ActiveContext from "../../../../context/ActiveContext"
 
-export default function Main({ children }) {
+export default function Main() {
   //state
-  const [activeTab, setActiveTab] = useState(null)
+  const [activeTab, setActiveTab] = useState(1)
 
   //comportement
 
@@ -46,12 +46,5 @@ const MainStyled = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-  }
-  .active {
-    background-color: black;
-    color: white;
-  }
-  .inactive {
-    background-color: #e4e5e9;
   }
 `

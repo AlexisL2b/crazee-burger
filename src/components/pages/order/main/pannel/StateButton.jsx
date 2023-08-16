@@ -5,7 +5,7 @@ import StateContext from "../../../../../context/StateContext"
 
 export default function StateButton({ icons }) {
   const { setState, State } = useContext(StateContext)
-  const handleClic = () => {
+  const handleClick = () => {
     if (State === "opened") {
       setState("closed")
     } else {
@@ -14,7 +14,7 @@ export default function StateButton({ icons }) {
   }
 
   return (
-    <StateButtonStyled onClick={handleClic}>
+    <StateButtonStyled onClick={handleClick} currentstate={State}>
       <i>{icons}</i>
     </StateButtonStyled>
   )
@@ -28,7 +28,8 @@ const StateButtonStyled = styled.button`
   border-right: 1px solid #e4e5e9;
   border-left: 1px solid #e4e5e9;
   border-bottom: 2px solid #e4e5e9;
-  background-color: white;
+  background-color: ${(props) =>
+    props.currentstate === "closed" ? "black" : "white"};
   color: ${theme.colors.greyDark};
   border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round} 0px 0px;
   box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);

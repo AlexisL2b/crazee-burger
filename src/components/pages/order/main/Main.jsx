@@ -3,9 +3,12 @@ import { theme } from "../../../../theme"
 import Basket from "./menu/Basket"
 import Menu from "./menu/Menu"
 import Pannel from "./pannel/Pannel"
+import { useState } from "react"
+import ActiveContext from "../../../../context/ActiveContext"
 
-export default function Main() {
+export default function Main({ children }) {
   //state
+  const [activeTab, setActiveTab] = useState(null)
 
   //comportement
 
@@ -13,8 +16,11 @@ export default function Main() {
     <MainStyled>
       <Basket />
       <Menu />
+
       <div className="pannel">
-        <Pannel />
+        <ActiveContext.Provider value={{ activeTab, setActiveTab }}>
+          <Pannel />
+        </ActiveContext.Provider>
       </div>
     </MainStyled>
   )
@@ -40,5 +46,12 @@ const MainStyled = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+  .active {
+    background-color: black;
+    color: white;
+  }
+  .inactive {
+    background-color: #e4e5e9;
   }
 `

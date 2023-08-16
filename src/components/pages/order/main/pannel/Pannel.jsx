@@ -1,10 +1,9 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
 import PannelButton from "./PannelButton"
-import { FiChevronDown } from "react-icons/fi"
+import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { AiOutlinePlus } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
-import { theme } from "../../../../../theme"
 import Tab from "./Tab"
 import Context from "../../../../../context/Context"
 import StateButton from "./StateButton"
@@ -20,27 +19,23 @@ export default function Pannel() {
   return (
     <PannelStyled className={Role}>
       <div className="button-container">
-        <StateButton icons={<FiChevronDown />} />
+        <StateButton
+          icons={State === "opened" ? <FiChevronDown /> : <FiChevronUp />}
+        />
         <PannelButton
           labbel={"Ajouter un produit"}
           icons={<AiOutlinePlus />}
           className="other_button"
-          onClick={() => {
-            console.log("clic")
-          }}
+          id={1}
         />
         <PannelButton
           labbel={"Modifier un produit"}
           icons={<MdModeEditOutline />}
           className="other_button"
-          onClick={() => {
-            console.log("clic")
-          }}
+          id={2}
         />
       </div>
-      <div className={`pannel-table ${State}`}>
-        <Tab />
-      </div>
+      <Tab className={State} />
     </PannelStyled>
   )
 }
@@ -52,15 +47,7 @@ const PannelStyled = styled.div`
     padding: 0px 70px;
     display: flex;
   }
-  .pannel-table {
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-    border-bottom-right-radius: ${theme.borderRadius.extraRound};
-    box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e4e5e9;
-    background-color: white;
-    height: 250px;
-    width: 100%;
-  }
+
   .other_button {
     i {
       margin-right: 10px;

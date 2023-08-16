@@ -1,10 +1,23 @@
-import React from "react"
+import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
+import ActiveContext from "../../../../../context/ActiveContext"
 
-export default function PannelButton({ labbel, icons, className }) {
+export default function PannelButton({ labbel, icons, className, id }) {
+  //State
+
+  const { activeTab, setActiveTab } = useContext(ActiveContext)
+  const isActive = activeTab === id
+
+  const classNameCombined = `${className} ${isActive ? "active" : "inactive"}`
+
+  //comportement
+
   return (
-    <PannelButtonStyled className={className}>
+    <PannelButtonStyled
+      className={classNameCombined}
+      onClick={() => setActiveTab(id)}
+    >
       <i>{icons}</i>
       {labbel && labbel}
     </PannelButtonStyled>
@@ -20,7 +33,8 @@ const PannelButtonStyled = styled.button`
   border-right: 1px solid #e4e5e9;
   border-left: 1px solid #e4e5e9;
   border-bottom: 2px solid #e4e5e9;
-  background-color: white;
+  background-color: ${(props) =>
+    props.activity === "active" ? "black" : "white"};
   color: ${theme.colors.greyDark};
   border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round} 0px 0px;
   box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);

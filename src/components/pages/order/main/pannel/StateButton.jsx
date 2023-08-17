@@ -18,7 +18,7 @@ export default function StateButton({ icons }) {
       onClick={() => handleClickState()}
       currentstate={isOpen.toString()}
     >
-      <i>{icons}</i>
+      <div className="icon">{icons}</div>
     </StateButtonStyled>
   )
 }
@@ -26,15 +26,40 @@ const StateButtonStyled = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 22px 10px 22px;
-  border-top: 1px solid #e4e5e9;
-  border-right: 1px solid #e4e5e9;
-  border-left: 1px solid #e4e5e9;
-  border-bottom: 2px solid #e4e5e9;
+  padding: 0px 22px;
+  height: 43px;
+
   background-color: ${(props) =>
-    props.currentstate == "false" ? "black" : "white"};
-  color: ${theme.colors.greyDark};
+    props.currentstate == "false"
+      ? `${theme.colors.background_dark}`
+      : `${theme.colors.white}`};
+
+  color: ${(props) =>
+    props.currentstate == "false"
+      ? `${theme.colors.white}`
+      : `${theme.colors.greySemiDark}`};
+
+  box-shadow: ${theme.shadows.subtle};
+
+  border: ${(props) =>
+    props.currentstate == "false"
+      ? `1px solid ${theme.colors.dark}`
+      : `1px solid ${theme.colors.greyLight}`};
+
+  border-bottom: ${(props) =>
+    props.currentstate == "false"
+      ? `2px solid ${theme.colors.dark}`
+      : `2px solid ${theme.colors.greyLight}`};
   border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round} 0px 0px;
-  box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
+
   cursor: pointer;
+  top: 1px;
+  position: relative;
+  &:hover {
+    border-bottom: ${(props) =>
+      props.currentstate == "true" ? `2px solid ${theme.colors.white}` : null};
+  }
+  .icon {
+    display: flex;
+  }
 `

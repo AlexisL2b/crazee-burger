@@ -26,7 +26,7 @@ export default function PannelButton({
         onClick()
       }}
     >
-      <i>{icons}</i>
+      <div className="icon">{icons}</div>
       <p>{labbel && labbel}</p>
     </PannelButtonStyled>
   )
@@ -36,23 +36,24 @@ const PannelButtonStyled = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 22px 10px 22px;
-  border-top: 1px solid #e4e5e9;
-  border-right: 1px solid #e4e5e9;
-  border-left: 1px solid #e4e5e9;
-  border-bottom: 2px solid #e4e5e9;
-  background-color: ${(props) =>
-    props.activity === "active" ? "black" : "white"};
-  color: ${theme.colors.greyDark};
+  position: relative;
+  top: 1px;
+  padding: 0 22px;
+
+  box-shadow: ${theme.shadows.subtle};
+  border: solid 1px ${theme.colors.greyLight};
+  border-bottom: 2px solid ${theme.colors.greyLight};
   border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round} 0px 0px;
-  box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
 
   cursor: pointer;
 
   &:hover {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid ${theme.colors.white};
   }
   p {
     margin-left: 10px;
+  }
+  .icon {
+    display: flex;
   }
 `

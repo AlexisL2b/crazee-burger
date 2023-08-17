@@ -35,14 +35,18 @@ export default function ButtonContainer() {
   )
 }
 const ButtonContainerStyled = styled.div`
-  position: static;
-  padding: 0px 70px;
+  position: relative;
+  left: 5%;
   display: flex;
+  top: 1px;
   .active {
-    background-color: ${theme.colors.dark};
-    color: ${theme.colors.greyLight};
+    background-color: ${theme.colors.background_dark};
+    color: ${theme.colors.white};
+    border: solid 1px ${theme.colors.background_dark};
+    border-bottom: 2px solid ${theme.colors.background_dark};
   }
   .inactive {
-    background-color: ${theme.colors.greyLight};
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.greySemiDark};
   }
 `

@@ -5,32 +5,29 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { AiOutlinePlus } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
 import { styled } from "styled-components"
-import StateContext from "../../../../../context/StateContext"
+import OrderContext from "../../../../../context/OrderContext"
+import { theme } from "../../../../../theme"
 
 export default function ButtonContainer() {
   //comportement
 
   const handleClickOpen = () => {
-    setState("opened")
+    setIsOpen(true)
   }
-  const { setState, State } = useContext(StateContext)
+  const { isOpen, setIsOpen } = useContext(OrderContext)
 
   return (
     <ButtonContainerStyled>
-      <StateButton
-        icons={State === "opened" ? <FiChevronDown /> : <FiChevronUp />}
-      />
+      <StateButton icons={isOpen ? <FiChevronDown /> : <FiChevronUp />} />
       <PannelButton
         labbel={"Ajouter un produit"}
         icons={<AiOutlinePlus />}
-        className="other_button"
         id={1}
         onClick={() => handleClickOpen()}
       />
       <PannelButton
         labbel={"Modifier un produit"}
         icons={<MdModeEditOutline />}
-        className="other_button"
         id={2}
         onClick={() => handleClickOpen()}
       />
@@ -41,4 +38,11 @@ const ButtonContainerStyled = styled.div`
   position: static;
   padding: 0px 70px;
   display: flex;
+  .active {
+    background-color: ${theme.colors.dark};
+    color: ${theme.colors.greyLight};
+  }
+  .inactive {
+    background-color: ${theme.colors.greyLight};
+  }
 `

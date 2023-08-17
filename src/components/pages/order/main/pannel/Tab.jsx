@@ -12,11 +12,4 @@ const TabStyled = styled.div`
   box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
   border: 1px solid #e4e5e9;
   background-color: white;
-  .active {
-    background-color: ${theme.colors.dark};
-    color: ${theme.colors.greyLight};
-  }
-  .inactive {
-    background-color: ${theme.colors.greyLight};
-  }
 `

@@ -2,13 +2,14 @@ import styled from "styled-components"
 import Navbar from "./navbar/NavBar"
 import Main from "./main/Main"
 import { theme } from "../../../theme"
-import Context from "../../../context/Context"
 import { useState } from "react"
+import OrderContext from "../../../context/OrderContext"
 
 export default function OrderPages() {
   //state
-  const [role, setRole] = useState("user")
-  const contextRoleValue = { Role: role, setRole: setRole }
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
+  const orderContextValue = { isAdmin, setIsAdmin, isOpen, setIsOpen }
 
   //comportement
 
@@ -16,10 +17,10 @@ export default function OrderPages() {
   return (
     <OrderPageStyled>
       <div className="container">
-        <Context.Provider value={contextRoleValue}>
+        <OrderContext.Provider value={orderContextValue}>
           <Navbar />
           <Main />
-        </Context.Provider>
+        </OrderContext.Provider>
       </div>
     </OrderPageStyled>
   )

@@ -1,20 +1,23 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
-import StateContext from "../../../../../context/StateContext"
+import OrderContext from "../../../../../context/OrderContext"
 
 export default function StateButton({ icons }) {
-  const { setState, State } = useContext(StateContext)
+  const { isOpen, setIsOpen } = useContext(OrderContext)
   const handleClickState = () => {
-    if (State === "opened") {
-      setState("closed")
+    if (isOpen) {
+      setIsOpen(false)
     } else {
-      setState("opened")
+      setIsOpen(true)
     }
   }
 
   return (
-    <StateButtonStyled onClick={() => handleClickState()} currentstate={State}>
+    <StateButtonStyled
+      onClick={() => handleClickState()}
+      currentstate={isOpen.toString()}
+    >
       <i>{icons}</i>
     </StateButtonStyled>
   )
@@ -29,7 +32,7 @@ const StateButtonStyled = styled.button`
   border-left: 1px solid #e4e5e9;
   border-bottom: 2px solid #e4e5e9;
   background-color: ${(props) =>
-    props.currentstate === "closed" ? "black" : "white"};
+    props.currentstate == "false" ? "black" : "white"};
   color: ${theme.colors.greyDark};
   border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round} 0px 0px;
   box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);

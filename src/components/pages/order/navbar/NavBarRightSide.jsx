@@ -6,7 +6,7 @@ import Profile from "./Profile"
 import { toast } from "react-toastify"
 import ToggleButton from "../../../reusable-ui/ToggleButton"
 import { FaUserSecret } from "react-icons/fa6"
-import Context from "../../../../context/Context"
+import OrderContext from "../../../../context/OrderContext"
 
 export default function NavBarRightSide() {
   //state
@@ -15,7 +15,7 @@ export default function NavBarRightSide() {
   const firstKey = Object.keys(identifiant)[0]
   const firstValue = identifiant[firstKey]
   const [isChecked, setIsChecked] = useState(0)
-  const { setRole } = useContext(Context)
+  const { setIsAdmin } = useContext(OrderContext)
   //comportement
 
   const onToggle = () => {
@@ -32,10 +32,10 @@ export default function NavBarRightSide() {
         draggable: true,
         progress: undefined,
       })
-      setRole("admin")
+      setIsAdmin(true)
     } else {
       setIsChecked(0)
-      setRole("user")
+      setIsAdmin(false)
     }
   }
 

@@ -5,8 +5,7 @@ import Menu from "./menu/Menu"
 import Pannel from "./pannel/Pannel"
 import { useContext, useState } from "react"
 import ActiveContext from "../../../../context/ActiveContext"
-import StateContext from "../../../../context/StateContext"
-import Context from "../../../../context/Context"
+import OrderContext from "../../../../context/OrderContext"
 
 export default function Main() {
   //state
@@ -15,7 +14,7 @@ export default function Main() {
   const [state, setState] = useState("opened")
   const contextStateValue = { State: state, setState: setState }
   const contextActiveTab = { activeTab, setActiveTab }
-  const { Role } = useContext(Context)
+  const { isAdmin } = useContext(OrderContext)
 
   //comportement
 
@@ -26,9 +25,7 @@ export default function Main() {
         <Menu />
 
         <ActiveContext.Provider value={contextActiveTab}>
-          <StateContext.Provider value={contextStateValue}>
-            {Role == "admin" ? <Pannel /> : null}
-          </StateContext.Provider>
+          {isAdmin ? <Pannel /> : null}
         </ActiveContext.Provider>
       </div>
     </MainStyled>

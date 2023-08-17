@@ -1,22 +1,18 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
 import Tab from "./Tab"
-import Context from "../../../../../context/Context"
-import StateContext from "../../../../../context/StateContext"
-import { theme } from "../../../../../theme"
 import ButtonContainer from "./ButtonContainer"
+import OrderContext from "../../../../../context/OrderContext"
 
 export default function Pannel() {
   //State
-  const { Role } = useContext(Context)
-  const { State } = useContext(StateContext)
-
+  const { isAdmin, isOpen } = useContext(OrderContext)
   //Comportement
 
   return (
-    <PannelStyled className={`${Role} ${State}`}>
+    <PannelStyled>
       <ButtonContainer />
-      {State === "opened" && <Tab className={State} />}
+      {isOpen && <Tab />}
     </PannelStyled>
   )
 }

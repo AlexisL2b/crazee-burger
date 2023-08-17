@@ -14,7 +14,6 @@ export default function PannelButton({
 
   const { activeTab, setActiveTab } = useContext(ActiveContext)
   const isActive = activeTab === id
-
   const classNameCombined = `${className} ${isActive ? "active" : "inactive"}`
 
   //comportement
@@ -51,11 +50,5 @@ const PannelButtonStyled = styled.button`
   cursor: pointer;
   &:hover {
     border-bottom: 2px solid white;
-  }
-  .active {
-    background-color: black;
-  }
-  .inactive {
-    background-color: #e4e5e9;
   }
 `

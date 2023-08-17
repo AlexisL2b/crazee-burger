@@ -21,7 +21,7 @@ export default function Pannel() {
   //Comportement
 
   return (
-    <PannelStyled className={Role}>
+    <PannelStyled className={`${Role} ${State}`}>
       <div className="button-container">
         <StateButton
           icons={State === "opened" ? <FiChevronDown /> : <FiChevronUp />}
@@ -41,15 +41,21 @@ export default function Pannel() {
           onClick={() => handleClickOpen()}
         />
       </div>
-      <Tab className={State} />
+      {State === "opened" ? <Tab className={State} /> : null}
     </PannelStyled>
   )
 }
 const PannelStyled = styled.div`
-  top: 700px;
-  width: 1400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column; // pour s'assurer que les enfants sont empilés verticalement
+  justify-content: flex-start; // position par défaut
 
+  &.closed {
+    justify-content: flex-end;
+  }
   .button-container {
+    position: static;
     padding: 0px 70px;
     display: flex;
   }
@@ -59,17 +65,12 @@ const PannelStyled = styled.div`
       margin-right: 10px;
     }
   }
-  .opened {
-    display: block;
-  }
-  .closed {
-    display: none;
-  }
+
   .active {
     background-color: black;
     color: white;
   }
   .inactive {
-    background-color: #e4e5e9;
+    background-color: white;
   }
 `

@@ -3,9 +3,10 @@ import { theme } from "../../../../theme"
 import Basket from "./menu/Basket"
 import Menu from "./menu/Menu"
 import Pannel from "./pannel/Pannel"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import ActiveContext from "../../../../context/ActiveContext"
 import StateContext from "../../../../context/StateContext"
+import Context from "../../../../context/Context"
 
 export default function Main() {
   //state
@@ -14,6 +15,7 @@ export default function Main() {
   const [state, setState] = useState("opened")
   const contextStateValue = { State: state, setState: setState }
   const contextActiveTab = { activeTab, setActiveTab }
+  const { Role } = useContext(Context)
 
   //comportement
 
@@ -22,13 +24,12 @@ export default function Main() {
       {/* <Basket /> */}
       <div className="menu_and_pannel">
         <Menu />
-        <div className={`pannel ${state}`}>
-          <ActiveContext.Provider value={contextActiveTab}>
-            <StateContext.Provider value={contextStateValue}>
-              <Pannel />
-            </StateContext.Provider>
-          </ActiveContext.Provider>
-        </div>
+
+        <ActiveContext.Provider value={contextActiveTab}>
+          <StateContext.Provider value={contextStateValue}>
+            {Role == "admin" ? <Pannel /> : null}
+          </StateContext.Provider>
+        </ActiveContext.Provider>
       </div>
     </MainStyled>
   )
@@ -56,18 +57,5 @@ const MainStyled = styled.div`
     scrollbar-width: none;
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
-    .pannel {
-      height: 250px;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      flex-direction: column; // pour s'assurer que les enfants sont empilés verticalement
-      justify-content: flex-start; // position par défaut
-      &.closed {
-        justify-content: flex-end;
-      }
-    }
   }
 `

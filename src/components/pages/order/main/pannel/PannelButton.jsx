@@ -27,7 +27,7 @@ export default function PannelButton({
       }}
     >
       <i>{icons}</i>
-      {labbel && labbel}
+      <p>{labbel && labbel}</p>
     </PannelButtonStyled>
   )
 }
@@ -48,7 +48,11 @@ const PannelButtonStyled = styled.button`
   box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
 
   cursor: pointer;
+
   &:hover {
     border-bottom: 2px solid white;
+  }
+  p {
+    margin-left: 10px;
   }
 `

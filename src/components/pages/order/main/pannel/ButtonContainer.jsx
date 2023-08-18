@@ -16,36 +16,53 @@ export default function ButtonContainer() {
   const { isOpen, setIsOpen } = useContext(OrderContext)
   const { activeTab, setActiveTab } = useContext(ActiveContext)
 
-  const classOpen = ``
+  const panelButtonsConfig = [
+    {
+      label: "",
+      className: !isOpen ? "state_button" : "",
+      icons: isOpen ? <FiChevronDown /> : <FiChevronUp />,
+      onClick: () => setIsOpen(!isOpen),
+      isOpen: isOpen.toString(),
+      id: null,
+    },
+    {
+      label: "Ajouter un produit",
+      className: activeTab === 1 ? "active" : "",
+      icons: <AiOutlinePlus />,
+      onClick: () => {
+        setIsOpen(true)
+        setActiveTab(1)
+      },
+      isOpen: null,
+      id: 1,
+    },
+    {
+      label: "Modifier un produit",
+      className: activeTab === 2 ? "active" : "",
+      icons: <MdModeEditOutline />,
+      onClick: () => {
+        setIsOpen(true)
+        setActiveTab(2)
+      },
+      isOpen: null,
+      id: 2,
+    },
+  ]
 
   return (
     <ButtonContainerStyled>
-      <PannelButton
-        className={!isOpen ? "state_button" : ""}
-        icons={isOpen ? <FiChevronDown /> : <FiChevronUp />}
-        onClick={() => setIsOpen(!isOpen)}
-        isOpen={isOpen.toString()}
-      />
-      <PannelButton
-        className={activeTab === 1 ? "active" : ""}
-        label={"Ajouter un produit"}
-        icons={<AiOutlinePlus />}
-        id={1}
-        onClick={() => {
-          setIsOpen(true)
-        }}
-        setActiveTab={setActiveTab}
-      />
-      <PannelButton
-        className={activeTab === 2 ? "active" : ""}
-        label={"Modifier un produit"}
-        icons={<MdModeEditOutline />}
-        id={2}
-        onClick={() => {
-          setIsOpen(true)
-        }}
-        setActiveTab={setActiveTab}
-      />
+      {panelButtonsConfig.map((button) => {
+        return (
+          <PannelButton
+            label={button.label}
+            className={button.className}
+            icons={button.icons}
+            onClick={button.onClick}
+            isOpen={button.isOpen}
+            id={button.id}
+          />
+        )
+      })}
     </ButtonContainerStyled>
   )
 }

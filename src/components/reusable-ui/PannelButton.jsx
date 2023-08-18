@@ -17,12 +17,7 @@ export default function PannelButton({
   return (
     <PannelButtonStyled
       className={className}
-      onClick={() => {
-        onClick()
-        {
-          id && setActiveTab(id)
-        }
-      }}
+      onClick={() => onClick()}
       isopen={isOpen}
     >
       <div className="icon">{icons}</div>

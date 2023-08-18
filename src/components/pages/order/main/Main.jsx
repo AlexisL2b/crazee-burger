@@ -11,8 +11,6 @@ export default function Main() {
   //state
 
   const [activeTab, setActiveTab] = useState(1)
-  const [state, setState] = useState("opened")
-  const contextStateValue = { State: state, setState: setState }
   const contextActiveTab = { activeTab, setActiveTab }
   const { isAdmin } = useContext(OrderContext)
 

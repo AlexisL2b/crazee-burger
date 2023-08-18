@@ -1,34 +1,29 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
-import { theme } from "../../../../../theme"
-import ActiveContext from "../../../../../context/ActiveContext"
-
+import { theme } from "../../theme"
 export default function PannelButton({
   label,
   icons,
-  className,
   id,
   onClick,
   isOpen,
+  className,
+  setActiveTab,
 }) {
   //State
-
-  const { activeTab, setActiveTab } = useContext(ActiveContext)
-  const isActive = activeTab === id
-  const classNameCombined = ` ${isActive ? "active" : "inactive"} ${className}`
 
   //comportement
 
   return (
     <PannelButtonStyled
-      className={classNameCombined}
+      className={className}
       onClick={() => {
+        onClick()
         {
           id && setActiveTab(id)
         }
-        onClick()
       }}
-      isOpen={isOpen}
+      isopen={isOpen}
     >
       <div className="icon">{icons}</div>
       {label && <p className="label">{label}</p>}

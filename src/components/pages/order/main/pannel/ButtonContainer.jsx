@@ -1,14 +1,16 @@
 import React, { useContext } from "react"
-import StateButton from "./StateButton"
-import PannelButton from "./PannelButton"
+import PannelButton from "../../../../reusable-ui/PannelButton"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { AiOutlinePlus } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
 import { styled } from "styled-components"
 import OrderContext from "../../../../../context/OrderContext"
 import { theme } from "../../../../../theme"
+import ActiveContext from "../../../../../context/ActiveContext"
 
 export default function ButtonContainer() {
+  //State
+
   //comportement
 
   const handleClickOpen = () => {
@@ -22,27 +24,41 @@ export default function ButtonContainer() {
     }
     console.log(isOpen)
   }
+
   const { isOpen, setIsOpen } = useContext(OrderContext)
+  const { activeTab, setActiveTab } = useContext(ActiveContext)
+
+  // const isActive = activeTab === id
+  // const classActive = ` ${isActive ? "active" : ""} `
+  const classOpen = `${!isOpen ? "state_button" : ""}`
 
   return (
     <ButtonContainerStyled>
       <PannelButton
-        className={!isOpen ? "state_button" : ""}
+        className={classOpen}
         icons={isOpen ? <FiChevronDown /> : <FiChevronUp />}
         onClick={() => handleClickState()}
-        isOpen={isOpen.toString}
+        isOpen={isOpen.toString()}
       />
       <PannelButton
+        className={activeTab === 1 ? "active" : ""}
         label={"Ajouter un produit"}
         icons={<AiOutlinePlus />}
         id={1}
-        onClick={() => handleClickOpen()}
+        onClick={() => {
+          handleClickOpen()
+        }}
+        setActiveTab={setActiveTab}
       />
       <PannelButton
+        className={activeTab === 2 ? "active" : ""}
         label={"Modifier un produit"}
         icons={<MdModeEditOutline />}
         id={2}
-        onClick={() => handleClickOpen()}
+        onClick={() => {
+          handleClickOpen()
+        }}
+        setActiveTab={setActiveTab}
       />
     </ButtonContainerStyled>
   )

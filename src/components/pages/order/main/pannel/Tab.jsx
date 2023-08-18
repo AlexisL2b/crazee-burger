@@ -1,9 +1,21 @@
-import React from "react"
+import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
+import ActiveContext from "../../../../../context/ActiveContext"
 
 export default function Tab() {
-  return <TabStyled>aa</TabStyled>
+  //State
+
+  //comportement
+
+  const { activeTab } = useContext(ActiveContext)
+
+  return (
+    <TabStyled>
+      {activeTab === 1 && "Ajouter un produit"}
+      {activeTab === 2 && "Modifier un produit"}
+    </TabStyled>
+  )
 }
 const TabStyled = styled.div`
   height: 250px;

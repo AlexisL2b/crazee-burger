@@ -13,31 +13,17 @@ export default function ButtonContainer() {
 
   //comportement
 
-  const handleClickOpen = () => {
-    setIsOpen(true)
-  }
-  const handleClickState = () => {
-    if (isOpen) {
-      setIsOpen(!isOpen)
-    } else {
-      setIsOpen(!isOpen)
-    }
-    console.log(isOpen)
-  }
-
   const { isOpen, setIsOpen } = useContext(OrderContext)
   const { activeTab, setActiveTab } = useContext(ActiveContext)
 
-  // const isActive = activeTab === id
-  // const classActive = ` ${isActive ? "active" : ""} `
-  const classOpen = `${!isOpen ? "state_button" : ""}`
+  const classOpen = ``
 
   return (
     <ButtonContainerStyled>
       <PannelButton
-        className={classOpen}
+        className={!isOpen ? "state_button" : ""}
         icons={isOpen ? <FiChevronDown /> : <FiChevronUp />}
-        onClick={() => handleClickState()}
+        onClick={() => setIsOpen(!isOpen)}
         isOpen={isOpen.toString()}
       />
       <PannelButton
@@ -46,7 +32,7 @@ export default function ButtonContainer() {
         icons={<AiOutlinePlus />}
         id={1}
         onClick={() => {
-          handleClickOpen()
+          setIsOpen(true)
         }}
         setActiveTab={setActiveTab}
       />
@@ -56,7 +42,7 @@ export default function ButtonContainer() {
         icons={<MdModeEditOutline />}
         id={2}
         onClick={() => {
-          handleClickOpen()
+          setIsOpen(true)
         }}
         setActiveTab={setActiveTab}
       />

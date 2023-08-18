@@ -38,9 +38,9 @@ const PannelButtonStyled = styled.button`
   position: relative;
   top: 1px;
   padding: 0 22px;
-
+  background-color: ${theme.colors.white};
+  color: ${theme.colors.greySemiDark};
   height: 43px;
-
   box-shadow: ${theme.shadows.subtle};
   border: solid 1px ${theme.colors.greyLight};
   border-bottom: 2px solid ${theme.colors.greyLight};

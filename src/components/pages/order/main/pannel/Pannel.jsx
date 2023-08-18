@@ -6,8 +6,10 @@ import OrderContext from "../../../../../context/OrderContext"
 
 export default function Pannel() {
   //State
-  const { isAdmin, isOpen } = useContext(OrderContext)
+
   //Comportement
+
+  const { isOpen } = useContext(OrderContext)
 
   return (
     <PannelStyled>

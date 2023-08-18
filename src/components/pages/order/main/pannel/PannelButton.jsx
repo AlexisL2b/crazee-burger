@@ -4,17 +4,18 @@ import { theme } from "../../../../../theme"
 import ActiveContext from "../../../../../context/ActiveContext"
 
 export default function PannelButton({
-  labbel,
+  label,
   icons,
   className,
   id,
   onClick,
+  isOpen,
 }) {
   //State
 
   const { activeTab, setActiveTab } = useContext(ActiveContext)
   const isActive = activeTab === id
-  const classNameCombined = `${className} ${isActive ? "active" : "inactive"}`
+  const classNameCombined = ` ${isActive ? "active" : "inactive"} ${className}`
 
   //comportement
 
@@ -22,12 +23,15 @@ export default function PannelButton({
     <PannelButtonStyled
       className={classNameCombined}
       onClick={() => {
-        setActiveTab(id)
+        {
+          id && setActiveTab(id)
+        }
         onClick()
       }}
+      isOpen={isOpen}
     >
       <div className="icon">{icons}</div>
-      <p>{labbel && labbel}</p>
+      {label && <p className="label">{label}</p>}
     </PannelButtonStyled>
   )
 }
@@ -40,6 +44,8 @@ const PannelButtonStyled = styled.button`
   top: 1px;
   padding: 0 22px;
 
+  height: 43px;
+
   box-shadow: ${theme.shadows.subtle};
   border: solid 1px ${theme.colors.greyLight};
   border-bottom: 2px solid ${theme.colors.greyLight};
@@ -50,7 +56,7 @@ const PannelButtonStyled = styled.button`
   &:hover {
     border-bottom: 2px solid ${theme.colors.white};
   }
-  p {
+  .label {
     margin-left: 10px;
   }
   .icon {

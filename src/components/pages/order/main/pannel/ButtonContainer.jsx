@@ -14,19 +14,32 @@ export default function ButtonContainer() {
   const handleClickOpen = () => {
     setIsOpen(true)
   }
+  const handleClickState = () => {
+    if (isOpen) {
+      setIsOpen(!isOpen)
+    } else {
+      setIsOpen(!isOpen)
+    }
+    console.log(isOpen)
+  }
   const { isOpen, setIsOpen } = useContext(OrderContext)
 
   return (
     <ButtonContainerStyled>
-      <StateButton icons={isOpen ? <FiChevronDown /> : <FiChevronUp />} />
       <PannelButton
-        labbel={"Ajouter un produit"}
+        className={!isOpen ? "state_button" : ""}
+        icons={isOpen ? <FiChevronDown /> : <FiChevronUp />}
+        onClick={() => handleClickState()}
+        isOpen={isOpen.toString}
+      />
+      <PannelButton
+        label={"Ajouter un produit"}
         icons={<AiOutlinePlus />}
         id={1}
         onClick={() => handleClickOpen()}
       />
       <PannelButton
-        labbel={"Modifier un produit"}
+        label={"Modifier un produit"}
         icons={<MdModeEditOutline />}
         id={2}
         onClick={() => handleClickOpen()}
@@ -45,8 +58,12 @@ const ButtonContainerStyled = styled.div`
     border: solid 1px ${theme.colors.background_dark};
     border-bottom: 2px solid ${theme.colors.background_dark};
   }
-  .inactive {
-    background-color: ${theme.colors.white};
-    color: ${theme.colors.greySemiDark};
+
+  button {
+    margin-left: 1px;
+  }
+  .state_button {
+    background-color: ${theme.colors.background_dark};
+    color: ${theme.colors.white};
   }
 `

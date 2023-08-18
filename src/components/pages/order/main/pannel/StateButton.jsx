@@ -5,13 +5,13 @@ import OrderContext from "../../../../../context/OrderContext"
 
 export default function StateButton({ icons }) {
   const { isOpen, setIsOpen } = useContext(OrderContext)
-  const handleClickState = () => {
-    if (isOpen) {
-      setIsOpen(false)
-    } else {
-      setIsOpen(true)
-    }
-  }
+  // const handleClickState = () => {
+  //   if (isOpen) {
+  //     setIsOpen(!isOpen)
+  //   } else {
+  //     setIsOpen(!isOpen)
+  //   }
+  // }
 
   return (
     <StateButtonStyled

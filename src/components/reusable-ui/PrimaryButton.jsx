@@ -15,7 +15,6 @@ const PrimaryButtonStyled = styled.button`
   display: flex;
   padding: ${theme.gridUnit * 2}px 0px;
   border-radius: ${theme.borderRadius.round};
-  border: none;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;

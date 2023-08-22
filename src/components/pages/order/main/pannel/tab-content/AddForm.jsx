@@ -17,7 +17,7 @@ export default function AddForm() {
       setName(e.currentTarget.value)
     } else if (e.currentTarget.name === "link") {
       setLink(e.currentTarget.value)
-    } else {
+    } else if (e.currentTarget.name === "price") {
       setPrice(e.currentTarget.value)
     }
   }
@@ -25,35 +25,49 @@ export default function AddForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const product = {
-      imageSource: link,
+      id: Date.now(),
+      imageSource: link ? link : "/assets/coming-soon.png",
       title: name,
       price: price,
     }
     const copyProducts = products.slice()
-    copyProducts.push(product)
+    copyProducts.unshift(product)
     setProducts(copyProducts)
+    setLink("")
+    setName("")
+    setPrice("")
   }
   //affichage
   return (
     <AddFormStyled className="container_form">
       <form className="form" action="submit" onSubmit={handleSubmit}>
         <div className="picture">
-          <img src="https://picsum.photos/200" alt="" />
+          <img src={link ? link : "/assets/coming-soon.png"} alt="" />
         </div>
         <div className="right_side ">
           <TextInput
+            type="text"
             name="name"
             className="input_text"
             placeholder="Nom du produit (ex: Super Burger)"
             onChange={handleChange}
+            value={name}
           />
           <TextInput
+            type="url"
             name="link"
             onChange={handleChange}
             className="input_text"
             placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           />
-          <TextInput className="input_text" placeholder="Prix" />
+          <TextInput
+            onChange={handleChange}
+            name="price"
+            className="input_text"
+            placeholder="Prix"
+            type="text"
+            value={price}
+          />
           <div className="add_container">
             <PrimaryButton
               label="Ajouter un nouveau produit au menu"

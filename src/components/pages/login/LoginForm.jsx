@@ -33,6 +33,7 @@ export default function LoginForm() {
         onChange={handleChange}
         placeholder="Entrez votre prénom"
         Icon={<PiUserCircleFill className="icone_user" />}
+        type="text"
         required
       />
       <PrimaryButton

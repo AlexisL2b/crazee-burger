@@ -3,21 +3,27 @@ import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
 import OrderContext from "../../../../../context/OrderContext"
+import Stock from "./stock/Stock"
 
 export default function Menu() {
   const { products } = useContext(OrderContext)
 
   return (
     <MenuStyled>
-      {products.map((products) => (
-        <Card
-          className={"cardProduct"}
-          key={products.id}
-          imageSource={products.imageSource}
-          title={products.title}
-          priceProduct={products.price}
-        />
-      ))}
+      {products.length != 0 ? (
+        products.map((product) => (
+          <Card
+            id={product.id}
+            className={"cardProduct"}
+            key={product.id}
+            imageSource={product.imageSource}
+            title={product.title}
+            priceProduct={product.price}
+          />
+        ))
+      ) : (
+        <Stock />
+      )}
     </MenuStyled>
   )
 }
@@ -32,4 +38,5 @@ const MenuStyled = styled.div`
   box-shadow: ${theme.shadows.medium};
   overflow-y: scroll;
   scrollbar-width: none;
+  place-items: center;
 `

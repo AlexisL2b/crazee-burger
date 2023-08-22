@@ -1,21 +1,41 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
+import DeleteButton from "./DeleteButton"
+import OrderContext from "../../../context/OrderContext"
 
 export default function Card({
   //state
   //comportement
-
   id,
   imageSource,
   title,
   priceProduct,
   className,
 }) {
+  const { products, setProducts } = useContext(OrderContext)
+
+  //state
+  const handleDelete = (e) => {
+    //L'id du produit
+    const idProductToDelete = e.currentTarget.parentElement.id
+    const productFilter = products.filter(
+      (product) => product.id != idProductToDelete
+    )
+    setProducts(productFilter)
+    console.log(products)
+  }
+  //comportement
+
+  const { isAdmin } = useContext(OrderContext)
+
+  //affichage
+
   return (
-    <CardStyled key={id} className={className}>
+    <CardStyled className={className} id={id}>
+      {isAdmin && <DeleteButton onClick={handleDelete} />}
       <ImageWrapper imageSource={imageSource} />
       <Desc priceProduct={priceProduct} title={title} />
     </CardStyled>
@@ -32,4 +52,5 @@ const CardStyled = styled.div`
   padding-bottom: 10px;
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
+  position: relative;
 `

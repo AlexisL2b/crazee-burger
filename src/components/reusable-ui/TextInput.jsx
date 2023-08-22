@@ -7,6 +7,7 @@ export default function TextInput({
   Icon,
   className,
   index,
+  type,
   ...restProps
 }) {
   //state
@@ -16,7 +17,7 @@ export default function TextInput({
     <InputStyled className={className}>
       {Icon && Icon}
       <input
-        type="text"
+        type={type}
         value={value}
         onChange={onChange}
         index={index}

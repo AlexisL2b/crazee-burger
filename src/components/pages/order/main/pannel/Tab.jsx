@@ -20,11 +20,7 @@ export default function Tab() {
   )
   const buttonSelected = buttons.find((button) => button.index === activeTab)
 
-  return (
-    <TabStyled>
-      {activeTab === buttonSelected.index && buttonSelected.label}
-    </TabStyled>
-  )
+  return <TabStyled>{buttonSelected.label}</TabStyled>
 }
 const TabStyled = styled.div`
   height: 250px;

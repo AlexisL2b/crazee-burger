@@ -29,6 +29,7 @@ export default function ButtonsContainer() {
     <ButtonsContainerStyled>
       {buttons.map((button) => (
         <PannelButton
+          key={button.index}
           label={button.label}
           className={
             button.className

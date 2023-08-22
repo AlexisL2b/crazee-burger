@@ -4,12 +4,22 @@ import Main from "./main/Main"
 import { theme } from "../../../theme"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext"
+import { fakeMenu2 } from "../../fakeData/fakeMenu"
 
 export default function OrderPages() {
   //state
   const [isAdmin, setIsAdmin] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
-  const orderContextValue = { isAdmin, setIsAdmin, isOpen, setIsOpen }
+  const [products, setProducts] = useState(fakeMenu2)
+
+  const orderContextValue = {
+    isAdmin,
+    setIsAdmin,
+    isOpen,
+    setIsOpen,
+    products,
+    setProducts,
+  }
 
   //comportement
 

@@ -5,4 +5,6 @@ export default createContext({
   setIsAdmin: () => {},
   isOpen: true,
   setIsOpen: () => {},
+  products: [],
+  setProducts: () => {},
 })

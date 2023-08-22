@@ -1,14 +1,27 @@
 import { theme } from "../../theme"
 import styled from "styled-components"
 
-export default function TextInput({ value, onChange, Icon, ...restProps }) {
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  index,
+  ...restProps
+}) {
   //state
   //comportement
 
   return (
-    <InputStyled>
+    <InputStyled className={className}>
       {Icon && Icon}
-      <input type="text" value={value} onChange={onChange} {...restProps} />
+      <input
+        type="text"
+        value={value}
+        onChange={onChange}
+        index={index}
+        {...restProps}
+      />
     </InputStyled>
   )
 }
@@ -18,8 +31,6 @@ const InputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
-  padding: 18px ${theme.gridUnit * 3}px;
-  margin: 18px 0px;
 
   .icone_user {
     font-size: ${theme.fonts.P0};

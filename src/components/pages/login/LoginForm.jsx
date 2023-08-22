@@ -28,6 +28,7 @@ export default function LoginForm() {
       <div className="divider"></div>
       <h2>Connectez-vous</h2>
       <TextInput
+        className={"first_name"}
         value={firstName}
         onChange={handleChange}
         placeholder="Entrez votre prénom"
@@ -62,5 +63,9 @@ const LoginFormStyled = styled.form`
     font-family: ${theme.fontsFamily.amatic};
     font-size: ${theme.fonts.P4};
     color: ${theme.colors.white};
+  }
+  .first_name {
+    margin: 18px 0px;
+    padding: 16px ${theme.gridUnit * 3}px;
   }
 `

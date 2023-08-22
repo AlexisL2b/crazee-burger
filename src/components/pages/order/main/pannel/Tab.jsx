@@ -2,18 +2,27 @@ import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import ActiveContext from "../../../../../context/ActiveContext"
+import OrderContext from "../../../../../context/OrderContext"
+import { getPanelButtonsConfig } from "./panelButtonConfig"
 
 export default function Tab() {
   //State
 
   //comportement
 
-  const { activeTab } = useContext(ActiveContext)
+  const { isOpen, setIsOpen } = useContext(OrderContext)
+  const { activeTab, setActiveTab } = useContext(ActiveContext)
+  const buttons = getPanelButtonsConfig(
+    activeTab,
+    setActiveTab,
+    setIsOpen,
+    isOpen
+  )
+  const buttonSelected = buttons.find((button) => button.index === activeTab)
 
   return (
     <TabStyled>
-      {activeTab === 1 && "Ajouter un produit"}
-      {activeTab === 2 && "Modifier un produit"}
+      {activeTab === buttonSelected.index && buttonSelected.label}
     </TabStyled>
   )
 }

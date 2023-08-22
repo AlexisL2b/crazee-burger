@@ -4,11 +4,9 @@ import { theme } from "../../theme"
 export default function PannelButton({
   label,
   icons,
-  id,
   onClick,
   isOpen,
   className,
-  setActiveTab,
 }) {
   //State
 

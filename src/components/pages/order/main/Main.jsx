@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { theme } from "../../../../theme"
 import Basket from "./menu/Basket"
 import Menu from "./menu/Menu"
-import Pannel from "./pannel/Pannel"
+import Pannel from "./pannel/Panel"
 import { useContext, useState } from "react"
 import ActiveContext from "../../../../context/ActiveContext"
 import OrderContext from "../../../../context/OrderContext"
@@ -10,7 +10,7 @@ import OrderContext from "../../../../context/OrderContext"
 export default function Main() {
   //state
 
-  const [activeTab, setActiveTab] = useState(1)
+  const [activeTab, setActiveTab] = useState("add")
   const contextActiveTab = { activeTab, setActiveTab }
   const { isAdmin } = useContext(OrderContext)
 

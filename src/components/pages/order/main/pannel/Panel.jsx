@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
 import Tab from "./Tab"
-import ButtonContainer from "./ButtonContainer"
+import ButtonsContainer from "./ButtonsContainer"
 import OrderContext from "../../../../../context/OrderContext"
 
 export default function Pannel() {
@@ -12,20 +12,15 @@ export default function Pannel() {
   const { isOpen } = useContext(OrderContext)
 
   return (
-    <PannelStyled>
-      <ButtonContainer />
+    <PanelStyled>
+      <ButtonsContainer />
       {isOpen && <Tab />}
-    </PannelStyled>
+    </PanelStyled>
   )
 }
-const PannelStyled = styled.div`
-  justify-content: flex-start; // position par défaut
+const PanelStyled = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-
-  &.closed {
-    align-items: flex-end;
-  }
 `

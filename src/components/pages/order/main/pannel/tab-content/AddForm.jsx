@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton"
 import TextInput from "../../../../../reusable-ui/TextInput"
+import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 import OrderContext from "../../../../../../context/OrderContext"
 
@@ -41,9 +42,11 @@ export default function AddForm() {
   return (
     <AddFormStyled className="container_form">
       <form className="form" action="submit" onSubmit={handleSubmit}>
-        <div className="picture">
-          <img src={link ? link : "/assets/coming-soon.png"} alt="" />
-        </div>
+        <ImageWrapper
+          imageSource={link ? link : "/assets/coming-soon.png"}
+          className={"add_picture"}
+        />
+
         <div className="right_side ">
           <TextInput
             type="text"
@@ -91,7 +94,9 @@ const AddFormStyled = styled.div`
     display: inline-flex;
     gap: 20px;
 
-    .picture {
+    .add_picture {
+      width: 215px;
+      height: 120px;
     }
     .right_side {
       display: flex;

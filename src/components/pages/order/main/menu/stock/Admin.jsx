@@ -1,16 +1,26 @@
-import React from "react"
-import PrimaryButton from "../../../../../reusable-ui/PrimaryButton"
+import React, { useContext, useState } from "react"
+import PannelButton from "../../../../../reusable-ui/PannelButton"
 import { styled } from "styled-components"
 import { theme } from "../../../../../../theme"
+import OrderContext from "../../../../../../context/OrderContext"
+import { fakeMenu3 } from "../../../../../fakeData/fakeMenu"
 
 export default function Admin() {
+  const { products, setProducts } = useContext(OrderContext)
+  const [productsBackup, setProductsBackup] = useState(fakeMenu3)
+
+  const handleGenerate = () => {
+    setProducts(productsBackup)
+  }
+
   return (
     <AdminStyled>
       <h1 className="h1">Le menu est vide ?</h1>
       <h2>Cliquez ci-dessous pour le réinitialiser</h2>
-      <PrimaryButton
-        label={"Générer de nouveaux produits"}
+      <PannelButton
         className={"generator"}
+        label={"Générer de nouveaux produits"}
+        onClick={handleGenerate}
       />
     </AdminStyled>
   )
@@ -28,6 +38,10 @@ const AdminStyled = styled.div`
     padding-left: 23px;
     padding-right: 23px;
     border: 2px solid ${theme.colors.primary};
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.background_white};
+    border-radius: 5px;
+
     &:hover {
     }
   }

@@ -36,7 +36,7 @@ export default function Card({
   return (
     <CardStyled className={className} id={id}>
       {isAdmin && <DeleteButton onClick={handleDelete} />}
-      <ImageWrapper imageSource={imageSource} />
+      <ImageWrapper imageSource={imageSource} className={"card_picture"} />
       <Desc priceProduct={priceProduct} title={title} />
     </CardStyled>
   )
@@ -53,4 +53,10 @@ const CardStyled = styled.div`
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
+  .card_picture {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
 `

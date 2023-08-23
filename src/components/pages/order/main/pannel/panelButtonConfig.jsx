@@ -16,9 +16,9 @@ export const getPanelButtonsConfig = (isOpen) => [
     index: "add",
     content: <AddForm />,
   },
-  // {
-  //   label: "Modifier un produit",
-  //   icons: <MdModeEditOutline />,
-  //   index: "edit",
-  // },
+  {
+    label: "Modifier un produit",
+    icons: <MdModeEditOutline />,
+    index: "edit",
+  },
 ]

@@ -37,7 +37,6 @@ export default function AddForm() {
           className={"add_picture"}
         />
         <RightSide
-          key={Date.now()}
           link={link}
           name={name}
           price={price}

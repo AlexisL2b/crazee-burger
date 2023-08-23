@@ -9,9 +9,10 @@ export default function Confirmation() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false)
+      console.log("log de mon timeout", isVisible)
     }, 2000)
     return () => clearTimeout(timer)
-  }, [])
+  }, [isVisible])
   if (!isVisible) return null
   return (
     <ConfirmationStyled>

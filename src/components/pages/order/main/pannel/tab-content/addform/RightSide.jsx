@@ -29,6 +29,7 @@ export default function RightSide({
     <RightSideStyled>
       {textInputs.map((input) => (
         <TextInput
+          key={input.id}
           Icon={input.icon}
           type={input.type}
           name={input.name}

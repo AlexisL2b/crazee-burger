@@ -1,7 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
-import AddForm from "./tab-content/AddForm"
+import AddForm from "./tab-content/addform/AddForm"
 
 export const getPanelButtonsConfig = (isOpen) => [
   {

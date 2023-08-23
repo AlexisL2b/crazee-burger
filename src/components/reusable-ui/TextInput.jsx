@@ -15,7 +15,7 @@ export default function TextInput({
 
   return (
     <InputStyled className={className}>
-      {Icon && Icon}
+      <div className="icon">{Icon && Icon}</div>
       <input
         type={type}
         value={value}

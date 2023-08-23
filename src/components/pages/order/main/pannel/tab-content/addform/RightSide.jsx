@@ -5,6 +5,7 @@ import OrderContext from "../../../../../../../context/OrderContext"
 import TextInput from "../../../../../../reusable-ui/TextInput"
 import PrimaryButton from "../../../../../../reusable-ui/PrimaryButton"
 import { theme } from "../../../../../../../theme"
+import Confirmation from "./Confirmation"
 
 export default function RightSide({
   link,
@@ -28,6 +29,7 @@ export default function RightSide({
     <RightSideStyled>
       {textInputs.map((input) => (
         <TextInput
+          Icon={input.icon}
           type={input.type}
           name={input.name}
           className={input.className}
@@ -36,10 +38,13 @@ export default function RightSide({
           value={input.value}
         />
       ))}
-      <PrimaryButton
-        label="Ajouter un nouveau produit au menu"
-        className="add_button"
-      />
+      <div className="add_container">
+        <PrimaryButton
+          label="Ajouter un nouveau produit au menu"
+          className="add_button"
+        />
+        <Confirmation />
+      </div>
     </RightSideStyled>
   )
 }
@@ -56,20 +61,27 @@ const RightSideStyled = styled.div`
     input {
       background-color: #f5f5f7;
       width: 100%;
+      margin-left: 15px;
     }
     &::placeholder {
       font-size: 14px;
       color: #a7a8ad;
     }
+    .icon {
+      color: ${theme.colors.greyBlue};
+    }
   }
-  .add_button {
-    width: 50%;
-    padding: 8px 16px 8px 24px;
-    border: solid 2px ${theme.colors.green};
-    background-color: ${theme.colors.green};
-    &:hover {
-      color: ${theme.colors.green};
-      background-color: ${theme.colors.white};
+  .add_container {
+    display: flex;
+    .add_button {
+      width: 50%;
+      padding: 8px 16px 8px 24px;
+      border: solid 2px ${theme.colors.green};
+      background-color: ${theme.colors.green};
+      &:hover {
+        color: ${theme.colors.green};
+        background-color: ${theme.colors.white};
+      }
     }
   }
 `

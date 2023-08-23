@@ -7,4 +7,6 @@ export default createContext({
   setIsOpen: () => {},
   products: [],
   setProducts: () => {},
+  isVisible: false,
+  setIsVisible: () => {},
 })

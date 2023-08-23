@@ -11,6 +11,7 @@ export default function OrderPages() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
   const [products, setProducts] = useState(fakeMenu2)
+  const [isVisible, setIsVisible] = useState(false)
 
   const orderContextValue = {
     isAdmin,
@@ -19,6 +20,8 @@ export default function OrderPages() {
     setIsOpen,
     products,
     setProducts,
+    isVisible,
+    setIsVisible,
   }
 
   //comportement

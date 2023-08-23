@@ -7,7 +7,8 @@ import RightSide from "./RightSide"
 export default function AddForm() {
   //state
   const [link, setLink] = useState("")
-  const { products, setProducts } = useContext(OrderContext)
+  const { products, setProducts, isVisible, setIsVisible } =
+    useContext(OrderContext)
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
@@ -25,6 +26,7 @@ export default function AddForm() {
     setLink("")
     setName("")
     setPrice("")
+    setIsVisible(true)
   }
   //affichage
   return (

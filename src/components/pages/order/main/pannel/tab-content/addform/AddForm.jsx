@@ -8,28 +8,38 @@ import ButtonConfirmation from "./ButtonConfirmation"
 export default function AddForm() {
   //state
   const [link, setLink] = useState("")
-  const { products, setProducts, isVisible, setIsVisible } =
-    useContext(OrderContext)
   const [name, setName] = useState("")
-  const [price, setPrice] = useState("")
+  const [price, setPrice] = useState(0)
+  const { setIsVisible, handleAdd } = useContext(OrderContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const product = {
-      id: Date.now(),
+
+    const newProduct = {
+      id: new Date().getTime(),
       imageSource: link ? link : "/assets/coming-soon.png",
       title: name,
       price: price,
     }
-    const copyProducts = products.slice()
-    copyProducts.unshift(product)
-    setProducts(copyProducts)
+
+    handleAdd(newProduct)
     setLink("")
     setName("")
     setPrice("")
     setIsVisible(true)
   }
+  const handleChange = (e) => {
+    console.log(price)
+    if (e.currentTarget.name === "name") {
+      setName(e.currentTarget.value)
+    } else if (e.currentTarget.name === "link") {
+      setLink(e.currentTarget.value)
+    } else if (e.currentTarget.name === "price") {
+      setPrice(e.currentTarget.value)
+    }
+  }
   //affichage
+
   return (
     <AddFormStyled
       className="container_form"
@@ -41,12 +51,11 @@ export default function AddForm() {
         className={"add_picture"}
       />
       <InputFields
-        link={link}
-        name={name}
-        price={price}
-        setLink={setLink}
-        setName={setName}
-        setPrice={setPrice}
+        className={"input_fields"}
+        link={link ? link : ""}
+        name={name ? name : ""}
+        price={price ? price : ""}
+        onChange={handleChange}
       />
       <ButtonConfirmation className={"button_confirmation"} />
     </AddFormStyled>
@@ -54,14 +63,10 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-  border: solid 2px blue;
-  height: 100%;
+  height: 90%;
+  width: 70%;
   display: grid;
-  align-items: center;
-  justify-content: flex-start;
-  /* padding-left: 70px;
-  padding-top: 31px;
-  gap: 20px; */
+
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
 
@@ -69,7 +74,10 @@ const AddFormStyled = styled.form`
     width: 215px;
     height: 120px;
   }
+  .input_fields {
+    grid-area: 1/2/4/2;
+  }
   .button_confirmation {
-    grid-area: 2/2;
+    grid-area: 4/2/4/2;
   }
 `

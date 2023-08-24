@@ -2,7 +2,7 @@ import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 
-export const getTextInputConfig = ({ name, handleChange, price, link }) => [
+export const getTextInputConfig = ({ name, price, link }) => [
   {
     id: 1,
     icon: <FaHamburger />,
@@ -10,7 +10,7 @@ export const getTextInputConfig = ({ name, handleChange, price, link }) => [
     name: "name",
     className: "input_text",
     placeholder: "Nom du produit (ex: Super Burger)",
-    onChange: handleChange,
+    // onChange: handleChange,
     value: name,
   },
   {
@@ -18,7 +18,7 @@ export const getTextInputConfig = ({ name, handleChange, price, link }) => [
     icon: <BsFillCameraFill />,
     type: "url",
     name: "link",
-    onChange: handleChange,
+    // onChange: handleChange,
     className: "input_text",
     placeholder:
       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
@@ -27,7 +27,7 @@ export const getTextInputConfig = ({ name, handleChange, price, link }) => [
   {
     id: 3,
     icon: <MdOutlineEuro />,
-    onChange: handleChange,
+    // onChange: handleChange,
     name: "price",
     className: "input_text",
     placeholder: "Prix",

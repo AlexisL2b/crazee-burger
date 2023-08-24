@@ -10,22 +10,12 @@ export default function InputFields({
   link,
   name,
   price,
-  setLink,
-  setName,
-  setPrice,
+  onChange,
+  className,
 }) {
-  const handleChange = (e) => {
-    if (e.currentTarget.name === "name") {
-      setName(e.currentTarget.value)
-    } else if (e.currentTarget.name === "link") {
-      setLink(e.currentTarget.value)
-    } else if (e.currentTarget.name === "price") {
-      setPrice(e.currentTarget.value)
-    }
-  }
-  const textInputs = getTextInputConfig({ name, link, price, handleChange })
+  const textInputs = getTextInputConfig({ name, link, price })
   return (
-    <InputFieldsStyled>
+    <InputFieldsStyled className={className}>
       {textInputs.map((input) => (
         <TextInput
           key={input.id}
@@ -34,7 +24,7 @@ export default function InputFields({
           name={input.name}
           className={input.className}
           placeholder={input.placeholder}
-          onChange={input.onChange}
+          onChange={onChange}
           value={input.value}
         />
       ))}
@@ -42,11 +32,13 @@ export default function InputFields({
   )
 }
 const InputFieldsStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
   .input_text {
+    margin: 0;
     border: none;
+    height: 35px;
     background-color: #f5f5f7;
     width: 605px;
     border-radius: 5px;

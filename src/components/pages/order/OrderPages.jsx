@@ -13,6 +13,16 @@ export default function OrderPages() {
   const [products, setProducts] = useState(fakeMenu2)
   const [isVisible, setIsVisible] = useState(false)
 
+  //comportement
+
+  const handleAdd = (newProduct) => {
+    const copyProducts = [...products]
+
+    const productsUpdated = [newProduct, ...copyProducts]
+
+    setProducts(productsUpdated)
+  }
+
   const orderContextValue = {
     isAdmin,
     setIsAdmin,
@@ -22,9 +32,8 @@ export default function OrderPages() {
     setProducts,
     isVisible,
     setIsVisible,
+    handleAdd,
   }
-
-  //comportement
 
   //affichage
   return (

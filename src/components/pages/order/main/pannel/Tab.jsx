@@ -23,6 +23,8 @@ export default function Tab() {
   return <TabStyled>{buttonSelected.content}</TabStyled>
 }
 const TabStyled = styled.div`
+  padding-left: 70px;
+  padding-top: 31px;
   height: 250px;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};

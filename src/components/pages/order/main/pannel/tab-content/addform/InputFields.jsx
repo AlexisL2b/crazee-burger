@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import { getTextInputConfig } from "./textInputAddConfig"
-import OrderContext from "../../../../../../../context/OrderContext"
 import TextInput from "../../../../../../reusable-ui/TextInput"
 import PrimaryButton from "../../../../../../reusable-ui/PrimaryButton"
 import { theme } from "../../../../../../../theme"
 import Confirmation from "./Confirmation"
 
-export default function RightSide({
+export default function InputFields({
   link,
   name,
   price,
@@ -26,7 +25,7 @@ export default function RightSide({
   }
   const textInputs = getTextInputConfig({ name, link, price, handleChange })
   return (
-    <RightSideStyled>
+    <InputFieldsStyled>
       {textInputs.map((input) => (
         <TextInput
           key={input.id}
@@ -39,17 +38,10 @@ export default function RightSide({
           value={input.value}
         />
       ))}
-      <div className="add_container">
-        <PrimaryButton
-          label="Ajouter un nouveau produit au menu"
-          className="add_button"
-        />
-        <Confirmation />
-      </div>
-    </RightSideStyled>
+    </InputFieldsStyled>
   )
 }
-const RightSideStyled = styled.div`
+const InputFieldsStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -70,19 +62,6 @@ const RightSideStyled = styled.div`
     }
     .icon {
       color: ${theme.colors.greyBlue};
-    }
-  }
-  .add_container {
-    display: flex;
-    .add_button {
-      width: 50%;
-      padding: 8px 16px 8px 24px;
-      border: solid 2px ${theme.colors.green};
-      background-color: ${theme.colors.green};
-      &:hover {
-        color: ${theme.colors.green};
-        background-color: ${theme.colors.white};
-      }
     }
   }
 `

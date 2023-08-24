@@ -39,4 +39,5 @@ const MenuStyled = styled.div`
   overflow-y: scroll;
   scrollbar-width: none;
   place-items: center;
+  width: 100%;
 `

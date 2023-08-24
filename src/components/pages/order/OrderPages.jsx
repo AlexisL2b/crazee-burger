@@ -45,6 +45,7 @@ const OrderPageStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 25px, 56px, 25px, 56px;
 
   .container {
     height: 95vh;

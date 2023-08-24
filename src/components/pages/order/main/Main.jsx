@@ -46,9 +46,11 @@ const MainStyled = styled.div`
     display: block;
   }
   .menu_and_pannel {
+    width: 100%;
     position: relative;
     display: grid;
     overflow-y: hidden;
+    overflow-x: hidden;
     scrollbar-width: none;
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     border-bottom-right-radius: ${theme.borderRadius.extraRound};

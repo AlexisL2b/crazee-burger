@@ -5,7 +5,7 @@ import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
 import OrderContext from "../../../context/OrderContext"
-
+const EMPTY_BY_DEFAULT = "/assets/coming-soon.png"
 export default function Card({
   //state
   //comportement
@@ -36,7 +36,10 @@ export default function Card({
   return (
     <CardStyled className={className} id={id}>
       {isAdmin && <DeleteButton onClick={handleDelete} />}
-      <ImageWrapper imageSource={imageSource} className={"card_picture"} />
+      <ImageWrapper
+        imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT}
+        className={"card_picture"}
+      />
       <Desc priceProduct={priceProduct} title={title} />
     </CardStyled>
   )

@@ -12,7 +12,7 @@ export default function Desc({ priceProduct, title }) /*propsDrilling*/ {
     <DescStyled>
       <div className="title">{title}</div>
       <div className="infos">
-        <div className="left-description">{formatMontant(priceProduct)}</div>
+        <div className="left-description">{formatMontant(priceProduct)} €</div>
         <div className="right-description">
           <PrimaryButton label="Ajouter" className="card_button" />
         </div>

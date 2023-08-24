@@ -7,7 +7,7 @@ export const getTextInputConfig = ({ name, price, link }) => [
     id: 1,
     icon: <FaHamburger />,
     type: "text",
-    name: "name",
+    name: "title",
     className: "input_text",
     placeholder: "Nom du produit (ex: Super Burger)",
     // onChange: handleChange,
@@ -17,12 +17,12 @@ export const getTextInputConfig = ({ name, price, link }) => [
     id: 2,
     icon: <BsFillCameraFill />,
     type: "url",
-    name: "link",
+    name: "imageSource",
     // onChange: handleChange,
     className: "input_text",
     placeholder:
       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
-    value: link,
+    // value: link,
   },
   {
     id: 3,

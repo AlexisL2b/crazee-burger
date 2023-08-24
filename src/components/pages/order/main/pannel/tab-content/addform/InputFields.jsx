@@ -6,14 +6,8 @@ import PrimaryButton from "../../../../../../reusable-ui/PrimaryButton"
 import { theme } from "../../../../../../../theme"
 import Confirmation from "./Confirmation"
 
-export default function InputFields({
-  link,
-  name,
-  price,
-  onChange,
-  className,
-}) {
-  const textInputs = getTextInputConfig({ name, link, price })
+export default function InputFields({ onChange, className, newProduct }) {
+  const textInputs = getTextInputConfig({ newProduct })
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (

@@ -1,13 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 
-export default function ImageWrapper({
-  imageSource,
-  className,
-}) /*propsDrilling*/ {
+export default function ImageWrapper({ imageSource, className }) {
+  /*propsDrilling*/ const handleImageError = (e) => {
+    e.target.src = "/assets/no_image.png"
+  }
+
   return (
     <ImageWrapperStyled className={className}>
-      <img src={imageSource} />
+      <img src={imageSource} onError={handleImageError} />
     </ImageWrapperStyled>
   )
 }

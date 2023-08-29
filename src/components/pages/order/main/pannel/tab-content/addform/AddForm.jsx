@@ -5,14 +5,14 @@ import OrderContext from "../../../../../../../context/OrderContext"
 import InputFields from "./InputFields"
 import ButtonConfirmation from "./ButtonConfirmation"
 const EMPTY_PRODUCT = {
-  id: "",
   title: "",
   imageSource: "",
   price: 0,
 }
+const EMPTY_NO_IMAGE = "/assets/no_image.png"
 export default function AddForm() {
   //state
-
+  const { products } = useContext(OrderContext)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
   const { setIsVisible, handleAdd } = useContext(OrderContext)
@@ -20,10 +20,13 @@ export default function AddForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const newProductToAdd = {
-      id: new Date().getMinutes(),
+      id: new Date().getTime(),
+      ...newProduct,
     }
     handleAdd(newProductToAdd)
     setIsVisible(true)
+    setNewProduct(EMPTY_PRODUCT)
+    console.log(products)
   }
   const handleChange = (e) => {
     const name = e.target.name
@@ -38,19 +41,25 @@ export default function AddForm() {
       action="submit"
       onSubmit={handleSubmit}
     >
-      <ImageWrapper
-        imageSource={
+      <div className="image_preview">
+        {newProduct.imageSource ? (
+          <ImageWrapper
+            imageSource={newProduct.imageSource}
+            className={"add_picture"}
+          />
+        ) : (
+          <ImageWrapper imageSource={EMPTY_NO_IMAGE} className={"no_image"} />
+        )}
+      </div>
+
+      <InputFields
+        className={"input_fields"}
+        link={
           newProduct.imageSource
             ? newProduct.imageSource
             : "/assets/coming-soon.png"
         }
-        className={"add_picture"}
-      />
-      <InputFields
-        className={"input_fields"}
-        link={newProduct.link ? newProduct.link : "/assets/coming-soon.png"}
-        name={newProduct.title ? newProduct.title : ""}
-        price={newProduct.price ? newProduct.price : ""}
+        newProduct={newProduct}
         onChange={handleChange}
       />
       <ButtonConfirmation className={"button_confirmation"} />
@@ -66,14 +75,22 @@ const AddFormStyled = styled.form`
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
 
-  .add_picture {
-    width: 215px;
-    height: 120px;
-  }
   .input_fields {
     grid-area: 1/2/4/2;
   }
   .button_confirmation {
     grid-area: 4/2/4/2;
+  }
+  .image_preview {
+    width: 215px;
+    height: 120px;
+  }
+  .add_picture {
+    height: 100%;
+    width: 100%;
+  }
+  .no_image {
+    height: 100%;
+    width: 100%;
   }
 `

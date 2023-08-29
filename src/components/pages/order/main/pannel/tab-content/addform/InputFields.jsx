@@ -19,7 +19,7 @@ export default function InputFields({ onChange, className, newProduct }) {
           className={input.className}
           placeholder={input.placeholder}
           onChange={onChange}
-          value={input.value}
+          value={input.value ? input.value : ""}
         />
       ))}
     </InputFieldsStyled>

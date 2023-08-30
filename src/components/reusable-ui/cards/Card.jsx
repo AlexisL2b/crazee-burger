@@ -26,7 +26,7 @@ export default function Card({
     <CardStyled className={className} id={id}>
       {isAdmin && <DeleteButton onClick={onDelete} />}
       <ImageWrapper
-        imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT}
+        imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT_PICTURE}
         className={"card_picture"}
       />
       <Desc priceProduct={priceProduct} title={title} />

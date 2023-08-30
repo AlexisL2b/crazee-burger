@@ -14,7 +14,7 @@ export default function Desc({ priceProduct, title }) /*propsDrilling*/ {
       <div className="infos">
         <div className="left-description">{formatMontant(priceProduct)} €</div>
         <div className="right-description">
-          <PrimaryButton label="Ajouter" className="card_button" />
+          <PrimaryButton label="Ajouter" version="smallPrimary" />
         </div>
       </div>
     </DescStyled>
@@ -62,11 +62,6 @@ const DescStyled = styled.div`
       justify-content: flex-end;
       align-items: center;
       font-size: ${theme.fonts.size.P1};
-
-      .card_button {
-        font-size: ${theme.fonts.size.XS};
-        padding: 12px 26px;
-      }
     }
   }
 `

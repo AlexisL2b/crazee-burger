@@ -8,7 +8,7 @@ export default function TextInput({
   className,
   index,
   type,
-  version = "normal",
+  version,
   ...restProps
 }) {
   //state
@@ -28,53 +28,56 @@ export default function TextInput({
   )
 }
 const InputStyled = styled.div`
-  background-color: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
 
   .icon {
-    font-size: ${theme.fonts.P0};
-    margin-right: ${theme.spacing.xs};
-    margin-left: 10px;
-    color: ${theme.colors.greyDark};
+    font-size: ${theme.fonts.size.SM};
+    margin: 0 13px 0 8px;
+    display: flex; // to center icon vertically
   }
+
   input {
     border: none;
-    font-size: ${theme.fonts.P0};
-    color: ${theme.colors.dark};
+    font-size: ${theme.fonts.size.SM};
+    width: 100%;
+
+    &::placeholder {
+      color: ${theme.colors.greyMedium};
+    }
   }
-  &::placeholder {
-    background-color: ${theme.colors.white};
-    color: ${theme.colors.greyLight};
-  }
+
   ${({ version }) => extraStyle[version]}
 `
 
 const minimalist = css`
-  margin: 0;
-  border: none;
+  background-color: ${theme.colors.background_white};
+  padding: 0px 16px;
+  color: ${theme.colors.greyBlue};
   height: 35px;
-  background-color: #f5f5f7;
-  width: 605px;
-  border-radius: 5px;
-  padding: 8px 16px 8px 24px;
   input {
-    background-color: #f5f5f7;
-    width: 100%;
-    margin-left: 15px;
-  }
-  &::placeholder {
-    font-size: 14px;
-    color: #a7a8ad;
-  }
-  .icon {
-    color: ${theme.colors.greyBlue};
+    background: ${theme.colors.background_white};
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0; //// add outline
+    }
   }
 `
 const normal = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 28px;
+  color: ${theme.colors.greySemiDark};
   margin: 18px 0px;
-  padding: 16px ${theme.gridUnit * 3}px;
+
+  input {
+    color: ${theme.colors.dark};
+
+    &::placeholder {
+      background: ${theme.colors.white};
+    }
+  }
 `
 
 const extraStyle = {

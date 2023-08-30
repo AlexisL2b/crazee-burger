@@ -5,6 +5,11 @@ import { theme } from "../../../theme"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu2, fakeMenu3 } from "../../fakeData/fakeMenu"
+const EMPTY_PRODUCT = {
+  title: "",
+  imageSource: "",
+  price: 0,
+}
 
 export default function OrderPages() {
   //state
@@ -13,8 +18,27 @@ export default function OrderPages() {
   const [products, setProducts] = useState(fakeMenu2)
   const [isVisible, setIsVisible] = useState(false)
   const [productsBackup, setProductsBackup] = useState(fakeMenu3)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
   //comportement
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const newProductToAdd = {
+      id: new Date().getTime(),
+      ...newProduct,
+    }
+    handleAdd(newProductToAdd)
+    setIsVisible(true)
+    setNewProduct(EMPTY_PRODUCT)
+    console.log(products)
+  }
+  const handleChange = (e) => {
+    const name = e.target.name
+    const newValue = e.target.value
+    setNewProduct({ ...newProduct, [name]: newValue })
+  }
+
   const handleGenerate = () => {
     setProducts(productsBackup)
   }
@@ -46,6 +70,10 @@ export default function OrderPages() {
     handleDelete,
     handleGenerate,
     products,
+    handleSubmit,
+    handleChange,
+    newProduct,
+    setNewProduct,
   }
 
   //affichage

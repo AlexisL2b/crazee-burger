@@ -1,12 +1,12 @@
-export default function PrimaryButton({ label, Icon, className }) {
+export default function PrimaryButton({ label, Icon, className, version }) {
   return (
-    <PrimaryButtonStyled className={className}>
+    <PrimaryButtonStyled className={className} version={version}>
       {label} {Icon && Icon}
     </PrimaryButtonStyled>
   )
 }
 
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
 const PrimaryButtonStyled = styled.button`
@@ -31,4 +31,25 @@ const PrimaryButtonStyled = styled.button`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
+  ${({ version }) => extraStyle[version]}
 `
+
+const succes = css`
+  width: 50%;
+  padding: 8px 16px 8px 24px;
+  border: solid 2px ${theme.colors.green};
+  background-color: ${theme.colors.green};
+  &:hover {
+    color: ${theme.colors.green};
+    background-color: ${theme.colors.white};
+  }
+`
+const smallPrimary = css`
+  font-size: ${theme.fonts.size.XS};
+  padding: 12px 26px;
+`
+
+const extraStyle = {
+  succes,
+  smallPrimary,
+}

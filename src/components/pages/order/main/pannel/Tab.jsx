@@ -23,12 +23,12 @@ export default function Tab() {
   return <TabStyled>{buttonSelected.content}</TabStyled>
 }
 const TabStyled = styled.div`
-  padding-left: 70px;
-  padding-top: 31px;
-  height: 250px;
+  padding: 30px 5%;
+  height: 240px;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.subtle};
   border: 1px solid #e4e5e9;
   background-color: white;
+  box-sizing: border-box;
 `

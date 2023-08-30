@@ -34,7 +34,7 @@ const PrimaryButtonStyled = styled.button`
   ${({ version }) => extraStyle[version]}
 `
 
-const succes = css`
+const success = css`
   width: 50%;
   padding: 8px 16px 8px 24px;
   border: solid 2px ${theme.colors.green};
@@ -50,6 +50,6 @@ const smallPrimary = css`
 `
 
 const extraStyle = {
-  succes,
+  success,
   smallPrimary,
 }

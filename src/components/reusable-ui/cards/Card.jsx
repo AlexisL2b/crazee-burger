@@ -4,8 +4,7 @@ import { theme } from "../../../theme"
 import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
-import OrderContext from "../../../context/OrderContext"
-const EMPTY_BY_DEFAULT = "/assets/coming-soon.png"
+const EMPTY_BY_DEFAULT_PICTURE = "/assets/coming-soon.png"
 export default function Card({
   //state
   //comportement
@@ -14,28 +13,18 @@ export default function Card({
   title,
   priceProduct,
   className,
+  onDelete,
+  isAdmin,
 }) {
-  const { products, setProducts } = useContext(OrderContext)
-
   //state
-  const handleDelete = (e) => {
-    //L'id du produit
-    const idProductToDelete = e.currentTarget.parentElement.id
-    const productFilter = products.filter(
-      (product) => product.id != idProductToDelete
-    )
-    setProducts(productFilter)
-    console.log(products)
-  }
-  //comportement
 
-  const { isAdmin } = useContext(OrderContext)
+  //comportement
 
   //affichage
 
   return (
     <CardStyled className={className} id={id}>
-      {isAdmin && <DeleteButton onClick={handleDelete} />}
+      {isAdmin && <DeleteButton onClick={onDelete} />}
       <ImageWrapper
         imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT}
         className={"card_picture"}

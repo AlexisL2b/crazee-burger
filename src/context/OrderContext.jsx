@@ -10,4 +10,6 @@ export default createContext({
   isVisible: false,
   setIsVisible: () => {},
   handleAdd: () => {},
+  handleDelete: () => {},
+  handleGenerate: () => {},
 })

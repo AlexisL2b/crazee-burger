@@ -3,15 +3,9 @@ import PannelButton from "../../../../../reusable-ui/PannelButton"
 import { styled } from "styled-components"
 import { theme } from "../../../../../../theme"
 import OrderContext from "../../../../../../context/OrderContext"
-import { fakeMenu3 } from "../../../../../fakeData/fakeMenu"
 
 export default function Admin() {
-  const { products, setProducts } = useContext(OrderContext)
-  const [productsBackup, setProductsBackup] = useState(fakeMenu3)
-
-  const handleGenerate = () => {
-    setProducts(productsBackup)
-  }
+  const { handleGenerate } = useContext(OrderContext)
 
   return (
     <AdminStyled>

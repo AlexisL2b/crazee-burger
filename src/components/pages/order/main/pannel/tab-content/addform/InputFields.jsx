@@ -20,6 +20,7 @@ export default function InputFields({ onChange, className, newProduct }) {
           placeholder={input.placeholder}
           onChange={onChange}
           value={input.value ? input.value : ""}
+          version={input.version}
         />
       ))}
     </InputFieldsStyled>
@@ -29,7 +30,7 @@ const InputFieldsStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
-  .input_text {
+  /* .input_text {
     margin: 0;
     border: none;
     height: 35px;
@@ -49,5 +50,5 @@ const InputFieldsStyled = styled.div`
     .icon {
       color: ${theme.colors.greyBlue};
     }
-  }
+  } */
 `

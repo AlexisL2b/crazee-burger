@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { BsWalletFill } from "react-icons/bs"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 import { MdKeyboardArrowRight } from "react-icons/md"
@@ -32,9 +31,10 @@ export default function LoginForm() {
         value={firstName}
         onChange={handleChange}
         placeholder="Entrez votre prénom"
-        Icon={<PiUserCircleFill className="icone_user" />}
+        Icon={<PiUserCircleFill />}
         type="text"
         required
+        version="normal"
       />
       <PrimaryButton
         label="Accéder à mon espace"
@@ -64,9 +64,5 @@ const LoginFormStyled = styled.form`
     font-family: ${theme.fontsFamily.amatic};
     font-size: ${theme.fonts.P4};
     color: ${theme.colors.white};
-  }
-  .first_name {
-    margin: 18px 0px;
-    padding: 16px ${theme.gridUnit * 3}px;
   }
 `

@@ -20,4 +20,7 @@ const DeleteButtonStyled = styled.div`
   &:hover {
     color: ${theme.colors.red};
   }
+  &:active {
+    color: ${theme.colors.primary};
+  }
 `

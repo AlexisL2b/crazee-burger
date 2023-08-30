@@ -4,7 +4,7 @@ import Main from "./main/Main"
 import { theme } from "../../../theme"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext"
-import { fakeMenu2 } from "../../fakeData/fakeMenu"
+import { fakeMenu2, fakeMenu3 } from "../../fakeData/fakeMenu"
 
 export default function OrderPages() {
   //state
@@ -12,8 +12,12 @@ export default function OrderPages() {
   const [isOpen, setIsOpen] = useState(true)
   const [products, setProducts] = useState(fakeMenu2)
   const [isVisible, setIsVisible] = useState(false)
+  const [productsBackup, setProductsBackup] = useState(fakeMenu3)
 
   //comportement
+  const handleGenerate = () => {
+    setProducts(productsBackup)
+  }
 
   const handleAdd = (newProduct) => {
     const copyProducts = [...products]
@@ -22,17 +26,26 @@ export default function OrderPages() {
 
     setProducts(productsUpdated)
   }
+  const handleDelete = (e) => {
+    //L'id du produit
+    const idProductToDelete = e.currentTarget.parentElement.id
+    const productFilter = products.filter(
+      (product) => product.id != idProductToDelete
+    )
+    setProducts(productFilter)
+  }
 
   const orderContextValue = {
     isAdmin,
     setIsAdmin,
     isOpen,
     setIsOpen,
-    products,
-    setProducts,
     isVisible,
     setIsVisible,
     handleAdd,
+    handleDelete,
+    handleGenerate,
+    products,
   }
 
   //affichage

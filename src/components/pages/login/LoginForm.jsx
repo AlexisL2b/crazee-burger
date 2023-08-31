@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { BsWalletFill } from "react-icons/bs"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 import { MdKeyboardArrowRight } from "react-icons/md"
@@ -28,11 +27,14 @@ export default function LoginForm() {
       <div className="divider"></div>
       <h2>Connectez-vous</h2>
       <TextInput
+        className={"first_name"}
         value={firstName}
         onChange={handleChange}
         placeholder="Entrez votre prénom"
-        Icon={<PiUserCircleFill className="icone_user" />}
+        Icon={<PiUserCircleFill />}
+        type="text"
         required
+        version="normal"
       />
       <PrimaryButton
         label="Accéder à mon espace"

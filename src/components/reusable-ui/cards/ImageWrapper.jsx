@@ -1,20 +1,19 @@
 import React from "react"
 import styled from "styled-components"
 
-export default function ImageWrapper({ imageSource }) /*propsDrilling*/ {
+export default function ImageWrapper({ imageSource, className }) {
+  /*propsDrilling*/ const handleImageError = (e) => {
+    e.target.src = "/assets/no_image.png"
+  }
+
   return (
-    <ImageWrapperStyled>
-      <img src={imageSource} />
+    <ImageWrapperStyled className={className}>
+      <img src={imageSource} onError={handleImageError} />
     </ImageWrapperStyled>
   )
 }
 
 const ImageWrapperStyled = styled.div`
-  width: 100%;
-  height: auto;
-  margin-top: 30px;
-  margin-bottom: 20px;
-
   img {
     width: 100%;
     height: 100%;

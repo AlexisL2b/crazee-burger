@@ -1,4 +1,5 @@
 export const formatMontant = (priceProduct) => {
   const priceRounded = Math.ceil(priceProduct * 10) / 10
-  return priceRounded.toFixed(2)
+  const priceFormat = priceRounded.toFixed(2)
+  return priceFormat.toString()
 }

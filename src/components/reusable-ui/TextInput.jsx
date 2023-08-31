@@ -1,38 +1,86 @@
 import { theme } from "../../theme"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-export default function TextInput({ value, onChange, Icon, ...restProps }) {
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  index,
+  type,
+  version,
+  ...restProps
+}) {
   //state
   //comportement
 
   return (
-    <InputStyled>
-      {Icon && Icon}
-      <input type="text" value={value} onChange={onChange} {...restProps} />
+    <InputStyled className={className} version={version}>
+      <div className="icon">{Icon && Icon}</div>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        index={index}
+        {...restProps}
+      />
     </InputStyled>
   )
 }
-
 const InputStyled = styled.div`
-  background-color: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
-  padding: 18px ${theme.gridUnit * 3}px;
-  margin: 18px 0px;
 
-  .icone_user {
-    font-size: ${theme.fonts.P0};
-    margin-right: ${theme.spacing.xs};
-    color: ${theme.colors.greyDark};
+  .icon {
+    font-size: ${theme.fonts.size.SM};
+    margin: 0 13px 0 8px;
+    display: flex; // to center icon vertically
   }
+
   input {
     border: none;
-    font-size: ${theme.fonts.P0};
-    color: ${theme.colors.dark};
+    font-size: ${theme.fonts.size.SM};
+    width: 100%;
+
+    &::placeholder {
+      color: ${theme.colors.greyMedium};
+    }
   }
-  &::placeholder {
-    background-color: ${theme.colors.white};
-    color: ${theme.colors.greyLight};
+
+  ${({ version }) => extraStyle[version]}
+`
+
+const minimalist = css`
+  background-color: ${theme.colors.background_white};
+  padding: 0px 16px;
+  color: ${theme.colors.greyBlue};
+  height: 35px;
+  input {
+    background: ${theme.colors.background_white};
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0; //// add outline
+    }
   }
 `
+const normal = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 28px;
+  color: ${theme.colors.greySemiDark};
+  margin: 18px 0px;
+
+  input {
+    color: ${theme.colors.dark};
+
+    &::placeholder {
+      background: ${theme.colors.white};
+    }
+  }
+`
+
+const extraStyle = {
+  normal,
+  minimalist,
+}

@@ -4,14 +4,77 @@ import Main from "./main/Main"
 import { theme } from "../../../theme"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext"
+import { fakeMenu2, fakeMenu3 } from "../../fakeData/fakeMenu"
+const EMPTY_PRODUCT = {
+  title: "",
+  imageSource: "",
+  price: 0,
+}
 
 export default function OrderPages() {
   //state
   const [isAdmin, setIsAdmin] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
-  const orderContextValue = { isAdmin, setIsAdmin, isOpen, setIsOpen }
+  const [products, setProducts] = useState(fakeMenu2)
+  const [isVisible, setIsVisible] = useState(false)
+  const [productsBackup, setProductsBackup] = useState(fakeMenu3)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
   //comportement
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const newProductToAdd = {
+      id: new Date().getTime(),
+      ...newProduct,
+    }
+    handleAdd(newProductToAdd)
+    setIsVisible(true)
+    setNewProduct(EMPTY_PRODUCT)
+    console.log(products)
+  }
+  const handleChange = (e) => {
+    const name = e.target.name
+    const newValue = e.target.value
+    setNewProduct({ ...newProduct, [name]: newValue })
+  }
+
+  const handleGenerate = () => {
+    setProducts(productsBackup)
+  }
+
+  const handleAdd = (newProduct) => {
+    const copyProducts = [...products]
+
+    const productsUpdated = [newProduct, ...copyProducts]
+
+    setProducts(productsUpdated)
+  }
+  const handleDelete = (e) => {
+    //L'id du produit
+    const idProductToDelete = e.currentTarget.parentElement.id
+    const productFilter = products.filter(
+      (product) => product.id != idProductToDelete
+    )
+    setProducts(productFilter)
+  }
+
+  const orderContextValue = {
+    isAdmin,
+    setIsAdmin,
+    isOpen,
+    setIsOpen,
+    isVisible,
+    setIsVisible,
+    handleAdd,
+    handleDelete,
+    handleGenerate,
+    products,
+    handleSubmit,
+    handleChange,
+    newProduct,
+    setNewProduct,
+  }
 
   //affichage
   return (
@@ -32,6 +95,7 @@ const OrderPageStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 25px, 56px, 25px, 56px;
 
   .container {
     height: 95vh;

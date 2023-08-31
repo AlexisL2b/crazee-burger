@@ -19,6 +19,7 @@ export default function OrderPages() {
   const [isVisible, setIsVisible] = useState(false)
   const [productsBackup, setProductsBackup] = useState(fakeMenu3)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [activeTab, setActiveTab] = useState("add")
 
   //comportement
 
@@ -58,6 +59,15 @@ export default function OrderPages() {
     )
     setProducts(productFilter)
   }
+  const handleSelectedTab = (selectedTab) => {
+    if (selectedTab != "chevron") {
+      setIsOpen(true)
+      setActiveTab(selectedTab)
+    } else {
+      setIsOpen(!isOpen)
+      console.log(isOpen)
+    }
+  }
 
   const orderContextValue = {
     isAdmin,
@@ -74,6 +84,9 @@ export default function OrderPages() {
     handleChange,
     newProduct,
     setNewProduct,
+    activeTab,
+    setActiveTab,
+    handleSelectedTab,
   }
 
   //affichage

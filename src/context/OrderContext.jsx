@@ -16,4 +16,7 @@ export default createContext({
   handleChange: () => {},
   newProduct: {},
   setNewProduct: () => {},
+  activeTab: "",
+  setActiveTab: () => {},
+  handleSelectedTab: () => {},
 })

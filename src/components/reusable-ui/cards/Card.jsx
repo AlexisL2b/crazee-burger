@@ -17,13 +17,26 @@ export default function Card({
   isAdmin,
 }) {
   //state
-
+  const [isSelected, setIsSelected] = useState()
   //comportement
+  // const handleClick = () => {
+  //   console.log(imageSource)
+  //   console.log(priceProduct)
+  //   console.log(title)
+  // }
 
+  const handleSelected = (e) => {
+    const cardIdToSelect = e.currentTarget.id
+    const copyIsSelected = [...isSelected]
+    const selectedId = copyIsSelected.push(cardIdToSelect)
+    // const updatedIsSelected = selectedId.filter((id) => id === cardIdToSelect)
+    setIsSelected(selectedId)
+    console.log(isSelected)
+  }
   //affichage
 
   return (
-    <CardStyled className={className} id={id}>
+    <CardStyled className={className} id={id} onClick={handleSelected}>
       {isAdmin && <DeleteButton onClick={onDelete} />}
       <ImageWrapper
         imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT_PICTURE}

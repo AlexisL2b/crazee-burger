@@ -10,6 +10,11 @@ const EMPTY_PRODUCT = {
   imageSource: "",
   price: 0,
 }
+const FILLED_PRODUCT = {
+  title: "",
+  imageSource: "",
+  price: 0,
+}
 
 export default function OrderPages() {
   //state
@@ -20,8 +25,21 @@ export default function OrderPages() {
   const [productsBackup, setProductsBackup] = useState(fakeMenu3)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [activeTab, setActiveTab] = useState("add")
+  const [activeCard, setActiveCard] = useState("")
+  const [existingProduct, setExistingProduct] = useState(FILLED_PRODUCT)
 
   //comportement
+  const handleEditTabActive = (id) => {
+    if (activeCard === id) {
+      setIsOpen(true)
+      setActiveTab("edit")
+    }
+  }
+  const handleCardActive = (id) => {
+    if (id != activeCard) {
+      setActiveCard(id)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -87,6 +105,10 @@ export default function OrderPages() {
     activeTab,
     setActiveTab,
     handleSelectedTab,
+    handleEditTabActive,
+    handleCardActive,
+    existingProduct,
+    setExistingProduct,
   }
 
   //affichage

@@ -19,4 +19,8 @@ export default createContext({
   activeTab: "",
   setActiveTab: () => {},
   handleSelectedTab: () => {},
+  handleEditTabActive: () => {},
+  handleCardActive: () => {},
+  existingProduct: {},
+  setExistingProduct: () => {},
 })

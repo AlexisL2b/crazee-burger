@@ -2,10 +2,9 @@ import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import { getTextInputConfig } from "./textInputAddConfig"
 import TextInput from "../../../../../../reusable-ui/TextInput"
-import { theme } from "../../../../../../../theme"
 
-export default function InputFields({ onChange, className, newProduct }) {
-  const textInputs = getTextInputConfig({ newProduct })
+export default function InputFields({ onChange, className, product }) {
+  const textInputs = getTextInputConfig({ product })
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (

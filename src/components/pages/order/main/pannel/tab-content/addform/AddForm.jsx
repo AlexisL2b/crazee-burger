@@ -1,41 +1,32 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
 import OrderContext from "../../../../../../../context/OrderContext"
-import InputFields from "./InputFields"
-import ButtonConfirmation from "./ButtonConfirmation"
-import ImagePreview from "./ImagePreview"
+// import InputFields from "./InputFields"
+// import ButtonConfirmation from "./ButtonConfirmation"
+// import ImagePreview from "./ImagePreview"
+import Form from "../../../../../../reusable-ui/Form"
 
 export default function AddForm() {
   //state
-  const { newProduct, handleSubmit, handleChange } = useContext(OrderContext)
+  const { newProduct, handleSubmit, handleChange, activeTab } =
+    useContext(OrderContext)
 
   //affichage
 
   return (
-    <AddFormStyled action="submit" onSubmit={handleSubmit}>
-      <ImagePreview />
-      <InputFields
-        className={"input_fields"}
-        newProduct={newProduct}
-        onChange={handleChange}
+    <AddFormStyled className="AddFormContainer">
+      <Form
+        action="submit"
+        onSubmit={handleSubmit}
+        product={newProduct}
+        handleChange={handleChange}
+        index={activeTab}
       />
-      <ButtonConfirmation className={"button_confirmation"} />
     </AddFormStyled>
   )
 }
 
-const AddFormStyled = styled.form`
-  height: 90%;
-  width: 70%;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 1fr);
-
-  .input_fields {
-    grid-area: 1/2/4/2;
-    grid-row-gap: 8px;
-  }
-  .button_confirmation {
-    grid-area: 4/2/4/2;
-  }
+const AddFormStyled = styled.div`
+  height: 100%;
+  width: 100%;
 `

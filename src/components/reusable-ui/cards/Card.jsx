@@ -4,6 +4,7 @@ import { theme } from "../../../theme"
 import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
+import OrderContext from "../../../context/OrderContext"
 const EMPTY_BY_DEFAULT_PICTURE = "/assets/coming-soon.png"
 export default function Card({
   //state
@@ -17,26 +18,27 @@ export default function Card({
   isAdmin,
 }) {
   //state
-  const [isSelected, setIsSelected] = useState()
+  const { handleEditTabActive, handleCardActive } = useContext(OrderContext)
   //comportement
-  // const handleClick = () => {
-  //   console.log(imageSource)
-  //   console.log(priceProduct)
-  //   console.log(title)
-  // }
-
-  const handleSelected = (e) => {
-    const cardIdToSelect = e.currentTarget.id
-    const copyIsSelected = [...isSelected]
-    const selectedId = copyIsSelected.push(cardIdToSelect)
-    // const updatedIsSelected = selectedId.filter((id) => id === cardIdToSelect)
-    setIsSelected(selectedId)
-    console.log(isSelected)
+  const handleClick = (e) => {
+    const idCard = e.currentTarget.id
+    handleCardActive(idCard)
+    handleEditTabActive(idCard)
+    console.log(e.currentTarget)
   }
+
+  // const handleSelected = (e) => {
+  //   const cardIdToSelect = e.currentTarget.id
+  //   const copyIsSelected = [...isSelected]
+  //   const selectedId = copyIsSelected.push(cardIdToSelect)
+  //   // const updatedIsSelected = selectedId.filter((id) => id === cardIdToSelect)
+  //   setIsSelected(selectedId)
+  //   console.log(isSelected)
+  // }
   //affichage
 
   return (
-    <CardStyled className={className} id={id} onClick={handleSelected}>
+    <CardStyled className={className} id={id} onClick={handleClick}>
       {isAdmin && <DeleteButton onClick={onDelete} />}
       <ImageWrapper
         imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT_PICTURE}

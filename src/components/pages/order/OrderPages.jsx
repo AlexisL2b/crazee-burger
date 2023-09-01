@@ -99,6 +99,29 @@ export default function OrderPages() {
     console.log(existingProduct)
   }
 
+  const handleEdit = (e) => {
+    const cardId = e.currentTarget.id
+    const name = e.target.name
+    const newValue = e.target.value
+
+    setExistingProduct({ ...existingProduct, [name]: newValue })
+    const newProductEdited = {
+      id: cardId,
+      ...existingProduct,
+    }
+
+    const selectedProduct = products.find(
+      (product) => product.id === newProductEdited.id
+    )
+
+    if (selectedProduct) {
+      selectedProduct.id = newProductEdited.id
+      selectedProduct.imageSource = newProductEdited.imageSource
+      selectedProduct.title = newProductEdited.title
+      selectedProduct.price = newProductEdited.price
+    }
+  }
+
   const orderContextValue = {
     isAdmin,
     setIsAdmin,
@@ -122,6 +145,7 @@ export default function OrderPages() {
     existingProduct,
     setExistingProduct,
     handleProductSelect,
+    handleEdit,
   }
 
   //affichage

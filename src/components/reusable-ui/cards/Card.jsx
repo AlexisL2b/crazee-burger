@@ -21,7 +21,12 @@ const Card = React.forwardRef(
     ref
   ) => {
     return (
-      <CardStyled className={className} id={id} onClick={onClick} ref={ref}>
+      <CardStyled
+        className={className}
+        id={id}
+        onClick={isAdmin ? onClick : null}
+        ref={ref}
+      >
         {isAdmin && <DeleteButton onClick={onDelete} />}
         <ImageWrapper
           name={"image_wrapper"}

@@ -19,7 +19,7 @@ export default function AddForm() {
         action="submit"
         onSubmit={handleSubmit}
         product={newProduct}
-        handleChange={handleChange}
+        onChange={handleChange}
         index={activeTab}
       />
     </AddFormStyled>

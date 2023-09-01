@@ -4,20 +4,14 @@ import ImagePreview from "../pages/order/main/pannel/tab-content/addform/ImagePr
 import InputFields from "../pages/order/main/pannel/tab-content/addform/InputFields"
 import ButtonConfirmation from "../pages/order/main/pannel/tab-content/addform/ButtonConfirmation"
 
-export default function Form({
-  action,
-  onSubmit,
-  product,
-  handleChange,
-  index,
-}) {
+export default function Form({ action, onSubmit, product, onChange, index }) {
   return (
     <FormStyled action={action} onSubmit={onSubmit}>
       <ImagePreview />
       <InputFields
         className={"input_fields"}
         product={product}
-        onChange={handleChange}
+        onChange={onChange}
         index={index}
       />
       {index === "add" ? (

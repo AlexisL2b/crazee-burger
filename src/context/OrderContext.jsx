@@ -24,4 +24,5 @@ export default createContext({
   existingProduct: {},
   setExistingProduct: () => {},
   handleProductSelect: () => {},
+  handleEdit: () => {},
 })

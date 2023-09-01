@@ -9,15 +9,16 @@ export default function EditForm() {
   //comportement
 
   //render
-  const { existingProduct, handleChange, activeTab, activeCard } =
+  const { existingProduct, handleEdit, activeTab, activeCard } =
     useContext(OrderContext)
   return (
     <EditFormStyled>
       {activeCard != "" ? (
         <Form
+          action={"submit"}
           product={existingProduct}
           index={activeTab}
-          handleChange={handleChange}
+          onChange={handleEdit}
         />
       ) : (
         <h1>Cliquer sur un produit pour le modifier</h1>

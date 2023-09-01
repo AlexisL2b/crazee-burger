@@ -4,12 +4,12 @@ import { formatMontant } from "../../../utils/maths"
 import { theme } from "../../../theme"
 import PrimaryButton from "../PrimaryButton"
 
-export default function Desc({ priceProduct, title }) /*propsDrilling*/ {
+export default function Desc({ priceProduct, title, name }) /*propsDrilling*/ {
   //State
 
   //comportement
   return (
-    <DescStyled>
+    <DescStyled name={name}>
       <div className="title">{title}</div>
       <div className="infos">
         <div className="left-description">{formatMontant(priceProduct)} €</div>

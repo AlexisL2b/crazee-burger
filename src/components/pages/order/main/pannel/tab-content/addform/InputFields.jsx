@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { styled } from "styled-components"
 import { getTextInputConfig } from "./textInputAddConfig"
 import TextInput from "../../../../../../reusable-ui/TextInput"
 
 export default function InputFields({ onChange, className, product }) {
-  const textInputs = getTextInputConfig({ product })
+  const inputTitleRef = useRef()
+  const textInputs = getTextInputConfig({ product, inputTitleRef })
+
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (
@@ -18,6 +20,7 @@ export default function InputFields({ onChange, className, product }) {
           onChange={onChange}
           value={input.value ? input.value : ""}
           version={input.version}
+          ref={input.ref}
         />
       ))}
     </InputFieldsStyled>

@@ -2,7 +2,7 @@ import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 
-export const getTextInputConfig = ({ product }) => [
+export const getTextInputConfig = ({ product, inputTitleRef }) => [
   {
     id: 1,
     icon: <FaHamburger />,
@@ -11,6 +11,7 @@ export const getTextInputConfig = ({ product }) => [
     placeholder: "Nom du produit (ex: Super Burger)",
     value: product.title,
     version: "minimalist",
+    ref: inputTitleRef,
   },
   {
     id: 2,

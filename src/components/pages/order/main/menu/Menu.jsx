@@ -6,7 +6,8 @@ import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
 
 export default function Menu() {
-  const { products, isAdmin, handleDelete } = useContext(OrderContext)
+  const { products, isAdmin, handleDelete, handleProductSelect } =
+    useContext(OrderContext)
 
   return (
     <MenuStyled>
@@ -21,6 +22,7 @@ export default function Menu() {
             priceProduct={product.price}
             onDelete={handleDelete}
             isAdmin={isAdmin}
+            onClick={handleProductSelect}
           />
         ))
       ) : (

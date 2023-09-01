@@ -86,6 +86,18 @@ export default function OrderPages() {
       console.log(isOpen)
     }
   }
+  const handleProductSelect = (e) => {
+    const cardId = e.currentTarget.id
+
+    handleCardActive(cardId)
+    handleEditTabActive(cardId)
+
+    const selectedProduct = products.find((product) => product.id == cardId)
+    if (selectedProduct) {
+      setExistingProduct(selectedProduct)
+    }
+    console.log(existingProduct)
+  }
 
   const orderContextValue = {
     isAdmin,
@@ -109,6 +121,7 @@ export default function OrderPages() {
     handleCardActive,
     existingProduct,
     setExistingProduct,
+    handleProductSelect,
   }
 
   //affichage

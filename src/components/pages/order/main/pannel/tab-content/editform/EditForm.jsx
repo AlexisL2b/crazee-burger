@@ -9,13 +9,13 @@ export default function EditForm() {
   //comportement
 
   //render
-  const { newProduct, handleChange, activeTab, activeCard } =
+  const { existingProduct, handleChange, activeTab, activeCard } =
     useContext(OrderContext)
   return (
     <EditFormStyled>
       {activeCard != "" ? (
         <Form
-          product={newProduct}
+          product={existingProduct}
           index={activeTab}
           handleChange={handleChange}
         />
@@ -26,7 +26,7 @@ export default function EditForm() {
   )
 }
 
-const EditFormStyled = styled.form`
+const EditFormStyled = styled.div`
   height: 100%;
   width: 100%;
 `

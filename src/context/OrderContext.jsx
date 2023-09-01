@@ -23,4 +23,5 @@ export default createContext({
   handleCardActive: () => {},
   existingProduct: {},
   setExistingProduct: () => {},
+  handleProductSelect: () => {},
 })

@@ -6,18 +6,27 @@ import { theme } from "../../../../../../../theme"
 const EMPTY_NO_IMAGE = "/assets/no_image.png"
 
 export default function ImagePreview() {
-  const { newProduct } = useContext(OrderContext)
+  const { newProduct, existingProduct, activeTab } = useContext(OrderContext)
 
   return (
     <ImagePreviewStyled>
-      {" "}
-      {newProduct.imageSource ? (
+      {activeTab === "add" ? (
+        newProduct.imageSource ? (
+          <ImageWrapper
+            imageSource={newProduct.imageSource}
+            className={"add_picture"}
+          />
+        ) : (
+          <ImageWrapper
+            imageSource={EMPTY_NO_IMAGE}
+            className={"add_picture"}
+          />
+        )
+      ) : (
         <ImageWrapper
-          imageSource={newProduct.imageSource}
+          imageSource={existingProduct.imageSource}
           className={"add_picture"}
         />
-      ) : (
-        <ImageWrapper imageSource={EMPTY_NO_IMAGE} className={"add_picture"} />
       )}
     </ImagePreviewStyled>
   )

@@ -2,11 +2,16 @@ import React, { useContext, useRef, useState } from "react"
 import { styled } from "styled-components"
 import { getTextInputConfig } from "./textInputAddConfig"
 import TextInput from "../../../../../../reusable-ui/TextInput"
+import OrderContext from "../../../../../../../context/OrderContext"
+import RefContext from "../../../../../../../context/RefContext"
 
 export default function InputFields({ onChange, className, product }) {
-  const inputTitleRef = useRef()
-  const textInputs = getTextInputConfig({ product, inputTitleRef })
+  const { inputRefTitle } = useContext(RefContext)
+  const textInputs = getTextInputConfig({ product, inputRefTitle })
+  // const { existingProduct, handleEdit, activeTab, confirmActive } =
+  //   useContext(OrderContext)
 
+  console.log()
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (

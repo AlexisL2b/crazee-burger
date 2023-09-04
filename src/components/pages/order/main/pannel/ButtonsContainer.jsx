@@ -14,15 +14,6 @@ export default function ButtonsContainer() {
   const { isOpen, activeTab, handleSelectedTab } = useContext(OrderContext)
   const buttons = getPanelButtonsConfig(isOpen)
 
-  // const handleSelectedButton = (selectedButton) => {
-  //   if (selectedButton != "chevron") {
-  //     setIsOpen(true)
-  //     setActiveTab(selectedButton)
-  //   } else {
-  //     setIsOpen(!isOpen)
-  //     console.log(isOpen)
-  //   }
-  // }
   return (
     <ButtonsContainerStyled>
       {buttons.map((button) => (

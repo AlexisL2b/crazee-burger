@@ -4,11 +4,20 @@ import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
 import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
+import RefContext from "../../../../../context/RefContext"
 
 export default function Menu() {
   const { products, isAdmin, handleDelete, handleProductSelect } =
     useContext(OrderContext)
+  const { inputRefTitle } = useContext(RefContext)
 
+  const handleFocus = (e) => {
+    handleProductSelect(e)
+    console.log(inputRefTitle)
+    // if (inputRefTitle.current) {
+    //   inputRefTitle.current.focus
+    // }
+  }
   return (
     <MenuStyled>
       {products.length != 0 ? (
@@ -22,7 +31,7 @@ export default function Menu() {
             priceProduct={product.price}
             onDelete={handleDelete}
             isAdmin={isAdmin}
-            onClick={handleProductSelect}
+            onClick={handleFocus}
           />
         ))
       ) : (

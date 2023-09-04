@@ -25,4 +25,8 @@ export default createContext({
   setExistingProduct: () => {},
   handleProductSelect: () => {},
   handleEdit: () => {},
+  confirmActive: true,
+  setConfirmActive: () => {},
+  handleFocus: () => {},
+  inputRef: null,
 })

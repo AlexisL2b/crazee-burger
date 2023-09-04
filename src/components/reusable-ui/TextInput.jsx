@@ -9,7 +9,7 @@ const TextInput = React.forwardRef(
   ) => {
     //state
     //comportement
-
+    console.log()
     return (
       <TextInputStyled className={className} version={version}>
         <div className="icon">{Icon && Icon}</div>

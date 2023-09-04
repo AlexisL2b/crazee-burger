@@ -1,7 +1,8 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import OrderContext from "../../../../../../../context/OrderContext"
 import Form from "../../../../../../reusable-ui/Form"
+import HintMessage from "../../HintMessage"
 
 export default function EditForm() {
   //State
@@ -9,11 +10,12 @@ export default function EditForm() {
   //comportement
 
   //render
-  const { existingProduct, handleEdit, activeTab, activeCard } =
+  const { existingProduct, handleEdit, activeTab, confirmActive } =
     useContext(OrderContext)
+
   return (
     <EditFormStyled>
-      {activeCard != "" ? (
+      {confirmActive ? (
         <Form
           action={"submit"}
           product={existingProduct}
@@ -21,7 +23,7 @@ export default function EditForm() {
           onChange={handleEdit}
         />
       ) : (
-        <h1>Cliquer sur un produit pour le modifier</h1>
+        <HintMessage />
       )}
     </EditFormStyled>
   )

@@ -2,19 +2,10 @@ import styled from "styled-components"
 import Navbar from "./navbar/NavBar"
 import Main from "./main/Main"
 import { theme } from "../../../theme"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu2, fakeMenu3 } from "../../fakeData/fakeMenu"
-const EMPTY_PRODUCT = {
-  title: "",
-  imageSource: "",
-  price: 0,
-}
-const FILLED_PRODUCT = {
-  title: "",
-  imageSource: "",
-  price: 0,
-}
+import { EMPTY_PRODUCT } from "../../../enums/product"
 
 export default function OrderPages() {
   //state
@@ -25,19 +16,16 @@ export default function OrderPages() {
   const [productsBackup, setProductsBackup] = useState(fakeMenu3)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [activeTab, setActiveTab] = useState("add")
-  const [activeCard, setActiveCard] = useState("")
-  const [existingProduct, setExistingProduct] = useState(FILLED_PRODUCT)
+  const [activeCard, setActiveCard] = useState("none")
+  const [existingProduct, setExistingProduct] = useState(EMPTY_PRODUCT)
+  const [confirmActive, setConfirmActive] = useState(false)
+  const inputRef = useRef(null)
 
   //comportement
   const handleEditTabActive = (id) => {
     if (activeCard === id) {
       setIsOpen(true)
       setActiveTab("edit")
-    }
-  }
-  const handleCardActive = (id) => {
-    if (id != activeCard) {
-      setActiveCard(id)
     }
   }
 
@@ -56,6 +44,7 @@ export default function OrderPages() {
     const name = e.target.name
     const newValue = e.target.value
     setNewProduct({ ...newProduct, [name]: newValue })
+    console.log(activeCard)
   }
 
   const handleGenerate = () => {
@@ -86,28 +75,35 @@ export default function OrderPages() {
       console.log(isOpen)
     }
   }
+  const handleCardActive = (id) => {
+    if (id != activeCard) {
+      setActiveCard(id)
+      setIsOpen(true)
+      setActiveTab("edit")
+    }
+  }
   const handleProductSelect = (e) => {
     const cardId = e.currentTarget.id
 
     handleCardActive(cardId)
-    handleEditTabActive(cardId)
 
     const selectedProduct = products.find((product) => product.id == cardId)
     if (selectedProduct) {
       setExistingProduct(selectedProduct)
+      setConfirmActive(true)
     }
-    console.log(existingProduct)
   }
-
   const handleEdit = (e) => {
     const cardId = e.currentTarget.id
     const name = e.target.name
     const newValue = e.target.value
 
-    setExistingProduct({ ...existingProduct, [name]: newValue })
+    const updatedProduct = { ...existingProduct, [name]: newValue }
+    setExistingProduct(updatedProduct)
+
     const newProductEdited = {
       id: cardId,
-      ...existingProduct,
+      ...updatedProduct,
     }
 
     const selectedProduct = products.find(
@@ -115,11 +111,10 @@ export default function OrderPages() {
     )
 
     if (selectedProduct) {
-      selectedProduct.id = newProductEdited.id
-      selectedProduct.imageSource = newProductEdited.imageSource
-      selectedProduct.title = newProductEdited.title
-      selectedProduct.price = newProductEdited.price
+      Object.assign(selectedProduct, newProductEdited)
     }
+
+    console.log(selectedProduct)
   }
 
   const orderContextValue = {
@@ -146,6 +141,9 @@ export default function OrderPages() {
     setExistingProduct,
     handleProductSelect,
     handleEdit,
+    confirmActive,
+    setConfirmActive,
+    inputRef,
   }
 
   //affichage

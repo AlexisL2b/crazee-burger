@@ -3,8 +3,9 @@ import { theme } from "../../../../theme"
 import Basket from "./menu/Basket"
 import Menu from "./menu/Menu"
 import Pannel from "./pannel/Panel"
-import { useContext, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import OrderContext from "../../../../context/OrderContext"
+import RefContext from "../../../../context/RefContext"
 
 export default function Main() {
   //state
@@ -12,17 +13,19 @@ export default function Main() {
   // const [activeTab, setActiveTab] = useState("add")
   // const contextActiveTab = { activeTab, setActiveTab }
   const { isAdmin } = useContext(OrderContext)
-
+  const inputRefTitle = useRef()
   //comportement
 
   return (
     <MainStyled>
-      {/* <Basket /> */}
-      <div className="menu_and_pannel">
-        <Menu />
+      <RefContext.Provider value={inputRefTitle}>
+        {/* <Basket /> */}
+        <div className="menu_and_pannel">
+          <Menu />
 
-        {isAdmin ? <Pannel /> : null}
-      </div>
+          {isAdmin ? <Pannel /> : null}
+        </div>
+      </RefContext.Provider>
     </MainStyled>
   )
 }

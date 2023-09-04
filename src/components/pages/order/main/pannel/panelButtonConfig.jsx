@@ -3,6 +3,7 @@ import { MdModeEditOutline } from "react-icons/md"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import AddForm from "./tab-content/addform/AddForm"
 import EditForm from "./tab-content/editform/EditForm"
+import HintMessage from "./HintMessage"
 
 export const getPanelButtonsConfig = (isOpen) => [
   {

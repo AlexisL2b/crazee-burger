@@ -4,19 +4,19 @@ import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
 import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
-import RefContext from "../../../../../context/RefContext"
 
 export default function Menu() {
-  const { products, isAdmin, handleDelete, handleProductSelect } =
+  const { products, isAdmin, handleDelete, handleProductSelect, inputRef } =
     useContext(OrderContext)
-  const { inputRefTitle } = useContext(RefContext)
 
   const handleFocus = (e) => {
-    handleProductSelect(e)
-    console.log(inputRefTitle)
-    // if (inputRefTitle.current) {
-    //   inputRefTitle.current.focus
-    // }
+    if (e.target.tagName !== "BUTTON") {
+      console.log("ok")
+      handleProductSelect(e)
+      if (inputRef.current) {
+        inputRef.current.focus()
+      }
+    }
   }
   return (
     <MenuStyled>
@@ -31,7 +31,10 @@ export default function Menu() {
             priceProduct={product.price}
             onDelete={handleDelete}
             isAdmin={isAdmin}
-            onClick={handleFocus}
+            onClick={(e) => {
+              handleFocus(e)
+              e.stopPropagation()
+            }}
           />
         ))
       ) : (

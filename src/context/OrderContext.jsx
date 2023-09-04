@@ -28,5 +28,5 @@ export default createContext({
   confirmActive: true,
   setConfirmActive: () => {},
   handleFocus: () => {},
-  inputRef: null,
+  inputRef: {},
 })

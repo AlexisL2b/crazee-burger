@@ -18,14 +18,12 @@ export default function Main() {
 
   return (
     <MainStyled>
-      <RefContext.Provider value={inputRefTitle}>
-        {/* <Basket /> */}
-        <div className="menu_and_pannel">
-          <Menu />
+      {/* <Basket /> */}
+      <div className="menu_and_pannel">
+        <Menu />
 
-          {isAdmin ? <Pannel /> : null}
-        </div>
-      </RefContext.Provider>
+        {isAdmin ? <Pannel /> : null}
+      </div>
     </MainStyled>
   )
 }

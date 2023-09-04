@@ -6,10 +6,8 @@ import OrderContext from "../../../../../../../context/OrderContext"
 import RefContext from "../../../../../../../context/RefContext"
 
 export default function InputFields({ onChange, className, product }) {
-  const { inputRefTitle } = useContext(RefContext)
-  const textInputs = getTextInputConfig({ product, inputRefTitle })
-  // const { existingProduct, handleEdit, activeTab, confirmActive } =
-  //   useContext(OrderContext)
+  const textInputs = getTextInputConfig({ product })
+  const { inputRef } = useContext(OrderContext)
 
   console.log()
   return (
@@ -25,7 +23,7 @@ export default function InputFields({ onChange, className, product }) {
           onChange={onChange}
           value={input.value ? input.value : ""}
           version={input.version}
-          ref={input.ref}
+          ref={input.name === "title" ? inputRef : null}
         />
       ))}
     </InputFieldsStyled>

@@ -6,6 +6,7 @@ import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu2, fakeMenu3 } from "../../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product"
+import { getDeepClone } from "../../../utils/windows"
 
 export default function OrderPages() {
   //state
@@ -19,8 +20,7 @@ export default function OrderPages() {
   const [activeCard, setActiveCard] = useState("none")
   const [existingProduct, setExistingProduct] = useState(EMPTY_PRODUCT)
   const [confirmActive, setConfirmActive] = useState(false)
-  const inputRef = useRef(null)
-
+  const inputRef = useRef()
   //comportement
   const handleEditTabActive = (id) => {
     if (activeCard === id) {
@@ -52,7 +52,7 @@ export default function OrderPages() {
   }
 
   const handleAdd = (newProduct) => {
-    const copyProducts = [...products]
+    const copyProducts = getDeepClone(products)
 
     const productsUpdated = [newProduct, ...copyProducts]
 
@@ -61,7 +61,8 @@ export default function OrderPages() {
   const handleDelete = (e) => {
     //L'id du produit
     const idProductToDelete = e.currentTarget.parentElement.id
-    const productFilter = products.filter(
+    const copyProducts = getDeepClone(products)
+    const productFilter = copyProducts.filter(
       (product) => product.id != idProductToDelete
     )
     setProducts(productFilter)

@@ -12,14 +12,14 @@ export default function Menu() {
     handleDelete,
     handleProductSelect,
     inputRef,
-    activeCard,
+    handleSwitchSelect,
+    selectedCardId,
   } = useContext(OrderContext)
 
-  const [selectedCardId, setSelectedCardId] = useState(null)
   const handleFocus = (id, e) => {
     if (e.target.tagName !== "BUTTON") {
-      setSelectedCardId((prevId) => (prevId !== id ? id : null))
       handleProductSelect(e)
+      handleSwitchSelect(id)
       if (inputRef.current) {
         inputRef.current.focus()
       }

@@ -31,4 +31,5 @@ export default createContext({
   inputRef: {},
   selectedCardId: null,
   setSelectedCardId: () => {},
+  handleSwitchSelect: () => {},
 })

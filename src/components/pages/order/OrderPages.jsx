@@ -41,7 +41,10 @@ export default function OrderPages() {
     handleAdd(newProductToAdd)
     setIsVisible(true)
     setNewProduct(EMPTY_PRODUCT)
-    console.log(products)
+    const timer = setTimeout(() => {
+      setIsVisible(false)
+    }, 2000)
+    return () => clearTimeout(timer)
   }
   const handleChange = (e) => {
     const name = e.target.name
@@ -120,6 +123,9 @@ export default function OrderPages() {
 
     console.log(selectedProduct)
   }
+  const handleSwitchSelect = (id) => {
+    setSelectedCardId((prevId) => (prevId !== id ? id : null))
+  }
 
   const orderContextValue = {
     isAdmin,
@@ -151,6 +157,7 @@ export default function OrderPages() {
     activeCard,
     selectedCardId,
     setSelectedCardId,
+    handleSwitchSelect,
   }
 
   //affichage

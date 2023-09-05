@@ -3,6 +3,7 @@ import { styled } from "styled-components"
 import ImagePreview from "../pages/order/main/pannel/tab-content/addform/ImagePreview"
 import InputFields from "../pages/order/main/pannel/tab-content/addform/InputFields"
 import ButtonConfirmation from "../pages/order/main/pannel/tab-content/addform/ButtonConfirmation"
+import Message from "../pages/order/main/pannel/Message"
 
 export default function Form({ action, onSubmit, product, onChange, index }) {
   return (
@@ -17,7 +18,13 @@ export default function Form({ action, onSubmit, product, onChange, index }) {
       {index === "add" ? (
         <ButtonConfirmation className={"button_confirmation"} />
       ) : (
-        ""
+        <Message
+          label={
+            "Cliquer sur un produit du menu pour le modifier en temps réel"
+          }
+          version="smallPrimary"
+          className="message"
+        />
       )}
     </FormStyled>
   )
@@ -36,5 +43,8 @@ const FormStyled = styled.form`
 
   .button_confirmation {
     grid-area: 4/2/4/2;
+  }
+  .message {
+    grid-area: 2/2/-1/-1;
   }
 `

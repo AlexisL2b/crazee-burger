@@ -1,9 +1,9 @@
 import React from "react"
 import { styled } from "styled-components"
-import ImagePreview from "../pages/order/main/pannel/tab-content/addform/ImagePreview"
-import InputFields from "../pages/order/main/pannel/tab-content/addform/InputFields"
-import ButtonConfirmation from "../pages/order/main/pannel/tab-content/addform/ButtonConfirmation"
-import Message from "../pages/order/main/pannel/Message"
+import InputFields from "./InputFields"
+import ButtonConfirmation from "./ButtonConfirmation"
+import Message from "../../pages/order/main/pannel/Message"
+import ImagePreview from "./ImagePreview"
 
 export default function Form({
   action,

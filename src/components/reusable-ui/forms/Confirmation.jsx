@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react"
 import { styled } from "styled-components"
 import { FiCheckCircle } from "react-icons/fi"
-import { theme } from "../../../../../../../theme"
-import OrderContext from "../../../../../../../context/OrderContext"
-import Message from "../../Message"
+import { theme } from "../../../theme"
+import OrderContext from "../../../context/OrderContext"
+import Message from "../../pages/order/main/pannel/Message"
 
 export default function Confirmation() {
   const { isVisible } = useContext(OrderContext)

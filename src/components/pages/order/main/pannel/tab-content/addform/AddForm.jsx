@@ -1,10 +1,7 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
 import OrderContext from "../../../../../../../context/OrderContext"
-// import InputFields from "./InputFields"
-// import ButtonConfirmation from "./ButtonConfirmation"
-// import ImagePreview from "./ImagePreview"
-import Form from "../../../../../../reusable-ui/Form"
+import Form from "../../../../../../reusable-ui/forms/Form"
 
 export default function AddForm() {
   //state

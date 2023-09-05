@@ -1,5 +1,5 @@
 import React from "react"
-import PrimaryButton from "../../../../../../reusable-ui/PrimaryButton"
+import PrimaryButton from "../PrimaryButton"
 import Confirmation from "./Confirmation"
 import { styled } from "styled-components"
 

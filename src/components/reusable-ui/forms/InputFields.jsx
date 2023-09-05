@@ -1,9 +1,8 @@
 import React, { useContext, useRef, useState } from "react"
 import { styled } from "styled-components"
 import { getTextInputConfig } from "./textInputAddConfig"
-import TextInput from "../../../../../../reusable-ui/TextInput"
-import OrderContext from "../../../../../../../context/OrderContext"
-import RefContext from "../../../../../../../context/RefContext"
+import TextInput from "../TextInput"
+import OrderContext from "../../../context/OrderContext"
 
 export default function InputFields({ onChange, className, product }) {
   const textInputs = getTextInputConfig({ product })

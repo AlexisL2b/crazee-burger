@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import OrderContext from "../../../../../../../context/OrderContext"
-import Form from "../../../../../../reusable-ui/Form"
 import Message from "../../Message"
 import { HiCursorClick } from "react-icons/hi"
+import Form from "../../../../../../reusable-ui/forms/Form"
 
 export default function EditForm() {
   //State

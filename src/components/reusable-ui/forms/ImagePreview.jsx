@@ -1,8 +1,7 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
-import ImageWrapper from "../../../../../../reusable-ui/cards/ImageWrapper"
-import OrderContext from "../../../../../../../context/OrderContext"
-import { theme } from "../../../../../../../theme"
+import ImageWrapper from "../cards/ImageWrapper"
+import OrderContext from "../../../context/OrderContext"
 const EMPTY_NO_IMAGE = "/assets/no_image.png"
 
 export default function ImagePreview() {

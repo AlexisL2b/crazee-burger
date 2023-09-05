@@ -5,16 +5,9 @@ import ButtonConfirmation from "./ButtonConfirmation"
 import Message from "../../pages/order/main/pannel/Message"
 import ImagePreview from "./ImagePreview"
 
-export default function Form({
-  action,
-  onSubmit,
-  product,
-  onChange,
-  index,
-  className,
-}) {
+export default function Form({ action, onSubmit, product, onChange, index }) {
   return (
-    <FormStyled action={action} onSubmit={onSubmit} className={className}>
+    <FormStyled action={action} onSubmit={onSubmit}>
       <ImagePreview />
       <InputFields
         className={"input_fields"}

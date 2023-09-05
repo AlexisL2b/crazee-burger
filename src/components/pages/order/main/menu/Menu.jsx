@@ -42,7 +42,9 @@ export default function Menu() {
               handleFocus(product.id, e)
             }}
             version={
-              selectedCardId === product.id ? "selectStyled" : "normalStyled"
+              selectedCardId === product.id && isAdmin
+                ? "selectStyled"
+                : "normalStyled"
             }
           />
         ))

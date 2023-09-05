@@ -4,7 +4,7 @@ import { theme } from "../../../theme"
 import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
-const EMPTY_BY_DEFAULT_PICTURE = "/assets/coming-soon.png"
+import { EMPTY_BY_DEFAULT_PICTURE } from "../../../enums/product"
 
 export default function Card({
   id,

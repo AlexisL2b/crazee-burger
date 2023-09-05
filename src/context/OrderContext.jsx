@@ -29,4 +29,6 @@ export default createContext({
   setConfirmActive: () => {},
   handleFocus: () => {},
   inputRef: {},
+  selectedCardId: null,
+  setSelectedCardId: () => {},
 })

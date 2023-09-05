@@ -10,6 +10,8 @@ import { getDeepClone } from "../../../utils/windows"
 
 export default function OrderPages() {
   //state
+  const [selectedCardId, setSelectedCardId] = useState(null)
+
   const [isAdmin, setIsAdmin] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
   const [products, setProducts] = useState(fakeMenu2)
@@ -17,9 +19,10 @@ export default function OrderPages() {
   const [productsBackup, setProductsBackup] = useState(fakeMenu3)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [activeTab, setActiveTab] = useState("add")
-  const [activeCard, setActiveCard] = useState("none")
+  const [activeCard, setActiveCard] = useState("")
   const [existingProduct, setExistingProduct] = useState(EMPTY_PRODUCT)
   const [confirmActive, setConfirmActive] = useState(false)
+
   const inputRef = useRef()
   //comportement
   const handleEditTabActive = (id) => {
@@ -145,6 +148,9 @@ export default function OrderPages() {
     confirmActive,
     setConfirmActive,
     inputRef,
+    activeCard,
+    selectedCardId,
+    setSelectedCardId,
   }
 
   //affichage

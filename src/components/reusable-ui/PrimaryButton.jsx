@@ -48,8 +48,15 @@ const smallPrimary = css`
   font-size: ${theme.fonts.size.XS};
   padding: 12px 26px;
 `
+const smallSecondary = css`
+  font-size: ${theme.fonts.size.XS};
+  padding: 12px 26px;
+  background-color: ${theme.colors.white};
+  color: ${theme.colors.primary};
+`
 
 const extraStyle = {
   success,
   smallPrimary,
+  smallSecondary,
 }

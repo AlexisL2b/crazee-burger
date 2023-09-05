@@ -1,22 +1,43 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { formatMontant } from "../../../utils/maths"
 import { theme } from "../../../theme"
 import PrimaryButton from "../PrimaryButton"
+import OrderContext from "../../../context/OrderContext"
+import Price from "./Price"
 
-export default function Desc({ priceProduct, title, name }) /*propsDrilling*/ {
+export default function Desc({
+  priceProduct,
+  title,
+  name,
+  cardVersion,
+}) /*propsDrilling*/ {
   //State
+
+  const { activeCard } = useContext(OrderContext)
 
   //comportement
   return (
     <DescStyled name={name}>
       <div className="title">{title}</div>
       <div className="infos">
-        <div className="left-description">{formatMontant(priceProduct)} €</div>
+        <div className="left-description">
+          <Price
+            priceProduct={priceProduct}
+            version={
+              cardVersion === "selectStyled"
+                ? "secondaryStyled"
+                : "primaryStyled"
+            }
+          />
+        </div>
+
         <div className="right-description">
           <PrimaryButton
             label="Ajouter"
-            version="smallPrimary"
+            version={
+              cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
+            }
             className={"button"}
           />
         </div>
@@ -49,22 +70,16 @@ const DescStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    .left-description {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      font-weight: ${theme.fonts.weights.medium};
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-weight: ${theme.fonts.weights.medium};
-      color: ${theme.colors.primary};
-    }
-
     .right-description {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+      display: grid;
+      align-items: center; /* Verticalement */
+      justify-content: center;
+      font-size: ${theme.fonts.size.P1};
+    }
+    .left-description {
+      display: grid;
+      align-items: center; /* Verticalement */
+      justify-content: center;
       font-size: ${theme.fonts.size.P1};
     }
   }

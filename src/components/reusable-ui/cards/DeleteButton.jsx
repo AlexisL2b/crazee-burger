@@ -1,10 +1,10 @@
 import React from "react"
 import { TiDelete } from "react-icons/ti"
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 import { theme } from "../../../theme"
-export default function DeleteButton({ onClick }) {
+export default function DeleteButton({ onClick, version = "primaryStyled" }) {
   return (
-    <DeleteButtonStyled onClick={onClick}>
+    <DeleteButtonStyled onClick={onClick} version={version}>
       <TiDelete />
     </DeleteButtonStyled>
   )
@@ -14,7 +14,6 @@ const DeleteButtonStyled = styled.div`
   position: absolute;
   font-size: 30px;
   right: 0;
-  color: ${theme.colors.primary};
   cursor: pointer;
 
   &:hover {
@@ -23,4 +22,17 @@ const DeleteButtonStyled = styled.div`
   &:active {
     color: ${theme.colors.primary};
   }
+
+  ${({ version }) => extraStyle[version]}
 `
+
+const primaryStyled = css`
+  color: ${theme.colors.primary};
+`
+const secondaryStyled = css`
+  color: ${theme.colors.white};
+`
+const extraStyle = {
+  primaryStyled,
+  secondaryStyled,
+}

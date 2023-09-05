@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
@@ -6,12 +6,19 @@ import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
 
 export default function Menu() {
-  const { products, isAdmin, handleDelete, handleProductSelect, inputRef } =
-    useContext(OrderContext)
+  const {
+    products,
+    isAdmin,
+    handleDelete,
+    handleProductSelect,
+    inputRef,
+    activeCard,
+  } = useContext(OrderContext)
 
-  const handleFocus = (e) => {
+  const [selectedCardId, setSelectedCardId] = useState(null)
+  const handleFocus = (id, e) => {
     if (e.target.tagName !== "BUTTON") {
-      console.log("ok")
+      setSelectedCardId((prevId) => (prevId !== id ? id : null))
       handleProductSelect(e)
       if (inputRef.current) {
         inputRef.current.focus()
@@ -32,9 +39,12 @@ export default function Menu() {
             onDelete={handleDelete}
             isAdmin={isAdmin}
             onClick={(e) => {
-              handleFocus(e)
+              handleFocus(product.id, e)
               e.stopPropagation()
             }}
+            version={
+              selectedCardId === product.id ? "selectStyled" : "normalStyled"
+            }
           />
         ))
       ) : (

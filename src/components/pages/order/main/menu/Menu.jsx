@@ -40,7 +40,6 @@ export default function Menu() {
             isAdmin={isAdmin}
             onClick={(e) => {
               handleFocus(product.id, e)
-              e.stopPropagation()
             }}
             version={
               selectedCardId === product.id ? "selectStyled" : "normalStyled"

@@ -5,9 +5,16 @@ import InputFields from "../pages/order/main/pannel/tab-content/addform/InputFie
 import ButtonConfirmation from "../pages/order/main/pannel/tab-content/addform/ButtonConfirmation"
 import Message from "../pages/order/main/pannel/Message"
 
-export default function Form({ action, onSubmit, product, onChange, index }) {
+export default function Form({
+  action,
+  onSubmit,
+  product,
+  onChange,
+  index,
+  className,
+}) {
   return (
-    <FormStyled action={action} onSubmit={onSubmit}>
+    <FormStyled action={action} onSubmit={onSubmit} className={className}>
       <ImagePreview />
       <InputFields
         className={"input_fields"}

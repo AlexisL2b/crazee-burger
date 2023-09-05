@@ -19,18 +19,19 @@ export default function OrderPages() {
   const [productsBackup, setProductsBackup] = useState(fakeMenu3)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [activeTab, setActiveTab] = useState("add")
-  const [activeCard, setActiveCard] = useState("")
   const [existingProduct, setExistingProduct] = useState(EMPTY_PRODUCT)
-  const [confirmActive, setConfirmActive] = useState(false)
+  // const [confirmActive, setConfirmActive] = useState(false)
 
   const inputRef = useRef()
   //comportement
-  const handleEditTabActive = (id) => {
-    if (activeCard === id) {
-      setIsOpen(true)
-      setActiveTab("edit")
-    }
-  }
+  // const handleEditTabActive = (id) => {
+  //   if (activeCard === id) {
+  //     setIsOpen(true)
+  //     setActiveTab("edit")
+  //   }
+  //   //a déplacer dans la fonctionner qui selectionne un produit
+  // }
+  //rendre visible ou non le form et pas faire du conditionnal renderiu
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -82,22 +83,15 @@ export default function OrderPages() {
       console.log(isOpen)
     }
   }
-  const handleCardActive = (id) => {
-    if (id != activeCard) {
-      setActiveCard(id)
-      setIsOpen(true)
-      setActiveTab("edit")
-    }
-  }
+
   const handleProductSelect = (e) => {
     const cardId = e.currentTarget.id
-
-    handleCardActive(cardId)
+    setIsOpen(true)
+    setActiveTab("edit")
 
     const selectedProduct = products.find((product) => product.id == cardId)
     if (selectedProduct) {
       setExistingProduct(selectedProduct)
-      setConfirmActive(true)
     }
   }
   const handleEdit = (e) => {
@@ -145,16 +139,11 @@ export default function OrderPages() {
     activeTab,
     setActiveTab,
     handleSelectedTab,
-    handleEditTabActive,
-    handleCardActive,
     existingProduct,
     setExistingProduct,
     handleProductSelect,
     handleEdit,
-    confirmActive,
-    setConfirmActive,
     inputRef,
-    activeCard,
     selectedCardId,
     setSelectedCardId,
     handleSwitchSelect,

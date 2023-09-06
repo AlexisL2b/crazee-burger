@@ -4,7 +4,14 @@ import ButtonConfirmation from "./ButtonConfirmation"
 import Message from "../../pages/order/main/pannel/Message"
 import ImagePreview from "./ImagePreview"
 
-export default function Form({ action, onSubmit, product, onChange, index }) {
+export default function gForm({
+  action,
+  onSubmit,
+  product,
+  onChange,
+  index,
+  children,
+}) {
   return (
     <FormStyled action={action} onSubmit={onSubmit}>
       <ImagePreview />
@@ -14,7 +21,9 @@ export default function Form({ action, onSubmit, product, onChange, index }) {
         onChange={onChange}
         index={index}
       />
-      {index === "add" ? (
+
+      <div className="children">{children}</div>
+      {/* {index === "add" ? (
         <ButtonConfirmation className={"button_confirmation"} />
       ) : (
         <Message
@@ -24,7 +33,7 @@ export default function Form({ action, onSubmit, product, onChange, index }) {
           version="smallPrimary"
           className="message"
         />
-      )}
+      )} */}
     </FormStyled>
   )
 }
@@ -41,10 +50,10 @@ const FormStyled = styled.form`
     grid-row-gap: 8px;
   }
 
-  .button_confirmation {
+  .children {
     grid-area: 4/2/4/2;
   }
-  .message {
+  /* .message {
     grid-area: 2/2/-1/-1;
-  }
+  } */
 `

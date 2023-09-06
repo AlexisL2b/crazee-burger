@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import { styled } from "styled-components"
 import OrderContext from "../../../../../../../context/OrderContext"
 import Form from "../../../../../../reusable-ui/forms/Form"
+import ButtonConfirmation from "../../../../../../reusable-ui/forms/ButtonConfirmation"
 
 export default function AddForm() {
   //state
@@ -11,15 +12,14 @@ export default function AddForm() {
   //affichage
 
   return (
-    <AddFormStyled className="AddFormContainer">
-      <Form
-        action="submit"
-        onSubmit={handleSubmit}
-        product={newProduct}
-        onChange={handleChange}
-        index={activeTab}
-      />
-    </AddFormStyled>
+    <Form
+      action="submit"
+      onSubmit={handleSubmit}
+      product={newProduct}
+      onChange={handleChange}
+      index={activeTab}
+      children={<ButtonConfirmation className={"button_confirmation"} />}
+    />
   )
 }
 

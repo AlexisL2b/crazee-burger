@@ -14,22 +14,27 @@ export default function EditForm() {
   const { existingProduct, handleEdit, activeTab, selectedCardId } =
     useContext(OrderContext)
 
-  return (
-    <EditFormStyled>
-      {selectedCardId != null ? (
-        <Form
-          action={"submit"}
-          product={existingProduct}
-          index={activeTab}
-          onChange={handleEdit}
-        />
-      ) : (
+  return selectedCardId != null ? (
+    <Form
+      action={"submit"}
+      product={existingProduct}
+      index={activeTab}
+      onChange={handleEdit}
+      children={
         <Message
-          label={"Cliquer sur un produit pour le modifier"}
-          icon={<HiCursorClick />}
+          label={
+            "Cliquer sur un produit du menu pour le modifier en temps réel"
+          }
+          version="smallPrimary"
+          className="message"
         />
-      )}
-    </EditFormStyled>
+      }
+    />
+  ) : (
+    <Message
+      label={"Cliquer sur un produit pour le modifier"}
+      icon={<HiCursorClick />}
+    />
   )
 }
 

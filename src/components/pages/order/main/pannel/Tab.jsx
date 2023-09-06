@@ -9,8 +9,8 @@ export default function Tab() {
 
   //comportement
 
-  const { isOpen, activeTab } = useContext(OrderContext)
-  const buttons = getPanelButtonsConfig(activeTab, isOpen)
+  const { isOpen, activeTab, selectedCardId } = useContext(OrderContext)
+  const buttons = getPanelButtonsConfig(activeTab, isOpen, selectedCardId)
   const buttonSelected = buttons.find((button) => button.index === activeTab)
 
   return <TabStyled>{buttonSelected.content}</TabStyled>

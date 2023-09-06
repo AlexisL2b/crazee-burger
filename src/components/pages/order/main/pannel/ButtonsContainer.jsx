@@ -4,7 +4,6 @@ import PannelButton from "../../../../reusable-ui/PannelButton"
 import { styled } from "styled-components"
 import OrderContext from "../../../../../context/OrderContext"
 import { theme } from "../../../../../theme"
-import ActiveContext from "../../../../../context/ActiveContext"
 import { getPanelButtonsConfig } from "./panelButtonConfig"
 
 export default function ButtonsContainer() {
@@ -12,19 +11,9 @@ export default function ButtonsContainer() {
 
   //comportement
 
-  const { isOpen, setIsOpen } = useContext(OrderContext)
-  const { activeTab, setActiveTab } = useContext(ActiveContext)
+  const { isOpen, activeTab, handleSelectedTab } = useContext(OrderContext)
   const buttons = getPanelButtonsConfig(isOpen)
 
-  const onClick = (selectButton) => {
-    if (selectButton != "chevron") {
-      setIsOpen(true)
-      setActiveTab(selectButton)
-    } else {
-      setIsOpen(!isOpen)
-      console.log(isOpen)
-    }
-  }
   return (
     <ButtonsContainerStyled>
       {buttons.map((button) => (
@@ -39,7 +28,7 @@ export default function ButtonsContainer() {
               : "inactive"
           }
           icons={button.icons}
-          onClick={() => onClick(button.index)}
+          onClick={() => handleSelectedTab(button.index)}
           isOpen={button.isOpen}
         />
       ))}

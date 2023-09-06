@@ -1,24 +1,20 @@
 import React, { useContext, useEffect } from "react"
 import { styled } from "styled-components"
 import { FiCheckCircle } from "react-icons/fi"
-import { theme } from "../../../../../../../theme"
-import OrderContext from "../../../../../../../context/OrderContext"
+import { theme } from "../../../theme"
+import OrderContext from "../../../context/OrderContext"
+import Message from "../../pages/order/main/pannel/Message"
 
 export default function Confirmation() {
-  const { isVisible, setIsVisible } = useContext(OrderContext)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false)
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [isVisible])
+  const { isVisible } = useContext(OrderContext)
+
   if (!isVisible) return null
   return (
     <ConfirmationStyled>
       <i>
         <FiCheckCircle />
       </i>
-      <span>Ajouté avec succès !</span>
+      <Message label={"Ajouté avec succés"} version="success" />
     </ConfirmationStyled>
   )
 }

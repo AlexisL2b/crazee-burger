@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
@@ -6,8 +6,25 @@ import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
 
 export default function Menu() {
-  const { products, isAdmin, handleDelete } = useContext(OrderContext)
+  const {
+    products,
+    isAdmin,
+    handleDelete,
+    handleProductSelect,
+    inputRef,
+    handleSwitchSelect,
+    selectedCardId,
+  } = useContext(OrderContext)
 
+  const handleFocus = (id, e) => {
+    if (e.target.tagName !== "BUTTON") {
+      handleProductSelect(id)
+      handleSwitchSelect(id)
+      if (inputRef.current) {
+        inputRef.current.focus()
+      }
+    }
+  }
   return (
     <MenuStyled>
       {products.length != 0 ? (
@@ -21,6 +38,14 @@ export default function Menu() {
             priceProduct={product.price}
             onDelete={handleDelete}
             isAdmin={isAdmin}
+            onClick={(e) => {
+              handleFocus(product.id, e)
+            }}
+            version={
+              selectedCardId === product.id && isAdmin
+                ? "selectStyled"
+                : "normalStyled"
+            }
           />
         ))
       ) : (

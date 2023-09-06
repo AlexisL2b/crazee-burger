@@ -2,25 +2,35 @@ import styled from "styled-components"
 import Navbar from "./navbar/NavBar"
 import Main from "./main/Main"
 import { theme } from "../../../theme"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu2, fakeMenu3 } from "../../fakeData/fakeMenu"
-const EMPTY_PRODUCT = {
-  title: "",
-  imageSource: "",
-  price: 0,
-}
+import { EMPTY_PRODUCT } from "../../../enums/product"
+import { getDeepClone } from "../../../utils/windows"
 
 export default function OrderPages() {
   //state
+  const [selectedCardId, setSelectedCardId] = useState(null)
+
   const [isAdmin, setIsAdmin] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
   const [products, setProducts] = useState(fakeMenu2)
   const [isVisible, setIsVisible] = useState(false)
-  const [productsBackup, setProductsBackup] = useState(fakeMenu3)
+  const [productsBackup] = useState(fakeMenu3)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [activeTab, setActiveTab] = useState("add")
+  const [existingProduct, setExistingProduct] = useState(EMPTY_PRODUCT)
 
+  const inputRef = useRef()
   //comportement
+  // const handleEditTabActive = (id) => {
+  //   if (activeCard === id) {
+  //     setIsOpen(true)
+  //     setActiveTab("edit")
+  //   }
+  //   //a déplacer dans la fonctionner qui selectionne un produit
+  // }
+  //rendre visible ou non le form et pas faire du conditionnal renderiu
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -31,7 +41,10 @@ export default function OrderPages() {
     handleAdd(newProductToAdd)
     setIsVisible(true)
     setNewProduct(EMPTY_PRODUCT)
-    console.log(products)
+    const timer = setTimeout(() => {
+      setIsVisible(false)
+    }, 2000)
+    return () => clearTimeout(timer)
   }
   const handleChange = (e) => {
     const name = e.target.name
@@ -44,7 +57,7 @@ export default function OrderPages() {
   }
 
   const handleAdd = (newProduct) => {
-    const copyProducts = [...products]
+    const copyProducts = getDeepClone(products)
 
     const productsUpdated = [newProduct, ...copyProducts]
 
@@ -53,10 +66,59 @@ export default function OrderPages() {
   const handleDelete = (e) => {
     //L'id du produit
     const idProductToDelete = e.currentTarget.parentElement.id
-    const productFilter = products.filter(
+    const copyProducts = getDeepClone(products)
+    const productFilter = copyProducts.filter(
       (product) => product.id != idProductToDelete
     )
     setProducts(productFilter)
+  }
+  const handleSelectedTab = (selectedTab) => {
+    if (selectedTab != "chevron") {
+      setIsOpen(true)
+      setActiveTab(selectedTab)
+    } else {
+      setIsOpen(!isOpen)
+      console.log(isOpen)
+    }
+  }
+
+  const handleProductSelect = (productToEditId) => {
+    // const cardId = e.currentTarget.id
+    setIsOpen(true)
+    setActiveTab("edit")
+
+    const selectedProduct = products.find(
+      (product) => product.id == productToEditId
+    )
+    if (selectedProduct) {
+      setExistingProduct(selectedProduct)
+    }
+  }
+  const handleEdit = (e) => {
+    const cardId = e.currentTarget.id
+    const name = e.target.name
+    const newValue = e.target.value
+
+    const updatedProduct = { ...existingProduct, [name]: newValue }
+    setExistingProduct(updatedProduct)
+
+    const newProductEdited = {
+      id: cardId,
+      ...updatedProduct,
+    }
+
+    const selectedProduct = products.find(
+      (product) => product.id === newProductEdited.id
+    )
+
+    if (selectedProduct) {
+      Object.assign(selectedProduct, newProductEdited)
+    }
+
+    // console.log(selectedProduct)
+  }
+  const handleSwitchSelect = (id) => {
+    setSelectedCardId((prevId) => (prevId !== id ? id : null))
   }
 
   const orderContextValue = {
@@ -74,6 +136,17 @@ export default function OrderPages() {
     handleChange,
     newProduct,
     setNewProduct,
+    activeTab,
+    setActiveTab,
+    handleSelectedTab,
+    existingProduct,
+    setExistingProduct,
+    handleProductSelect,
+    handleEdit,
+    inputRef,
+    selectedCardId,
+    setSelectedCardId,
+    handleSwitchSelect,
   }
 
   //affichage

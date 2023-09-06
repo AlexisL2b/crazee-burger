@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
-import ActiveContext from "../../../../../context/ActiveContext"
 import OrderContext from "../../../../../context/OrderContext"
 import { getPanelButtonsConfig } from "./panelButtonConfig"
 
@@ -10,14 +9,8 @@ export default function Tab() {
 
   //comportement
 
-  const { isOpen, setIsOpen } = useContext(OrderContext)
-  const { activeTab, setActiveTab } = useContext(ActiveContext)
-  const buttons = getPanelButtonsConfig(
-    activeTab,
-    setActiveTab,
-    setIsOpen,
-    isOpen
-  )
+  const { isOpen, activeTab, selectedCardId } = useContext(OrderContext)
+  const buttons = getPanelButtonsConfig(activeTab, isOpen, selectedCardId)
   const buttonSelected = buttons.find((button) => button.index === activeTab)
 
   return <TabStyled>{buttonSelected.content}</TabStyled>

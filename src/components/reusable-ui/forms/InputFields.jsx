@@ -1,11 +1,14 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { styled } from "styled-components"
 import { getTextInputConfig } from "./textInputAddConfig"
-import TextInput from "../../../../../../reusable-ui/TextInput"
-import { theme } from "../../../../../../../theme"
+import TextInput from "../TextInput"
+import OrderContext from "../../../context/OrderContext"
 
-export default function InputFields({ onChange, className, newProduct }) {
-  const textInputs = getTextInputConfig({ newProduct })
+export default function InputFields({ onChange, className, product }) {
+  const textInputs = getTextInputConfig({ product })
+  const { inputRef } = useContext(OrderContext)
+
+  console.log()
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (
@@ -19,6 +22,7 @@ export default function InputFields({ onChange, className, newProduct }) {
           onChange={onChange}
           value={input.value ? input.value : ""}
           version={input.version}
+          ref={input.name === "title" ? inputRef : null}
         />
       ))}
     </InputFieldsStyled>

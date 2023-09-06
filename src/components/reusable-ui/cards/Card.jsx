@@ -1,13 +1,11 @@
-import React, { useContext, useState } from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../../theme"
 import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
-const EMPTY_BY_DEFAULT_PICTURE = "/assets/coming-soon.png"
+import { EMPTY_BY_DEFAULT_PICTURE } from "../../../enums/product"
+
 export default function Card({
-  //state
-  //comportement
   id,
   imageSource,
   title,
@@ -15,27 +13,41 @@ export default function Card({
   className,
   onDelete,
   isAdmin,
+  onClick,
+  version,
 }) {
-  //state
-
-  //comportement
-
-  //affichage
-
   return (
-    <CardStyled className={className} id={id}>
-      {isAdmin && <DeleteButton onClick={onDelete} />}
+    <CardStyled
+      className={className}
+      id={id}
+      onClick={isAdmin ? onClick : null}
+      version={version}
+    >
+      {isAdmin && (
+        <DeleteButton
+          onClick={onDelete}
+          version={
+            version === "selectStyled" ? "secondaryStyled" : "primaryStyled"
+          }
+        />
+      )}
       <ImageWrapper
+        name={"image_wrapper"}
         imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT_PICTURE}
         className={"card_picture"}
       />
-      <Desc priceProduct={priceProduct} title={title} />
+      <Desc
+        idCard={id}
+        name={"desc"}
+        priceProduct={priceProduct}
+        title={title}
+        cardVersion={version}
+      />
     </CardStyled>
   )
 }
 
 const CardStyled = styled.div`
-  background: ${theme.colors.white};
   width: 240px;
   height: 330px;
   display: grid;
@@ -45,10 +57,29 @@ const CardStyled = styled.div`
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
+  transition: scale 0.3s ease;
+
+  &:hover {
+    scale: calc(1.05);
+    transition: ease-in-out 0.5;
+    box-shadow: 0px 0px 8px 0px #ff9a23;
+  }
+
   .card_picture {
     width: 100%;
     height: auto;
     margin-top: 30px;
     margin-bottom: 20px;
   }
+  ${({ version }) => extraStyle[version]}
 `
+
+const selectStyled = css`
+  background: ${theme.colors.primary};
+`
+
+const normalStyled = css`
+  background: ${theme.colors.white};
+`
+
+const extraStyle = { selectStyled, normalStyled }

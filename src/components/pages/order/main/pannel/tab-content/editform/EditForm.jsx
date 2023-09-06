@@ -20,16 +20,13 @@ export default function EditForm() {
       product={existingProduct}
       index={activeTab}
       onChange={handleEdit}
-      children={
-        <Message
-          label={
-            "Cliquer sur un produit du menu pour le modifier en temps réel"
-          }
-          version="smallPrimary"
-          className="message"
-        />
-      }
-    />
+    >
+      <Message
+        label={"Cliquer sur un produit du menu pour le modifier en temps réel"}
+        version="smallPrimary"
+        className="message"
+      />
+    </Form>
   ) : (
     <Message
       label={"Cliquer sur un produit pour le modifier"}

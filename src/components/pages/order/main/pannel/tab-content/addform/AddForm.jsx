@@ -18,8 +18,10 @@ export default function AddForm() {
       product={newProduct}
       onChange={handleChange}
       index={activeTab}
-      children={<ButtonConfirmation className={"button_confirmation"} />}
-    />
+      g
+    >
+      <ButtonConfirmation className={"button_confirmation"} />
+    </Form>
   )
 }
 

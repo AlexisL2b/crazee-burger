@@ -15,20 +15,20 @@ const BasketStyled = styled.div`
   height: 100%;
   grid-row: span 3;
   background: red;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 70px 2fr 70px;
 
   .price {
     background: orange;
-    border: 1px solid purple;
+    border: 5px solid purple;
   }
   .content {
     background: orange;
-    border: 1px solid purple;
+    border: 5px solid purple;
   }
   .footer {
     background: orange;
-    border: 1px solid purple;
+    border: 5px solid purple;
   }
 `

@@ -1,4 +1,3 @@
-import React, { useContext, useState } from "react"
 import styled, { css } from "styled-components"
 import { theme } from "../../../theme"
 import ImageWrapper from "./ImageWrapper"

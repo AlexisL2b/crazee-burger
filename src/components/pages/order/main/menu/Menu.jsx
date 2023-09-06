@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
@@ -18,7 +18,7 @@ export default function Menu() {
 
   const handleFocus = (id, e) => {
     if (e.target.tagName !== "BUTTON") {
-      handleProductSelect(e)
+      handleProductSelect(id)
       handleSwitchSelect(id)
       if (inputRef.current) {
         inputRef.current.focus()

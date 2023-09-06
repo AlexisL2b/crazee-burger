@@ -1,4 +1,3 @@
-import React from "react"
 import { styled } from "styled-components"
 import InputFields from "./InputFields"
 import ButtonConfirmation from "./ButtonConfirmation"
@@ -36,6 +35,7 @@ const FormStyled = styled.form`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
+  column-gap: 20px;
   .input_fields {
     grid-area: 1/2/4/2;
     grid-row-gap: 8px;

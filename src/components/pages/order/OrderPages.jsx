@@ -16,11 +16,10 @@ export default function OrderPages() {
   const [isOpen, setIsOpen] = useState(true)
   const [products, setProducts] = useState(fakeMenu2)
   const [isVisible, setIsVisible] = useState(false)
-  const [productsBackup, setProductsBackup] = useState(fakeMenu3)
+  const [productsBackup] = useState(fakeMenu3)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [activeTab, setActiveTab] = useState("add")
   const [existingProduct, setExistingProduct] = useState(EMPTY_PRODUCT)
-  // const [confirmActive, setConfirmActive] = useState(false)
 
   const inputRef = useRef()
   //comportement
@@ -51,7 +50,6 @@ export default function OrderPages() {
     const name = e.target.name
     const newValue = e.target.value
     setNewProduct({ ...newProduct, [name]: newValue })
-    console.log(activeCard)
   }
 
   const handleGenerate = () => {
@@ -84,12 +82,14 @@ export default function OrderPages() {
     }
   }
 
-  const handleProductSelect = (e) => {
-    const cardId = e.currentTarget.id
+  const handleProductSelect = (productToEditId) => {
+    // const cardId = e.currentTarget.id
     setIsOpen(true)
     setActiveTab("edit")
 
-    const selectedProduct = products.find((product) => product.id == cardId)
+    const selectedProduct = products.find(
+      (product) => product.id == productToEditId
+    )
     if (selectedProduct) {
       setExistingProduct(selectedProduct)
     }
@@ -115,7 +115,7 @@ export default function OrderPages() {
       Object.assign(selectedProduct, newProductEdited)
     }
 
-    console.log(selectedProduct)
+    // console.log(selectedProduct)
   }
   const handleSwitchSelect = (id) => {
     setSelectedCardId((prevId) => (prevId !== id ? id : null))

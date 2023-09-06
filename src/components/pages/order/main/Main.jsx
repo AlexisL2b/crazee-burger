@@ -5,7 +5,6 @@ import Menu from "./menu/Menu"
 import Pannel from "./pannel/Panel"
 import { useContext, useRef, useState } from "react"
 import OrderContext from "../../../../context/OrderContext"
-import RefContext from "../../../../context/RefContext"
 
 export default function Main() {
   //state
@@ -18,7 +17,7 @@ export default function Main() {
 
   return (
     <MainStyled>
-      {/* <Basket /> */}
+      <Basket />
       <div className="menu_and_pannel">
         <Menu />
 
@@ -35,7 +34,7 @@ const MainStyled = styled.div`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.strong};
   display: grid;
-  grid-template-columns: /*25%*/ 1fr;
+  grid-template-columns: 25% 1fr;
 
   .user {
     display: none;

@@ -10,20 +10,27 @@ export default function Menu() {
     products,
     isAdmin,
     handleDelete,
-    handleProductSelect,
     inputRef,
-    handleSwitchSelect,
     selectedCardId,
+    setActiveTab,
+    setExistingProduct,
+    setSelectedCardId,
   } = useContext(OrderContext)
 
-  const handleFocus = (id, e) => {
-    if (e.target.tagName !== "BUTTON") {
-      handleProductSelect(id)
-      handleSwitchSelect(id)
-      if (inputRef.current) {
-        inputRef.current.focus()
-      }
-    }
+  // const handleSwitchSelect = async (id) => {
+  // @TODO
+  //   setSelectedCardId((prevId) => (prevId !== id ? id : null))
+  //   console.log(selectedCardId)
+  // }
+  const handleFocus = async (idProductClicked) => {
+    await setActiveTab("edit")
+    const productClicked = products.find(
+      (product) => product.id === idProductClicked
+    )
+    // await handleSwitchSelect(idProductClicked)
+    await setSelectedCardId(idProductClicked)
+    await setExistingProduct(productClicked)
+    inputRef.current.focus()
   }
   return (
     <MenuStyled>
@@ -36,10 +43,10 @@ export default function Menu() {
             imageSource={product.imageSource}
             title={product.title}
             priceProduct={product.price}
-            onDelete={handleDelete}
+            onDelete={() => handleDelete(product.id)}
             isAdmin={isAdmin}
-            onClick={(e) => {
-              handleFocus(product.id, e)
+            onClick={() => {
+              handleFocus(product.id)
             }}
             version={
               selectedCardId === product.id && isAdmin

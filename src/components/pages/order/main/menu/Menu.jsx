@@ -49,7 +49,9 @@ export default function Menu() {
           />
         ))
       ) : (
-        <Stock />
+        <div className="stock_container">
+          <Stock />
+        </div>
       )}
     </MenuStyled>
   )
@@ -58,13 +60,18 @@ export default function Menu() {
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: ${theme.shadows.medium};
   overflow-y: scroll;
   scrollbar-width: none;
-  place-items: center;
   width: 100%;
+  .stock_container {
+    display: grid;
+    grid-column: 2;
+    place-items: center;
+  }
 `

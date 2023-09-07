@@ -1,17 +1,16 @@
 import React from "react"
 import { styled } from "styled-components"
-import BasketContent from "./BasketContent"
-import Total from "./Total"
-import BasketFooter from "./BasketFooter"
+
+import Body from "./Body"
+import Header from "./Header"
+import Footer from "./Footer"
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <Total />
-
-      <BasketContent />
-
-      <BasketFooter />
+      <Header />
+      <Body />
+      <Footer />
     </BasketStyled>
   )
 }

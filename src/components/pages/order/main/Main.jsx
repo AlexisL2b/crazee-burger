@@ -35,6 +35,7 @@ const MainStyled = styled.div`
   box-shadow: ${theme.shadows.strong};
   display: grid;
   grid-template-columns: 25% 1fr;
+  grid-template-rows: 1fr;
 
   .user {
     display: none;
@@ -44,6 +45,7 @@ const MainStyled = styled.div`
   }
   .menu_and_pannel {
     width: 100%;
+    height: 100%;
     position: relative;
     display: grid;
     overflow-y: hidden;

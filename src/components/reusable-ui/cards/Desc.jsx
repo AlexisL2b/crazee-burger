@@ -15,23 +15,7 @@ export default function Desc({
 }) /*propsDrilling*/ {
   //State
 
-  const { basketProducts, setBasketProducts } = useContext(OrderContext)
-
-  const handleAddProduct = () => {
-    const newBasketProduct = {
-      id: 1,
-      title: "basketproduct",
-      imageSource: ".images\burger-bacon-egg.png",
-
-      price: 99,
-    }
-
-    const copyBasketProduct = getDeepClone(basketProducts)
-
-    const basketProductUpdated = [newBasketProduct, ...copyBasketProduct]
-
-    setBasketProducts(basketProductUpdated)
-  }
+  const { handleAddBasketProduct } = useContext(OrderContext)
 
   //comportement
   return (
@@ -56,7 +40,7 @@ export default function Desc({
               cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
             }
             className={"button"}
-            onClick={() => handleAddProduct()}
+            onClick={() => handleAddBasketProduct()}
           />
         </div>
       </div>

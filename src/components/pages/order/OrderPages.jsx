@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext"
 import { useMenu } from "../../../hooks/useMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { fakeBasket } from "../../fakeData/fakeBasket"
+import { useBasket } from "../../../hooks/useBasket"
 export default function OrderPages() {
   //state
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
@@ -20,7 +21,7 @@ export default function OrderPages() {
   const inputRef = useRef()
   const { handleDelete, handleAdd, handleGenerate, handleEdit, products } =
     useMenu()
-  const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
+  const { handleAddBasketProduct, basketProducts } = useBasket()
 
   const orderContextValue = {
     isAdmin,
@@ -43,8 +44,8 @@ export default function OrderPages() {
     selectedCardId,
     setSelectedCardId,
     setIsAdmin,
+    handleAddBasketProduct,
     basketProducts,
-    setBasketProducts,
   }
 
   //affichage

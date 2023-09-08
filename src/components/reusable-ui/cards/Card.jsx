@@ -15,6 +15,7 @@ export default function Card({
   isAdmin,
   onClick,
   version,
+  product,
 }) {
   return (
     <CardStyled
@@ -42,6 +43,7 @@ export default function Card({
         priceProduct={priceProduct}
         title={title}
         cardVersion={version}
+        product={product}
       />
     </CardStyled>
   )

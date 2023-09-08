@@ -53,6 +53,7 @@ export default function Menu() {
                 ? "selectStyled"
                 : "normalStyled"
             }
+            product={product}
           />
         ))
       ) : (

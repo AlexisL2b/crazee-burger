@@ -3,13 +3,18 @@ import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import CardBasket from "./CardBasket/CardBasket"
 import OrderContext from "../../../../../context/OrderContext"
-
 export default function Body() {
-  const { basketProducts } = useContext(OrderContext)
+  const { basketProducts, ammount } = useContext(OrderContext)
   return (
     <BodyStyled>
       {basketProducts.map((product) => (
-        <CardBasket />
+        <CardBasket
+          key={product.id}
+          title={product.title}
+          price={product.price}
+          imageSource={product.imageSource}
+          amount={ammount}
+        />
       ))}
     </BodyStyled>
   )

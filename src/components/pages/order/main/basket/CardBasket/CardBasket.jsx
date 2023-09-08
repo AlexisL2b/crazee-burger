@@ -3,21 +3,21 @@ import { styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 
-export default function CardBasket() {
+export default function CardBasket({ title, price, imageSource, ammount }) {
   return (
     <CardBasketStyled>
-      <ImageWrapper className={"image"} />
+      <ImageWrapper className={"image"} imageSource={imageSource} />
       <div className="desc">
         <div className="infos">
           <div className="title">
-            <span>Title</span>
+            <span>{title}</span>
           </div>
           <div className="price">
-            <span className="price">Price</span>
+            <span className="price">{price}</span>
           </div>
         </div>
       </div>
-      <div className="ammount">X17</div>
+      <div className="ammount">{ammount}</div>
     </CardBasketStyled>
   )
 }

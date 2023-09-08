@@ -12,11 +12,32 @@ export default function Desc({
   title,
   name,
   cardVersion,
+  product,
 }) /*propsDrilling*/ {
   //State
 
-  const { handleAddBasketProduct } = useContext(OrderContext)
+  const {
+    handleAddBasketProduct,
+    basketProducts,
+    handleIncrementationBasketProduct,
+  } = useContext(OrderContext)
 
+  const basketExistingProduct = basketProducts.find(
+    (basketProduct) => basketProduct.id === product.id
+  )
+
+  // const handleClick = () => {
+  //   product.ammount = 0
+
+  //   const basketExistingProduct = basketProducts.find(
+  //     (basketProduct) => basketProduct.id === product.id
+  //   )
+  //   if (basketExistingProduct) {
+  //     product.ammount = product.ammount + 1
+  //   } else {
+  //     handleAddBasketProduct(product)
+  //   }
+  // }
   //comportement
   return (
     <DescStyled name={name}>
@@ -40,7 +61,11 @@ export default function Desc({
               cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
             }
             className={"button"}
-            onClick={() => handleAddBasketProduct()}
+            onClick={
+              basketExistingProduct
+                ? () => handleIncrementationBasketProduct(product)
+                : () => handleAddBasketProduct(product)
+            }
           />
         </div>
       </div>

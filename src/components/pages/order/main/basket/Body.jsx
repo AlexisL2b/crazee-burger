@@ -1,12 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import CardBasket from "./CardBasket/CardBasket"
+import OrderContext from "../../../../../context/OrderContext"
 
 export default function Body() {
+  const { basketProducts } = useContext(OrderContext)
   return (
     <BodyStyled>
-      <CardBasket />
+      {basketProducts.map((product) => (
+        <CardBasket />
+      ))}
     </BodyStyled>
   )
 }
@@ -18,8 +22,8 @@ const BodyStyled = styled.div`
   font-weight: ${theme.fonts.weights.regular};
   /* line-height: 72px; */
   box-shadow: 0px 0px 20px 0px #00000033 inset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+  overflow-y: scroll;
+  scrollbar-width: none;
   padding: 16px 20px;
 `

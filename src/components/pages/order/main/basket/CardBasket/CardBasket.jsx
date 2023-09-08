@@ -27,6 +27,8 @@ const CardBasketStyled = styled.div`
   padding: 8px 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
+  margin-bottom: 20px;
   .image {
     background: blue;
     height: 100%;

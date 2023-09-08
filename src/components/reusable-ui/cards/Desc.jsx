@@ -5,6 +5,7 @@ import { theme } from "../../../theme"
 import PrimaryButton from "../PrimaryButton"
 import OrderContext from "../../../context/OrderContext"
 import Price from "./Price"
+import { getDeepClone } from "../../../utils/windows"
 
 export default function Desc({
   priceProduct,
@@ -14,7 +15,23 @@ export default function Desc({
 }) /*propsDrilling*/ {
   //State
 
-  const { activeCard } = useContext(OrderContext)
+  const { basketProducts, setBasketProducts } = useContext(OrderContext)
+
+  const handleAddProduct = () => {
+    const newBasketProduct = {
+      id: 1,
+      title: "basketproduct",
+      imageSource: ".images\burger-bacon-egg.png",
+
+      price: 99,
+    }
+
+    const copyBasketProduct = getDeepClone(basketProducts)
+
+    const basketProductUpdated = [newBasketProduct, ...copyBasketProduct]
+
+    setBasketProducts(basketProductUpdated)
+  }
 
   //comportement
   return (
@@ -39,6 +56,7 @@ export default function Desc({
               cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
             }
             className={"button"}
+            onClick={() => handleAddProduct()}
           />
         </div>
       </div>

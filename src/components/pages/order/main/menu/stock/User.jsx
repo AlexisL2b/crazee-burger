@@ -6,8 +6,8 @@ export default function User() {
   return (
     <UserStyled>
       <h1>Victime de notre succès ! :D</h1>
-      <h2>De nouvelles recettes sont en cours de préparation.</h2>
-      <h2>À très vite !</h2>
+      <span>De nouvelles recettes sont en cours de préparation.</span>
+      <span>À très vite !</span>
     </UserStyled>
   )
 }
@@ -17,4 +17,8 @@ const UserStyled = styled.div`
   flex-direction: column;
   place-items: center;
   gap: 21px;
+  span {
+    font-size: ${theme.fonts.size.P4};
+    text-align: center;
+  }
 `

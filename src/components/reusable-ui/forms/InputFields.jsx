@@ -4,9 +4,22 @@ import { getTextInputConfig } from "./textInputAddConfig"
 import TextInput from "../TextInput"
 import OrderContext from "../../../context/OrderContext"
 
-export default function InputFields({ onChange, className, product }) {
+export default function InputFields({ className, product }) {
   const textInputs = getTextInputConfig({ product })
-  const { inputRef } = useContext(OrderContext)
+  const { inputRef, existingProduct, setExistingProduct, handleEdit } =
+    useContext(OrderContext)
+
+  const handleChange = (e) => {
+    const name = e.target.name
+    const newValue = e.target.value
+    const productBeingUpdated = {
+      ...existingProduct,
+      [name]: newValue,
+    }
+
+    setExistingProduct(productBeingUpdated)
+    handleEdit(productBeingUpdated)
+  }
 
   console.log()
   return (
@@ -19,7 +32,7 @@ export default function InputFields({ onChange, className, product }) {
           name={input.name}
           className={input.className}
           placeholder={input.placeholder}
-          onChange={onChange}
+          onChange={handleChange}
           value={input.value ? input.value : ""}
           version={input.version}
           ref={input.name === "title" ? inputRef : null}

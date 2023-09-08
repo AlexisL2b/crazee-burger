@@ -11,9 +11,18 @@ export default function ButtonsContainer() {
 
   //comportement
 
-  const { isOpen, activeTab, handleSelectedTab } = useContext(OrderContext)
+  const { isOpen, activeTab, setIsOpen, setActiveTab } =
+    useContext(OrderContext)
   const buttons = getPanelButtonsConfig(isOpen)
-
+  const handleSelectedTab = (selectedTab) => {
+    if (selectedTab != "chevron") {
+      setIsOpen(true)
+      setActiveTab(selectedTab)
+    } else {
+      setIsOpen(!isOpen)
+    }
+    //replace
+  }
   return (
     <ButtonsContainerStyled>
       {buttons.map((button) => (

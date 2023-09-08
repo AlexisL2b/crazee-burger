@@ -10,20 +10,27 @@ export default function Menu() {
     products,
     isAdmin,
     handleDelete,
-    handleProductSelect,
     inputRef,
-    handleSwitchSelect,
     selectedCardId,
+    setActiveTab,
+    setExistingProduct,
+    setSelectedCardId,
   } = useContext(OrderContext)
 
-  const handleFocus = (id, e) => {
-    if (e.target.tagName !== "BUTTON") {
-      handleProductSelect(id)
-      handleSwitchSelect(id)
-      if (inputRef.current) {
-        inputRef.current.focus()
-      }
-    }
+  // const handleSwitchSelect = async (id) => {
+  // @TODO
+  //   setSelectedCardId((prevId) => (prevId !== id ? id : null))
+  //   console.log(selectedCardId)
+  // }
+  const handleFocus = async (idProductClicked) => {
+    await setActiveTab("edit")
+    const productClicked = products.find(
+      (product) => product.id === idProductClicked
+    )
+    // await handleSwitchSelect(idProductClicked)
+    await setSelectedCardId(idProductClicked)
+    await setExistingProduct(productClicked)
+    inputRef.current.focus()
   }
   return (
     <MenuStyled>
@@ -36,10 +43,10 @@ export default function Menu() {
             imageSource={product.imageSource}
             title={product.title}
             priceProduct={product.price}
-            onDelete={handleDelete}
+            onDelete={() => handleDelete(product.id)}
             isAdmin={isAdmin}
-            onClick={(e) => {
-              handleFocus(product.id, e)
+            onClick={() => {
+              handleFocus(product.id)
             }}
             version={
               selectedCardId === product.id && isAdmin
@@ -49,7 +56,9 @@ export default function Menu() {
           />
         ))
       ) : (
-        <Stock />
+        <div className="stock_container">
+          <Stock />
+        </div>
       )}
     </MenuStyled>
   )
@@ -58,13 +67,18 @@ export default function Menu() {
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: ${theme.shadows.medium};
   overflow-y: scroll;
   scrollbar-width: none;
-  place-items: center;
   width: 100%;
+  .stock_container {
+    display: grid;
+    grid-column: 2;
+    place-items: center;
+  }
 `

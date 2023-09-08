@@ -1,11 +1,12 @@
 import React from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
+import CardBasket from "./CardBasket/CardBasket"
 
 export default function Body() {
   return (
     <BodyStyled>
-      <span> Votre commande est vide.</span>
+      <CardBasket />
     </BodyStyled>
   )
 }
@@ -15,9 +16,10 @@ const BodyStyled = styled.div`
   font-family: ${theme.fontsFamily.amatic};
   font-size: ${theme.fonts.size.P4};
   font-weight: ${theme.fonts.weights.regular};
-  line-height: 72px;
+  /* line-height: 72px; */
   box-shadow: 0px 0px 20px 0px #00000033 inset;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 16px 20px;
 `

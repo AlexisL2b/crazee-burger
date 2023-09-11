@@ -3,3 +3,10 @@ export const formatMontant = (priceProduct) => {
   const priceFormat = priceRounded.toFixed(2)
   return priceFormat.toString()
 }
+
+export const sum = (arr) => {
+  return arr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  )
+}

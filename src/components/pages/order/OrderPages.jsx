@@ -22,12 +22,7 @@ export default function OrderPages() {
   const inputRef = useRef()
   const { handleDelete, handleAdd, handleGenerate, handleEdit, products } =
     useMenu()
-  const {
-    handleAddBasketProduct,
-    basketProducts,
-    handleIncrementationBasketProduct,
-    ammount,
-  } = useBasket()
+  const { handleAddBasketProduct, basketProducts, total } = useBasket()
 
   const orderContextValue = {
     isAdmin,
@@ -53,7 +48,8 @@ export default function OrderPages() {
     handleAddBasketProduct,
     basketProducts,
     quantity,
-    setQuantity, // handleIncrementationBasketProduct,
+    setQuantity,
+    total, // handleIncrementationBasketProduct,
     // ammount,
   }
 

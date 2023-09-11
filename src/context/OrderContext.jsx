@@ -24,6 +24,7 @@ export default createContext({
   basketProducts: [],
   quantity: 0,
   setQuantity: () => {},
+  total: 0,
   // handleIncrementationBasketProduct: () => {},
   // ammount: 0,
 })

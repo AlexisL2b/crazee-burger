@@ -32,4 +32,9 @@ const BodyStyled = styled.div`
   overflow-y: scroll;
   scrollbar-width: none;
   padding: 16px 20px;
+
+  /* Style de la barre de défilement et sa piste */
+  ::-webkit-scrollbar {
+    width: 0px; /* Largeur de la barre de défilement */
+  }
 `

@@ -2,6 +2,7 @@ import React from "react"
 import { styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
+import Desc from "./Desc"
 
 export default function CardBasket({
   title,
@@ -13,7 +14,8 @@ export default function CardBasket({
   return (
     <CardBasketStyled>
       <ImageWrapper className={"image"} imageSource={imageSource} />
-      <div className="desc">
+      <Desc title={title} price={price} />
+      {/* <div className="desc">
         <div className="infos">
           <div className="title">
             <span>{title}</span>
@@ -22,8 +24,11 @@ export default function CardBasket({
             <span className="price">{price}</span>
           </div>
         </div>
+      </div> */}
+      <div className="quantity">
+        {" "}
+        <span>X {quantity}</span>{" "}
       </div>
-      <div className="quantity">X{quantity}</div>
       {/* <div className="delete">
         <button onClick={onDelete}>delete</button>
       </div> */}
@@ -31,55 +36,32 @@ export default function CardBasket({
   )
 }
 const CardBasketStyled = styled.div`
-  background: red;
-  height: auto;
+  background: #ffffff;
+  border-radius: 5px;
+  height: 86px;
   padding: 8px 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  column-gap: 8px;
   margin-top: 20px;
   margin-bottom: 20px;
+  box-shadow: -4px 4px 15px 0px #00000033;
+
   .image {
-    height: 86px;
+    height: 70px;
 
     width: 85px;
   }
-  .desc {
-    background: blue;
-    border: 1px solid purple;
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 100%;
-    height: 86px;
 
-    .infos {
-      height: 86px;
-
-      background: yellow;
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      align-items: center;
-      width: 120px;
-      .title {
-        height: 32px;
-        font-size: ${theme.fonts.size.P3};
-        grid-area: 1/1/2/2;
-      }
-      .price {
-        grid-area: 2/1/3/2;
-        height: 20px;
-        margin: 0px;
-        font-size: ${theme.fonts.size.SM};
-        align-items: center;
-        justify-content: center;
-      }
-    }
-  }
   .quantity {
-    background: pink;
+    height: 70px;
+
     font-size: ${theme.fonts.size.SM};
+    font-weight: ${theme.fonts.weights.regular};
+    color: ${theme.colors.primary};
+    font-family: ${theme.fontsFamily.open};
     width: 100%;
     display: grid;
     place-content: center;
-    font-size: 50px;
   }
 `

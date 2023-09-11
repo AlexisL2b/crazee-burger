@@ -15,6 +15,8 @@ export default function Menu() {
     setActiveTab,
     setExistingProduct,
     setSelectedCardId,
+    handleDeleteBasketProduct,
+    basketProducts,
   } = useContext(OrderContext)
 
   // const handleSwitchSelect = async (id) => {
@@ -27,10 +29,22 @@ export default function Menu() {
     const productClicked = products.find(
       (product) => product.id === idProductClicked
     )
+
     // await handleSwitchSelect(idProductClicked)
     await setSelectedCardId(idProductClicked)
     await setExistingProduct(productClicked)
     inputRef.current.focus()
+  }
+  const handleDeleteProduct = (product) => {
+    const existingBasketProduct = basketProducts.find(
+      (basketProduct) => basketProduct.id == product
+    )
+    if (existingBasketProduct) {
+      handleDeleteBasketProduct(product)
+      handleDelete(product)
+    } else {
+      handleDelete(product)
+    }
   }
   return (
     <MenuStyled>
@@ -43,7 +57,7 @@ export default function Menu() {
             imageSource={product.imageSource}
             title={product.title}
             priceProduct={product.price}
-            onDelete={() => handleDelete(product.id)}
+            onDelete={() => handleDeleteProduct(product.id)}
             isAdmin={isAdmin}
             onClick={() => {
               handleFocus(product.id)

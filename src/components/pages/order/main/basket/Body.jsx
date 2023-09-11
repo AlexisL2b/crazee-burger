@@ -14,7 +14,7 @@ export default function Body() {
           price={product.price}
           imageSource={product.imageSource}
           quantity={product.quantity}
-          onDelete={() => handleDeleteBasketProduct(product)}
+          onDelete={() => handleDeleteBasketProduct(product.id)}
         />
       ))}
     </BodyStyled>

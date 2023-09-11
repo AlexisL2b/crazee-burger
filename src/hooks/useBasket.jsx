@@ -44,18 +44,18 @@ export const useBasket = () => {
     }
   }
 
-  const handleDeleteBasketProduct = (ProductToDelete) => {
+  const handleDeleteBasketProduct = (idProductToDelete) => {
     const copyBasketProduct = getDeepClone(basketProducts)
     const productToDecrement = copyBasketProduct.find(
-      (product) => product.id == ProductToDelete.id
+      (product) => product.id == idProductToDelete
     )
 
     productToDecrement.quantity += 0
     const basketFilter = copyBasketProduct.filter(
-      (product) => product.id !== ProductToDelete.id
+      (product) => product.id !== idProductToDelete
     )
 
-    const priceToDelete = ProductToDelete.id
+    const priceToDelete = idProductToDelete
     const copyTotal = getDeepClone(total)
     delete copyTotal[priceToDelete]
     setTotal(copyTotal)

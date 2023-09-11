@@ -6,27 +6,26 @@ export const useBasket = () => {
   //State
 
   const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
-  const [ammount, setAmmount] = useState(0)
 
   const handleAddBasketProduct = (newBasketProduct) => {
-    const copyBasketProduct = getDeepClone(basketProducts)
+    const basketProductExisiting = basketProducts.find(
+      (product) => product.id === newBasketProduct.id
+    )
 
-    const basketProductUpdated = [newBasketProduct, ...copyBasketProduct]
-
-    setBasketProducts(basketProductUpdated)
-
-    console.log(newBasketProduct.ammount)
+    if (basketProductExisiting) {
+      basketProductExisiting.quantity += 1
+      const copyBasketProduct = getDeepClone(basketProducts)
+      setBasketProducts(copyBasketProduct)
+    } else {
+      setBasketProducts([
+        ...basketProducts,
+        { ...newBasketProduct, quantity: 1 },
+      ])
+    }
   }
 
-  const handleIncrementationBasketProduct = (product) => {
-    setAmmount((prevAmmount) => prevAmmount + 1)
-    product.ammount = ammount
-    console.log(product)
-  }
   return {
     handleAddBasketProduct,
     basketProducts,
-    handleIncrementationBasketProduct,
-    ammount,
   }
 }

@@ -17,6 +17,7 @@ export default function OrderPages() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
   const [selectedCardId, setSelectedCardId] = useState(null)
+  const [quantity, setQuantity] = useState(0)
 
   const inputRef = useRef()
   const { handleDelete, handleAdd, handleGenerate, handleEdit, products } =
@@ -51,8 +52,9 @@ export default function OrderPages() {
     setIsAdmin,
     handleAddBasketProduct,
     basketProducts,
-    handleIncrementationBasketProduct,
-    ammount,
+    quantity,
+    setQuantity, // handleIncrementationBasketProduct,
+    // ammount,
   }
 
   //affichage

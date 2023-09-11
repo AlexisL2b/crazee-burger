@@ -22,6 +22,8 @@ export default createContext({
   setSelectedCardId: async () => {},
   setIsAdmin: () => {},
   basketProducts: [],
-  handleIncrementationBasketProduct: () => {},
-  ammount: 0,
+  quantity: 0,
+  setQuantity: () => {},
+  // handleIncrementationBasketProduct: () => {},
+  // ammount: 0,
 })

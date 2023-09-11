@@ -4,7 +4,7 @@ import { theme } from "../../../../../theme"
 import CardBasket from "./CardBasket/CardBasket"
 import OrderContext from "../../../../../context/OrderContext"
 export default function Body() {
-  const { basketProducts, ammount } = useContext(OrderContext)
+  const { basketProducts } = useContext(OrderContext)
   return (
     <BodyStyled>
       {basketProducts.map((product) => (
@@ -13,7 +13,7 @@ export default function Body() {
           title={product.title}
           price={product.price}
           imageSource={product.imageSource}
-          amount={ammount}
+          quantity={product.quantity}
         />
       ))}
     </BodyStyled>

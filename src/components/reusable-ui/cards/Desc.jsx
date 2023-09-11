@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { formatMontant } from "../../../utils/maths"
 import { theme } from "../../../theme"
@@ -16,15 +16,19 @@ export default function Desc({
 }) /*propsDrilling*/ {
   //State
 
-  const {
-    handleAddBasketProduct,
-    basketProducts,
-    handleIncrementationBasketProduct,
-  } = useContext(OrderContext)
+  const { handleAddBasketProduct, basketProducts, quantity, setQuantity } =
+    useContext(OrderContext)
 
   const basketExistingProduct = basketProducts.find(
     (basketProduct) => basketProduct.id === product.id
   )
+
+  // const handleAddQuantity = (toAddBasketProduct) => {
+  //   // toAddBasketProduct.quantity = toAddBasketProduct.quantity + 1
+  //   setQuantity(quantity + 1)
+  //   toAddBasketProduct.quantity = quantity
+  //   console.log(toAddBasketProduct.quantity)
+  // }
 
   // const handleClick = () => {
   //   product.ammount = 0
@@ -61,11 +65,7 @@ export default function Desc({
               cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
             }
             className={"button"}
-            onClick={
-              basketExistingProduct
-                ? () => handleIncrementationBasketProduct(product)
-                : () => handleAddBasketProduct(product)
-            }
+            onClick={() => handleAddBasketProduct(product)}
           />
         </div>
       </div>

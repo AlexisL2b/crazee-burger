@@ -3,7 +3,7 @@ import { styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 
-export default function CardBasket({ title, price, imageSource, ammount }) {
+export default function CardBasket({ title, price, imageSource, quantity }) {
   return (
     <CardBasketStyled>
       <ImageWrapper className={"image"} imageSource={imageSource} />
@@ -17,7 +17,7 @@ export default function CardBasket({ title, price, imageSource, ammount }) {
           </div>
         </div>
       </div>
-      <div className="ammount">{ammount}</div>
+      <div className="quantity">X{quantity}</div>
     </CardBasketStyled>
   )
 }
@@ -64,9 +64,12 @@ const CardBasketStyled = styled.div`
       }
     }
   }
-  .ammount {
+  .quantity {
     background: pink;
     font-size: ${theme.fonts.size.SM};
     width: 100%;
+    display: grid;
+    place-content: center;
+    font-size: 50px;
   }
 `

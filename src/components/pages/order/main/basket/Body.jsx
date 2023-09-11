@@ -4,7 +4,7 @@ import { theme } from "../../../../../theme"
 import CardBasket from "./CardBasket/CardBasket"
 import OrderContext from "../../../../../context/OrderContext"
 export default function Body() {
-  const { basketProducts } = useContext(OrderContext)
+  const { basketProducts, handleDeleteBasketProduct } = useContext(OrderContext)
   return (
     <BodyStyled>
       {basketProducts.map((product) => (
@@ -14,6 +14,7 @@ export default function Body() {
           price={product.price}
           imageSource={product.imageSource}
           quantity={product.quantity}
+          onDelete={() => handleDeleteBasketProduct(product)}
         />
       ))}
     </BodyStyled>

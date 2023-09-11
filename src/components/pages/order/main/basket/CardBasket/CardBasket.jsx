@@ -3,7 +3,13 @@ import { styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 
-export default function CardBasket({ title, price, imageSource, quantity }) {
+export default function CardBasket({
+  title,
+  price,
+  imageSource,
+  quantity,
+  onDelete,
+}) {
   return (
     <CardBasketStyled>
       <ImageWrapper className={"image"} imageSource={imageSource} />
@@ -18,6 +24,9 @@ export default function CardBasket({ title, price, imageSource, quantity }) {
         </div>
       </div>
       <div className="quantity">X{quantity}</div>
+      <div className="delete">
+        <button onClick={onDelete}>delete</button>
+      </div>
     </CardBasketStyled>
   )
 }

@@ -33,9 +33,24 @@ export const useBasket = () => {
     }
   }
 
+  const handleDeleteBasketProduct = (ProductToDelete) => {
+    const copyBasketProduct = getDeepClone(basketProducts)
+    const productToDecrement = copyBasketProduct.find(
+      (product) => product.id == ProductToDelete.id
+    )
+
+    productToDecrement.quantity += 0
+    const basketFilter = copyBasketProduct.filter(
+      (product) => product.id !== ProductToDelete.id
+    )
+
+    setBasketProducts(basketFilter)
+  }
+
   return {
     handleAddBasketProduct,
     basketProducts,
     total,
+    handleDeleteBasketProduct,
   }
 }

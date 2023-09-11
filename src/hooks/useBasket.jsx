@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { fakeBasket } from "../components/fakeData/fakeBasket"
 import { getDeepClone } from "../utils/windows"
+import { keyframes } from "styled-components"
 
 export const useBasket = () => {
   //State
 
   const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
-  const [total, setTotal] = useState([])
+  const [total, setTotal] = useState({})
 
   const handleAddBasketProduct = (newBasketProduct) => {
     const basketProductExisiting = basketProducts.find(
@@ -19,8 +20,15 @@ export const useBasket = () => {
       setBasketProducts(copyBasketProduct)
 
       const copyTotal = getDeepClone(total)
-      const copyTotalUpadted = [basketProductExisiting.price, ...copyTotal]
-      setTotal(copyTotalUpadted)
+      const priceUpdated =
+        basketProductExisiting.price * basketProductExisiting.quantity
+
+      const copyTotalUpdated = {
+        ...copyTotal,
+        [basketProductExisiting.id]: priceUpdated,
+      }
+      console.log(copyTotalUpdated)
+      setTotal(copyTotalUpdated)
     } else {
       setBasketProducts([
         ...basketProducts,
@@ -28,7 +36,10 @@ export const useBasket = () => {
       ])
 
       const copyTotal = getDeepClone(total)
-      const copyTotalUpadted = [newBasketProduct.price, ...copyTotal]
+      const copyTotalUpadted = {
+        [newBasketProduct.id]: newBasketProduct.price,
+        ...copyTotal,
+      }
       setTotal(copyTotalUpadted)
     }
   }
@@ -44,6 +55,10 @@ export const useBasket = () => {
       (product) => product.id !== ProductToDelete.id
     )
 
+    const priceToDelete = ProductToDelete.id
+    const copyTotal = getDeepClone(total)
+    delete copyTotal[priceToDelete]
+    setTotal(copyTotal)
     setBasketProducts(basketFilter)
   }
 

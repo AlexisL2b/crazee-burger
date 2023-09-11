@@ -4,9 +4,5 @@ export const formatMontant = (priceProduct) => {
   return priceFormat.toString()
 }
 
-export const sum = (arr) => {
-  return arr.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  )
-}
+export const sum = (obj) =>
+  Object.values(obj).reduce((acc, val) => acc + val, 0)

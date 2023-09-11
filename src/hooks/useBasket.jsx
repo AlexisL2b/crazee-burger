@@ -31,8 +31,8 @@ export const useBasket = () => {
       setTotal(copyTotalUpdated)
     } else {
       setBasketProducts([
-        ...basketProducts,
         { ...newBasketProduct, quantity: 1 },
+        ...basketProducts,
       ])
 
       const copyTotal = getDeepClone(total)

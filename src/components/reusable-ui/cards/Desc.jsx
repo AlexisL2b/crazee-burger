@@ -16,32 +16,8 @@ export default function Desc({
 }) /*propsDrilling*/ {
   //State
 
-  const { handleAddBasketProduct, basketProducts, quantity, setQuantity } =
-    useContext(OrderContext)
+  const { handleAddBasketProduct } = useContext(OrderContext)
 
-  const basketExistingProduct = basketProducts.find(
-    (basketProduct) => basketProduct.id === product.id
-  )
-
-  // const handleAddQuantity = (toAddBasketProduct) => {
-  //   // toAddBasketProduct.quantity = toAddBasketProduct.quantity + 1
-  //   setQuantity(quantity + 1)
-  //   toAddBasketProduct.quantity = quantity
-  //   console.log(toAddBasketProduct.quantity)
-  // }
-
-  // const handleClick = () => {
-  //   product.ammount = 0
-
-  //   const basketExistingProduct = basketProducts.find(
-  //     (basketProduct) => basketProduct.id === product.id
-  //   )
-  //   if (basketExistingProduct) {
-  //     product.ammount = product.ammount + 1
-  //   } else {
-  //     handleAddBasketProduct(product)
-  //   }
-  // }
   //comportement
   return (
     <DescStyled name={name}>

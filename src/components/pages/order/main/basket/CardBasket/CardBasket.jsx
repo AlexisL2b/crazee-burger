@@ -24,25 +24,24 @@ export default function CardBasket({
         </div>
       </div>
       <div className="quantity">X{quantity}</div>
-      <div className="delete">
+      {/* <div className="delete">
         <button onClick={onDelete}>delete</button>
-      </div>
+      </div> */}
     </CardBasketStyled>
   )
 }
 const CardBasketStyled = styled.div`
-  height: auto;
   background: red;
+  height: auto;
   padding: 8px 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 20px;
   margin-bottom: 20px;
   .image {
-    background: blue;
-    height: 100%;
+    height: 86px;
+
     width: 85px;
-    border: 1px solid purple;
   }
   .desc {
     background: blue;
@@ -50,9 +49,11 @@ const CardBasketStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
-    height: auto;
+    height: 86px;
 
     .infos {
+      height: 86px;
+
       background: yellow;
       display: grid;
       grid-template-rows: 1fr 1fr;

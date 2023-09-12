@@ -10,7 +10,7 @@ export default function Header() {
   const totalPriceFormat = formatMontant(totalPrice)
   return (
     <HeaderStyled>
-      <span className="total">Total</span>{" "}
+      <span className="total">Total</span>
       <span className="price"> {total != 0 ? totalPriceFormat : 0.0} €</span>
     </HeaderStyled>
   )

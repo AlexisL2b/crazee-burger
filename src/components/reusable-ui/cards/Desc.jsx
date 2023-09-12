@@ -1,11 +1,9 @@
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
-import { formatMontant } from "../../../utils/maths"
 import { theme } from "../../../theme"
 import PrimaryButton from "../PrimaryButton"
 import OrderContext from "../../../context/OrderContext"
 import Price from "./Price"
-import { getDeepClone } from "../../../utils/windows"
 
 export default function Desc({
   priceProduct,
@@ -17,7 +15,10 @@ export default function Desc({
   //State
 
   const { handleAddBasketProduct } = useContext(OrderContext)
-
+  const handleAdd = (e, product) => {
+    e.stopPropagation()
+    handleAddBasketProduct(product)
+  }
   //comportement
   return (
     <DescStyled name={name}>
@@ -41,7 +42,7 @@ export default function Desc({
               cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
             }
             className={"button"}
-            onClick={() => handleAddBasketProduct(product)}
+            onClick={(e) => handleAdd(e, product)}
           />
         </div>
       </div>

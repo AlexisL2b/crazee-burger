@@ -17,6 +17,8 @@ export default function Menu() {
     setSelectedCardId,
     handleDeleteBasketProduct,
     basketProducts,
+    setIsOpen,
+    isOpen,
   } = useContext(OrderContext)
 
   // const handleSwitchSelect = async (id) => {
@@ -33,7 +35,12 @@ export default function Menu() {
     // await handleSwitchSelect(idProductClicked)
     await setSelectedCardId(idProductClicked)
     await setExistingProduct(productClicked)
-    inputRef.current.focus()
+    if (!isOpen) {
+      await setIsOpen(true)
+      inputRef.current.focus()
+    } else {
+      inputRef.current.focus()
+    }
   }
   const handleDeleteProduct = (product) => {
     const existingBasketProduct = basketProducts.find(

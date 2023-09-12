@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 import Desc from "./Desc"
+import { TbTrashXFilled } from "react-icons/tb"
+import OrderContext from "../../../../../../context/OrderContext"
 
 export default function CardBasket({
   title,
@@ -11,25 +13,30 @@ export default function CardBasket({
   quantity,
   onDelete,
 }) {
+  const [hovered, setHovered] = useState(false)
+  const { isAdmin } = useContext(OrderContext)
+
   return (
-    <CardBasketStyled>
+    <CardBasketStyled
+      onMouseEnter={isAdmin ? () => setHovered(true) : null}
+      onMouseLeave={isAdmin ? () => setHovered(false) : null}
+    >
       <ImageWrapper className={"image"} imageSource={imageSource} />
       <Desc title={title} price={price} />
-      {/* <div className="desc">
-        <div className="infos">
-          <div className="title">
-            <span>{title}</span>
+
+      <div className="container">
+        {hovered ? (
+          <div className="delete" onClick={onDelete}>
+            <i>
+              <TbTrashXFilled />
+            </i>
           </div>
-          <div className="price">
-            <span className="price">{price}</span>
-          </div>
-        </div>
-      </div> */}
-      <div className="quantity">
-        {" "}
-        <span>X {quantity}</span>{" "}
+        ) : (
+          <span className="quantity">x{quantity}</span>
+        )}
       </div>
       {/* <div className="delete">
+        <i></i>
         <button onClick={onDelete}>delete</button>
       </div> */}
     </CardBasketStyled>
@@ -40,9 +47,9 @@ const CardBasketStyled = styled.div`
   border-radius: 5px;
   height: 86px;
   padding: 8px 16px;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 8px;
   margin-top: 20px;
   margin-bottom: 20px;
   box-shadow: -4px 4px 15px 0px #00000033;
@@ -55,13 +62,36 @@ const CardBasketStyled = styled.div`
 
   .quantity {
     height: 70px;
-
     font-size: ${theme.fonts.size.SM};
-    font-weight: ${theme.fonts.weights.regular};
+    font-weight: ${theme.fonts.weights.light};
     color: ${theme.colors.primary};
     font-family: ${theme.fontsFamily.open};
     width: 100%;
     display: grid;
     place-content: center;
+  }
+
+  .delete {
+    background: #e25549;
+    height: 86px;
+    width: 120%;
+    position: relative;
+    left: 5px;
+    bottom: 8px;
+    /* margin: -8px -13px; */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    &:hover {
+      color: black;
+    }
+    &:active {
+      color: white;
+    }
   }
 `

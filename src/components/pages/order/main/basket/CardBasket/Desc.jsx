@@ -1,8 +1,10 @@
 import React from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../../theme"
+import { formatMontant } from "../../../../../../utils/maths"
 
 export default function Desc({ title, price }) {
+  const formatPrice = formatMontant(price)
   return (
     <DescStyled>
       <div className="infos">
@@ -10,7 +12,7 @@ export default function Desc({ title, price }) {
           <span>{title}</span>
         </div>
         <div className="price">
-          <span className="price">{price}</span>
+          <span className="price">{formatPrice} €</span>
         </div>
       </div>
     </DescStyled>
@@ -19,12 +21,14 @@ export default function Desc({ title, price }) {
 const DescStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  width: 100%;
+  width: 140px;
   height: 86px;
+  /* margin-left: 5px;
+  margin-right: 5px; */
 
   .infos {
+    margin-left: 20px;
     height: 70px;
-
     display: grid;
     grid-template-rows: 1fr 1fr;
     align-items: center;

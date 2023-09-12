@@ -16,7 +16,7 @@ export default createContext({
   setIsVisible: () => {},
   setNewProduct: () => {},
   setExistingProduct: async () => {},
-  setIsOpen: () => {},
+  setIsOpen: async () => {},
   setActiveTab: async () => {},
   selectedCardId: null,
   setSelectedCardId: async () => {},

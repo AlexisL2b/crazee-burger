@@ -35,25 +35,20 @@ export default function CardBasket({
           <span className="quantity">x{quantity}</span>
         )}
       </div>
-      {/* <div className="delete">
-        <i></i>
-        <button onClick={onDelete}>delete</button>
-      </div> */}
     </CardBasketStyled>
   )
 }
 const CardBasketStyled = styled.div`
-  background: #ffffff;
-  border-radius: 5px;
+  background: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.round};
   height: 86px;
-  padding: 8px 16px;
+  padding: ${theme.spacing.xs} 16px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 20px;
-  margin-bottom: 20px;
-  box-shadow: -4px 4px 15px 0px #00000033;
-
+  margin-top: ${theme.spacing.md};
+  margin-bottom: ${theme.spacing.md};
+  box-shadow: ${theme.shadows.basket};
   .image {
     height: 70px;
 
@@ -72,26 +67,26 @@ const CardBasketStyled = styled.div`
   }
 
   .delete {
-    background: #e25549;
+    background: ${theme.colors.red};
     height: 86px;
     width: 120%;
     position: relative;
     left: 5px;
     bottom: 8px;
     /* margin: -8px -13px; */
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-right-radius: ${theme.borderRadius.round};
+    border-bottom-right-radius: ${theme.borderRadius.round};
     display: grid;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 24px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P3};
     cursor: pointer;
     &:hover {
-      color: black;
+      color: ${theme.colors.dark};
     }
     &:active {
-      color: white;
+      color: ${theme.colors.white};
     }
   }
 `

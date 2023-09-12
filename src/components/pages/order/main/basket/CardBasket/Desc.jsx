@@ -23,11 +23,9 @@ const DescStyled = styled.div`
   grid-template-columns: 1fr;
   width: 140px;
   height: 86px;
-  /* margin-left: 5px;
-  margin-right: 5px; */
 
   .infos {
-    margin-left: 20px;
+    margin-left: ${theme.spacing.md};
     height: 70px;
     display: grid;
     grid-template-rows: 1fr 1fr;

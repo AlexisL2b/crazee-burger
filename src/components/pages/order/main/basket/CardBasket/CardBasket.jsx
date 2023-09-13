@@ -5,6 +5,7 @@ import { theme } from "../../../../../../theme"
 import Desc from "./Desc"
 import { TbTrashXFilled } from "react-icons/tb"
 import OrderContext from "../../../../../../context/OrderContext"
+import { EMPTY_BY_DEFAULT_PICTURE } from "../../../../../../enums/product"
 
 export default function CardBasket({
   title,
@@ -17,23 +18,21 @@ export default function CardBasket({
   const { isAdmin } = useContext(OrderContext)
 
   return (
-    <CardBasketStyled
-      onMouseEnter={isAdmin ? () => setHovered(true) : null}
-      onMouseLeave={isAdmin ? () => setHovered(false) : null}
-    >
-      <ImageWrapper className={"image"} imageSource={imageSource} />
+    <CardBasketStyled>
+      <ImageWrapper
+        className={"image"}
+        imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT_PICTURE}
+      />
       <Desc title={title} price={price} />
 
       <div className="container">
-        {hovered ? (
-          <div className="delete" onClick={onDelete}>
-            <i>
-              <TbTrashXFilled />
-            </i>
-          </div>
-        ) : (
-          <span className="quantity">x{quantity}</span>
-        )}
+        <div className="delete-button" onClick={onDelete}>
+          <i className="icon">
+            <TbTrashXFilled />
+          </i>
+        </div>
+
+        <span className="quantity">x{quantity}</span>
       </div>
     </CardBasketStyled>
   )
@@ -43,12 +42,53 @@ const CardBasketStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   height: 86px;
   padding: ${theme.spacing.xs} 16px;
-
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: ${theme.spacing.md};
   margin-bottom: ${theme.spacing.md};
   box-shadow: ${theme.shadows.basket};
+  &:hover {
+    .delete-button {
+      /* border: 1px solid red; */
+      border: none;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 76px;
+      border-top-right-radius: ${theme.borderRadius.round};
+      border-bottom-right-radius: ${theme.borderRadius.round};
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: ${theme.colors.red};
+      color: ${theme.colors.white};
+      cursor: pointer;
+
+      .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: ${theme.fonts.size.P3};
+        height: ${theme.fonts.size.P3};
+      }
+
+      /* behaviour on delete-button hover */
+      :hover {
+        .icon {
+          color: ${theme.colors.dark};
+        }
+        :active {
+          .icon {
+            color: ${theme.colors.white};
+          }
+        }
+      }
+    }
+  }
   .image {
     height: 70px;
 
@@ -65,28 +105,8 @@ const CardBasketStyled = styled.div`
     display: grid;
     place-content: center;
   }
-
-  .delete {
-    background: ${theme.colors.red};
-    height: 86px;
-    width: 120%;
-    position: relative;
-    left: 5px;
-    bottom: 8px;
-    /* margin: -8px -13px; */
-    border-top-right-radius: ${theme.borderRadius.round};
-    border-bottom-right-radius: ${theme.borderRadius.round};
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P3};
-    cursor: pointer;
-    &:hover {
-      color: ${theme.colors.dark};
-    }
-    &:active {
-      color: ${theme.colors.white};
-    }
+  .delete-button {
+    display: none;
+    z-index: 1;
   }
 `

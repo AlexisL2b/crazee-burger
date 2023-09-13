@@ -1,6 +1,16 @@
-export default function PrimaryButton({ label, Icon, className, version }) {
+export default function PrimaryButton({
+  label,
+  Icon,
+  className,
+  version,
+  onClick,
+}) {
   return (
-    <PrimaryButtonStyled className={className} version={version}>
+    <PrimaryButtonStyled
+      className={className}
+      version={version}
+      onClick={onClick}
+    >
       {label} {Icon && Icon}
     </PrimaryButtonStyled>
   )

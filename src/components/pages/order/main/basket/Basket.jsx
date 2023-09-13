@@ -18,7 +18,6 @@ export default function Basket() {
 const BasketStyled = styled.div`
   height: 100%;
   grid-row: span 3;
-  background: red;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 70px 2fr 70px;

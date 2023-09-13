@@ -6,6 +6,8 @@ import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { useMenu } from "../../../hooks/useMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product"
+import { fakeBasket } from "../../fakeData/fakeBasket"
+import { useBasket } from "../../../hooks/useBasket"
 export default function OrderPages() {
   //state
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
@@ -15,10 +17,17 @@ export default function OrderPages() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
   const [selectedCardId, setSelectedCardId] = useState(null)
+  const [quantity, setQuantity] = useState(0)
 
   const inputRef = useRef()
   const { handleDelete, handleAdd, handleGenerate, handleEdit, products } =
     useMenu()
+  const {
+    handleAddBasketProduct,
+    basketProducts,
+    total,
+    handleDeleteBasketProduct,
+  } = useBasket()
 
   const orderContextValue = {
     isAdmin,
@@ -41,6 +50,13 @@ export default function OrderPages() {
     selectedCardId,
     setSelectedCardId,
     setIsAdmin,
+    handleAddBasketProduct,
+    basketProducts,
+    quantity,
+    setQuantity,
+    total,
+    handleDeleteBasketProduct, // handleIncrementationBasketProduct,
+    // ammount,
   }
 
   //affichage
@@ -65,8 +81,8 @@ const OrderPageStyled = styled.div`
   padding: 25px, 56px, 25px, 56px;
 
   .container {
-    height: 95vh;
-    width: 1400px;
+    /* height: 95vh; */
+    /* width: 1400px; */
     display: flex;
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};

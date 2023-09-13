@@ -1,11 +1,17 @@
-import React from "react"
+import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
+import OrderContext from "../../../../../context/OrderContext"
+import { formatMontant, sum } from "../../../../../utils/maths"
 
 export default function Header() {
+  const { total } = useContext(OrderContext)
+  const totalPrice = sum(total)
+  const totalPriceFormat = formatMontant(totalPrice)
   return (
     <HeaderStyled>
-      <span className="total">Total</span> <span className="price">0,00€</span>
+      <span className="total">Total</span>
+      <span className="price"> {total != 0 ? totalPriceFormat : 0.0} €</span>
     </HeaderStyled>
   )
 }

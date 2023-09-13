@@ -1,6 +1,5 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
-import { formatMontant } from "../../../utils/maths"
 import { theme } from "../../../theme"
 import PrimaryButton from "../PrimaryButton"
 import OrderContext from "../../../context/OrderContext"
@@ -11,11 +10,15 @@ export default function Desc({
   title,
   name,
   cardVersion,
+  product,
 }) /*propsDrilling*/ {
   //State
 
-  const { activeCard } = useContext(OrderContext)
-
+  const { handleAddBasketProduct } = useContext(OrderContext)
+  const handleAdd = (e, product) => {
+    e.stopPropagation()
+    handleAddBasketProduct(product)
+  }
   //comportement
   return (
     <DescStyled name={name}>
@@ -39,6 +42,7 @@ export default function Desc({
               cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
             }
             className={"button"}
+            onClick={(e) => handleAdd(e, product)}
           />
         </div>
       </div>

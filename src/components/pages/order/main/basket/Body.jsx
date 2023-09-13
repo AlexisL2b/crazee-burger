@@ -1,23 +1,35 @@
-import React from "react"
+import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
-
+import CardBasket from "./CardBasket/CardBasket"
+import OrderContext from "../../../../../context/OrderContext"
 export default function Body() {
+  const { basketProducts, handleDeleteBasketProduct } = useContext(OrderContext)
   return (
     <BodyStyled>
-      <span> Votre commande est vide.</span>
+      {basketProducts.map((product) => (
+        <CardBasket
+          key={product.id}
+          title={product.title}
+          price={product.price}
+          imageSource={product.imageSource}
+          quantity={product.quantity}
+          onDelete={() => handleDeleteBasketProduct(product.id)}
+        />
+      ))}
     </BodyStyled>
   )
 }
 const BodyStyled = styled.div`
+  /* height: 100%; */
   background: #f5f5f7;
   color: ${theme.colors.greyBlue};
   font-family: ${theme.fontsFamily.amatic};
   font-size: ${theme.fonts.size.P4};
   font-weight: ${theme.fonts.weights.regular};
-  line-height: 72px;
   box-shadow: 0px 0px 20px 0px #00000033 inset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 16px 20px;
 `

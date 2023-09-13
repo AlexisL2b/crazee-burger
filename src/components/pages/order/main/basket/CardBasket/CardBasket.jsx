@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 import Desc from "./Desc"
@@ -12,15 +12,15 @@ export default function CardBasket({
   imageSource,
   quantity,
   onDelete,
+  onClick,
+  version,
 }) {
-  const { isAdmin } = useContext(OrderContext)
-
   return (
-    <CardBasketStyled>
+    <CardBasketStyled onClick={onClick} version={version}>
       <ImageWrapper className={"image"} imageSource={imageSource} />
 
       <div className="desc">
-        <Desc title={title} price={price} />
+        <Desc title={title} price={price} cardVersion={version} />
       </div>
 
       <div className="container">
@@ -47,10 +47,6 @@ const CardBasketStyled = styled.div`
   box-shadow: ${theme.shadows.basket};
   position: relative;
   &:hover {
-    background: ${theme.colors.primary};
-    .desc {
-      color: white;
-    }
     .delete-button {
       border: none;
       box-sizing: border-box;
@@ -110,29 +106,14 @@ const CardBasketStyled = styled.div`
     z-index: 1;
   }
 
-  /* hover de la card */
-
-  /* 
-  .delete {
-    background: ${theme.colors.red};
-    height: 86px;
-    width: 120%;
-    position: relative;
-    left: 5px;
-    bottom: 8px;
-    
-    border-top-right-radius: ${theme.borderRadius.round};
-    border-bottom-right-radius: ${theme.borderRadius.round};
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P3};
-    cursor: pointer;
-    &:hover {
-      color: ${theme.colors.dark};
-    }
-    &:active {
-      color: ${theme.colors.white};
-    } */
+  ${({ version }) => extraStyle[version]}
 `
+const selectStyled = css`
+  background: ${theme.colors.primary};
+`
+
+const normalStyled = css`
+  background: ${theme.colors.white};
+`
+
+const extraStyle = { selectStyled, normalStyled }

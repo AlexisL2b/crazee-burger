@@ -13,16 +13,15 @@ export default function CardBasket({
   quantity,
   onDelete,
 }) {
-  const [hovered, setHovered] = useState(false)
   const { isAdmin } = useContext(OrderContext)
 
   return (
-    <CardBasketStyled
-    // onMouseEnter={isAdmin ? () => setHovered(true) : null}
-    // onMouseLeave={isAdmin ? () => setHovered(false) : null}
-    >
+    <CardBasketStyled>
       <ImageWrapper className={"image"} imageSource={imageSource} />
-      <Desc title={title} price={price} />
+
+      <div className="desc">
+        <Desc title={title} price={price} />
+      </div>
 
       <div className="container">
         <div className="delete-button" onClick={onDelete}>
@@ -48,8 +47,11 @@ const CardBasketStyled = styled.div`
   box-shadow: ${theme.shadows.basket};
   position: relative;
   &:hover {
+    background: ${theme.colors.primary};
+    .desc {
+      color: white;
+    }
     .delete-button {
-      /* border: 1px solid red; */
       border: none;
       box-sizing: border-box;
       position: absolute;

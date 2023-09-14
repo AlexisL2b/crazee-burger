@@ -30,7 +30,13 @@ export default function CardBasket({
           </i>
         </div>
 
-        <span className="quantity">x{quantity}</span>
+        <span
+          className={
+            version === "selectStyled" ? "quantity_selected" : "quantity"
+          }
+        >
+          x{quantity}
+        </span>
       </div>
     </CardBasketStyled>
   )
@@ -83,6 +89,16 @@ const CardBasketStyled = styled.div`
         }
       }
     }
+  }
+  .quantity_selected {
+    color: ${theme.colors.white};
+    height: 70px;
+    font-size: ${theme.fonts.size.SM};
+    font-weight: ${theme.fonts.weights.light};
+    font-family: ${theme.fontsFamily.open};
+    width: 100%;
+    display: grid;
+    place-content: center;
   }
   .image {
     height: 70px;

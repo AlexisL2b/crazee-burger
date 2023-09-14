@@ -6,8 +6,13 @@ import OrderContext from "../../../context/OrderContext"
 
 export default function InputFields({ className, product }) {
   const textInputs = getTextInputConfig({ product })
-  const { inputRef, existingProduct, setExistingProduct, handleEdit } =
-    useContext(OrderContext)
+  const {
+    inputRef,
+    existingProduct,
+    setExistingProduct,
+    handleEdit,
+    handleBasketEdit,
+  } = useContext(OrderContext)
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -19,6 +24,7 @@ export default function InputFields({ className, product }) {
 
     setExistingProduct(productBeingUpdated)
     handleEdit(productBeingUpdated)
+    handleBasketEdit(productBeingUpdated)
   }
 
   console.log()

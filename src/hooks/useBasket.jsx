@@ -61,11 +61,48 @@ export const useBasket = () => {
     setTotal(copyTotal)
     setBasketProducts(basketFilter)
   }
+  const handleBasketEdit = (productBeingEdited) => {
+    // 1. copie du state (deep clone)
+    const productsCopy = getDeepClone(basketProducts)
+
+    // 2. manip de la copie du state
+    const ProductToEdit = basketProducts.find(
+      (product) => product.id === productBeingEdited.id
+    )
+    // productsCopy[idOfProductToEdit] = productBeingEdited
+
+    const productBeingEditedUpdated = {
+      quantity: ProductToEdit.quantity,
+      ...productBeingEdited,
+    }
+
+    const { quantity, ...restOfProperties } = productBeingEditedUpdated
+
+    Object.assign(ProductToEdit, restOfProperties)
+
+    //good
+
+    // console.log(productBeingEdited)
+
+    const basketProductExisiting = basketProducts.find(
+      (product) => product.id === productBeingEdited.id
+    )
+    const copyTotal = getDeepClone(total)
+    const priceUpdated =
+      basketProductExisiting.price * basketProductExisiting.quantity
+
+    const copyTotalUpdated = {
+      ...copyTotal,
+      [basketProductExisiting.id]: priceUpdated,
+    }
+    setTotal(copyTotalUpdated)
+  }
 
   return {
     handleAddBasketProduct,
     basketProducts,
     total,
     handleDeleteBasketProduct,
+    handleBasketEdit,
   }
 }

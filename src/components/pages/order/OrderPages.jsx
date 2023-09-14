@@ -27,6 +27,7 @@ export default function OrderPages() {
     basketProducts,
     total,
     handleDeleteBasketProduct,
+    handleBasketEdit,
   } = useBasket()
 
   const orderContextValue = {
@@ -55,7 +56,8 @@ export default function OrderPages() {
     quantity,
     setQuantity,
     total,
-    handleDeleteBasketProduct, // handleIncrementationBasketProduct,
+    handleDeleteBasketProduct,
+    handleBasketEdit, // handleIncrementationBasketProduct,
     // ammount,
   }
 

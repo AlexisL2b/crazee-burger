@@ -41,7 +41,7 @@ export default function Body() {
     <BodyStyled>
       {basketProducts.map((product) => (
         <CardBasket
-          onClick={() => handleFocus(product.id)}
+          onClick={isAdmin ? () => handleFocus(product.id) : null}
           key={product.id}
           title={product.title}
           price={product.price}

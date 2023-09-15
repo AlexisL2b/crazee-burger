@@ -1,17 +1,21 @@
 import React from "react"
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 import { theme } from "../../../../../../theme"
 import { formatMontant } from "../../../../../../utils/maths"
 
-export default function Desc({ title, price }) {
+export default function Desc({ title, price, cardVersion }) {
   const formatPrice = formatMontant(price)
   return (
-    <DescStyled>
+    <DescStyled
+      version={
+        cardVersion === "selectStyled" ? "secondaryStyled" : "primaryStyled"
+      }
+    >
       <div className="infos">
         <div className="title">
           <span>{title}</span>
         </div>
-        <div className="price">
+        <div className="">
           <span className="price">{formatPrice} €</span>
         </div>
       </div>
@@ -46,10 +50,25 @@ const DescStyled = styled.div`
       height: 20px;
       margin: 0px;
       font-size: ${theme.fonts.size.SM};
-      color: ${theme.colors.primary};
       font-family: ${theme.fontsFamily.open};
       align-items: center;
       justify-content: center;
     }
   }
+  ${({ version }) => extraStyle[version]}
 `
+const primaryStyled = css`
+  .price {
+    color: ${theme.colors.primary};
+  }
+`
+const secondaryStyled = css`
+  .price {
+    color: ${theme.colors.white};
+  }
+`
+
+const extraStyle = {
+  primaryStyled,
+  secondaryStyled,
+}

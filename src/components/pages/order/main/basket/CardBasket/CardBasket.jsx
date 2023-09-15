@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 import Desc from "./Desc"
@@ -12,28 +12,25 @@ export default function CardBasket({
   imageSource,
   quantity,
   onDelete,
+  onClick,
+  version,
 }) {
-  const [hovered, setHovered] = useState(false)
-  const { isAdmin } = useContext(OrderContext)
-
   return (
-    <CardBasketStyled
-      onMouseEnter={isAdmin ? () => setHovered(true) : null}
-      onMouseLeave={isAdmin ? () => setHovered(false) : null}
-    >
+    <CardBasketStyled onClick={onClick} version={version}>
       <ImageWrapper className={"image"} imageSource={imageSource} />
-      <Desc title={title} price={price} />
+
+      <div className="desc">
+        <Desc title={title} price={price} cardVersion={version} />
+      </div>
 
       <div className="container">
-        {hovered ? (
-          <div className="delete" onClick={onDelete}>
-            <i>
-              <TbTrashXFilled />
-            </i>
-          </div>
-        ) : (
-          <span className="quantity">x{quantity}</span>
-        )}
+        <div className="delete-button" onClick={onDelete}>
+          <i className="icon">
+            <TbTrashXFilled />
+          </i>
+        </div>
+
+        <span className="quantity">x{quantity}</span>
       </div>
     </CardBasketStyled>
   )
@@ -43,12 +40,50 @@ const CardBasketStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   height: 86px;
   padding: ${theme.spacing.xs} 16px;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: ${theme.spacing.md};
   margin-bottom: ${theme.spacing.md};
   box-shadow: ${theme.shadows.basket};
+  position: relative;
+  &:hover {
+    .delete-button {
+      border: none;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 76px;
+      border-top-right-radius: ${theme.borderRadius.round};
+      border-bottom-right-radius: ${theme.borderRadius.round};
+      font-size: 24px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: ${theme.colors.red};
+      color: ${theme.colors.white};
+      cursor: pointer;
+
+      .icon {
+        width: ${theme.fonts.size.P3};
+        height: ${theme.fonts.size.P3};
+      }
+
+      /* behaviour on delete-button hover */
+      :hover {
+        .icon {
+          color: ${theme.colors.dark};
+        }
+        :active {
+          .icon {
+            color: ${theme.colors.white};
+          }
+        }
+      }
+    }
+  }
   .image {
     height: 70px;
 
@@ -66,27 +101,19 @@ const CardBasketStyled = styled.div`
     place-content: center;
   }
 
-  .delete {
-    background: ${theme.colors.red};
-    height: 86px;
-    width: 120%;
-    position: relative;
-    left: 5px;
-    bottom: 8px;
-    /* margin: -8px -13px; */
-    border-top-right-radius: ${theme.borderRadius.round};
-    border-bottom-right-radius: ${theme.borderRadius.round};
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P3};
-    cursor: pointer;
-    &:hover {
-      color: ${theme.colors.dark};
-    }
-    &:active {
-      color: ${theme.colors.white};
-    }
+  .delete-button {
+    display: none;
+    z-index: 1;
   }
+
+  ${({ version }) => extraStyle[version]}
 `
+const selectStyled = css`
+  background: ${theme.colors.primary};
+`
+
+const normalStyled = css`
+  background: ${theme.colors.white};
+`
+
+const extraStyle = { selectStyled, normalStyled }

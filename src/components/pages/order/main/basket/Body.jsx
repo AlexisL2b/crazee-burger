@@ -4,17 +4,55 @@ import { theme } from "../../../../../theme"
 import CardBasket from "./CardBasket/CardBasket"
 import OrderContext from "../../../../../context/OrderContext"
 export default function Body() {
-  const { basketProducts, handleDeleteBasketProduct } = useContext(OrderContext)
+  const {
+    selectedCardId,
+    products,
+    isAdmin,
+    inputRef,
+    setActiveTab,
+    setExistingProduct,
+    setSelectedCardId,
+    handleDeleteBasketProduct,
+    basketProducts,
+    setIsOpen,
+    isOpen,
+  } = useContext(OrderContext)
+
+  const handleFocus = async (idProductClicked) => {
+    // const basketProductExisting = basketProducts.find(
+    //   (product) => product.id === idProductClicked
+    // )
+    await setActiveTab("edit")
+    const productClicked = products.find(
+      (product) => product.id === idProductClicked
+    )
+
+    // await handleSwitchSelect(idProductClicked)
+    await setSelectedCardId(idProductClicked)
+    await setExistingProduct(productClicked)
+    if (!isOpen) {
+      await setIsOpen(true)
+      inputRef.current.focus()
+    } else {
+      inputRef.current.focus()
+    }
+  }
   return (
     <BodyStyled>
       {basketProducts.map((product) => (
         <CardBasket
+          onClick={() => handleFocus(product.id)}
           key={product.id}
           title={product.title}
           price={product.price}
           imageSource={product.imageSource}
           quantity={product.quantity}
           onDelete={() => handleDeleteBasketProduct(product.id)}
+          version={
+            selectedCardId === product.id && isAdmin
+              ? "selectStyled"
+              : "normalStyled"
+          }
         />
       ))}
     </BodyStyled>

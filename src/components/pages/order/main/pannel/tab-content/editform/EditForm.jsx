@@ -11,8 +11,18 @@ export default function EditForm() {
   //comportement
 
   //render
-  const { existingProduct, handleEdit, activeTab, selectedCardId } =
-    useContext(OrderContext)
+  const {
+    existingProduct,
+    handleEdit,
+    activeTab,
+    selectedCardId,
+    handleBasketEdit,
+    basketProducts,
+  } = useContext(OrderContext)
+
+  // const handleChange = (product) => {
+  //   handleBasketEdit(product), handleEdit(product)
+  // }
 
   return selectedCardId != null ? (
     <Form

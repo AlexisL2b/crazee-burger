@@ -6,6 +6,7 @@ import { MdKeyboardArrowRight } from "react-icons/md"
 import { PiUserCircleFill } from "react-icons/pi"
 import TextInput from "../../reusable-ui/TextInput"
 import PrimaryButton from "../../reusable-ui/PrimaryButton"
+import { createUser } from "../../../api/user"
 
 export default function LoginForm() {
   //state
@@ -14,6 +15,7 @@ export default function LoginForm() {
   //comportement
   const handleSubmit = (e) => {
     e.preventDefault()
+    createUser(firstName)
     navigate(`order/${firstName}`)
   }
 

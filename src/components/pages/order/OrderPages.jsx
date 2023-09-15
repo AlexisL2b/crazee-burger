@@ -8,6 +8,7 @@ import { useMenu } from "../../../hooks/useMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { fakeBasket } from "../../fakeData/fakeBasket"
 import { useBasket } from "../../../hooks/useBasket"
+import { getUser } from "../../../api/user"
 export default function OrderPages() {
   //state
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)

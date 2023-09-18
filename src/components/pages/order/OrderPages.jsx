@@ -9,6 +9,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product"
 import { fakeBasket } from "../../fakeData/fakeBasket"
 import { useBasket } from "../../../hooks/useBasket"
 import { getUser } from "../../../api/user"
+import.meta.env
 export default function OrderPages() {
   //state
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
@@ -61,6 +62,7 @@ export default function OrderPages() {
     handleBasketEdit, // handleIncrementationBasketProduct,
     // ammount,
   }
+  console.log(import.meta.env.VITE_API_KEY)
 
   //affichage
   return (

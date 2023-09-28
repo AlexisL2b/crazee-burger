@@ -1,9 +1,11 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
 import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
+import { useParams } from "react-router-dom"
+import { getMenu } from "../../../../../api/menu"
 
 export default function Menu() {
   const {
@@ -20,6 +22,15 @@ export default function Menu() {
     setIsOpen,
     isOpen,
   } = useContext(OrderContext)
+
+  // const [products, setProducts] = useState([])
+
+  const { userName } = useParams()
+  // const fetchMenu = async () => {
+  //   const menuData = await getMenu(userName)
+  //   setProducts(menuData)
+  // }
+  // console.log(products)
 
   // const handleSwitchSelect = async (id) => {
   // @TODO
@@ -53,6 +64,8 @@ export default function Menu() {
       handleDelete(product)
     }
   }
+  console.log(products)
+  // fetchMenu()
   return (
     <MenuStyled>
       {products.length != 0 ? (

@@ -4,12 +4,12 @@ import { theme } from "../../../../theme"
 import { Link } from "react-router-dom"
 import { PiUserCircleFill } from "react-icons/pi"
 
-export default function Profile({ firstValue }) {
+export default function Profile({ username }) {
   return (
     <ProfileSyled>
       <div className="infos">
         <span>
-          Hey, <span className="username">{firstValue}</span>
+          Hey, <span className="username">{username}</span>
         </span>
         <Link className="disconect" to="/">
           Se déconnecter

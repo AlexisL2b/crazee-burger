@@ -1,14 +1,28 @@
 import { useState } from "react"
 import { fakeMenu2, fakeMenu3 } from "../components/fakeData/fakeMenu"
 import { getDeepClone } from "../utils/windows"
+import { useParams } from "react-router-dom"
+import { getMenu } from "../api/menu"
 
 export const useMenu = () => {
   //state
-
-  const [products, setProducts] = useState(fakeMenu2)
+  const { userName } = useParams()
+  const [products, setProducts] = useState([])
   const [productsBackup] = useState(fakeMenu3)
+  // getMenu(userName).then((data) => {
+  //   setProducts(data)
+  // })
 
   //comportement
+
+  // const userMenu = async ()=>{
+  //   const menu = await getMenu(userName)
+
+  // }
+  const fetchData = async () => {
+    const menuData = await getMenu(userName)
+    setProducts(menuData)
+  }
 
   const handleGenerate = () => {
     setProducts(productsBackup)
@@ -53,5 +67,6 @@ export const useMenu = () => {
     handleGenerate,
     handleEdit,
     products,
+    fetchData,
   }
 }

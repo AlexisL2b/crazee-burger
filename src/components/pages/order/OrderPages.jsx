@@ -2,13 +2,14 @@ import styled from "styled-components"
 import Navbar from "./navbar/NavBar"
 import Main from "./main/Main"
 import { theme } from "../../../theme"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { useMenu } from "../../../hooks/useMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { fakeBasket } from "../../fakeData/fakeBasket"
 import { useBasket } from "../../../hooks/useBasket"
 import { getUser } from "../../../api/user"
+import { useParams } from "react-router-dom"
 import.meta.env
 export default function OrderPages() {
   //state
@@ -20,10 +21,17 @@ export default function OrderPages() {
   const [isOpen, setIsOpen] = useState(true)
   const [selectedCardId, setSelectedCardId] = useState(null)
   const [quantity, setQuantity] = useState(0)
-
+  const { userName } = useParams()
+  //@TODO Changer la valeur du state product avec un useEffect
   const inputRef = useRef()
-  const { handleDelete, handleAdd, handleGenerate, handleEdit, products } =
-    useMenu()
+  const {
+    handleDelete,
+    handleAdd,
+    handleGenerate,
+    handleEdit,
+    products,
+    fetchData,
+  } = useMenu()
   const {
     handleAddBasketProduct,
     basketProducts,
@@ -59,13 +67,23 @@ export default function OrderPages() {
     setQuantity,
     total,
     handleDeleteBasketProduct,
-    handleBasketEdit, // handleIncrementationBasketProduct,
+    handleBasketEdit,
+    // handleIncrementationBasketProduct,
     // ammount,
   }
   // console.log(import.meta.env.VITE_API_KEY)
-  getUser("Alex")
+  // getUser("Alex")
+  // getMenu("Alex")
+  // const { userName } = useParams()
 
   //affichage
+  useEffect(() => {
+    // Code à exécuter lors de l'effet
+    fetchData()
+    return () => {
+      // Code de nettoyage (similaire à componentWillUnmount)
+    }
+  }, [userName])
   return (
     <OrderPageStyled>
       <div className="container">

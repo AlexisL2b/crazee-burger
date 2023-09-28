@@ -27,6 +27,7 @@ export default createContext({
   total: 0,
   handleDeleteBasketProduct: () => {},
   handleBasketEdit: () => {},
+  fetchData: () => {},
   // handleIncrementationBasketProduct: () => {},
   // ammount: 0,
 })

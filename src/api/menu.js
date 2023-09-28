@@ -9,4 +9,26 @@ export const getMenu = async (userId) => {
     const menuReceived = docSnapshot.data().menu
     return menuReceived
   }
+  return []
 }
+
+export const menuUpdate = async (userId, menu) => {
+  const docRef = doc(db, "users", userId)
+  const newDoc = {
+    username: userId,
+    menu: menu,
+  }
+  setDoc(docRef, newDoc)
+}
+// export const deleteMenu = async (userId, menu) => {
+//   const docRef = doc(db, "users", userId)
+//   const newDoc = {
+//     username: userId,
+//     menu: menu,
+//   }
+//   try {
+//     await setDoc(docRef, newDoc)
+//   } catch (error) {
+//     console.error("Erreur lors de la mise à jour du menu :", error)
+//   }
+// }

@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { fakeMenu2, fakeMenu3 } from "../components/fakeData/fakeMenu"
+import { fakeMenu3 } from "../components/fakeData/fakeMenu"
 import { getDeepClone } from "../utils/windows"
 import { useParams } from "react-router-dom"
-import { getMenu } from "../api/menu"
+import { getMenu, menuUpdate } from "../api/menu"
 
 export const useMenu = () => {
   //state
@@ -24,25 +24,31 @@ export const useMenu = () => {
     setProducts(menuData)
   }
 
-  const handleGenerate = () => {
-    setProducts(productsBackup)
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
+
+  const handleGenerate = async () => {
+    await menuUpdate(userName, productsBackup)
     //good
   }
 
   const handleAdd = (newProduct) => {
     const copyProducts = getDeepClone(products)
-
     const productsUpdated = [newProduct, ...copyProducts]
-
     setProducts(productsUpdated)
+    menuUpdate(userName, products)
+
     //good
   }
-  const handleDelete = (idProductToDelete) => {
+  const handleDelete = async (idProductToDelete) => {
     const copyProducts = getDeepClone(products)
     const productFilter = copyProducts.filter(
       (product) => product.id != idProductToDelete
     )
     setProducts(productFilter)
+    await menuUpdate(userName, products)
+
     //good
   }
 

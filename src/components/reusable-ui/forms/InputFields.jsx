@@ -27,7 +27,6 @@ export default function InputFields({ className, product }) {
     handleBasketEdit(productBeingUpdated)
   }
 
-  console.log()
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (

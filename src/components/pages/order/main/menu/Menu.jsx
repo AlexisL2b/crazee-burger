@@ -64,7 +64,6 @@ export default function Menu() {
       handleDelete(product)
     }
   }
-  console.log(products)
   // fetchMenu()
   return (
     <MenuStyled>

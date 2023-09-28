@@ -83,7 +83,7 @@ export default function OrderPages() {
     return () => {
       // Code de nettoyage (similaire à componentWillUnmount)
     }
-  }, [userName])
+  }, [userName, products])
   return (
     <OrderPageStyled>
       <div className="container">

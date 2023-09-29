@@ -35,8 +35,5 @@ const AdminStyled = styled.div`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.background_white};
     border-radius: 5px;
-
-    &:hover {
-    }
   }
 `

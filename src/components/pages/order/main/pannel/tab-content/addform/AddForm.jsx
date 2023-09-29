@@ -29,6 +29,7 @@ export default function AddForm() {
     const name = e.target.name
     const newValue = e.target.value
     setNewProduct({ ...newProduct, [name]: newValue })
+    console.log(newProduct)
   }
   //affichage
 

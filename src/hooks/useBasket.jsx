@@ -70,7 +70,7 @@ export const useBasket = () => {
       (product) => product.id === productBeingEdited.id
     )
     // productsCopy[idOfProductToEdit] = productBeingEdited
-
+    console.log(ProductToEdit)
     const productBeingEditedUpdated = {
       quantity: ProductToEdit.quantity,
       ...productBeingEdited,

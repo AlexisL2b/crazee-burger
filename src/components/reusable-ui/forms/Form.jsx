@@ -4,7 +4,7 @@ import ButtonConfirmation from "./ButtonConfirmation"
 import Message from "../../pages/order/main/pannel/Message"
 import ImagePreview from "./ImagePreview"
 
-export default function gForm({
+export default function Form({
   action,
   onSubmit,
   product,

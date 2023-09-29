@@ -9,35 +9,25 @@ export const useMenu = () => {
   const { userName } = useParams()
   const [products, setProducts] = useState([])
   const [productsBackup] = useState(fakeMenu3)
-  // getMenu(userName).then((data) => {
-  //   setProducts(data)
-  // })
 
-  //comportement
-
-  // const userMenu = async ()=>{
-  //   const menu = await getMenu(userName)
-
-  // }
   const fetchData = async () => {
     const menuData = await getMenu(userName)
     setProducts(menuData)
   }
 
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
-
   const handleGenerate = async () => {
     await menuUpdate(userName, productsBackup)
+    setProducts(productsBackup)
     //good
   }
 
-  const handleAdd = (newProduct) => {
+  const handleAdd = async (newProduct) => {
     const copyProducts = getDeepClone(products)
     const productsUpdated = [newProduct, ...copyProducts]
+
+    await menuUpdate(userName, productsUpdated)
+
     setProducts(productsUpdated)
-    menuUpdate(userName, products)
 
     //good
   }
@@ -46,13 +36,13 @@ export const useMenu = () => {
     const productFilter = copyProducts.filter(
       (product) => product.id != idProductToDelete
     )
+    await menuUpdate(userName, productFilter)
     setProducts(productFilter)
-    await menuUpdate(userName, products)
 
     //good
   }
 
-  const handleEdit = (productBeingEdited) => {
+  const handleEdit = async (productBeingEdited) => {
     // 1. copie du state (deep clone)
     const productsCopy = getDeepClone(products)
 
@@ -63,6 +53,7 @@ export const useMenu = () => {
     productsCopy[indexOfProductToEdit] = productBeingEdited
 
     // 3. update du state
+    await menuUpdate(userName, productsCopy)
     setProducts(productsCopy)
     //good
   }

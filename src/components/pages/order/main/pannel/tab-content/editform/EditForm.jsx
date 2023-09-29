@@ -13,6 +13,7 @@ export default function EditForm() {
   //render
   const {
     existingProduct,
+    setExistingProduct,
     handleEdit,
     activeTab,
     selectedCardId,
@@ -20,16 +21,31 @@ export default function EditForm() {
     basketProducts,
   } = useContext(OrderContext)
 
-  // const handleChange = (product) => {
-  //   handleBasketEdit(product), handleEdit(product)
-  // }
+  const handleChange = (e) => {
+    const name = e.target.name
+    const newValue = e.target.value
+    const productBeingUpdated = {
+      ...existingProduct,
+      [name]: newValue,
+    }
+
+    const productExistingBasket = basketProducts.find(
+      (productExistingBasket) => productExistingBasket.id === existingProduct.id
+    )
+
+    setExistingProduct(productBeingUpdated)
+    handleEdit(productBeingUpdated)
+    if (productExistingBasket) {
+      handleBasketEdit(productBeingUpdated)
+    }
+  }
 
   return selectedCardId != null ? (
     <Form
       action={"submit"}
       product={existingProduct}
       index={activeTab}
-      onChange={handleEdit}
+      onChange={handleChange}
     >
       <Message
         label={"Cliquer sur un produit du menu pour le modifier en temps réel"}

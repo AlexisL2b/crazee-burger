@@ -4,28 +4,28 @@ import { getTextInputConfig } from "./textInputAddConfig"
 import TextInput from "../TextInput"
 import OrderContext from "../../../context/OrderContext"
 
-export default function InputFields({ className, product }) {
+export default function InputFields({ className, product, onChange }) {
   const textInputs = getTextInputConfig({ product })
-  const {
-    inputRef,
-    existingProduct,
-    setExistingProduct,
-    handleEdit,
-    handleBasketEdit,
-  } = useContext(OrderContext)
+  const { inputRef } = useContext(OrderContext)
 
-  const handleChange = (e) => {
-    const name = e.target.name
-    const newValue = e.target.value
-    const productBeingUpdated = {
-      ...existingProduct,
-      [name]: newValue,
-    }
+  // const handleChange = (e) => {
+  //   const name = e.target.name
+  //   const newValue = e.target.value
+  //   const productBeingUpdated = {
+  //     ...existingProduct,
+  //     [name]: newValue,
+  //   }
 
-    setExistingProduct(productBeingUpdated)
-    handleEdit(productBeingUpdated)
-    handleBasketEdit(productBeingUpdated)
-  }
+  //   const productExistingBasket = basketProducts.find(
+  //     (productExistingBasket) => productExistingBasket.id === existingProduct.id
+  //   )
+
+  //   setExistingProduct(productBeingUpdated)
+  //   handleEdit(productBeingUpdated)
+  //   if (productExistingBasket) {
+  //     handleBasketEdit(productBeingUpdated)
+  //   }
+  // }
 
   return (
     <InputFieldsStyled className={className}>
@@ -37,7 +37,7 @@ export default function InputFields({ className, product }) {
           name={input.name}
           className={input.className}
           placeholder={input.placeholder}
-          onChange={handleChange}
+          onChange={onChange}
           value={input.value ? input.value : ""}
           version={input.version}
           ref={input.name === "title" ? inputRef : null}

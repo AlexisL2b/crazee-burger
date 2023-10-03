@@ -81,9 +81,10 @@ const DescStyled = styled.div`
       font-size: ${theme.fonts.size.P1};
     }
     .left-description {
-      display: grid;
+      display: flex;
+
       align-items: center; /* Verticalement */
-      justify-content: center;
+      justify-content: flex-start;
       font-size: ${theme.fonts.size.P1};
     }
   }

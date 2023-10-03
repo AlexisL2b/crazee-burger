@@ -4,6 +4,7 @@ import { theme } from "../../../../../theme"
 import CardBasket from "./CardBasket/CardBasket"
 import OrderContext from "../../../../../context/OrderContext"
 import Loading from "../../../Loading"
+import Message from "../pannel/Message"
 export default function Body() {
   const {
     selectedCardId,
@@ -42,24 +43,28 @@ export default function Body() {
   return (
     <BodyStyled>
       {!afficher ? (
-        basketProducts.map((product) => (
-          <CardBasket
-            onClick={() => handleFocus(product.id)}
-            key={product.id}
-            title={product.title}
-            price={product.price}
-            imageSource={product.imageSource}
-            quantity={product.quantity}
-            onDelete={() => handleDeleteBasketProduct(product.id)}
-            version={
-              selectedCardId === product.id && isAdmin
-                ? "selectStyled"
-                : "normalStyled"
-            }
-          />
-        ))
+        basketProducts.length > 0 ? (
+          basketProducts.map((product) => (
+            <CardBasket
+              onClick={() => handleFocus(product.id)}
+              key={product.id}
+              title={product.title}
+              price={product.price}
+              imageSource={product.imageSource}
+              quantity={product.quantity}
+              onDelete={() => handleDeleteBasketProduct(product.id)}
+              version={
+                selectedCardId === product.id && isAdmin
+                  ? "selectStyled"
+                  : "normalStyled"
+              }
+            />
+          ))
+        ) : (
+          <Message label={"Votre commande est vide."} version="basket" />
+        )
       ) : (
-        <Loading />
+        <Loading version="basket" />
       )}
     </BodyStyled>
   )
@@ -74,9 +79,8 @@ const BodyStyled = styled.div`
   box-shadow: 0px 0px 20px 0px #00000033 inset;
   display: flex;
   flex-direction: column;
+
   overflow-y: auto;
   scrollbar-width: none;
   padding: 16px 20px;
-  align-items: center;
-  justify-content: center;
 `

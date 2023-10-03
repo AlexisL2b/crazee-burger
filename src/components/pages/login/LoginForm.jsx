@@ -41,7 +41,7 @@ export default function LoginForm() {
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
       <h1>Bienvenue chez nous !</h1>
       <div className="divider"></div>
-      <h2>Connectez-vous</h2>
+      <span className="connect">Connectez-vous</span>
       <TextInput
         className={"first_name"}
         value={firstName}
@@ -53,6 +53,7 @@ export default function LoginForm() {
         version="normal"
       />
       <PrimaryButton
+        version={"longPrimary"}
         label="Accéder à mon espace"
         Icon={<MdKeyboardArrowRight />}
       />
@@ -68,17 +69,19 @@ const LoginFormStyled = styled.form`
   h1 {
     text-align: center;
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P5};
+    font-size: ${theme.fonts.size.P5};
     font-family: ${theme.fontsFamily.amatic};
   }
   .divider {
     border: 1px solid ${theme.colors.primary};
     margin-bottom: ${theme.gridUnit * 5}px;
+    margin-top: 32px;
+    width: 400px;
   }
-  h2 {
+  .connect {
     text-align: center;
     font-family: ${theme.fontsFamily.amatic};
-    font-size: ${theme.fonts.P4};
+    font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.white};
   }
 `

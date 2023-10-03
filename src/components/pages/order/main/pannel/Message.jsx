@@ -44,4 +44,11 @@ const success = css`
   font-size: ${theme.fonts.size.SM};
   font-weight: ${theme.fonts.weights.regular};
 `
-const extraStyle = { success, regularSecondaryStyled, smallPrimary }
+const basket = css`
+  font-family: ${theme.fontsFamily.amatic};
+  line-height: 72px;
+  font-size: ${theme.fonts.size.P4};
+  font-weight: ${theme.fonts.weights.regular};
+  margin: auto;
+`
+const extraStyle = { success, regularSecondaryStyled, smallPrimary, basket }

@@ -13,7 +13,8 @@ export default function DeleteButton({ onClick, version = "primaryStyled" }) {
 const DeleteButtonStyled = styled.div`
   position: absolute;
   font-size: 30px;
-  right: 0;
+  right: 10px;
+  top: 10px;
   cursor: pointer;
 
   &:hover {

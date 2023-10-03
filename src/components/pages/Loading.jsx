@@ -26,5 +26,8 @@ const menu = css`
   align-self: center;
   grid-column: 2;
 `
+const basket = css`
+  margin: auto;
+`
 
-const extraStyle = { menu }
+const extraStyle = { menu, basket }

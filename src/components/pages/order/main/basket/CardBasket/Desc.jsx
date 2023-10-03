@@ -15,8 +15,8 @@ export default function Desc({ title, price, cardVersion }) {
         <div className="title">
           <span>{title}</span>
         </div>
-        <div className="">
-          <span className="price">{formatPrice} €</span>
+        <div className="price">
+          <span>{formatPrice} €</span>
         </div>
       </div>
     </DescStyled>

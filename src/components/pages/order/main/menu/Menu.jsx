@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
@@ -6,6 +6,7 @@ import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
 import { useParams } from "react-router-dom"
 import { getMenu } from "../../../../../api/menu"
+import Loading from "../../../Loading"
 
 export default function Menu() {
   const {
@@ -21,6 +22,8 @@ export default function Menu() {
     basketProducts,
     setIsOpen,
     isOpen,
+    fetchData,
+    afficher,
   } = useContext(OrderContext)
 
   // const [products, setProducts] = useState([])
@@ -64,35 +67,40 @@ export default function Menu() {
       handleDelete(product)
     }
   }
+
   // fetchMenu()
   return (
     <MenuStyled>
-      {products.length != 0 ? (
-        products.map((product) => (
-          <Card
-            id={product.id}
-            className={"cardProduct"}
-            key={product.id}
-            imageSource={product.imageSource}
-            title={product.title}
-            priceProduct={product.price}
-            onDelete={() => handleDeleteProduct(product.id)}
-            isAdmin={isAdmin}
-            onClick={() => {
-              handleFocus(product.id)
-            }}
-            version={
-              selectedCardId === product.id && isAdmin
-                ? "selectStyled"
-                : "normalStyled"
-            }
-            product={product}
-          />
-        ))
+      {!afficher ? (
+        products.length !== 0 ? (
+          products.map((product) => (
+            <Card
+              id={product.id}
+              className={"cardProduct"}
+              key={product.id}
+              imageSource={product.imageSource}
+              title={product.title}
+              priceProduct={product.price}
+              onDelete={() => handleDeleteProduct(product.id)}
+              isAdmin={isAdmin}
+              onClick={() => {
+                handleFocus(product.id)
+              }}
+              version={
+                selectedCardId === product.id && isAdmin
+                  ? "selectStyled"
+                  : "normalStyled"
+              }
+              product={product}
+            />
+          ))
+        ) : (
+          <div className="stock_container">
+            <Stock />
+          </div>
+        )
       ) : (
-        <div className="stock_container">
-          <Stock />
-        </div>
+        <Loading version="menu" />
       )}
     </MenuStyled>
   )

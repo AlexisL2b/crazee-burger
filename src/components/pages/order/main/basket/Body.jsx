@@ -3,6 +3,7 @@ import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import CardBasket from "./CardBasket/CardBasket"
 import OrderContext from "../../../../../context/OrderContext"
+import Loading from "../../../Loading"
 export default function Body() {
   const {
     selectedCardId,
@@ -16,6 +17,7 @@ export default function Body() {
     basketProducts,
     setIsOpen,
     isOpen,
+    afficher,
   } = useContext(OrderContext)
 
   const handleFocus = async (idProductClicked) => {
@@ -39,22 +41,26 @@ export default function Body() {
   }
   return (
     <BodyStyled>
-      {basketProducts.map((product) => (
-        <CardBasket
-          onClick={() => handleFocus(product.id)}
-          key={product.id}
-          title={product.title}
-          price={product.price}
-          imageSource={product.imageSource}
-          quantity={product.quantity}
-          onDelete={() => handleDeleteBasketProduct(product.id)}
-          version={
-            selectedCardId === product.id && isAdmin
-              ? "selectStyled"
-              : "normalStyled"
-          }
-        />
-      ))}
+      {!afficher ? (
+        basketProducts.map((product) => (
+          <CardBasket
+            onClick={() => handleFocus(product.id)}
+            key={product.id}
+            title={product.title}
+            price={product.price}
+            imageSource={product.imageSource}
+            quantity={product.quantity}
+            onDelete={() => handleDeleteBasketProduct(product.id)}
+            version={
+              selectedCardId === product.id && isAdmin
+                ? "selectStyled"
+                : "normalStyled"
+            }
+          />
+        ))
+      ) : (
+        <Loading />
+      )}
     </BodyStyled>
   )
 }
@@ -66,8 +72,11 @@ const BodyStyled = styled.div`
   font-size: ${theme.fonts.size.P4};
   font-weight: ${theme.fonts.weights.regular};
   box-shadow: 0px 0px 20px 0px #00000033 inset;
-  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   scrollbar-width: none;
   padding: 16px 20px;
+  align-items: center;
+  justify-content: center;
 `

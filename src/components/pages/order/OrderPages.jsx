@@ -22,6 +22,10 @@ export default function OrderPages() {
   const [selectedCardId, setSelectedCardId] = useState(null)
   const [quantity, setQuantity] = useState(0)
   const { userName } = useParams()
+  const [afficher, setAfficher] = useState(true) // Par défaut, le composant est affiché
+
+  // const [isMounted, setIsMounted] = useState(false)
+
   //@TODO Changer la valeur du state product avec un useEffect
   const inputRef = useRef()
   const {
@@ -68,8 +72,10 @@ export default function OrderPages() {
     total,
     handleDeleteBasketProduct,
     handleBasketEdit,
+    afficher,
     // handleIncrementationBasketProduct,
     // ammount,
+    // isMounted,
   }
   // console.log(import.meta.env.VITE_API_KEY)
   // getUser("Alex")
@@ -77,6 +83,16 @@ export default function OrderPages() {
   // const { userName } = useParams()
 
   //affichage
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAfficher(false) // Cache le composant après 3 secondes
+    }, 1000)
+
+    // Ceci sert à annuler le délai si le composant est démonté avant que le temps ne soit écoulé
+    return () => clearTimeout(timer)
+  }, []) // Les crochets vides signifient que cet effet ne s'exécute qu'une fois, similaire à `componentDidMount`
+
   useEffect(() => {
     // Code à exécuter lors de l'effet
     fetchData()
@@ -84,6 +100,10 @@ export default function OrderPages() {
       // Code de nettoyage (similaire à componentWillUnmount)
     }
   }, [userName, products])
+  // useEffect(() => {
+  //   // Met à jour l'état après que le composant ait été monté
+  //   setIsMounted(true)
+  // }, [])
   return (
     <OrderPageStyled>
       <div className="container">

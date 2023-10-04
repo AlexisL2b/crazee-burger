@@ -9,17 +9,24 @@ export default function Message({
 }) {
   return (
     <MessageStyled version={version} className={className}>
-      <span>
-        {label}
-
-        {icon && icon}
-      </span>
+      <div className="icon">{icon && icon}</div>
+      <span>{label}</span>
     </MessageStyled>
   )
 }
 
-const MessageStyled = styled.span`
+const MessageStyled = styled.div`
   height: 30px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  .icon {
+    position: relative;
+    top: 3px;
+    margin-right: 10px;
+  }
+
   ${({ version }) => extraStyle[version]}
 `
 
@@ -38,6 +45,7 @@ const regularSecondaryStyled = css`
   font-weight: ${theme.fonts.weights.regular};
 `
 const success = css`
+  display: flex;
   color: ${theme.colors.success};
   font-family: ${theme.fontsFamily.open};
   line-height: 30px;
@@ -51,4 +59,17 @@ const basket = css`
   font-weight: ${theme.fonts.weights.regular};
   margin: auto;
 `
-const extraStyle = { success, regularSecondaryStyled, smallPrimary, basket }
+const update = css`
+  color: ${theme.colors.blue};
+  font-family: ${theme.fontsFamily.open};
+  line-height: 30px;
+  font-size: ${theme.fonts.size.SM};
+  font-weight: ${theme.fonts.weights.regular};
+`
+const extraStyle = {
+  success,
+  regularSecondaryStyled,
+  smallPrimary,
+  basket,
+  update,
+}

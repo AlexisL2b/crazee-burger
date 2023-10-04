@@ -22,7 +22,8 @@ export default function OrderPages() {
   const [selectedCardId, setSelectedCardId] = useState(null)
   const [quantity, setQuantity] = useState(0)
   const { userName } = useParams()
-  const [afficher, setAfficher] = useState(true) // Par défaut, le composant est affiché
+  const [afficher, setAfficher] = useState(true)
+  const [isBlured, setIsBlured] = useState(false) // Par défaut, le composant est affiché
 
   // const [isMounted, setIsMounted] = useState(false)
 
@@ -73,6 +74,8 @@ export default function OrderPages() {
     handleDeleteBasketProduct,
     handleBasketEdit,
     afficher,
+    isBlured,
+    setIsBlured,
     // handleIncrementationBasketProduct,
     // ammount,
     // isMounted,

@@ -29,17 +29,7 @@ export default function Menu() {
   // const [products, setProducts] = useState([])
 
   const { userName } = useParams()
-  // const fetchMenu = async () => {
-  //   const menuData = await getMenu(userName)
-  //   setProducts(menuData)
-  // }
-  // console.log(products)
 
-  // const handleSwitchSelect = async (id) => {
-  // @TODO
-  //   setSelectedCardId((prevId) => (prevId !== id ? id : null))
-  //   console.log(selectedCardId)
-  // }
   const handleFocus = async (idProductClicked) => {
     await setActiveTab("edit")
     const productClicked = products.find(
@@ -72,7 +62,7 @@ export default function Menu() {
   return (
     <MenuStyled>
       {!afficher ? (
-        products.length !== 0 ? (
+        products.length > 0 ? (
           products.map((product) => (
             <Card
               id={product.id}

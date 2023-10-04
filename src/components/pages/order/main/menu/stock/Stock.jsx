@@ -6,10 +6,8 @@ import User from "./User"
 import Loading from "../../../../Loading"
 
 export default function Stock() {
-  const { isAdmin, isMounted, products } = useContext(OrderContext)
-  if (!isMounted) {
-    return <Loading />
-  }
+  const { isAdmin } = useContext(OrderContext)
+
   return <StockStyled>{isAdmin ? <Admin /> : <User />}</StockStyled>
 }
 

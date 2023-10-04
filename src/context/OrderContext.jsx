@@ -30,6 +30,8 @@ export default createContext({
   fetchData: () => {},
   isMounted: false,
   afficher: false,
+  isBlured: false,
+  setIsBlured: () => {},
   // handleIncrementationBasketProduct: () => {},
   // ammount: 0,
 })

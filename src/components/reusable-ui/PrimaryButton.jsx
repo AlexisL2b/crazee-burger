@@ -26,11 +26,12 @@ const PrimaryButtonStyled = styled.button`
   border-radius: ${theme.borderRadius.round};
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   /* flex-shrink: 0; */
   background-color: ${theme.colors.primary};
   color: ${theme.colors.white};
   transition: background-color 0.3s ease;
-  font-size: ${theme.fonts.size.SM};
+  font-size: 13px;
   font-weight: ${theme.fonts.weights.bold};
   cursor: pointer;
 

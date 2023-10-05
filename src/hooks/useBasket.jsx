@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { getDeepClone } from "../utils/windows"
+import { getDeepClone, setLocalStorage } from "../utils/windows"
 import { keyframes } from "styled-components"
 
 export const useBasket = () => {
@@ -9,7 +9,7 @@ export const useBasket = () => {
   const [basketProducts, setBasketProducts] = useState(undefined)
   const [total, setTotal] = useState({})
 
-  const handleAddBasketProduct = (newBasketProduct) => {
+  const handleAddBasketProduct = (newBasketProduct, userName) => {
     const basketProductExisiting = basketProducts.find(
       (product) => product.id === newBasketProduct.id
     )
@@ -18,6 +18,7 @@ export const useBasket = () => {
       basketProductExisiting.quantity += 1
       const copyBasketProduct = getDeepClone(basketProducts)
       setBasketProducts(copyBasketProduct)
+      setLocalStorage(userName, copyBasketProduct)
 
       const copyTotal = getDeepClone(total)
       const priceUpdated =
@@ -34,7 +35,7 @@ export const useBasket = () => {
         { ...newBasketProduct, quantity: 1 },
         ...basketProducts,
       ])
-
+      setLocalStorage(userName, newBasketProduct)
       const copyTotal = getDeepClone(total)
       const copyTotalUpadted = {
         [newBasketProduct.id]: newBasketProduct.price,

@@ -14,10 +14,13 @@ export const useMenu = () => {
     const menuData = await getMenu(userName)
     setProducts(menuData)
   }
-
   const handleGenerate = async () => {
-    await menuUpdate(userName, productsBackup)
-    setProducts(productsBackup)
+    const copyProducts = getDeepClone(products)
+
+    copyProducts.push(...productsBackup)
+
+    await menuUpdate(userName, copyProducts)
+    setProducts(copyProducts)
     //good
   }
 

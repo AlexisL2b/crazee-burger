@@ -22,20 +22,18 @@ export default function Menu() {
     basketProducts,
     setIsOpen,
     isOpen,
-    fetchData,
     afficher,
   } = useContext(OrderContext)
 
-  // const [products, setProducts] = useState([])
-
   const { userName } = useParams()
+
+  // const menuUser = await getMenu(userName)
 
   const handleFocus = async (idProductClicked) => {
     await setActiveTab("edit")
     const productClicked = products.find(
       (product) => product.id === idProductClicked
     )
-
     // await handleSwitchSelect(idProductClicked)
     await setSelectedCardId(idProductClicked)
     await setExistingProduct(productClicked)
@@ -58,7 +56,6 @@ export default function Menu() {
     }
   }
 
-  // fetchMenu()
   return (
     <MenuStyled>
       {!afficher ? (

@@ -15,8 +15,9 @@ export default function CardBasket({
   onClick,
   version,
 }) {
+  const { isAdmin } = useContext(OrderContext)
   return (
-    <CardBasketStyled onClick={onClick} version={version}>
+    <CardBasketStyled onClick={isAdmin ? onClick : null} version={version}>
       <ImageWrapper className={"image"} imageSource={imageSource} />
 
       <div className="desc">

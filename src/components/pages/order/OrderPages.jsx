@@ -92,21 +92,14 @@ export default function OrderPages() {
       setAfficher(false) // Cache le composant après 3 secondes
     }, 1000)
 
-    // Ceci sert à annuler le délai si le composant est démonté avant que le temps ne soit écoulé
     return () => clearTimeout(timer)
-  }, []) // Les crochets vides signifient que cet effet ne s'exécute qu'une fois, similaire à `componentDidMount`
+  }, [])
 
   useEffect(() => {
-    // Code à exécuter lors de l'effet
     fetchData()
-    return () => {
-      // Code de nettoyage (similaire à componentWillUnmount)
-    }
-  }, [userName, products])
-  // useEffect(() => {
-  //   // Met à jour l'état après que le composant ait été monté
-  //   setIsMounted(true)
-  // }, [])
+    return () => {}
+  }, [])
+
   return (
     <OrderPageStyled>
       <div className="container">

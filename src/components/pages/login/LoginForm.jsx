@@ -6,7 +6,7 @@ import { MdKeyboardArrowRight } from "react-icons/md"
 import { PiUserCircleFill } from "react-icons/pi"
 import TextInput from "../../reusable-ui/TextInput"
 import PrimaryButton from "../../reusable-ui/PrimaryButton"
-import { createUser, getUser } from "../../../api/user"
+import { authenticateUser, createUser, getUser } from "../../../api/user"
 
 export default function LoginForm() {
   //state
@@ -15,22 +15,8 @@ export default function LoginForm() {
   //comportement
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const user = await getUser(firstName)
-
-    if (user != undefined) {
-      navigate(`order/${firstName}`)
-    } else {
-      createUser(firstName)
-      navigate(`order/${firstName}`)
-    }
-
-    //   if (!getUser(firstName)) {
-    //     createUser(firstName)
-    //     console.log("ok")
-    //     navigate(`order/${firstName}`)
-    //   } else {
-    //     console.log("pasok")
-    //   }
+    authenticateUser(firstName)
+    navigate(`order/${firstName}`)
   }
 
   const handleChange = (e) => {

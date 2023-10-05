@@ -7,6 +7,7 @@ import { PiUserCircleFill } from "react-icons/pi"
 import TextInput from "../../reusable-ui/TextInput"
 import PrimaryButton from "../../reusable-ui/PrimaryButton"
 import { authenticateUser, createUser, getUser } from "../../../api/user"
+import Welcome from "./Welcome"
 
 export default function LoginForm() {
   //state
@@ -25,9 +26,7 @@ export default function LoginForm() {
   //affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
-      <div className="divider"></div>
-      <span className="connect">Connectez-vous</span>
+      <Welcome />
       <TextInput
         className={"first_name"}
         value={firstName}
@@ -50,24 +49,5 @@ const LoginFormStyled = styled.form`
   padding: ${theme.spacing.lg} 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border-radius: ${theme.borderRadius.round};
-  h1 {
-    text-align: center;
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P5};
-    font-family: ${theme.fontsFamily.amatic};
-  }
-  .divider {
-    border: 1px solid ${theme.colors.primary};
-    margin-bottom: ${theme.gridUnit * 5}px;
-    margin-top: 32px;
-    width: 400px;
-  }
-  .connect {
-    text-align: center;
-    font-family: ${theme.fontsFamily.amatic};
-    font-size: ${theme.fonts.size.P4};
-    color: ${theme.colors.white};
-  }
 `

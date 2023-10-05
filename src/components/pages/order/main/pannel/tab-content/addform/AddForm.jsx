@@ -16,6 +16,7 @@ export default function AddForm() {
     setIsVisible,
     handleAdd,
     isVisible,
+    userName,
   } = useContext(OrderContext)
   //comportement
 
@@ -25,7 +26,7 @@ export default function AddForm() {
       id: new Date().getTime(),
       ...newProduct,
     }
-    handleAdd(newProductToAdd)
+    handleAdd(newProductToAdd, userName)
     setIsVisible(true)
     setNewProduct(EMPTY_PRODUCT)
     const timer = setTimeout(() => {

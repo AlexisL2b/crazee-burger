@@ -5,21 +5,19 @@ import Menu from "./menu/Menu"
 import Pannel from "./pannel/Panel"
 import { useContext, useRef, useState } from "react"
 import OrderContext from "../../../../context/OrderContext"
+import Loading from "../../Loading"
 
 export default function Main() {
   //state
 
-  // const [activeTab, setActiveTab] = useState("add")
-  // const contextActiveTab = { activeTab, setActiveTab }
-  const { isAdmin } = useContext(OrderContext)
-  const inputRefTitle = useRef()
+  const { isAdmin, products } = useContext(OrderContext)
   //comportement
 
   return (
     <MainStyled>
       <Basket />
       <div className="menu_and_pannel">
-        <Menu />
+        {products === undefined ? <Loading version={"menu"} /> : <Menu />}
 
         {isAdmin ? <Pannel /> : null}
       </div>

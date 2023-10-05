@@ -22,9 +22,7 @@ const LoadingStyled = styled.div`
 `
 
 const menu = css`
-  justify-self: center;
-  align-self: center;
-  grid-column: 2;
+  margin: auto;
 `
 const basket = css`
   margin: auto;

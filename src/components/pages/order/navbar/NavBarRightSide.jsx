@@ -11,10 +11,8 @@ import OrderContext from "../../../../context/OrderContext"
 export default function NavBarRightSide() {
   //state
 
-  const { userName } = useParams()
-
   const [isChecked, setIsChecked] = useState(0)
-  const { setIsAdmin } = useContext(OrderContext)
+  const { setIsAdmin, userName } = useContext(OrderContext)
   //comportement
   const onToggle = () => {
     if (isChecked == 0) {

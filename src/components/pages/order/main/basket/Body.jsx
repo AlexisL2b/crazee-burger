@@ -40,31 +40,30 @@ export default function Body() {
       inputRef.current.focus()
     }
   }
+
   return (
     <BodyStyled>
-      {!afficher ? (
-        basketProducts.length > 0 ? (
-          basketProducts.map((product) => (
-            <CardBasket
-              onClick={() => handleFocus(product.id)}
-              key={product.id}
-              title={product.title}
-              price={product.price}
-              imageSource={product.imageSource}
-              quantity={product.quantity}
-              onDelete={() => handleDeleteBasketProduct(product.id)}
-              version={
-                selectedCardId === product.id && isAdmin
-                  ? "selectStyled"
-                  : "normalStyled"
-              }
-            />
-          ))
-        ) : (
-          <Message label={"Votre commande est vide."} version="basket" />
-        )
-      ) : (
+      {basketProducts === undefined ? (
         <Loading version="basket" />
+      ) : basketProducts.length > 0 ? (
+        basketProducts.map((product) => (
+          <CardBasket
+            onClick={() => handleFocus(product.id)}
+            key={product.id}
+            title={product.title}
+            price={product.price}
+            imageSource={product.imageSource}
+            quantity={product.quantity}
+            onDelete={() => handleDeleteBasketProduct(product.id)}
+            version={
+              selectedCardId === product.id && isAdmin
+                ? "selectStyled"
+                : "normalStyled"
+            }
+          />
+        ))
+      ) : (
+        <Message label={"Votre commande est vide."} version="basket" />
       )}
     </BodyStyled>
   )

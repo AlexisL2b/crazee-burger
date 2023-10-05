@@ -1,12 +1,12 @@
 import { useState } from "react"
-import { fakeBasket } from "../components/fakeData/fakeBasket"
+
 import { getDeepClone } from "../utils/windows"
 import { keyframes } from "styled-components"
 
 export const useBasket = () => {
   //State
 
-  const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
+  const [basketProducts, setBasketProducts] = useState(undefined)
   const [total, setTotal] = useState({})
 
   const handleAddBasketProduct = (newBasketProduct) => {
@@ -70,7 +70,6 @@ export const useBasket = () => {
       (product) => product.id === productBeingEdited.id
     )
     // productsCopy[idOfProductToEdit] = productBeingEdited
-    console.log(ProductToEdit)
     const productBeingEditedUpdated = {
       quantity: ProductToEdit.quantity,
       ...productBeingEdited,
@@ -104,5 +103,6 @@ export const useBasket = () => {
     total,
     handleDeleteBasketProduct,
     handleBasketEdit,
+    setBasketProducts,
   }
 }

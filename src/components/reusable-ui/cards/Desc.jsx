@@ -15,7 +15,7 @@ export default function Desc({
   //State
 
   const { handleAddBasketProduct } = useContext(OrderContext)
-  const handleAdd = (e, product) => {
+  const handleAddBasket = (e, product) => {
     e.stopPropagation()
     handleAddBasketProduct(product)
   }
@@ -42,7 +42,7 @@ export default function Desc({
               cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
             }
             className={"button"}
-            onClick={(e) => handleAdd(e, product)}
+            onClick={(e) => handleAddBasket(e, product)}
           />
         </div>
       </div>

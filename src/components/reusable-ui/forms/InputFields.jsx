@@ -8,25 +8,6 @@ export default function InputFields({ className, product, onChange, onBlur }) {
   const textInputs = getTextInputConfig({ product })
   const { inputRef } = useContext(OrderContext)
 
-  // const handleChange = (e) => {
-  //   const name = e.target.name
-  //   const newValue = e.target.value
-  //   const productBeingUpdated = {
-  //     ...existingProduct,
-  //     [name]: newValue,
-  //   }
-
-  //   const productExistingBasket = basketProducts.find(
-  //     (productExistingBasket) => productExistingBasket.id === existingProduct.id
-  //   )
-
-  //   setExistingProduct(productBeingUpdated)
-  //   handleEdit(productBeingUpdated)
-  //   if (productExistingBasket) {
-  //     handleBasketEdit(productBeingUpdated)
-  //   }
-  // }
-
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (

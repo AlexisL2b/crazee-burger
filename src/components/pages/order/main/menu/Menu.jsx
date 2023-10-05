@@ -4,9 +4,6 @@ import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
 import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
-import { useParams } from "react-router-dom"
-import { getMenu } from "../../../../../api/menu"
-import Loading from "../../../Loading"
 
 export default function Menu() {
   const {
@@ -23,11 +20,8 @@ export default function Menu() {
     setIsOpen,
     isOpen,
     afficher,
+    userName,
   } = useContext(OrderContext)
-
-  const { userName } = useParams()
-
-  // const menuUser = await getMenu(userName)
 
   const handleFocus = async (idProductClicked) => {
     await setActiveTab("edit")
@@ -44,50 +38,46 @@ export default function Menu() {
       inputRef.current.focus()
     }
   }
-  const handleDeleteProduct = (product) => {
+  const handleDeleteProduct = (product, userName) => {
     const existingBasketProduct = basketProducts.find(
       (basketProduct) => basketProduct.id == product
     )
     if (existingBasketProduct) {
       handleDeleteBasketProduct(product)
-      handleDelete(product)
+      handleDelete(product, userName)
     } else {
-      handleDelete(product)
+      handleDelete(product, userName)
     }
   }
 
   return (
     <MenuStyled>
-      {!afficher ? (
-        products.length > 0 ? (
-          products.map((product) => (
-            <Card
-              id={product.id}
-              className={"cardProduct"}
-              key={product.id}
-              imageSource={product.imageSource}
-              title={product.title}
-              priceProduct={product.price}
-              onDelete={() => handleDeleteProduct(product.id)}
-              isAdmin={isAdmin}
-              onClick={() => {
-                handleFocus(product.id)
-              }}
-              version={
-                selectedCardId === product.id && isAdmin
-                  ? "selectStyled"
-                  : "normalStyled"
-              }
-              product={product}
-            />
-          ))
-        ) : (
-          <div className="stock_container">
-            <Stock />
-          </div>
-        )
+      {products.length > 0 ? (
+        products.map((product) => (
+          <Card
+            id={product.id}
+            className={"cardProduct"}
+            key={product.id}
+            imageSource={product.imageSource}
+            title={product.title}
+            priceProduct={product.price}
+            onDelete={() => handleDeleteProduct(product.id, userName)}
+            isAdmin={isAdmin}
+            onClick={() => {
+              handleFocus(product.id)
+            }}
+            version={
+              selectedCardId === product.id && isAdmin
+                ? "selectStyled"
+                : "normalStyled"
+            }
+            product={product}
+          />
+        ))
       ) : (
-        <Loading version="menu" />
+        <div className="stock_container">
+          <Stock />
+        </div>
       )}
     </MenuStyled>
   )

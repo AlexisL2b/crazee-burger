@@ -6,46 +6,41 @@ import { getMenu, menuUpdate } from "../api/menu"
 
 export const useMenu = () => {
   //state
-  const { userName } = useParams()
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState(undefined)
   const [productsBackup] = useState(fakeMenu3)
 
-  const fetchData = async () => {
-    const menuData = await getMenu(userName)
-    setProducts(menuData)
-  }
-  const handleGenerate = async () => {
+  const handleGenerate = (userName) => {
     const copyProducts = getDeepClone(products)
 
     copyProducts.push(...productsBackup)
 
-    await menuUpdate(userName, copyProducts)
+    menuUpdate(userName, copyProducts)
     setProducts(copyProducts)
     //good
   }
 
-  const handleAdd = async (newProduct) => {
+  const handleAdd = (newProduct, userName) => {
     const copyProducts = getDeepClone(products)
     const productsUpdated = [newProduct, ...copyProducts]
 
-    await menuUpdate(userName, productsUpdated)
+    menuUpdate(userName, productsUpdated)
 
     setProducts(productsUpdated)
 
     //good
   }
-  const handleDelete = async (idProductToDelete) => {
+  const handleDelete = (idProductToDelete, userName) => {
     const copyProducts = getDeepClone(products)
     const productFilter = copyProducts.filter(
       (product) => product.id != idProductToDelete
     )
-    await menuUpdate(userName, productFilter)
+    menuUpdate(userName, productFilter)
     setProducts(productFilter)
 
     //good
   }
 
-  const handleEdit = async (productBeingEdited) => {
+  const handleEdit = (productBeingEdited, userName) => {
     // 1. copie du state (deep clone)
     const productsCopy = getDeepClone(products)
 
@@ -56,7 +51,7 @@ export const useMenu = () => {
     productsCopy[indexOfProductToEdit] = productBeingEdited
 
     // 3. update du state
-    await menuUpdate(userName, productsCopy)
+    menuUpdate(userName, productsCopy)
     setProducts(productsCopy)
     //good
   }
@@ -67,6 +62,6 @@ export const useMenu = () => {
     handleGenerate,
     handleEdit,
     products,
-    fetchData,
+    setProducts,
   }
 }

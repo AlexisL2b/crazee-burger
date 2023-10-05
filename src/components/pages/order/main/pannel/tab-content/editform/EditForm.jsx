@@ -15,6 +15,7 @@ export default function EditForm() {
     existingProduct,
     setExistingProduct,
     handleEdit,
+    userName,
     activeTab,
     selectedCardId,
     handleBasketEdit,
@@ -57,7 +58,7 @@ export default function EditForm() {
     )
 
     setExistingProduct(productBeingUpdated)
-    handleEdit(productBeingUpdated)
+    handleEdit(productBeingUpdated, userName)
     if (productExistingBasket) {
       handleBasketEdit(productBeingUpdated)
     }

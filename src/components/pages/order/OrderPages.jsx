@@ -6,10 +6,10 @@ import { useEffect, useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { useMenu } from "../../../hooks/useMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product"
-import { fakeBasket } from "../../fakeData/fakeBasket"
 import { useBasket } from "../../../hooks/useBasket"
-import { getUser } from "../../../api/user"
 import { useParams } from "react-router-dom"
+import { getMenu } from "../../../api/menu"
+import { fakeBasket } from "../../fakeData/fakeBasket"
 import.meta.env
 export default function OrderPages() {
   //state
@@ -29,20 +29,23 @@ export default function OrderPages() {
 
   //@TODO Changer la valeur du state product avec un useEffect
   const inputRef = useRef()
+
   const {
     handleDelete,
     handleAdd,
     handleGenerate,
     handleEdit,
     products,
-    fetchData,
+    setProducts,
   } = useMenu()
+
   const {
     handleAddBasketProduct,
     basketProducts,
     total,
     handleDeleteBasketProduct,
     handleBasketEdit,
+    setBasketProducts,
   } = useBasket()
 
   const orderContextValue = {
@@ -76,30 +79,29 @@ export default function OrderPages() {
     afficher,
     isBlured,
     setIsBlured,
-    // handleIncrementationBasketProduct,
-    // ammount,
-    // isMounted,
+    userName,
   }
-  // console.log(import.meta.env.VITE_API_KEY)
-  // getUser("Alex")
-  // getMenu("Alex")
-  // const { userName } = useParams()
 
-  //affichage
+  const fetchData = async () => {
+    const menuData = await getMenu(userName)
+    setProducts(menuData)
+  }
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setAfficher(false) // Cache le composant après 3 secondes
+  //   }, 1000)
+
+  //   return () => clearTimeout(timer)
+  // }, [])
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setAfficher(false) // Cache le composant après 3 secondes
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    fetchData()
+    fetchData(userName)
+    setBasketProducts(fakeBasket.EMPTY)
     return () => {}
   }, [])
 
+  //affichage
   return (
     <OrderPageStyled>
       <div className="container">

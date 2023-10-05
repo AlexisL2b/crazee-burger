@@ -1,6 +1,7 @@
 import { createContext } from "react"
 
 export default createContext({
+  userName: "",
   isAdmin: false,
   isOpen: true,
   isVisible: false,

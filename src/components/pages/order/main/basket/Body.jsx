@@ -19,6 +19,7 @@ export default function Body() {
     setIsOpen,
     isOpen,
     afficher,
+    userName,
   } = useContext(OrderContext)
 
   const handleFocus = async (idProductClicked) => {
@@ -43,12 +44,10 @@ export default function Body() {
 
   return (
     <BodyStyled>
-      {basketProducts === undefined ? (
-        <Loading version="basket" />
-      ) : basketProducts.length > 0 ? (
+      {basketProducts.length > 0 ? (
         basketProducts.map((product) => (
           <CardBasket
-            onClick={() => handleFocus(product.id)}
+            onClick={() => handleFocus(product.id, userName)}
             key={product.id}
             title={product.title}
             price={product.price}

@@ -43,7 +43,7 @@ export default function Menu() {
       (basketProduct) => basketProduct.id == product
     )
     if (existingBasketProduct) {
-      handleDeleteBasketProduct(product)
+      handleDeleteBasketProduct(product, userName)
       handleDelete(product, userName)
     } else {
       handleDelete(product, userName)

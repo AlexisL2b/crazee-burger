@@ -1,11 +1,17 @@
-import React from "react"
+import React, { useContext } from "react"
 import { styled } from "styled-components"
 
 import Body from "./Body"
 import Header from "./Header"
 import Footer from "./Footer"
+import OrderContext from "../../../../../context/OrderContext"
+import Loading from "../../../Loading"
 
 export default function Basket() {
+  const { products } = useContext(OrderContext)
+  if (products === undefined) {
+    return <Loading version={"basket"} />
+  }
   return (
     <BasketStyled>
       <Header />

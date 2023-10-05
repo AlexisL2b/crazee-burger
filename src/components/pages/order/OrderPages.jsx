@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket"
 import { useParams } from "react-router-dom"
 import { getMenu } from "../../../api/menu"
 import { fakeBasket } from "../../fakeData/fakeBasket"
+import { getLocalStorage } from "../../../utils/windows"
 import.meta.env
 export default function OrderPages() {
   //state
@@ -46,6 +47,7 @@ export default function OrderPages() {
     handleDeleteBasketProduct,
     handleBasketEdit,
     setBasketProducts,
+    setTotal,
   } = useBasket()
 
   const orderContextValue = {
@@ -82,22 +84,35 @@ export default function OrderPages() {
     userName,
   }
 
-  const fetchData = async () => {
+  const fetchMenu = async () => {
     const menuData = await getMenu(userName)
     setProducts(menuData)
   }
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setAfficher(false) // Cache le composant après 3 secondes
-  //   }, 1000)
-
-  //   return () => clearTimeout(timer)
-  // }, [])
+  const fetchBasket = async () => {
+    const basketData = await getLocalStorage(userName)
+    if (basketData != null) {
+      setBasketProducts(basketData)
+    }
+  }
+  const fetchTotal = async () => {
+    const totalData = await getLocalStorage("total")
+    setTotal(totalData)
+  }
 
   useEffect(() => {
-    fetchData(userName)
-    setBasketProducts(fakeBasket.EMPTY)
+    fetchMenu(userName)
+
+    return () => {}
+  }, [])
+
+  useEffect(() => {
+    fetchBasket(userName)
+
+    return () => {}
+  }, [])
+  useEffect(() => {
+    fetchTotal("total")
+
     return () => {}
   }, [])
 

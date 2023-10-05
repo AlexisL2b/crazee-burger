@@ -6,7 +6,7 @@ import { keyframes } from "styled-components"
 export const useBasket = () => {
   //State
 
-  const [basketProducts, setBasketProducts] = useState(undefined)
+  const [basketProducts, setBasketProducts] = useState([])
   const [total, setTotal] = useState({})
 
   const handleAddBasketProduct = (newBasketProduct, userName) => {
@@ -28,8 +28,8 @@ export const useBasket = () => {
         ...copyTotal,
         [basketProductExisiting.id]: priceUpdated,
       }
-      console.log(copyTotalUpdated)
       setTotal(copyTotalUpdated)
+      setLocalStorage("total", copyTotalUpdated)
     } else {
       setBasketProducts([
         { ...newBasketProduct, quantity: 1 },
@@ -37,15 +37,16 @@ export const useBasket = () => {
       ])
       setLocalStorage(userName, newBasketProduct)
       const copyTotal = getDeepClone(total)
-      const copyTotalUpadted = {
+      const copyTotalUpdated = {
         [newBasketProduct.id]: newBasketProduct.price,
         ...copyTotal,
       }
-      setTotal(copyTotalUpadted)
+      setTotal(copyTotalUpdated)
+      setLocalStorage("total", copyTotalUpdated)
     }
   }
 
-  const handleDeleteBasketProduct = (idProductToDelete) => {
+  const handleDeleteBasketProduct = (idProductToDelete, userName) => {
     const copyBasketProduct = getDeepClone(basketProducts)
     const productToDecrement = copyBasketProduct.find(
       (product) => product.id == idProductToDelete
@@ -57,10 +58,14 @@ export const useBasket = () => {
     )
 
     const priceToDelete = idProductToDelete
-    const copyTotal = getDeepClone(total)
-    delete copyTotal[priceToDelete]
-    setTotal(copyTotal)
+    const copyTotalUpdated = getDeepClone(total)
+    delete copyTotalUpdated[priceToDelete]
+
+    setTotal(copyTotalUpdated)
+    setLocalStorage("total", copyTotalUpdated)
+
     setBasketProducts(basketFilter)
+    setLocalStorage(userName, basketFilter)
   }
   const handleBasketEdit = (productBeingEdited) => {
     // 1. copie du state (deep clone)
@@ -82,8 +87,6 @@ export const useBasket = () => {
 
     //good
 
-    // console.log(productBeingEdited)
-
     const basketProductExisiting = basketProducts.find(
       (product) => product.id === productBeingEdited.id
     )
@@ -96,6 +99,7 @@ export const useBasket = () => {
       [basketProductExisiting.id]: priceUpdated,
     }
     setTotal(copyTotalUpdated)
+    setLocalStorage("total", copyTotalUpdated)
   }
 
   return {
@@ -105,5 +109,6 @@ export const useBasket = () => {
     handleDeleteBasketProduct,
     handleBasketEdit,
     setBasketProducts,
+    setTotal,
   }
 }

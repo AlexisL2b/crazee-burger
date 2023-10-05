@@ -66,6 +66,7 @@ const minimalist = css`
   padding: 0px 16px;
   color: ${theme.colors.greyBlue};
   height: 35px;
+  width: 480px;
   input {
     background: ${theme.colors.background_white};
     color: ${theme.colors.dark};

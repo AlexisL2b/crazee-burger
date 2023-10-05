@@ -10,6 +10,7 @@ export default function Form({
   index,
   children,
   onBlur,
+  onFocus,
 }) {
   return (
     <FormStyled action={action} onSubmit={onSubmit}>
@@ -20,6 +21,7 @@ export default function Form({
         onChange={onChange}
         index={index}
         onBlur={onBlur}
+        onFocus={onFocus}
       />
 
       <div className="children">{children}</div>

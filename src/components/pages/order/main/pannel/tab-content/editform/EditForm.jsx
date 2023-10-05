@@ -8,9 +8,9 @@ import Form from "../../../../../../reusable-ui/forms/Form"
 
 export default function EditForm() {
   //State
-
+  const [onFocus, setOnFocus] = useState()
   //comportement
-  //render
+
   const {
     existingProduct,
     setExistingProduct,
@@ -20,9 +20,8 @@ export default function EditForm() {
     selectedCardId,
     handleBasketEdit,
     basketProducts,
-    isBlured,
-    setIsBlured,
-    inputRef,
+    isVisible: isSaved,
+    setIsVisible: setIsSaved,
   } = useContext(OrderContext)
 
   // const handleIsUpdated = (e) => {
@@ -37,12 +36,20 @@ export default function EditForm() {
   //   // }
   // }
 
+  const handleOnFocus = (e) => {
+    const valueOnFocus = e.target.value
+    setOnFocus(valueOnFocus)
+  }
+
   const handleBlur = (e) => {
-    setIsBlured(true)
-    const timer = setTimeout(() => {
-      setIsBlured(false)
-    }, 2000)
-    return () => clearTimeout(timer)
+    const valueOnBlur = e.target.value
+    if (onFocus != valueOnBlur) {
+      setIsSaved(true)
+      const timer = setTimeout(() => {
+        setIsSaved(false)
+      }, 2000)
+      return () => clearTimeout(timer)
+    }
   }
 
   const handleChange = (e) => {
@@ -64,6 +71,8 @@ export default function EditForm() {
     }
   }
 
+  //render
+
   return selectedCardId != null ? (
     <Form
       action={"submit"}
@@ -71,22 +80,17 @@ export default function EditForm() {
       index={activeTab}
       onChange={handleChange}
       onBlur={(e) => handleBlur(e)}
+      onFocus={handleOnFocus}
     >
-      {!isBlured ? (
-        <Message
-          label={
-            "Cliquer sur un produit du menu pour le modifier en temps réel"
-          }
-          version="smallPrimary"
-          className="message"
-        />
-      ) : (
-        <Message
-          icon={<BsCloudCheckFill />}
-          label={"Modifications enregistré"}
-          version="update"
-        />
-      )}
+      <Message
+        label={
+          isSaved
+            ? "Modifications enregistré"
+            : "Cliquer sur un produit du menu pour le modifier en temps réel"
+        }
+        version={isSaved ? "update" : "smallPrimary"}
+        icon={isSaved ? <BsCloudCheckFill /> : null}
+      />
     </Form>
   ) : (
     <Message

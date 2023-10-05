@@ -4,7 +4,13 @@ import { getTextInputConfig } from "./textInputAddConfig"
 import TextInput from "../TextInput"
 import OrderContext from "../../../context/OrderContext"
 
-export default function InputFields({ className, product, onChange, onBlur }) {
+export default function InputFields({
+  className,
+  product,
+  onChange,
+  onBlur,
+  onFocus,
+}) {
   const textInputs = getTextInputConfig({ product })
   const { inputRef } = useContext(OrderContext)
 
@@ -23,6 +29,7 @@ export default function InputFields({ className, product, onChange, onBlur }) {
           version={input.version}
           ref={input.name === "title" ? inputRef : null}
           onBlur={onBlur}
+          onFocus={onFocus}
         />
       ))}
     </InputFieldsStyled>

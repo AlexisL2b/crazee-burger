@@ -32,5 +32,6 @@ const WelcomeStyled = styled.div`
     font-family: ${theme.fontsFamily.amatic};
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.white};
+    font-weight: ${theme.fonts.weights.bold};
   }
 `

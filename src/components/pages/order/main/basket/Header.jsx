@@ -13,8 +13,6 @@ export default function Header() {
     <HeaderStyled>
       <span className="total">Total</span>
       <CasinoEffect count={totalPriceFormat} className={"price"} />
-
-      {/* <span className="price"> {total != 0 ? totalPriceFormat : 0.0} €</span> */}
     </HeaderStyled>
   )
 }
@@ -29,10 +27,8 @@ const HeaderStyled = styled.div`
   grid-template-columns: 1fr 1fr;
   padding: 0px 16px;
   .price {
-    display: grid;
-    grid-area: 1/2/2/3;
+    display: flex;
     align-items: center;
-    justify-content: flex-end;
   }
   .total {
     display: grid;

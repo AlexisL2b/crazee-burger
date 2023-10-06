@@ -9,7 +9,6 @@ import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useBasket } from "../../../hooks/useBasket"
 import { useParams } from "react-router-dom"
 import { getMenu } from "../../../api/menu"
-import { fakeBasket } from "../../fakeData/fakeBasket"
 import { getLocalStorage } from "../../../utils/windows"
 import.meta.env
 export default function OrderPages() {
@@ -27,8 +26,7 @@ export default function OrderPages() {
   const [isBlured, setIsBlured] = useState(false) // Par défaut, le composant est affiché
 
   // const [isMounted, setIsMounted] = useState(false)
-
-  //@TODO Changer la valeur du state product avec un useEffect
+  //@TODO LORSQUE JE CREER UN USER IL INITIALISE BIEN LE MENU DANS FIREBASE MAIS DANS L'APP L'AFFICHAGE N'EST PAS UPDATE
   const inputRef = useRef()
 
   const {
@@ -90,13 +88,15 @@ export default function OrderPages() {
   }
   const fetchBasket = async () => {
     const basketData = await getLocalStorage(userName)
-    if (basketData != null) {
+    if (basketData) {
       setBasketProducts(basketData)
     }
   }
   const fetchTotal = async () => {
     const totalData = await getLocalStorage("total")
-    setTotal(totalData)
+    if (totalData) {
+      setTotal(totalData)
+    }
   }
 
   useEffect(() => {

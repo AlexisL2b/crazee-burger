@@ -9,9 +9,9 @@ import Loading from "../../../Loading"
 
 export default function Basket() {
   const { products } = useContext(OrderContext)
-  if (products === undefined) {
-    return <Loading version={"basket"} />
-  }
+  // if (products === undefined) {
+  //   return <Loading version={"basket"} />
+  // }
   return (
     <BasketStyled>
       <Header />

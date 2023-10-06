@@ -5,6 +5,7 @@ import CardBasket from "./CardBasket/CardBasket"
 import OrderContext from "../../../../../context/OrderContext"
 import Loading from "../../../Loading"
 import Message from "../pannel/Message"
+import { BASKET } from "../../../../../enums/message"
 export default function Body() {
   const {
     selectedCardId,
@@ -53,7 +54,7 @@ export default function Body() {
             price={product.price}
             imageSource={product.imageSource}
             quantity={product.quantity}
-            onDelete={() => handleDeleteBasketProduct(product.id)}
+            onDelete={() => handleDeleteBasketProduct(product.id, userName)}
             version={
               selectedCardId === product.id && isAdmin
                 ? "selectStyled"
@@ -62,7 +63,12 @@ export default function Body() {
           />
         ))
       ) : (
-        <Message label={"Votre commande est vide."} version="basket" />
+        <Message
+          label={
+            products === undefined ? BASKET.LOADING_BASKET : BASKET.EMPTY_BASKET
+          }
+          version="basket"
+        />
       )}
     </BodyStyled>
   )

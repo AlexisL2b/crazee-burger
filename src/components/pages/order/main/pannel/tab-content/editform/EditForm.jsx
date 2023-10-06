@@ -5,6 +5,7 @@ import Message from "../../Message"
 import { HiCursorClick } from "react-icons/hi"
 import { BsCloudCheckFill } from "react-icons/bs"
 import Form from "../../../../../../reusable-ui/forms/Form"
+import { ADMIN_TAB } from "../../../../../../../enums/message"
 
 export default function EditForm() {
   //State
@@ -85,18 +86,15 @@ export default function EditForm() {
       <Message
         label={
           isSaved
-            ? "Modifications enregistré"
-            : "Cliquer sur un produit du menu pour le modifier en temps réel"
+            ? ADMIN_TAB.UPDATE_CONFIRMATION
+            : ADMIN_TAB.UPDATE_HINT_SECONDARY
         }
         version={isSaved ? "update" : "smallPrimary"}
         icon={isSaved ? <BsCloudCheckFill /> : null}
       />
     </Form>
   ) : (
-    <Message
-      label={"Cliquer sur un produit pour le modifier"}
-      icon={<HiCursorClick />}
-    />
+    <Message label={ADMIN_TAB.UPDATE_HINT_PRIMARY} icon={<HiCursorClick />} />
   )
 }
 

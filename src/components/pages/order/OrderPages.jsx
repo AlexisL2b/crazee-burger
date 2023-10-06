@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket"
 import { useParams } from "react-router-dom"
 import { getMenu } from "../../../api/menu"
 import { getLocalStorage } from "../../../utils/windows"
+import { initialiseUser } from "./helpers"
 import.meta.env
 export default function OrderPages() {
   //state
@@ -82,38 +83,42 @@ export default function OrderPages() {
     userName,
   }
 
-  const fetchMenu = async () => {
-    const menuData = await getMenu(userName)
-    setProducts(menuData)
-  }
-  const fetchBasket = async () => {
-    const basketData = await getLocalStorage(userName)
-    if (basketData) {
-      setBasketProducts(basketData)
-    }
-  }
-  const fetchTotal = async () => {
-    const totalData = await getLocalStorage("total")
-    if (totalData) {
-      setTotal(totalData)
-    }
-  }
+  // const fetchMenu = async () => {
+  //   const menuData = await getMenu(userName)
+  //   setProducts(menuData)
+  // }
+  // const fetchBasket = async () => {
+  //   const basketData = await getLocalStorage(userName)
+  //   if (basketData) {
+  //     setBasketProducts(basketData)
+  //   }
+  // }
+  // const fetchTotal = async () => {
+  //   const totalData = await getLocalStorage("total")
+  //   if (totalData) {
+  //     setTotal(totalData)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   fetchMenu(userName)
+
+  //   return () => {}
+  // }, [])
+
+  // useEffect(() => {
+  //   fetchBasket(userName)
+
+  //   return () => {}
+  // }, [])
+  // useEffect(() => {
+  //   fetchTotal("total")
+
+  //   return () => {}
+  // }, [])
 
   useEffect(() => {
-    fetchMenu(userName)
-
-    return () => {}
-  }, [])
-
-  useEffect(() => {
-    fetchBasket(userName)
-
-    return () => {}
-  }, [])
-  useEffect(() => {
-    fetchTotal("total")
-
-    return () => {}
+    initialiseUser(userName, setProducts, setBasketProducts, setTotal)
   }, [])
 
   //affichage

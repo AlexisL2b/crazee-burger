@@ -23,7 +23,7 @@ const CasinoEffectStyled = styled.div`
     display: inline-block;
   }
   .count-animated-enter {
-    transform: translateY(200%);
+    transform: translateY(100%);
   }
   .count-animated-enter-active {
     transform: translateY(0%);

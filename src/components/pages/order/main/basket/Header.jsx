@@ -3,6 +3,7 @@ import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import OrderContext from "../../../../../context/OrderContext"
 import { formatMontant, sum } from "../../../../../utils/maths"
+import CasinoEffect from "../../../../reusable-ui/CasinoEffect"
 
 export default function Header() {
   const { total } = useContext(OrderContext)
@@ -11,7 +12,9 @@ export default function Header() {
   return (
     <HeaderStyled>
       <span className="total">Total</span>
-      <span className="price"> {total != 0 ? totalPriceFormat : 0.0} €</span>
+      <CasinoEffect count={totalPriceFormat} className={"price"} />
+
+      {/* <span className="price"> {total != 0 ? totalPriceFormat : 0.0} €</span> */}
     </HeaderStyled>
   )
 }

@@ -5,7 +5,10 @@ import { theme } from "../../../theme"
 import { useEffect, useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { useMenu } from "../../../hooks/useMenu"
-import { EMPTY_PRODUCT } from "../../../enums/product"
+import {
+  EMPTY_PRODUCT,
+  KEY_TOTAL_STRING_GETSTORAGE_TOTAL,
+} from "../../../enums/product"
 import { useBasket } from "../../../hooks/useBasket"
 import { useParams } from "react-router-dom"
 import { getMenu } from "../../../api/menu"
@@ -83,42 +86,14 @@ export default function OrderPages() {
     userName,
   }
 
-  // const fetchMenu = async () => {
-  //   const menuData = await getMenu(userName)
-  //   setProducts(menuData)
-  // }
-  // const fetchBasket = async () => {
-  //   const basketData = await getLocalStorage(userName)
-  //   if (basketData) {
-  //     setBasketProducts(basketData)
-  //   }
-  // }
-  // const fetchTotal = async () => {
-  //   const totalData = await getLocalStorage("total")
-  //   if (totalData) {
-  //     setTotal(totalData)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchMenu(userName)
-
-  //   return () => {}
-  // }, [])
-
-  // useEffect(() => {
-  //   fetchBasket(userName)
-
-  //   return () => {}
-  // }, [])
-  // useEffect(() => {
-  //   fetchTotal("total")
-
-  //   return () => {}
-  // }, [])
-
   useEffect(() => {
-    initialiseUser(userName, setProducts, setBasketProducts, setTotal)
+    initialiseUser(
+      KEY_TOTAL_STRING_GETSTORAGE_TOTAL,
+      userName,
+      setProducts,
+      setBasketProducts,
+      setTotal
+    )
   }, [])
 
   //affichage

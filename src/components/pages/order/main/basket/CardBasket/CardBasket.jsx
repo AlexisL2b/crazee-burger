@@ -14,10 +14,15 @@ export default function CardBasket({
   onDelete,
   onClick,
   version,
+  className,
 }) {
   const { isAdmin } = useContext(OrderContext)
   return (
-    <CardBasketStyled onClick={isAdmin ? onClick : null} version={version}>
+    <CardBasketStyled
+      onClick={isAdmin ? onClick : null}
+      version={version}
+      className={className}
+    >
       <ImageWrapper className={"image"} imageSource={imageSource} />
 
       <div className="desc">

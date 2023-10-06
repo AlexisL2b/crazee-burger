@@ -1,6 +1,7 @@
 import { createContext } from "react"
 
 export default createContext({
+  userName: "",
   isAdmin: false,
   isOpen: true,
   isVisible: false,
@@ -27,6 +28,11 @@ export default createContext({
   total: 0,
   handleDeleteBasketProduct: () => {},
   handleBasketEdit: () => {},
+  fetchData: () => {},
+  isMounted: false,
+  afficher: false,
+  isBlured: false,
+  setIsBlured: () => {},
   // handleIncrementationBasketProduct: () => {},
   // ammount: 0,
 })

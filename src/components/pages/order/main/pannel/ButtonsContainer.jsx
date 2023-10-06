@@ -62,7 +62,7 @@ const ButtonsContainerStyled = styled.div`
   }
   .inactive:hover {
     text-decoration: underline;
-    color: ${theme.colors.greyDark};
+    color: ${theme.colors.greySemiDark};
   }
 
   .closed {

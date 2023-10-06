@@ -1,16 +1,16 @@
 import { styled } from "styled-components"
 import InputFields from "./InputFields"
-import ButtonConfirmation from "./ButtonConfirmation"
-import Message from "../../pages/order/main/pannel/Message"
 import ImagePreview from "./ImagePreview"
 
-export default function gForm({
+export default function Form({
   action,
   onSubmit,
   product,
   onChange,
   index,
   children,
+  onBlur,
+  onFocus,
 }) {
   return (
     <FormStyled action={action} onSubmit={onSubmit}>
@@ -20,20 +20,11 @@ export default function gForm({
         product={product}
         onChange={onChange}
         index={index}
+        onBlur={onBlur}
+        onFocus={onFocus}
       />
 
       <div className="children">{children}</div>
-      {/* {index === "add" ? (
-        <ButtonConfirmation className={"button_confirmation"} />
-      ) : (
-        <Message
-          label={
-            "Cliquer sur un produit du menu pour le modifier en temps réel"
-          }
-          version="smallPrimary"
-          className="message"
-        />
-      )} */}
     </FormStyled>
   )
 }
@@ -52,6 +43,15 @@ const FormStyled = styled.form`
 
   .children {
     grid-area: 4/2/4/2;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+  }
+  .visible {
+    display: flex;
+  }
+  .invisible {
+    display: none;
   }
   /* .message {
     grid-area: 2/2/-1/-1;

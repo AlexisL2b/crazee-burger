@@ -4,12 +4,22 @@ import styled, { css } from "styled-components"
 
 const TextInput = React.forwardRef(
   (
-    { value, onChange, Icon, className, index, type, version, ...restProps },
+    {
+      onBlur,
+      value,
+      onChange,
+      Icon,
+      className,
+      index,
+      type,
+      version,
+      ...restProps
+    },
     ref
   ) => {
     //state
     //comportement
-    console.log()
+
     return (
       <TextInputStyled className={className} version={version}>
         <div className="icon">{Icon && Icon}</div>
@@ -20,6 +30,7 @@ const TextInput = React.forwardRef(
           index={index}
           {...restProps}
           ref={ref}
+          onBlur={onBlur}
         />
       </TextInputStyled>
     )
@@ -55,6 +66,7 @@ const minimalist = css`
   padding: 0px 16px;
   color: ${theme.colors.greyBlue};
   height: 35px;
+  width: 480px;
   input {
     background: ${theme.colors.background_white};
     color: ${theme.colors.dark};

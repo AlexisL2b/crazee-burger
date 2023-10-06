@@ -1,38 +1,46 @@
 import { useState } from "react"
-import { fakeMenu2, fakeMenu3 } from "../components/fakeData/fakeMenu"
+import { fakeMenu3 } from "../components/fakeData/fakeMenu"
 import { getDeepClone } from "../utils/windows"
+import { useParams } from "react-router-dom"
+import { getMenu, menuUpdate } from "../api/menu"
 
 export const useMenu = () => {
   //state
-
-  const [products, setProducts] = useState(fakeMenu2)
+  const [products, setProducts] = useState(undefined)
   const [productsBackup] = useState(fakeMenu3)
 
-  //comportement
-
-  const handleGenerate = () => {
-    setProducts(productsBackup)
-    //good
-  }
-
-  const handleAdd = (newProduct) => {
+  const handleGenerate = (userName) => {
     const copyProducts = getDeepClone(products)
 
-    const productsUpdated = [newProduct, ...copyProducts]
+    copyProducts.push(...productsBackup)
 
-    setProducts(productsUpdated)
+    menuUpdate(userName, copyProducts)
+    setProducts(copyProducts)
     //good
   }
-  const handleDelete = (idProductToDelete) => {
+
+  const handleAdd = (newProduct, userName) => {
+    const copyProducts = getDeepClone(products)
+    const productsUpdated = [newProduct, ...copyProducts]
+
+    menuUpdate(userName, productsUpdated)
+
+    setProducts(productsUpdated)
+
+    //good
+  }
+  const handleDelete = (idProductToDelete, userName) => {
     const copyProducts = getDeepClone(products)
     const productFilter = copyProducts.filter(
       (product) => product.id != idProductToDelete
     )
+    menuUpdate(userName, productFilter)
     setProducts(productFilter)
+
     //good
   }
 
-  const handleEdit = (productBeingEdited) => {
+  const handleEdit = (productBeingEdited, userName) => {
     // 1. copie du state (deep clone)
     const productsCopy = getDeepClone(products)
 
@@ -43,6 +51,7 @@ export const useMenu = () => {
     productsCopy[indexOfProductToEdit] = productBeingEdited
 
     // 3. update du state
+    menuUpdate(userName, productsCopy)
     setProducts(productsCopy)
     //good
   }
@@ -53,5 +62,6 @@ export const useMenu = () => {
     handleGenerate,
     handleEdit,
     products,
+    setProducts,
   }
 }

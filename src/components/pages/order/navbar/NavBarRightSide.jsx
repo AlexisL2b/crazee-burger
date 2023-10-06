@@ -11,13 +11,9 @@ import OrderContext from "../../../../context/OrderContext"
 export default function NavBarRightSide() {
   //state
 
-  const identifiant = useParams()
-  const firstKey = Object.keys(identifiant)[0]
-  const firstValue = identifiant[firstKey]
   const [isChecked, setIsChecked] = useState(0)
-  const { setIsAdmin } = useContext(OrderContext)
+  const { setIsAdmin, userName } = useContext(OrderContext)
   //comportement
-
   const onToggle = () => {
     if (isChecked == 0) {
       setIsChecked(1)
@@ -49,7 +45,7 @@ export default function NavBarRightSide() {
         labelIfUnchecked="ACTIVER LE MODE ADMIN"
         className="admin-button"
       />
-      <Profile firstValue={firstValue} />
+      <Profile username={userName} />
     </NavBarRightSideStyled>
   )
 }

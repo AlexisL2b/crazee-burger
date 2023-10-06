@@ -12,13 +12,18 @@ export default function User() {
   )
 }
 const UserStyled = styled.div`
-  font-family: ${theme.fontsFamily.amatic};
+  /* font-family: ${theme.fontsFamily.amatic};
   display: flex;
   flex-direction: column;
   place-items: center;
+  gap: 21px; */
+  width: 100%;
+  place-items: center;
+  display: flex;
+  flex-direction: column;
   gap: 21px;
-  span {
-    font-size: ${theme.fonts.size.P4};
-    text-align: center;
+  font-family: ${theme.fontsFamily.amatic};
+  .h1 {
+    font-weight: ${theme.fonts.weights.bold};
   }
 `

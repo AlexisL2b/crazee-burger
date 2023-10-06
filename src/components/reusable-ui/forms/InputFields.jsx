@@ -4,30 +4,16 @@ import { getTextInputConfig } from "./textInputAddConfig"
 import TextInput from "../TextInput"
 import OrderContext from "../../../context/OrderContext"
 
-export default function InputFields({ className, product }) {
+export default function InputFields({
+  className,
+  product,
+  onChange,
+  onBlur,
+  onFocus,
+}) {
   const textInputs = getTextInputConfig({ product })
-  const {
-    inputRef,
-    existingProduct,
-    setExistingProduct,
-    handleEdit,
-    handleBasketEdit,
-  } = useContext(OrderContext)
+  const { inputRef } = useContext(OrderContext)
 
-  const handleChange = (e) => {
-    const name = e.target.name
-    const newValue = e.target.value
-    const productBeingUpdated = {
-      ...existingProduct,
-      [name]: newValue,
-    }
-
-    setExistingProduct(productBeingUpdated)
-    handleEdit(productBeingUpdated)
-    handleBasketEdit(productBeingUpdated)
-  }
-
-  console.log()
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (
@@ -38,10 +24,12 @@ export default function InputFields({ className, product }) {
           name={input.name}
           className={input.className}
           placeholder={input.placeholder}
-          onChange={handleChange}
+          onChange={onChange}
           value={input.value ? input.value : ""}
           version={input.version}
           ref={input.name === "title" ? inputRef : null}
+          onBlur={onBlur}
+          onFocus={onFocus}
         />
       ))}
     </InputFieldsStyled>

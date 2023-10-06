@@ -11,7 +11,7 @@ export default function PrimaryButton({
       version={version}
       onClick={onClick}
     >
-      {label} {Icon && Icon}
+      {label} <div className="icon">{Icon && Icon} </div>
     </PrimaryButtonStyled>
   )
 }
@@ -20,17 +20,19 @@ import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
 const PrimaryButtonStyled = styled.button`
-  font-size: ${theme.fonts.P0};
   border: none;
   display: flex;
   padding: ${theme.gridUnit * 2}px 0px;
   border-radius: ${theme.borderRadius.round};
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
+  white-space: nowrap;
+  /* flex-shrink: 0; */
   background-color: ${theme.colors.primary};
   color: ${theme.colors.white};
   transition: background-color 0.3s ease;
+  font-size: 13px;
+  font-weight: ${theme.fonts.weights.bold};
   cursor: pointer;
 
   &:hover {
@@ -41,12 +43,12 @@ const PrimaryButtonStyled = styled.button`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
+
   ${({ version }) => extraStyle[version]}
 `
 
 const success = css`
-  width: 50%;
-  padding: 8px 16px 8px 24px;
+  padding: 8px 16px 8px 16px;
   border: solid 2px ${theme.colors.green};
   background-color: ${theme.colors.green};
   &:hover {
@@ -65,8 +67,18 @@ const smallSecondary = css`
   color: ${theme.colors.primary};
 `
 
+const longPrimary = css`
+  .icon {
+    font-size: ${theme.fonts.size.P2};
+    font-weight: ${theme.fonts.weights.bold};
+    margin-left: 8px;
+    margin-top: 4px;
+  }
+`
+
 const extraStyle = {
   success,
   smallPrimary,
   smallSecondary,
+  longPrimary,
 }

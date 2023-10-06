@@ -16,6 +16,7 @@ export default function Card({
   onClick,
   version,
   product,
+  existingProduct,
 }) {
   return (
     <CardStyled

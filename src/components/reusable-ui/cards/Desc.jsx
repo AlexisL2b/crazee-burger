@@ -14,10 +14,10 @@ export default function Desc({
 }) /*propsDrilling*/ {
   //State
 
-  const { handleAddBasketProduct } = useContext(OrderContext)
-  const handleAdd = (e, product) => {
+  const { handleAddBasketProduct, userName } = useContext(OrderContext)
+  const handleAddBasket = (e, product) => {
     e.stopPropagation()
-    handleAddBasketProduct(product)
+    handleAddBasketProduct(product, userName)
   }
   //comportement
   return (
@@ -42,7 +42,7 @@ export default function Desc({
               cardVersion === "selectStyled" ? "smallSecondary" : "smallPrimary"
             }
             className={"button"}
-            onClick={(e) => handleAdd(e, product)}
+            onClick={(e) => handleAddBasket(e, product)}
           />
         </div>
       </div>
@@ -81,9 +81,10 @@ const DescStyled = styled.div`
       font-size: ${theme.fonts.size.P1};
     }
     .left-description {
-      display: grid;
+      display: flex;
+
       align-items: center; /* Verticalement */
-      justify-content: center;
+      justify-content: flex-start;
       font-size: ${theme.fonts.size.P1};
     }
   }

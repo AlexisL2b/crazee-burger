@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
@@ -19,19 +19,15 @@ export default function Menu() {
     basketProducts,
     setIsOpen,
     isOpen,
+    afficher,
+    userName,
   } = useContext(OrderContext)
 
-  // const handleSwitchSelect = async (id) => {
-  // @TODO
-  //   setSelectedCardId((prevId) => (prevId !== id ? id : null))
-  //   console.log(selectedCardId)
-  // }
   const handleFocus = async (idProductClicked) => {
     await setActiveTab("edit")
     const productClicked = products.find(
       (product) => product.id === idProductClicked
     )
-
     // await handleSwitchSelect(idProductClicked)
     await setSelectedCardId(idProductClicked)
     await setExistingProduct(productClicked)
@@ -42,20 +38,21 @@ export default function Menu() {
       inputRef.current.focus()
     }
   }
-  const handleDeleteProduct = (product) => {
+  const handleDeleteProduct = (product, userName) => {
     const existingBasketProduct = basketProducts.find(
       (basketProduct) => basketProduct.id == product
     )
     if (existingBasketProduct) {
-      handleDeleteBasketProduct(product)
-      handleDelete(product)
+      handleDeleteBasketProduct(product, userName)
+      handleDelete(product, userName)
     } else {
-      handleDelete(product)
+      handleDelete(product, userName)
     }
   }
+
   return (
     <MenuStyled>
-      {products.length != 0 ? (
+      {products.length > 0 ? (
         products.map((product) => (
           <Card
             id={product.id}
@@ -64,7 +61,7 @@ export default function Menu() {
             imageSource={product.imageSource}
             title={product.title}
             priceProduct={product.price}
-            onDelete={() => handleDeleteProduct(product.id)}
+            onDelete={() => handleDeleteProduct(product.id, userName)}
             isAdmin={isAdmin}
             onClick={() => {
               handleFocus(product.id)

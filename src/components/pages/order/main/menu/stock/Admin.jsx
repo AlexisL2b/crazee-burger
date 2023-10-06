@@ -1,21 +1,26 @@
 import React, { useContext, useState } from "react"
-import PannelButton from "../../../../../reusable-ui/PannelButton"
+import PrimaryButton from "../../../../../reusable-ui/PrimaryButton"
 import { styled } from "styled-components"
 import { theme } from "../../../../../../theme"
 import OrderContext from "../../../../../../context/OrderContext"
 
 export default function Admin() {
-  const { handleGenerate } = useContext(OrderContext)
+  const { handleGenerate, userName } = useContext(OrderContext)
 
   return (
     <AdminStyled>
       <h1 className="h1">Le menu est vide ?</h1>
       <h2>Cliquez ci-dessous pour le réinitialiser</h2>
-      <PannelButton
+      <PrimaryButton
         className={"generator"}
         label={"Générer de nouveaux produits"}
-        onClick={handleGenerate}
+        onClick={() => handleGenerate(userName)}
       />
+      {/* <PannelButton
+        className={"generator"}
+        label={"Générer de nouveaux produits"}
+        onClick={(userName) => handleGenerate(userName)}
+      /> */}
     </AdminStyled>
   )
 }
@@ -35,8 +40,5 @@ const AdminStyled = styled.div`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.background_white};
     border-radius: 5px;
-
-    &:hover {
-    }
   }
 `

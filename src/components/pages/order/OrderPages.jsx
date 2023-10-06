@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom"
 import { getMenu } from "../../../api/menu"
 import { getLocalStorage } from "../../../utils/windows"
 import { initialiseUser } from "./helpers"
-import.meta.env
+// import.meta.env
 export default function OrderPages() {
   //state
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)

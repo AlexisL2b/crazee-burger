@@ -27,12 +27,9 @@ export default function OrderPages() {
   const [quantity, setQuantity] = useState(0)
   const { userName } = useParams()
   const [afficher, setAfficher] = useState(true)
-  const [isBlured, setIsBlured] = useState(false) // Par défaut, le composant est affiché
-
-  // const [isMounted, setIsMounted] = useState(false)
-  //@TODO LORSQUE JE CREER UN USER IL INITIALISE BIEN LE MENU DANS FIREBASE MAIS DANS L'APP L'AFFICHAGE N'EST PAS UPDATE
+  const [isBlured, setIsBlured] = useState(false)
   const inputRef = useRef()
-
+  // TODO LE BOUTON DERESET MENU SAFFICHE LORSQUE LON A RESET LE  MENU-
   const {
     handleDelete,
     handleAdd,
@@ -51,7 +48,6 @@ export default function OrderPages() {
     setBasketProducts,
     setTotal,
   } = useBasket()
-
   const orderContextValue = {
     isAdmin,
     isOpen,

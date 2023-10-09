@@ -23,5 +23,5 @@ export const initialiseUser = async (
 ) => {
   await initialiseMenu(userName, setProducts)
   initialiseBasket(userName, setBasketProducts)
-  initialiseTotal("total", setTotal)
+  initialiseTotal(totalStr, setTotal)
 }

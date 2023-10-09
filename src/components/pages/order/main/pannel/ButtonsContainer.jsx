@@ -6,7 +6,7 @@ import OrderContext from "../../../../../context/OrderContext"
 import { theme } from "../../../../../theme"
 import { getPanelButtonsConfig } from "./panelButtonConfig"
 
-export default function ButtonsContainer() {
+export default function ButtonsContainer(classeName) {
   //State
 
   //comportement
@@ -49,7 +49,7 @@ const ButtonsContainerStyled = styled.div`
   position: relative;
   left: 5%;
   display: flex;
-  top: 1px;
+  top: 0px;
   .active {
     background-color: ${theme.colors.background_dark};
     color: ${theme.colors.white};

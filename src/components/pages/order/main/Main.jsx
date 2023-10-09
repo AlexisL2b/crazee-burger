@@ -22,7 +22,7 @@ export default function Main() {
         {products === undefined ? <Loading version={"menu"} /> : <Menu />}
 
         {isAdmin ? (
-          <TransitionGroup component={Pannel}>
+          <TransitionGroup>
             <CSSTransition appear={true} classNames={"pannel"} timeout={500}>
               <Pannel />
             </CSSTransition>
@@ -43,12 +43,12 @@ const MainStyled = styled.div`
   grid-template-columns: 25% 1fr;
   grid-template-rows: 1fr;
 
-  .user {
+  /* .user {
     display: none;
   }
   .admin {
     display: block;
-  }
+  } */
   .menu_and_pannel {
     width: 100%;
     height: 100%;

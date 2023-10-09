@@ -5,6 +5,7 @@ import { theme } from "../../../../../../theme"
 import Desc from "./Desc"
 import { TbTrashXFilled } from "react-icons/tb"
 import OrderContext from "../../../../../../context/OrderContext"
+import CasinoEffect from "../../../../../reusable-ui/CasinoEffect"
 
 export default function CardBasket({
   title,
@@ -14,10 +15,15 @@ export default function CardBasket({
   onDelete,
   onClick,
   version,
+  className,
 }) {
   const { isAdmin } = useContext(OrderContext)
   return (
-    <CardBasketStyled onClick={isAdmin ? onClick : null} version={version}>
+    <CardBasketStyled
+      onClick={isAdmin ? onClick : null}
+      version={version}
+      className={className}
+    >
       <ImageWrapper className={"image"} imageSource={imageSource} />
 
       <div className="desc">
@@ -30,8 +36,8 @@ export default function CardBasket({
             <TbTrashXFilled />
           </i>
         </div>
-
-        <span className="quantity">x{quantity}</span>
+        <CasinoEffect count={quantity} className={"quantity"} />
+        {/* <span className="quantity">x{quantity}</span> */}
       </div>
     </CardBasketStyled>
   )

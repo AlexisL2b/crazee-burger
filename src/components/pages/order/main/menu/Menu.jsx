@@ -4,6 +4,8 @@ import { theme } from "../../../../../theme"
 import Card from "../../../../reusable-ui/cards/Card"
 import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
+import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { animations } from "../../../../../theme/animations"
 
 export default function Menu() {
   const {
@@ -19,7 +21,6 @@ export default function Menu() {
     basketProducts,
     setIsOpen,
     isOpen,
-    afficher,
     userName,
   } = useContext(OrderContext)
 
@@ -49,15 +50,19 @@ export default function Menu() {
       handleDelete(product, userName)
     }
   }
-
-  return (
-    <MenuStyled>
-      {products.length > 0 ? (
-        products.map((product) => (
+  console.log(products.length + "menu")
+  return products.length > 0 ? (
+    <TransitionGroup component={MenuStyled}>
+      {products.map((product) => (
+        <CSSTransition
+          appear={true}
+          classNames={"cards_menu"}
+          timeout={300}
+          key={product.id}
+        >
           <Card
             id={product.id}
             className={"cardProduct"}
-            key={product.id}
             imageSource={product.imageSource}
             title={product.title}
             priceProduct={product.price}
@@ -73,30 +78,63 @@ export default function Menu() {
             }
             product={product}
           />
-        ))
-      ) : (
-        <div className="stock_container">
-          <Stock />
-        </div>
-      )}
-    </MenuStyled>
+        </CSSTransition>
+      ))}
+    </TransitionGroup>
+  ) : (
+    <div className="stock_container">
+      <Stock />
+    </div>
   )
+
+  // <TransitionGroup component={MenuStyled}>
+  //   {products.length > 0 ? (
+  //     products.map((product) => (
+  //       <CSSTransition
+  //         appear={true}
+  //         classNames={"cards_menu"}
+  //         timeout={300}
+  //         key={product.id}
+  //       >
+  //         <Card
+  //           id={product.id}
+  //           className={"cardProduct"}
+  //           imageSource={product.imageSource}
+  //           title={product.title}
+  //           priceProduct={product.price}
+  //           onDelete={() => handleDeleteProduct(product.id, userName)}
+  //           isAdmin={isAdmin}
+  //           onClick={() => {
+  //             handleFocus(product.id)
+  //           }}
+  //           version={
+  //             selectedCardId === product.id && isAdmin
+  //               ? "selectStyled"
+  //               : "normalStyled"
+  //           }
+  //           product={product}
+  //         />
+  //       </CSSTransition>
+  //     ))
+  //   ) : (
+  //     <div className="stock_container">
+  //       <Stock />
+  //     </div>
+  //   )}
+  // </TransitionGroup>
 }
 
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: 60px;
+  grid-row-gap: 115px;
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: ${theme.shadows.medium};
   overflow-y: scroll;
   scrollbar-width: none;
   width: 100%;
-  .stock_container {
-    display: grid;
-    grid-column: 2;
-    place-items: center;
-  }
+
+  ${animations.menuCard}
 `

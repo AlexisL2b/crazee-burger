@@ -7,6 +7,7 @@ export const getMenu = async (userId) => {
 
   if (docSnapshot.exists()) {
     const menuReceived = docSnapshot.data().menu
+    console.log("le doc exist:" + menuReceived)
     return menuReceived
   }
   return []
@@ -29,6 +30,6 @@ export const menuUpdate = async (userId, menu) => {
 //   try {
 //     await setDoc(docRef, newDoc)
 //   } catch (error) {
-//     console.error("Erreur lors de la mise à jour du menu :", error)
+//     console.error("Erreur lors de la mise à jour du menu :a", error)
 //   }
 // }

@@ -5,7 +5,10 @@ import { theme } from "../../../theme"
 import { useEffect, useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { useMenu } from "../../../hooks/useMenu"
-import { EMPTY_PRODUCT } from "../../../enums/product"
+import {
+  EMPTY_PRODUCT,
+  KEY_TOTAL_STRING_GETSTORAGE_TOTAL,
+} from "../../../enums/product"
 import { useBasket } from "../../../hooks/useBasket"
 import { useParams } from "react-router-dom"
 import { getMenu } from "../../../api/menu"
@@ -24,12 +27,9 @@ export default function OrderPages() {
   const [quantity, setQuantity] = useState(0)
   const { userName } = useParams()
   const [afficher, setAfficher] = useState(true)
-  const [isBlured, setIsBlured] = useState(false) // Par défaut, le composant est affiché
-
-  // const [isMounted, setIsMounted] = useState(false)
-  //@TODO LORSQUE JE CREER UN USER IL INITIALISE BIEN LE MENU DANS FIREBASE MAIS DANS L'APP L'AFFICHAGE N'EST PAS UPDATE
+  const [isBlured, setIsBlured] = useState(false)
   const inputRef = useRef()
-
+  // TODO LE BOUTON DERESET MENU SAFFICHE LORSQUE LON A RESET LE  MENU-
   const {
     handleDelete,
     handleAdd,
@@ -48,7 +48,6 @@ export default function OrderPages() {
     setBasketProducts,
     setTotal,
   } = useBasket()
-
   const orderContextValue = {
     isAdmin,
     isOpen,
@@ -83,43 +82,16 @@ export default function OrderPages() {
     userName,
   }
 
-  // const fetchMenu = async () => {
-  //   const menuData = await getMenu(userName)
-  //   setProducts(menuData)
-  // }
-  // const fetchBasket = async () => {
-  //   const basketData = await getLocalStorage(userName)
-  //   if (basketData) {
-  //     setBasketProducts(basketData)
-  //   }
-  // }
-  // const fetchTotal = async () => {
-  //   const totalData = await getLocalStorage("total")
-  //   if (totalData) {
-  //     setTotal(totalData)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchMenu(userName)
-
-  //   return () => {}
-  // }, [])
-
-  // useEffect(() => {
-  //   fetchBasket(userName)
-
-  //   return () => {}
-  // }, [])
-  // useEffect(() => {
-  //   fetchTotal("total")
-
-  //   return () => {}
-  // }, [])
-
   useEffect(() => {
-    initialiseUser(userName, setProducts, setBasketProducts, setTotal)
+    initialiseUser(
+      KEY_TOTAL_STRING_GETSTORAGE_TOTAL,
+      userName,
+      setProducts,
+      setBasketProducts,
+      setTotal
+    )
   }, [])
+  console.log(products)
 
   //affichage
   return (

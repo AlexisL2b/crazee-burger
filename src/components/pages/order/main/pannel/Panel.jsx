@@ -1,23 +1,21 @@
 import React, { useContext } from "react"
-import { styled } from "styled-components"
+import styled from "styled-components" // Corrected this line
+import { CSSTransition } from "react-transition-group"
 import Tab from "./Tab"
 import ButtonsContainer from "./ButtonsContainer"
 import OrderContext from "../../../../../context/OrderContext"
 
 export default function Pannel() {
-  //State
-
-  //Comportement
-
-  const { isOpen } = useContext(OrderContext)
+  const { isOpen, isAdmin } = useContext(OrderContext)
 
   return (
     <PanelStyled>
       <ButtonsContainer />
-      {isOpen && <Tab />}
+      {isOpen ? <Tab /> : null}
     </PanelStyled>
   )
 }
+
 const PanelStyled = styled.div`
   position: absolute;
   bottom: 0;

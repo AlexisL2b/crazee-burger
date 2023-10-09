@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { theme } from "../../../theme"
@@ -7,6 +7,7 @@ import { PiUserCircleFill } from "react-icons/pi"
 import TextInput from "../../reusable-ui/TextInput"
 import PrimaryButton from "../../reusable-ui/PrimaryButton"
 import { authenticateUser, createUser, getUser } from "../../../api/user"
+import { getMenu } from "../../../api/menu"
 import Welcome from "./Welcome"
 
 export default function LoginForm() {
@@ -17,6 +18,7 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     authenticateUser(firstName)
+    await getMenu(firstName)
     navigate(`order/${firstName}`)
   }
 

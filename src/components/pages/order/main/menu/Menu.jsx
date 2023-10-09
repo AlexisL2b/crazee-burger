@@ -5,6 +5,7 @@ import Card from "../../../../reusable-ui/cards/Card"
 import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { animations } from "../../../../../theme/animations"
 
 export default function Menu() {
   const {
@@ -56,7 +57,7 @@ export default function Menu() {
         products.map((product) => (
           <CSSTransition
             appear={true}
-            classNames={"cards"}
+            classNames={"cards_menu"}
             timeout={500}
             key={product.id}
           >
@@ -105,30 +106,5 @@ const MenuStyled = styled.div`
     grid-column: 2;
     place-items: center;
   }
-  .cards-appear {
-    transform: translateX(100px);
-    opacity: 0%;
-  }
-  .cards-appear-active {
-    transition: 0.5s;
-    transform: translateX(0px);
-    opacity: 100%;
-  }
-  .cards-enter {
-    transform: translateX(100px);
-    opacity: 0%;
-  }
-  .cards-enter-active {
-    transition: 0.5s;
-    transform: translateX(0px);
-    opacity: 100%;
-  }
-  .cards-exit {
-    opacity: 100%;
-  }
-  .cards-exit-active {
-    transition: 0.5s;
-
-    opacity: 0%;
-  }
+  ${animations.menuCard}
 `

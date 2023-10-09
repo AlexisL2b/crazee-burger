@@ -6,6 +6,7 @@ import OrderContext from "../../../../../context/OrderContext"
 import Message from "../pannel/Message"
 import { BASKET } from "../../../../../enums/message"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { animations } from "../../../../../theme/animations"
 export default function Body() {
   const {
     selectedCardId,
@@ -89,31 +90,5 @@ const BodyStyled = styled.div`
   overflow-y: auto;
   scrollbar-width: none;
   padding: 16px 20px;
-  .cards-appear {
-    transform: translateX(100px);
-    opacity: 0%;
-  }
-  .cards-appear-active {
-    transition: 0.5s;
-    transform: translateX(0px);
-    opacity: 100%;
-  }
-  .cards-enter {
-    transform: translateX(100px);
-    opacity: 0%;
-  }
-  .cards-enter-active {
-    transition: 0.5s;
-    transform: translateX(0px);
-    opacity: 100%;
-  }
-  .cards-exit {
-    transform: translateX(0px);
-    opacity: 100%;
-  }
-  .cards-exit-active {
-    transition: 0.5s;
-    transform: translateX(-100px);
-    opacity: 0%;
-  }
+  ${animations.basketCard}
 `

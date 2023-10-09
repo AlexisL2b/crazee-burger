@@ -47,7 +47,7 @@ const menuCard = css`
     opacity: 0%;
   }
   .cards_menu-appear-active {
-    transition: 0.5s;
+    transition: 0.3s;
     transform: translateX(0px);
     opacity: 100%;
   }
@@ -56,7 +56,7 @@ const menuCard = css`
     opacity: 0%;
   }
   .cards_menu-enter-active {
-    transition: 0.5s;
+    transition: 0.3s;
     transform: translateX(0px);
     opacity: 100%;
   }
@@ -64,7 +64,7 @@ const menuCard = css`
     opacity: 100%;
   }
   .cards_menu-exit-active {
-    transition: 0.5s;
+    transition: 0.3s;
 
     opacity: 0%;
   }

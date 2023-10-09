@@ -11,7 +11,7 @@ export default function Pannel() {
   return (
     <PanelStyled>
       <ButtonsContainer />
-      <Tab />
+      {isOpen ? <Tab /> : null}
     </PanelStyled>
   )
 }

@@ -18,31 +18,19 @@ export default function InputFields({
 }) {
   const textInputs = getTextInputConfig({ product })
   const { inputRef } = useContext(OrderContext)
-  const [isActive, setIsActive] = useState([])
-  // const onClick = (e) => {
-  //   const value = e.currentTarget.id
-  //   const copyActive = getDeepClone(isActive)
-  //   const alreadyActive = copyActive.includes(value)
-  //   if (alreadyActive) {
-  //     const updateCopy = copyActive.filter((button) => button != value)
-  //     setIsActive(updateCopy)
-  //   }
-  //   const updateCopy = [value, ...copyActive]
-  //   setIsActive(updateCopy)
-  //   // console.log(isActive)
-  // }
-  const onClick = (e) => {
-    console.log(isActive)
-    const value = e.currentTarget.id
-    const copyActive = getDeepClone(isActive)
-    const alreadyActive = copyActive.includes(value)
+  const [isSelected, setIsSelected] = useState([])
 
-    if (alreadyActive) {
-      const updateCopy = copyActive.filter((button) => button !== value)
-      setIsActive(updateCopy)
+  const onClick = (e) => {
+    const value = e.currentTarget.id
+    const copySelected = getDeepClone(isSelected)
+    const alreadySelected = copySelected.includes(value)
+
+    if (alreadySelected) {
+      const updateCopy = copySelected.filter((button) => button !== value)
+      setIsSelected(updateCopy)
     } else {
-      const updateCopy = [value, ...copyActive]
-      setIsActive(updateCopy)
+      const updateCopy = [value, ...copySelected]
+      setIsSelected(updateCopy)
     }
   }
   return (
@@ -79,36 +67,17 @@ export default function InputFields({
         <ToggleButtonForm
           name={"pub"}
           onClick={onClick}
-          label={isActive.includes("pub") ? "Activé" : "Désactivé"}
+          label={isSelected.includes("pub") ? "Avec pub" : "Sans pub"}
           icon={<RiMegaphoneFill />}
+          isActive={isSelected.includes("pub") ? true : false}
         />
         <ToggleButtonForm
           name={"stock"}
           onClick={onClick}
-          label={isActive.includes("stock") ? "Activé" : "Désactivé"}
+          label={isSelected.includes("stock") ? "En stock" : "Épuisé"}
           icon={<FiPackage />}
+          isActive={isSelected.includes("stock") ? true : false}
         />
-        {/* <ToggleButton
-          version={"avaible"}
-          labelIfChecked="Ok"
-          labelIfUnchecked="Not Ok"
-          onToggle={onToggle}
-          isChecked={isChecked}
-        /> */}
-
-        {/* 
-        <TextInput
-          key={6}
-          Icon={<MdOutlineEuro />}
-          type={"text"}
-          name={"price"}
-          placeholder={"Prix"}
-          onChange={onChange}
-          value={product.price ? product.price : ""}
-          version={"minimalist"}
-          onBlur={onBlur}
-          onFocus={onFocus} */}
-        {/* /> */}
       </div>
     </InputFieldsStyled>
   )
@@ -121,8 +90,7 @@ const InputFieldsStyled = styled.div`
     display: grid;
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
-    border: 1px solid red;
     column-gap: 10px;
-    padding: 10px;
+    padding: 10px 0px;
   }
 `

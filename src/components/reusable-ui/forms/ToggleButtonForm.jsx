@@ -24,6 +24,12 @@ const ToggleButtonFormStyled = styled.label`
   display: grid;
   grid-template-columns: 20% 80%;
   place-items: center;
+  &:hover {
+    background-color: ${theme.colors.greyLight};
+  }
+  &:active {
+    background-color: ${theme.colors.greyMedium};
+  }
   .icon {
     display: flex;
     font-size: ${theme.fonts.size.SM};

@@ -91,7 +91,6 @@ export default function OrderPages() {
       setTotal
     )
   }, [])
-  console.log(products)
 
   //affichage
   return (

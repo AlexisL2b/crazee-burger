@@ -22,13 +22,13 @@ export const getTextInputConfig = ({ product }) => [
     value: product.imageSource,
     version: "minimalist",
   },
-  {
-    id: 3,
-    icon: <MdOutlineEuro />,
-    name: "price",
-    placeholder: "Prix",
-    type: "text",
-    value: product.price,
-    version: "minimalist",
-  },
+  // {
+  //   id: 3,
+  //   icon: <MdOutlineEuro />,
+  //   name: "price",
+  //   placeholder: "Prix",
+  //   type: "text",
+  //   value: product.price,
+  //   version: "minimalist",
+  // },
 ]

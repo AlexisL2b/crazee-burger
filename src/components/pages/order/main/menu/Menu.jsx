@@ -50,7 +50,6 @@ export default function Menu() {
       handleDelete(product, userName)
     }
   }
-  console.log(products.length + "menu")
   return products.length > 0 ? (
     <TransitionGroup component={MenuStyled}>
       {products.map((product) => (

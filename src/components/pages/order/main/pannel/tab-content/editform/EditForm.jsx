@@ -25,18 +25,6 @@ export default function EditForm() {
     setIsVisible: setIsSaved,
   } = useContext(OrderContext)
 
-  // const handleIsUpdated = (e) => {
-  //   //COMPARAISON  AVEC LAFONCTION DEEPEQUAL??
-  //   //LOGUER EXISTINGPRODUCT ET PRODUCTBEINGUPDATED POU VOIR CI CE SONT DES OBJETS  POSSIBLEMENT IDENTIQUES.
-  //   const initialValue = inputRef.current._wrapperState.initialValue
-  //   console.log(inputRef)
-  //   const name = e.target.name
-  //   if{existingProduct[name]!=}
-  //   // if (deepEqual(productBeingUpdated, existingProduct) && isBlured) {
-  //   //   console.log("allgod")
-  //   // }
-  // }
-
   const handleOnFocus = (e) => {
     const valueOnFocus = e.target.value
     setOnFocus(valueOnFocus)

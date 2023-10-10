@@ -7,7 +7,6 @@ export const getMenu = async (userId) => {
 
   if (docSnapshot.exists()) {
     const menuReceived = docSnapshot.data().menu
-    console.log("le doc exist:" + menuReceived)
     return menuReceived
   }
   return []

@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import { styled, css } from "styled-components"
 import { theme } from "../../theme"
 
 export default function ToggleButton({
@@ -8,9 +8,10 @@ export default function ToggleButton({
   labelIfChecked = "ouvrir",
   labelIfUnchecked = "fermer",
   className,
+  version,
 }) {
   return (
-    <ToggleButtonStyled className={className}>
+    <ToggleButtonStyled className={className} version={version}>
       <input
         type="checkbox"
         className="toggle"
@@ -31,6 +32,9 @@ export default function ToggleButton({
 const ToggleButtonStyled = styled.div`
   display: flex;
   margin-right: 10px;
+  ${({ version }) => extraStyle[version]}
+`
+const admin = css`
   input[type="checkbox"] {
     // Hides the square box but keeps the core "toggle functionality"
     &.toggle {
@@ -132,3 +136,30 @@ const ToggleButtonStyled = styled.div`
     }
   }
 `
+const avaible = css`
+  // Hides the square box but keeps the core "toggle functionality"
+  .toggle {
+    display: none;
+  }
+
+  .toggle + label {
+    display: inline-block;
+    height: 40px;
+    padding: 8px 16px 8px 16px;
+    min-width: 120px;
+    position: relative;
+    font-size: ${theme.fonts.size.XXS};
+    letter-spacing: 0.5px;
+    border: 2px solid ${theme.colors.background_dark};
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+    border-radius: 10px;
+  }
+`
+const extraStyle = {
+  admin,
+  avaible,
+}

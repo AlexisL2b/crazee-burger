@@ -4,8 +4,10 @@ import { getTextInputConfig } from "./textInputAddConfig"
 import TextInput from "../TextInput"
 import OrderContext from "../../../context/OrderContext"
 import { MdOutlineEuro } from "react-icons/md"
-import ToggleButton from "../ToggleButton"
+import { FiPackage } from "react-icons/fi"
+import { RiMegaphoneFill } from "react-icons/ri"
 import ToggleButtonForm from "./ToggleButtonForm"
+import { getDeepClone } from "../../../utils/windows"
 
 export default function InputFields({
   className,
@@ -16,11 +18,32 @@ export default function InputFields({
 }) {
   const textInputs = getTextInputConfig({ product })
   const { inputRef } = useContext(OrderContext)
-  const [isActive, setIsActive] = useState("")
+  const [isActive, setIsActive] = useState([])
+  // const onClick = (e) => {
+  //   const value = e.currentTarget.id
+  //   const copyActive = getDeepClone(isActive)
+  //   const alreadyActive = copyActive.includes(value)
+  //   if (alreadyActive) {
+  //     const updateCopy = copyActive.filter((button) => button != value)
+  //     setIsActive(updateCopy)
+  //   }
+  //   const updateCopy = [value, ...copyActive]
+  //   setIsActive(updateCopy)
+  //   // console.log(isActive)
+  // }
   const onClick = (e) => {
+    console.log(isActive)
     const value = e.currentTarget.id
-    setIsActive(value)
-    console.log(value)
+    const copyActive = getDeepClone(isActive)
+    const alreadyActive = copyActive.includes(value)
+
+    if (alreadyActive) {
+      const updateCopy = copyActive.filter((button) => button !== value)
+      setIsActive(updateCopy)
+    } else {
+      const updateCopy = [value, ...copyActive]
+      setIsActive(updateCopy)
+    }
   }
   return (
     <InputFieldsStyled className={className}>
@@ -56,15 +79,14 @@ export default function InputFields({
         <ToggleButtonForm
           name={"pub"}
           onClick={onClick}
-          label={isActive ? "C'est activé" : "C'est pas activé"}
-          version={isActive ? "active" : "inactive"}
+          label={isActive.includes("pub") ? "Activé" : "Désactivé"}
+          icon={<RiMegaphoneFill />}
         />
         <ToggleButtonForm
           name={"stock"}
           onClick={onClick}
-          label={isActive ? "C'est activé" : "C'est pas activé"}
-          version={isActive ? "active" : "inactive"}
-          isActive={isActive}
+          label={isActive.includes("stock") ? "Activé" : "Désactivé"}
+          icon={<FiPackage />}
         />
         {/* <ToggleButton
           version={"avaible"}
@@ -100,5 +122,7 @@ const InputFieldsStyled = styled.div`
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
     border: 1px solid red;
+    column-gap: 10px;
+    padding: 10px;
   }
 `

@@ -3,6 +3,7 @@ import { css, styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 import Desc from "./Desc"
+import Sticker from "./Sticker"
 import { TbTrashXFilled } from "react-icons/tb"
 import OrderContext from "../../../../../../context/OrderContext"
 import CasinoEffect from "../../../../../reusable-ui/CasinoEffect"
@@ -16,6 +17,7 @@ export default function CardBasket({
   onClick,
   version,
   className,
+  product,
 }) {
   const { isAdmin } = useContext(OrderContext)
   return (
@@ -24,7 +26,11 @@ export default function CardBasket({
       version={version}
       className={className}
     >
-      <ImageWrapper className={"image"} imageSource={imageSource} />
+      {/* <ImageWrapper className={"image"} imageSource={imageSource} /> */}
+      <div className="image_wrapper">
+        {product.isAdvertised ? <Sticker /> : null}
+        <img src={imageSource} alt="" />
+      </div>
 
       <div className="desc">
         <Desc title={title} price={price} cardVersion={version} />
@@ -91,10 +97,14 @@ const CardBasketStyled = styled.div`
       }
     }
   }
-  .image {
+  .image_wrapper {
     height: 70px;
-
     width: 85px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   .quantity {

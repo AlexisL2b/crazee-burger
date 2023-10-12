@@ -51,6 +51,7 @@ export default function Body() {
               timeout={500}
             >
               <CardBasket
+                product={product}
                 onClick={() => handleFocus(product.id, userName)}
                 title={product.title}
                 price={product.price}

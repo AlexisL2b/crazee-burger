@@ -4,6 +4,7 @@ import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
 import { EMPTY_BY_DEFAULT_PICTURE } from "../../../enums/product"
+import Ribbon from "./Ribon"
 
 export default function Card({
   id,
@@ -17,6 +18,7 @@ export default function Card({
   version,
   product,
   existingProduct,
+  ribon,
 }) {
   return (
     <CardStyled
@@ -25,6 +27,7 @@ export default function Card({
       onClick={isAdmin ? onClick : null}
       version={version}
     >
+      {ribon ? <Ribbon /> : null}
       {isAdmin && (
         <DeleteButton
           onClick={onDelete}

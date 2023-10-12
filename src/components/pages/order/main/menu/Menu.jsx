@@ -60,6 +60,7 @@ export default function Menu() {
           key={product.id}
         >
           <Card
+            ribon={product.isAdvertised}
             id={product.id}
             className={"cardProduct"}
             imageSource={product.imageSource}

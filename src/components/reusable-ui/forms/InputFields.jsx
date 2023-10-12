@@ -15,24 +15,44 @@ export default function InputFields({
   onChange,
   onBlur,
   onFocus,
+  onClick,
 }) {
   const textInputs = getTextInputConfig({ product })
   const { inputRef } = useContext(OrderContext)
   const [isSelected, setIsSelected] = useState([])
+  const { existingProduct } = useContext(OrderContext)
+  const [isAvailable, setIsAvailable] = useState(false)
+  const [isAdvertised, setIsAdvertised] = useState(false)
 
-  const onClick = (e) => {
-    const value = e.currentTarget.id
-    const copySelected = getDeepClone(isSelected)
-    const alreadySelected = copySelected.includes(value)
+  // const onSelect = (e) => {
+  //   const value = e.currentTarget.id
+  //   const copySelected = getDeepClone(isSelected)
+  //   const alreadySelected = copySelected.includes(value)
 
-    if (alreadySelected) {
-      const updateCopy = copySelected.filter((button) => button !== value)
-      setIsSelected(updateCopy)
-    } else {
-      const updateCopy = [value, ...copySelected]
-      setIsSelected(updateCopy)
-    }
+  //   if (alreadySelected) {
+  //     const updateCopy = copySelected.filter((button) => button !== value)
+  //     setIsSelected(updateCopy)
+  //     if (value === "isAvailable") {
+  //       setIsAvailable(false)
+  //     } else if (value === "isAdvertised") {
+  //       setIsAdvertised(false)
+  //     }
+  //   } else {
+  //     const updateCopy = [value, ...copySelected]
+  //     setIsSelected(updateCopy)
+  //     if (value === "isAdvertised") {
+  //       setIsAdvertised(true)
+  //     } else if (value === "isAvailable") {
+  //       setIsAvailable(true)
+  //     }
+  //   }
+  // }
+
+  const stopPropagation = (e) => {
+    onClick(e)
+    console.log(product.isAdvertised)
   }
+
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (
@@ -65,18 +85,20 @@ export default function InputFields({
           onFocus={onFocus}
         />
         <ToggleButtonForm
-          name={"pub"}
-          onClick={onClick}
-          label={isSelected.includes("pub") ? "Avec pub" : "Sans pub"}
+          version={"addFeature"}
+          id={"isAdvertised"}
+          label={product.isAdvertised === true ? "Avec pub" : "Sans pub"}
+          onClick={(e) => stopPropagation(e)}
           icon={<RiMegaphoneFill />}
-          isActive={isSelected.includes("pub") ? true : false}
         />
         <ToggleButtonForm
-          name={"stock"}
+          version={"addFeature"}
+          id={"isAvailable"}
+          label={product.isAvailable ? "En stock" : "Épuisé"}
+          // name={"isAvailable"}
           onClick={onClick}
-          label={isSelected.includes("stock") ? "En stock" : "Épuisé"}
           icon={<FiPackage />}
-          isActive={isSelected.includes("stock") ? true : false}
+          // isActive={isAvailable}
         />
       </div>
     </InputFieldsStyled>

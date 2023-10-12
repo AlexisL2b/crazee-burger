@@ -11,6 +11,7 @@ export default function Form({
   children,
   onBlur,
   onFocus,
+  onClick,
 }) {
   return (
     <FormStyled action={action} onSubmit={onSubmit}>
@@ -22,6 +23,7 @@ export default function Form({
         index={index}
         onBlur={onBlur}
         onFocus={onFocus}
+        onClick={onClick}
       />
 
       <div className="children">{children}</div>

@@ -85,14 +85,14 @@ export default function InputFields({
           onFocus={onFocus}
         />
         <ToggleButtonForm
-          version={"addFeature"}
+          version={!product.isAdvertised ? "addFeature" : "removeFeature"}
           id={"isAdvertised"}
           label={product.isAdvertised === true ? "Avec pub" : "Sans pub"}
           onClick={(e) => stopPropagation(e)}
           icon={<RiMegaphoneFill />}
         />
         <ToggleButtonForm
-          version={"addFeature"}
+          version={product.isAvailable ? "addFeature" : "removeFeature"}
           id={"isAvailable"}
           label={product.isAvailable ? "En stock" : "Épuisé"}
           // name={"isAvailable"}

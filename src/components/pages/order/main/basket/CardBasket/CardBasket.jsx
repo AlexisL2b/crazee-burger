@@ -29,7 +29,7 @@ export default function CardBasket({
       {/* <ImageWrapper className={"image"} imageSource={imageSource} /> */}
       <div className="image_wrapper">
         {product.isAdvertised ? <Sticker /> : null}
-        <img src={imageSource} alt="" />
+        <img src={imageSource} alt="" loading="lazy" />
       </div>
 
       <div className="desc">

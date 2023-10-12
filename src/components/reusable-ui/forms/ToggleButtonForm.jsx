@@ -82,9 +82,45 @@ const addFeature = css`
     -ms-user-select: none; /* Pour Internet Explorer 10 et 11 */
   }
 `
+const removeFeature = css`
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  background-color: ${theme.colors.greyMedium};
+  padding: 0px 16px;
+  color: ${theme.colors.greyBlue};
+  height: 35px;
+  text-align: center;
+  transform: scale(0.95);
+  &:hover {
+    background-color: ${theme.colors.greyLight};
+  }
+  &:active {
+    background-color: ${theme.colors.background_white};
+  }
+  input[type="checkbox"] {
+    // Hides the square box but keeps the core "toggle functionality"
+    &.toggle {
+      display: none;
+    }
+  }
+  .label {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    user-select: none;
+    -webkit-user-select: none; /* Pour les anciennes versions de Safari */
+    -moz-user-select: none; /* Pour les anciennes versions de Firefox */
+    -ms-user-select: none; /* Pour Internet Explorer 10 et 11 */
+  }
+`
 
 const extraStyle = {
   addFeature,
+  removeFeature,
 }
 
 // import { React, useState } from "react"

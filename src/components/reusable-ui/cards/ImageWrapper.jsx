@@ -8,7 +8,7 @@ export default function ImageWrapper({ imageSource, className, name }) {
 
   return (
     <ImageWrapperStyled className={className} name={name}>
-      <img src={imageSource} onError={handleImageError} />
+      <img src={imageSource} onError={handleImageError} loading="lazy" />
     </ImageWrapperStyled>
   )
 }

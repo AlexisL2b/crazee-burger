@@ -1,6 +1,6 @@
 export const isAdvertisedOptions = [
-  { value: true, label: "Sans pub" },
-  { value: false, label: "Avec pub" },
+  { value: false, label: "Sans pub" },
+  { value: true, label: "Avec pub" },
 ]
 export const isAvailableOptions = [
   { value: true, label: "En stock" },

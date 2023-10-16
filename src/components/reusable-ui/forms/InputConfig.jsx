@@ -39,14 +39,14 @@ export const getTextInput = ({ product }) => [
 
 export const getSelectInput = ({ product }) => [
   {
-    name: "isAvailableOptions",
+    name: "isAvailable",
     options: isAvailableOptions,
     className: "is-available",
     id: "5",
     value: product.isAvailable,
   },
   {
-    name: "isAdvertisedOptions",
+    name: "isAdvertised",
     options: isAdvertisedOptions,
     className: "is-advertised",
     id: "4",

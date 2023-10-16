@@ -48,7 +48,7 @@ export default function InputFields({
       ))}
 
       {selectInputs.map((select) => (
-        <SelectInput {...select} />
+        <SelectInput {...select} onChange={onChange} key={select.id} />
       ))}
     </InputFieldsStyled>
   )

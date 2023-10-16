@@ -45,6 +45,7 @@ export default function EditForm() {
   const handleChange = (e) => {
     const name = e.target.name
     const newValue = e.target.value
+    console.log(name, newValue)
     const productBeingUpdated = {
       ...existingProduct,
       [name]: newValue,

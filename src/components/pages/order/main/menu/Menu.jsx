@@ -6,6 +6,7 @@ import OrderContext from "../../../../../context/OrderContext"
 import Stock from "./stock/Stock"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { animations } from "../../../../../theme/animations"
+import { IMAGE_NO_STOCK } from "../../../../../enums/product"
 
 export default function Menu() {
   const {
@@ -72,6 +73,8 @@ export default function Menu() {
             onClick={() => {
               handleFocus(product.id)
             }}
+            overlapImage={IMAGE_NO_STOCK}
+            isOverlapImageVisible={true}
             version={
               selectedCardId === product.id &&
               product.isAvailable === true &&

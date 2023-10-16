@@ -2,7 +2,8 @@ import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 import { isAdvertisedOptions, isAvailableOptions } from "../../../enums/select"
-
+import { FiPackage } from "react-icons/fi"
+import { RiMegaphoneFill } from "react-icons/ri"
 export const getTextInput = ({ product }) => [
   {
     id: 1,
@@ -43,6 +44,8 @@ export const getSelectInput = ({ product }) => [
     options: isAvailableOptions,
     className: "is-available",
     id: "5",
+    icon: <FiPackage />,
+
     value: product.isAvailable,
   },
   {
@@ -50,6 +53,8 @@ export const getSelectInput = ({ product }) => [
     options: isAdvertisedOptions,
     className: "is-advertised",
     id: "4",
+    icon: <RiMegaphoneFill />,
+
     value: product.isAdvertised,
   },
 ]

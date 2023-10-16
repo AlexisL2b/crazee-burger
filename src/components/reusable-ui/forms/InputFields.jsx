@@ -4,8 +4,7 @@ import { getSelectInput, getTextInput } from "./InputConfig"
 import TextInput from "../TextInput"
 import OrderContext from "../../../context/OrderContext"
 import { MdOutlineEuro } from "react-icons/md"
-import { FiPackage } from "react-icons/fi"
-import { RiMegaphoneFill } from "react-icons/ri"
+
 import ToggleButtonForm from "./ToggleButtonForm"
 import { getDeepClone } from "../../../utils/windows"
 import SelectInput from "../SelectInput"
@@ -48,7 +47,14 @@ export default function InputFields({
       ))}
 
       {selectInputs.map((select) => (
-        <SelectInput {...select} onChange={onChange} key={select.id} />
+        <SelectInput
+          {...select}
+          onChange={onChange}
+          key={select.id}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          Icon={select.icon}
+        />
       ))}
     </InputFieldsStyled>
   )
@@ -66,12 +72,5 @@ const InputFieldsStyled = styled.div`
   }
   .price {
     grid-area: 3/1/4/2;
-  }
-
-  .is-available {
-    background: pink;
-  }
-  .is-advertised {
-    background: yellow;
   }
 `

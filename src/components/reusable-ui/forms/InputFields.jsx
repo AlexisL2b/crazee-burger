@@ -99,14 +99,22 @@ export default function InputFields({
           icon={<FiPackage />}
         />
       </div> */}
+      <select name="isAvailable" className="is-available" id="4">
+        <option value={true}>En stock</option>
+        <option value={false}>En rupture</option>
+      </select>
+      <select name="isAdvertised" className="is-advertised" id="5">
+        <option value={true}>Sans pub</option>
+        <option value={false}>Avec pub</option>
+      </select>
     </InputFieldsStyled>
   )
 }
 const InputFieldsStyled = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 8px;
   .title {
     grid-area: 1/1/2/4;
   }
@@ -123,4 +131,11 @@ const InputFieldsStyled = styled.div`
     column-gap: 10px;
     padding: 10px 0px;
   } */
+
+  .is-available {
+    background: pink;
+  }
+  .is-advertised {
+    background: yellow;
+  }
 `

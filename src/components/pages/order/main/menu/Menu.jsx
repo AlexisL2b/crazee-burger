@@ -60,6 +60,7 @@ export default function Menu() {
           key={product.id}
         >
           <Card
+            available={product.isAvailable}
             ribon={product.isAdvertised}
             id={product.id}
             className={"cardProduct"}
@@ -72,9 +73,17 @@ export default function Menu() {
               handleFocus(product.id)
             }}
             version={
-              selectedCardId === product.id && isAdmin
+              selectedCardId === product.id &&
+              product.isAvailable === true &&
+              isAdmin
                 ? "selectStyled"
-                : "normalStyled"
+                : selectedCardId === product.id &&
+                  product.isAvailable === false &&
+                  isAdmin
+                ? "outofstockselected"
+                : !isAdmin || selectedCardId != product.id
+                ? "normalStyled"
+                : "outofstockselected"
             }
             product={product}
           />

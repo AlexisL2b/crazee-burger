@@ -5,6 +5,7 @@ import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
 import { EMPTY_BY_DEFAULT_PICTURE } from "../../../enums/product"
 import Ribbon from "./Ribon"
+import IsAvailable from "../IsAvailable"
 
 export default function Card({
   id,
@@ -19,6 +20,7 @@ export default function Card({
   product,
   existingProduct,
   ribon,
+  available,
 }) {
   return (
     <CardStyled
@@ -27,6 +29,7 @@ export default function Card({
       onClick={isAdmin ? onClick : null}
       version={version}
     >
+      {!available ? <IsAvailable /> : null}
       {ribon ? <Ribbon /> : null}
       {isAdmin && (
         <DeleteButton
@@ -88,4 +91,8 @@ const normalStyled = css`
   background: ${theme.colors.white};
 `
 
-const extraStyle = { selectStyled, normalStyled }
+const outofstockselected = css`
+  background-color: #ffc676;
+`
+
+const extraStyle = { selectStyled, normalStyled, outofstockselected }

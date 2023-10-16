@@ -11,7 +11,14 @@ export const useBasket = () => {
 
   const handleAddBasketProduct = (newBasketProduct, userName) => {
     const basketProductExisiting = basketProducts.find(
-      (product) => product.id === newBasketProduct.id
+      (product) =>
+        product.id === newBasketProduct.id && product.isAvailable === true
+    )
+
+    const basketProductExisitingAvailable = basketProducts.find(
+      (product) =>
+        product.id === newBasketProduct.id &&
+        product.isAvailable === newBasketProduct.isAvailable
     )
 
     if (basketProductExisiting) {
@@ -19,6 +26,11 @@ export const useBasket = () => {
       const copyBasketProduct = getDeepClone(basketProducts)
       setBasketProducts(copyBasketProduct)
       setLocalStorage(userName, copyBasketProduct)
+      //Filtrer les produit qui sont dispo ex
+
+      const copyBasketFilter = copyBasketProduct.filter(
+        (product) => product.isAvailable === true
+      )
 
       const copyTotal = getDeepClone(total)
       const priceUpdated =
@@ -28,6 +40,7 @@ export const useBasket = () => {
         ...copyTotal,
         [basketProductExisiting.id]: priceUpdated,
       }
+
       setTotal(copyTotalUpdated)
       setLocalStorage("total", copyTotalUpdated)
     } else {

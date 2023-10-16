@@ -6,6 +6,7 @@ import { EMPTY_PRODUCT } from "../../../../../../../enums/product"
 import Message from "../../Message"
 import { FiCheckCircle } from "react-icons/fi"
 import PrimaryButton from "../../../../../../reusable-ui/PrimaryButton"
+import { stringToBoolean } from "../../../../../../../utils/bool"
 
 export default function AddForm() {
   //state
@@ -43,8 +44,9 @@ export default function AddForm() {
   const handleClick = (e) => {
     const name = e.currentTarget.htmlFor
     const newValue = e.currentTarget.dataset.ischecked
-    setNewProduct({ ...newProduct, [name]: newValue })
+    setNewProduct({ ...newProduct, [name]: stringToBoolean(newValue) })
     console.log(newProduct)
+    // handleChange(e)
   }
   //affichage
 

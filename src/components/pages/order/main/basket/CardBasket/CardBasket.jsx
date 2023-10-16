@@ -33,7 +33,12 @@ export default function CardBasket({
       </div>
 
       <div className="desc">
-        <Desc title={title} price={price} cardVersion={version} />
+        <Desc
+          product={product}
+          title={title}
+          price={price}
+          cardVersion={version}
+        />
       </div>
 
       <div className="container">

@@ -3,7 +3,7 @@ import { css, styled } from "styled-components"
 import { theme } from "../../../../../../theme"
 import { formatMontant } from "../../../../../../utils/maths"
 
-export default function Desc({ title, price, cardVersion }) {
+export default function Desc({ title, price, cardVersion, product }) {
   const formatPrice = formatMontant(price)
   return (
     <DescStyled
@@ -16,7 +16,11 @@ export default function Desc({ title, price, cardVersion }) {
           <span>{title}</span>
         </div>
         <div className="price">
-          <span>{formatPrice} €</span>
+          {product.isAvailable ? (
+            <span>{formatPrice} €</span>
+          ) : (
+            <span className="available">Non disponible</span>
+          )}
         </div>
       </div>
     </DescStyled>
@@ -46,6 +50,24 @@ const DescStyled = styled.div`
       grid-area: 1/1/2/2;
     }
     .price {
+      grid-area: 2/1/3/2;
+      height: 20px;
+      margin: 0px;
+      font-size: ${theme.fonts.size.SM};
+      font-family: ${theme.fontsFamily.open};
+      align-items: center;
+      justify-content: center;
+    }
+    .price {
+      grid-area: 2/1/3/2;
+      height: 20px;
+      margin: 0px;
+      font-size: ${theme.fonts.size.SM};
+      font-family: ${theme.fontsFamily.open};
+      align-items: center;
+      justify-content: center;
+    }
+    .available {
       grid-area: 2/1/3/2;
       height: 20px;
       margin: 0px;

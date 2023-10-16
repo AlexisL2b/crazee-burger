@@ -21,7 +21,7 @@ export default function InputFields({
   const { inputRef } = useContext(OrderContext)
   const [isSelected, setIsSelected] = useState([])
   const { existingProduct } = useContext(OrderContext)
-  const [isAvailable, setIsAvailable] = useState(false)
+  const [isAvailable, setIsAvailable] = useState(true)
   const [isAdvertised, setIsAdvertised] = useState(false)
 
   // const onSelect = (e) => {
@@ -49,8 +49,8 @@ export default function InputFields({
   // }
 
   const stopPropagation = (e) => {
-    onClick(e)
-    console.log(product.isAdvertised)
+    onClick()
+    console.log(product)
   }
 
   return (
@@ -88,17 +88,15 @@ export default function InputFields({
           version={!product.isAdvertised ? "addFeature" : "removeFeature"}
           id={"isAdvertised"}
           label={product.isAdvertised === true ? "Avec pub" : "Sans pub"}
-          onClick={(e) => stopPropagation(e)}
+          onClick={onClick}
           icon={<RiMegaphoneFill />}
         />
         <ToggleButtonForm
           version={product.isAvailable ? "addFeature" : "removeFeature"}
           id={"isAvailable"}
           label={product.isAvailable ? "En stock" : "Épuisé"}
-          // name={"isAvailable"}
           onClick={onClick}
           icon={<FiPackage />}
-          // isActive={isAvailable}
         />
       </div>
     </InputFieldsStyled>

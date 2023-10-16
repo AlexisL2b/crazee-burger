@@ -17,7 +17,11 @@ export default function Desc({
   const { handleAddBasketProduct, userName } = useContext(OrderContext)
   const handleAddBasket = (e, product) => {
     e.stopPropagation()
-    handleAddBasketProduct(product, userName)
+    if (product.isAvailable) {
+      handleAddBasketProduct(product, userName)
+    } else {
+      null
+    }
   }
   //comportement
   return (

@@ -71,7 +71,7 @@ export default function InputFields({
           onFocus={onFocus}
         />
       ))}
-      <div className="input_price">
+      {/* <div className="other_inputs">
         <TextInput
           key={3}
           Icon={<MdOutlineEuro />}
@@ -98,7 +98,7 @@ export default function InputFields({
           onClick={onClick}
           icon={<FiPackage />}
         />
-      </div>
+      </div> */}
     </InputFieldsStyled>
   )
 }
@@ -106,11 +106,21 @@ const InputFieldsStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
-  .input_price {
+  grid-template-columns: repeat(3, 1fr);
+  .title {
+    grid-area: 1/1/2/4;
+  }
+  .image {
+    grid-area: 2/1/3/4;
+  }
+  .price {
+    grid-area: 3/1/4/2;
+  }
+  /* .other_inputs {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 10px;
     padding: 10px 0px;
-  }
+  } */
 `

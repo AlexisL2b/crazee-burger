@@ -11,6 +11,7 @@ export const getTextInputConfig = ({ product }) => [
     placeholder: "Nom du produit (ex: Super Burger)",
     value: product.title,
     version: "minimalist",
+    className: "title",
   },
   {
     id: 2,
@@ -21,14 +22,16 @@ export const getTextInputConfig = ({ product }) => [
       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
     value: product.imageSource,
     version: "minimalist",
+    className: "image",
   },
-  // {
-  //   id: 3,
-  //   icon: <MdOutlineEuro />,
-  //   name: "price",
-  //   placeholder: "Prix",
-  //   type: "text",
-  //   value: product.price,
-  //   version: "minimalist",
-  // },
+  {
+    id: 3,
+    icon: <MdOutlineEuro />,
+    name: "price",
+    placeholder: "Prix",
+    type: "text",
+    value: product.price,
+    version: "minimalist",
+    className: "price",
+  },
 ]

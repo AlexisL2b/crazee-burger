@@ -8,6 +8,7 @@ import { FiPackage } from "react-icons/fi"
 import { RiMegaphoneFill } from "react-icons/ri"
 import ToggleButtonForm from "./ToggleButtonForm"
 import { getDeepClone } from "../../../utils/windows"
+import SelectInput from "../SelectInput"
 
 export default function InputFields({
   className,
@@ -53,6 +54,14 @@ export default function InputFields({
     console.log(product)
   }
 
+  const isAdvertisedOptions = [
+    { value: true, label: "Sans pub" },
+    { value: false, label: "Avec pub" },
+  ]
+  const isAvailableOptions = [
+    { value: true, label: "En stock" },
+    { value: false, label: "En rupture" },
+  ]
   return (
     <InputFieldsStyled className={className}>
       {textInputs.map((input) => (
@@ -99,14 +108,26 @@ export default function InputFields({
           icon={<FiPackage />}
         />
       </div> */}
-      <select name="isAvailable" className="is-available" id="4">
-        <option value={true}>En stock</option>
-        <option value={false}>En rupture</option>
+      {/* <select name="isAvailable" className="is-available" id="4">
+        {isAvailableOptions.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
       </select>
       <select name="isAdvertised" className="is-advertised" id="5">
-        <option value={true}>Sans pub</option>
-        <option value={false}>Avec pub</option>
-      </select>
+        {isAdvertisedOptions.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
+      </select> */}
+      <SelectInput
+        options={isAdvertisedOptions}
+        className="is-advertised"
+        id="4"
+      />
+      <SelectInput
+        options={isAvailableOptions}
+        className="is-available"
+        id="5"
+      />
     </InputFieldsStyled>
   )
 }

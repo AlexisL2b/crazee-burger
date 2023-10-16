@@ -24,6 +24,7 @@ export default function Card({
   available,
   overlapImage,
   isOverlapImageVisible,
+  disabled,
 }) {
   return (
     <CardStyled
@@ -62,6 +63,7 @@ export default function Card({
         title={title}
         cardVersion={version}
         product={product}
+        disabled={isOverlapImageVisible}
       />
     </CardStyled>
   )
@@ -136,8 +138,8 @@ const normalStyled = css`
   background: ${theme.colors.white};
 `
 
-const outofstockselected = css`
-  background-color: #ffc676;
-`
+// const outofstockselected = css`
+//   background-color: #ffc676;
+// `
 
-const extraStyle = { selectStyled, normalStyled, outofstockselected }
+const extraStyle = { selectStyled, normalStyled }

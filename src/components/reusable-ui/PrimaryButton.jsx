@@ -4,12 +4,14 @@ export default function PrimaryButton({
   className,
   version,
   onClick,
+  disabled,
 }) {
   return (
     <PrimaryButtonStyled
       className={className}
       version={version}
       onClick={onClick}
+      disabled={disabled}
     >
       {label} <div className="icon">{Icon && Icon} </div>
     </PrimaryButtonStyled>
@@ -43,7 +45,11 @@ const PrimaryButtonStyled = styled.button`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
-
+  &:disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+    z-index: 2;
+  }
   ${({ version }) => extraStyle[version]}
 `
 

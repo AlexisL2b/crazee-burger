@@ -11,6 +11,7 @@ export default function Desc({
   name,
   cardVersion,
   product,
+  disabled,
 }) /*propsDrilling*/ {
   //State
 
@@ -47,6 +48,7 @@ export default function Desc({
             }
             className={"button"}
             onClick={(e) => handleAddBasket(e, product)}
+            disabled={disabled}
           />
         </div>
       </div>

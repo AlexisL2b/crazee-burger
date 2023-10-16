@@ -7,6 +7,7 @@ import Stock from "./stock/Stock"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { animations } from "../../../../../theme/animations"
 import { IMAGE_NO_STOCK } from "../../../../../enums/product"
+import { convertStringToBoolean } from "../../../../../utils/bool"
 
 export default function Menu() {
   const {
@@ -24,12 +25,12 @@ export default function Menu() {
     isOpen,
     userName,
   } = useContext(OrderContext)
-
   const handleFocus = async (idProductClicked) => {
     await setActiveTab("edit")
     const productClicked = products.find(
       (product) => product.id === idProductClicked
     )
+
     // await handleSwitchSelect(idProductClicked)
     await setSelectedCardId(idProductClicked)
     await setExistingProduct(productClicked)
@@ -74,19 +75,13 @@ export default function Menu() {
               handleFocus(product.id)
             }}
             overlapImage={IMAGE_NO_STOCK}
-            isOverlapImageVisible={true}
+            isOverlapImageVisible={
+              convertStringToBoolean(product.isAvailable) === false
+            }
             version={
-              selectedCardId === product.id &&
-              product.isAvailable === true &&
-              isAdmin
+              selectedCardId === product.id && isAdmin
                 ? "selectStyled"
-                : selectedCardId === product.id &&
-                  product.isAvailable === false &&
-                  isAdmin
-                ? "outofstockselected"
-                : !isAdmin || selectedCardId != product.id
-                ? "normalStyled"
-                : "outofstockselected"
+                : "normalStyled"
             }
             product={product}
           />

@@ -6,7 +6,6 @@ import { HiCursorClick } from "react-icons/hi"
 import { BsCloudCheckFill } from "react-icons/bs"
 import Form from "../../../../../../reusable-ui/forms/Form"
 import { ADMIN_TAB } from "../../../../../../../enums/message"
-import { stringToBoolean } from "../../../../../../../utils/bool"
 
 export default function EditForm() {
   //State
@@ -62,23 +61,23 @@ export default function EditForm() {
     }
   }
 
-  const handleClick = (e) => {
-    const name = e.currentTarget.htmlFor
-    const newValue = e.currentTarget.dataset.ischecked
+  // const handleClick = (e) => {
+  //   const name = e.currentTarget.htmlFor
+  //   const newValue = e.currentTarget.dataset.ischecked
 
-    const productBeingUpdated = {
-      ...existingProduct,
-      [name]: stringToBoolean(newValue),
-    }
-    const productExistingBasket = basketProducts.find(
-      (productExistingBasket) => productExistingBasket.id === existingProduct.id
-    )
-    setExistingProduct(productBeingUpdated)
-    handleEdit(productBeingUpdated, userName)
-    if (productExistingBasket) {
-      handleBasketEdit(productBeingUpdated)
-    }
-  }
+  //   const productBeingUpdated = {
+  //     ...existingProduct,
+  //     [name]: stringToBoolean(newValue),
+  //   }
+  //   const productExistingBasket = basketProducts.find(
+  //     (productExistingBasket) => productExistingBasket.id === existingProduct.id
+  //   )
+  //   setExistingProduct(productBeingUpdated)
+  //   handleEdit(productBeingUpdated, userName)
+  //   if (productExistingBasket) {
+  //     handleBasketEdit(productBeingUpdated)
+  //   }
+  // }
   //render
 
   return selectedCardId != null ? (
@@ -89,7 +88,7 @@ export default function EditForm() {
       onChange={handleChange}
       onBlur={(e) => handleBlur(e)}
       onFocus={handleOnFocus}
-      onClick={(e) => handleClick(e)}
+      // onClick={(e) => handleClick(e)}
     >
       <Message
         label={

@@ -5,11 +5,11 @@ import Tab from "./Tab"
 import ButtonsContainer from "./ButtonsContainer"
 import OrderContext from "../../../../../context/OrderContext"
 
-export default function Pannel() {
+export default function Pannel({ className }) {
   const { isOpen, isAdmin } = useContext(OrderContext)
 
   return (
-    <PanelStyled>
+    <PanelStyled className={className}>
       <ButtonsContainer />
       {isOpen ? <Tab /> : null}
     </PanelStyled>
@@ -21,4 +21,7 @@ const PanelStyled = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 4;
 `
+
+//@TODO Revoir le style des inputs dans les  différents form (taille)

@@ -15,13 +15,7 @@ export default function Desc({ title, price, cardVersion, product }) {
         <div className="title">
           <span>{title}</span>
         </div>
-        <div className="price">
-          {product.isAvailable ? (
-            <span>{formatPrice} €</span>
-          ) : (
-            <span className="available">Non disponible</span>
-          )}
-        </div>
+        <div className="price">{price}</div>
       </div>
     </DescStyled>
   )

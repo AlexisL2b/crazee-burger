@@ -12,7 +12,7 @@ export default function Ribbon({ label = "new", className }) {
 }
 
 const RibbonStyled = styled.div`
-  z-index: 0;
+  z-index: 5;
   position: absolute;
 
   /* common */

@@ -1,6 +1,7 @@
 import React from "react"
 import { styled } from "styled-components"
 import { theme } from "../../theme"
+import { convertStringToBoolean } from "../../utils/bool"
 
 export default function SelectInput({
   value,
@@ -25,7 +26,7 @@ export default function SelectInput({
         onBlur={onBlur}
       >
         {options.map(({ value, label }) => (
-          <option value={value} key={label}>
+          <option value={convertStringToBoolean(value)} key={label}>
             {label}
           </option>
         ))}
@@ -33,7 +34,7 @@ export default function SelectInput({
     </SelectInputStyled>
   )
 }
-
+convertStringToBoolean
 const SelectInputStyled = styled.div`
   background-color: ${theme.colors.background_white};
   border-radius: ${theme.borderRadius.round};

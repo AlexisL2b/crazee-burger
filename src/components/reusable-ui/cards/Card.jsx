@@ -4,9 +4,10 @@ import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
 import { EMPTY_BY_DEFAULT_PICTURE } from "../../../enums/product"
-import Ribbon from "./Ribon"
+import Ribbon from "./Ribbon"
 import IsAvailable from "../IsAvailable"
 import { animations } from "../../../theme/animations"
+import { convertStringToBoolean } from "../../../utils/bool"
 
 export default function Card({
   id,
@@ -33,8 +34,7 @@ export default function Card({
       onClick={isAdmin ? onClick : null}
       version={version}
     >
-      {!available ? <IsAvailable /> : null}
-      {ribon ? <Ribbon /> : null}
+      {convertStringToBoolean(product.isAdvertised) ? <Ribbon /> : null}
       {isAdmin && (
         <DeleteButton
           onClick={onDelete}

@@ -63,7 +63,6 @@ export default function Menu() {
         >
           <Card
             available={product.isAvailable}
-            ribon={product.isAdvertised}
             id={product.id}
             className={"cardProduct"}
             imageSource={product.imageSource}

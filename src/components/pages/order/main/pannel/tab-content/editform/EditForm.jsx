@@ -6,6 +6,7 @@ import { HiCursorClick } from "react-icons/hi"
 import { BsCloudCheckFill } from "react-icons/bs"
 import Form from "../../../../../../reusable-ui/forms/Form"
 import { ADMIN_TAB } from "../../../../../../../enums/message"
+import { convertStringToBoolean } from "../../../../../../../utils/bool"
 
 export default function EditForm() {
   //State
@@ -44,11 +45,13 @@ export default function EditForm() {
   const handleChange = (e) => {
     const name = e.target.name
     const newValue = e.target.value
+    console.log(newValue)
     const productBeingUpdated = {
       ...existingProduct,
       [name]: newValue,
     }
-
+    convertStringToBoolean(newValue)
+    console.log(name + " : " + convertStringToBoolean(newValue))
     const productExistingBasket = basketProducts.find(
       (productExistingBasket) => productExistingBasket.id === existingProduct.id
     )
@@ -59,6 +62,7 @@ export default function EditForm() {
       handleBasketEdit(productBeingUpdated)
     }
   }
+  convertStringToBoolean
 
   // const handleClick = (e) => {
   //   const name = e.currentTarget.htmlFor

@@ -8,6 +8,7 @@ import { TbTrashXFilled } from "react-icons/tb"
 import OrderContext from "../../../../../../context/OrderContext"
 import CasinoEffect from "../../../../../reusable-ui/CasinoEffect"
 import { convertStringToBoolean } from "../../../../../../utils/bool"
+import StickerAnimated, { stickerAnimation } from "./StickerAnimated"
 
 export default function CardBasket({
   title,
@@ -29,7 +30,7 @@ export default function CardBasket({
     >
       {/* <ImageWrapper className={"image"} imageSource={imageSource} /> */}
       <div className="image_wrapper">
-        {convertStringToBoolean(product.isAdvertised) ? <Sticker /> : null}
+        {convertStringToBoolean(product.isAdvertised) && <StickerAnimated />}
         <img src={imageSource} alt="" loading="lazy" />
       </div>
 
@@ -127,6 +128,7 @@ const CardBasketStyled = styled.div`
     display: none;
     z-index: 1;
   }
+  ${stickerAnimation}
 
   ${({ version }) => extraStyle[version]}
 `

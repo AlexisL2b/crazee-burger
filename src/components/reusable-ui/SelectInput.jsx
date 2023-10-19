@@ -41,6 +41,7 @@ const SelectInputStyled = styled.div`
   display: flex;
   align-items: center;
   padding: 8px 16px;
+  height: 35px;
   .icon {
     font-size: ${theme.fonts.size.P1};
     margin-right: 13px;

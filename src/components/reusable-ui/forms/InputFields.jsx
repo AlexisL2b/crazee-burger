@@ -64,6 +64,7 @@ const InputFieldsStyled = styled.div`
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 8px;
+  width: 480px;
   .title {
     grid-area: 1/1/2/4;
   }

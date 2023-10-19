@@ -34,7 +34,7 @@ export default function Card({
       onClick={isAdmin ? onClick : null}
       version={version}
     >
-      {convertStringToBoolean(product.isAdvertised) ? <Ribbon /> : null}
+      {/* {convertStringToBoolean(product.isAdvertised) ? <Ribbon /> : null} */}
       {isAdmin && (
         <DeleteButton
           onClick={onDelete}
@@ -83,8 +83,8 @@ const CardStyled = styled.div`
   transition: scale 0.3s ease;
 
   &:hover {
-    scale: calc(1.05);
-    transition: ease-in-out 0.5;
+    /* scale: calc(1.05);
+    transition: ease-in-out 0.5; */
     box-shadow: 0px 0px 8px 0px #ff9a23;
   }
   .image {

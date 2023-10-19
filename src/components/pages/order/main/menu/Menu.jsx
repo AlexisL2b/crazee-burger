@@ -8,6 +8,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { animations } from "../../../../../theme/animations"
 import { IMAGE_NO_STOCK } from "../../../../../enums/product"
 import { convertStringToBoolean } from "../../../../../utils/bool"
+import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated"
 
 export default function Menu() {
   const {
@@ -52,6 +53,10 @@ export default function Menu() {
       handleDelete(product, userName)
     }
   }
+
+  let cardContainerClassName = isAdmin
+    ? "card-container is-hoverable"
+    : "card-container"
   return products.length > 0 ? (
     <TransitionGroup component={MenuStyled}>
       {products.map((product) => (
@@ -61,29 +66,32 @@ export default function Menu() {
           timeout={300}
           key={product.id}
         >
-          <Card
-            available={product.isAvailable}
-            id={product.id}
-            className={"cardProduct"}
-            imageSource={product.imageSource}
-            title={product.title}
-            priceProduct={product.price}
-            onDelete={() => handleDeleteProduct(product.id, userName)}
-            isAdmin={isAdmin}
-            onClick={() => {
-              handleFocus(product.id)
-            }}
-            overlapImage={IMAGE_NO_STOCK}
-            isOverlapImageVisible={
-              convertStringToBoolean(product.isAvailable) === false
-            }
-            version={
-              selectedCardId === product.id && isAdmin
-                ? "selectStyled"
-                : "normalStyled"
-            }
-            product={product}
-          />
+          <div className={cardContainerClassName}>
+            {convertStringToBoolean(product.isAdvertised) && <RibbonAnimated />}
+            <Card
+              available={product.isAvailable}
+              id={product.id}
+              className={"cardProduct"}
+              imageSource={product.imageSource}
+              title={product.title}
+              priceProduct={product.price}
+              onDelete={() => handleDeleteProduct(product.id, userName)}
+              isAdmin={isAdmin}
+              onClick={() => {
+                handleFocus(product.id)
+              }}
+              overlapImage={IMAGE_NO_STOCK}
+              isOverlapImageVisible={
+                convertStringToBoolean(product.isAvailable) === false
+              }
+              version={
+                selectedCardId === product.id && isAdmin
+                  ? "selectStyled"
+                  : "normalStyled"
+              }
+              product={product}
+            />
+          </div>
         </CSSTransition>
       ))}
     </TransitionGroup>
@@ -92,42 +100,6 @@ export default function Menu() {
       <Stock />
     </div>
   )
-
-  // <TransitionGroup component={MenuStyled}>
-  //   {products.length > 0 ? (
-  //     products.map((product) => (
-  //       <CSSTransition
-  //         appear={true}
-  //         classNames={"cards_menu"}
-  //         timeout={300}
-  //         key={product.id}
-  //       >
-  //         <Card
-  //           id={product.id}
-  //           className={"cardProduct"}
-  //           imageSource={product.imageSource}
-  //           title={product.title}
-  //           priceProduct={product.price}
-  //           onDelete={() => handleDeleteProduct(product.id, userName)}
-  //           isAdmin={isAdmin}
-  //           onClick={() => {
-  //             handleFocus(product.id)
-  //           }}
-  //           version={
-  //             selectedCardId === product.id && isAdmin
-  //               ? "selectStyled"
-  //               : "normalStyled"
-  //           }
-  //           product={product}
-  //         />
-  //       </CSSTransition>
-  //     ))
-  //   ) : (
-  //     <div className="stock_container">
-  //       <Stock />
-  //     </div>
-  //   )}
-  // </TransitionGroup>
 }
 
 const MenuStyled = styled.div`
@@ -141,6 +113,18 @@ const MenuStyled = styled.div`
   overflow-y: scroll;
   scrollbar-width: none;
   width: 100%;
+  .card-container {
+    position: relative;
+    height: 330px;
+    border-radius: ${theme.borderRadius.extraRound};
+    &.is-hoverable {
+      &:hover {
+        transform: scale(1.05);
+        transition: ease-out 0.4s;
+      }
+    }
+  }
+  ${ribbonAnimation}
 
   ${animations.menuCard}
 `

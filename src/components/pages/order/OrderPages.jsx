@@ -91,7 +91,7 @@ export default function OrderPages() {
       setTotal
     )
   }, [])
-  console.log(products)
+  console.log(import.meta.env.VITE_AUTH_DOMAIN)
 
   //affichage
   return (

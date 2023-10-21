@@ -4,10 +4,7 @@ import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
 import { EMPTY_BY_DEFAULT_PICTURE } from "../../../enums/product"
-import Ribbon from "./Ribbon"
-import IsAvailable from "../IsAvailable"
 import { animations } from "../../../theme/animations"
-import { convertStringToBoolean } from "../../../utils/bool"
 
 export default function Card({
   id,
@@ -20,12 +17,8 @@ export default function Card({
   onClick,
   version,
   product,
-  existingProduct,
-  ribon,
-  available,
   overlapImage,
   isOverlapImageVisible,
-  disabled,
 }) {
   return (
     <CardStyled
@@ -34,7 +27,6 @@ export default function Card({
       onClick={isAdmin ? onClick : null}
       version={version}
     >
-      {/* {convertStringToBoolean(product.isAdvertised) ? <Ribbon /> : null} */}
       {isAdmin && (
         <DeleteButton
           onClick={onDelete}
@@ -83,15 +75,11 @@ const CardStyled = styled.div`
   transition: scale 0.3s ease;
 
   &:hover {
-    /* scale: calc(1.05);
-    transition: ease-in-out 0.5; */
     box-shadow: 0px 0px 8px 0px #ff9a23;
   }
   .image {
-    /* border: 2px solid green; */
     margin-top: 30px;
     margin-bottom: 20px;
-    /* position: relative; */
     img {
       width: 100%;
       height: 100%;
@@ -137,9 +125,5 @@ const selectStyled = css`
 const normalStyled = css`
   background: ${theme.colors.white};
 `
-
-// const outofstockselected = css`
-//   background-color: #ffc676;
-// `
 
 const extraStyle = { selectStyled, normalStyled }

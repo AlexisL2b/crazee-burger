@@ -69,7 +69,6 @@ const admin = css`
 
     // text inside the switch button (for checked and unchecked)
     &.toggle + label:after {
-      /* border: 1px solid blue; */
       width: 150px;
       text-align: center;
       z-index: 2;
@@ -94,7 +93,6 @@ const admin = css`
 
     &.toggle:not(:checked) + label {
       background-color: ${theme.colors.background_dark};
-      /* text-align: right; */
     }
 
     // text label when not checked

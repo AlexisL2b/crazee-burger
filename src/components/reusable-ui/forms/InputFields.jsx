@@ -1,12 +1,8 @@
-import React, { useContext, useRef, useState } from "react"
+import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { getSelectInput, getTextInput } from "./InputConfig"
 import TextInput from "../TextInput"
 import OrderContext from "../../../context/OrderContext"
-import { MdOutlineEuro } from "react-icons/md"
-
-import ToggleButtonForm from "./ToggleButtonForm"
-import { getDeepClone } from "../../../utils/windows"
 import SelectInput from "../SelectInput"
 
 export default function InputFields({
@@ -15,17 +11,11 @@ export default function InputFields({
   onChange,
   onBlur,
   onFocus,
-  onClick,
 }) {
   const textInputs = getTextInput({ product })
   const { inputRef } = useContext(OrderContext)
 
   const selectInputs = getSelectInput({ product })
-
-  const stopPropagation = (e) => {
-    onClick()
-    console.log(product)
-  }
 
   return (
     <InputFieldsStyled className={className}>

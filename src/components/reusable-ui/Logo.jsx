@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import { theme } from "../../theme"
-// import "../../theme/fonts.css"
 
 export default function Logo({ className, onClick }) {
   //state

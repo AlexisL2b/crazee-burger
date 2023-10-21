@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import { getDeepClone, setLocalStorage } from "../utils/windows"
 import { keyframes } from "styled-components"
+import { convertStringToBoolean } from "../utils/bool"
 
 export const useBasket = () => {
   //State
@@ -20,6 +21,10 @@ export const useBasket = () => {
       setBasketProducts(copyBasketProduct)
       setLocalStorage(userName, copyBasketProduct)
 
+      const copyBasketFilter = copyBasketProduct.filter(
+        (product) => product.isAvailable === true
+      )
+
       const copyTotal = getDeepClone(total)
       const priceUpdated =
         basketProductExisiting.price * basketProductExisiting.quantity
@@ -28,6 +33,7 @@ export const useBasket = () => {
         ...copyTotal,
         [basketProductExisiting.id]: priceUpdated,
       }
+
       setTotal(copyTotalUpdated)
       setLocalStorage("total", copyTotalUpdated)
     } else {
@@ -69,20 +75,26 @@ export const useBasket = () => {
   }
   const handleBasketEdit = (productBeingEdited) => {
     // 1. copie du state (deep clone)
+
     const productsCopy = getDeepClone(basketProducts)
 
     // 2. manip de la copie du state
+
+    // Cette variable contient le produit ce situant dans le basket dont l'id est === a l'id du produit ce situant dans le formulaire d'édition.
     const ProductToEdit = basketProducts.find(
       (product) => product.id === productBeingEdited.id
     )
+
     // productsCopy[idOfProductToEdit] = productBeingEdited
+
+    //Cette objet est créé
     const productBeingEditedUpdated = {
       quantity: ProductToEdit.quantity,
       ...productBeingEdited,
     }
 
     const { quantity, ...restOfProperties } = productBeingEditedUpdated
-
+    console.log(productBeingEditedUpdated)
     Object.assign(ProductToEdit, restOfProperties)
 
     //good
@@ -90,6 +102,17 @@ export const useBasket = () => {
     const basketProductExisiting = basketProducts.find(
       (product) => product.id === productBeingEdited.id
     )
+    const basketProductAvailable = basketProducts.find(
+      (product) => convertStringToBoolean(product.isAvailable) === true
+    )
+
+    // Je récupère un  object basketProductsIdToPrice, basé sur basketProducts a condition qu'il soit dispo.
+    const basketProductsIdToPrice = basketProducts
+      .filter((product) => convertStringToBoolean(product.isAvailable) == true)
+      .reduce((acc, product) => {
+        acc[product.id] = product.price
+        return acc
+      }, {})
     const copyTotal = getDeepClone(total)
     const priceUpdated =
       basketProductExisiting.price * basketProductExisiting.quantity
@@ -98,7 +121,17 @@ export const useBasket = () => {
       ...copyTotal,
       [basketProductExisiting.id]: priceUpdated,
     }
-    setTotal(copyTotalUpdated)
+    // Je récupère un nouvel object a partir de l'objet copyTotalUpdated(cet objet réunis tout les prix et les id des objet dans le panier AVANT le filtrage des produit dispo)
+    // et basketProductsIdToPrice (cette objet contient tout les prix/id des produits dans le basket qui sont DISPO) qui nous sert de comparateur pour enssuite créer un objet "updaté" et set le Total avec.
+    const filteredCopyTotalUpdated = Object.keys(copyTotalUpdated)
+      .filter((key) => key in basketProductsIdToPrice)
+      .reduce((acc, key) => {
+        acc[key] = copyTotalUpdated[key]
+        return acc
+      }, {})
+    console.log(filteredCopyTotalUpdated)
+
+    setTotal(filteredCopyTotalUpdated)
     setLocalStorage("total", copyTotalUpdated)
   }
 
@@ -112,3 +145,12 @@ export const useBasket = () => {
     setTotal,
   }
 }
+
+// A teste :
+
+/**
+ * Convertire total en number et plus un objet
+ *
+ *
+ *
+ */

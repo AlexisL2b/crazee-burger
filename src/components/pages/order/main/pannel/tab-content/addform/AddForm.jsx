@@ -38,8 +38,15 @@ export default function AddForm() {
     const name = e.target.name
     const newValue = e.target.value
     setNewProduct({ ...newProduct, [name]: newValue })
-    console.log(newProduct)
   }
+
+  // const handleClick = (e) => {
+  //   const name = e.currentTarget.htmlFor
+  //   const newValue = e.currentTarget.dataset.ischecked
+  //   setNewProduct({ ...newProduct, [name]: stringToBoolean(newValue) })
+  //   console.log(newProduct)
+  //   // handleChange(e)
+  // }
   //affichage
 
   return (
@@ -49,6 +56,7 @@ export default function AddForm() {
       product={newProduct}
       onChange={handleChange}
       index={activeTab}
+      // onClick={(e) => handleClick(e)}
     >
       <PrimaryButton
         label="Ajouter un nouveau produit au menu"

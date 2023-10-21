@@ -7,6 +7,8 @@ import Message from "../pannel/Message"
 import { BASKET } from "../../../../../enums/message"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { animations } from "../../../../../theme/animations"
+import { convertStringToBoolean } from "../../../../../utils/bool"
+import { formatMontant } from "../../../../../utils/maths"
 export default function Body() {
   const {
     selectedCardId,
@@ -51,9 +53,14 @@ export default function Body() {
               timeout={500}
             >
               <CardBasket
+                product={product}
                 onClick={() => handleFocus(product.id, userName)}
                 title={product.title}
-                price={product.price}
+                price={
+                  convertStringToBoolean(product.isAvailable)
+                    ? formatMontant(product.price)
+                    : "Non disponible"
+                }
                 imageSource={product.imageSource}
                 quantity={product.quantity}
                 onDelete={() => handleDeleteBasketProduct(product.id, userName)}

@@ -4,6 +4,7 @@ import ImageWrapper from "./ImageWrapper"
 import Desc from "./Desc"
 import DeleteButton from "./DeleteButton"
 import { EMPTY_BY_DEFAULT_PICTURE } from "../../../enums/product"
+import { animations } from "../../../theme/animations"
 
 export default function Card({
   id,
@@ -16,7 +17,8 @@ export default function Card({
   onClick,
   version,
   product,
-  existingProduct,
+  overlapImage,
+  isOverlapImageVisible,
 }) {
   return (
     <CardStyled
@@ -33,11 +35,19 @@ export default function Card({
           }
         />
       )}
-      <ImageWrapper
-        name={"image_wrapper"}
-        imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT_PICTURE}
-        className={"card_picture"}
-      />
+      <div className="image">
+        {isOverlapImageVisible && (
+          <div className="overlap">
+            <div className="transparent-layer"></div>
+            <img className="overlap-image" src={overlapImage} alt="" />
+          </div>
+        )}
+        <ImageWrapper
+          name={"image_wrapper"}
+          imageSource={imageSource ? imageSource : EMPTY_BY_DEFAULT_PICTURE}
+          className={"card_picture"}
+        />
+      </div>
       <Desc
         idCard={id}
         name={"desc"}
@@ -45,12 +55,14 @@ export default function Card({
         title={title}
         cardVersion={version}
         product={product}
+        disabled={isOverlapImageVisible}
       />
     </CardStyled>
   )
 }
 
 const CardStyled = styled.div`
+  position: relative;
   width: 240px;
   height: 330px;
   display: grid;
@@ -63,16 +75,45 @@ const CardStyled = styled.div`
   transition: scale 0.3s ease;
 
   &:hover {
-    scale: calc(1.05);
-    transition: ease-in-out 0.5;
     box-shadow: 0px 0px 8px 0px #ff9a23;
   }
-
-  .card_picture {
-    width: 100%;
-    height: auto;
+  .image {
     margin-top: 30px;
     margin-bottom: 20px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .card_picture {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .overlap-image {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80%;
+      height: 100%;
+      z-index: 1;
+      animation: ${animations.fadeInFromTop} 500ms;
+      border-radius: ${theme.borderRadius.extraRound};
+    }
+    .overlap {
+      .transparent-layer {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 70%;
+        background: snow;
+        z-index: 1;
+        border-radius: ${theme.borderRadius.extraRound};
+      }
+    }
   }
   ${({ version }) => extraStyle[version]}
 `

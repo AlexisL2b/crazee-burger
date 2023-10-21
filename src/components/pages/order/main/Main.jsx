@@ -22,7 +22,7 @@ export default function Main() {
         {products === undefined ? <Loading version={"menu"} /> : <Menu />}
 
         {isAdmin ? (
-          <TransitionGroup>
+          <TransitionGroup component={Pannel}>
             <CSSTransition appear={true} classNames={"pannel"} timeout={500}>
               <Pannel />
             </CSSTransition>
@@ -60,10 +60,14 @@ const MainStyled = styled.div`
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
     ${animations.pannel}
+    z-index: 3;
     .stock_container {
       display: grid;
       align-items: center;
       justify-content: center;
+    }
+    .pannel_z {
+      z-index: 3;
     }
   }
 `

@@ -3,9 +3,12 @@ import { css, styled } from "styled-components"
 import ImageWrapper from "../../../../../reusable-ui/cards/ImageWrapper"
 import { theme } from "../../../../../../theme"
 import Desc from "./Desc"
+import Sticker from "./Sticker"
 import { TbTrashXFilled } from "react-icons/tb"
 import OrderContext from "../../../../../../context/OrderContext"
 import CasinoEffect from "../../../../../reusable-ui/CasinoEffect"
+import { convertStringToBoolean } from "../../../../../../utils/bool"
+import StickerAnimated, { stickerAnimation } from "./StickerAnimated"
 
 export default function CardBasket({
   title,
@@ -16,6 +19,7 @@ export default function CardBasket({
   onClick,
   version,
   className,
+  product,
 }) {
   const { isAdmin } = useContext(OrderContext)
   return (
@@ -24,10 +28,19 @@ export default function CardBasket({
       version={version}
       className={className}
     >
-      <ImageWrapper className={"image"} imageSource={imageSource} />
+      {/* <ImageWrapper className={"image"} imageSource={imageSource} /> */}
+      <div className="image_wrapper">
+        {convertStringToBoolean(product.isAdvertised) && <StickerAnimated />}
+        <img src={imageSource} alt="" loading="lazy" />
+      </div>
 
       <div className="desc">
-        <Desc title={title} price={price} cardVersion={version} />
+        <Desc
+          product={product}
+          title={title}
+          price={price}
+          cardVersion={version}
+        />
       </div>
 
       <div className="container">
@@ -37,7 +50,6 @@ export default function CardBasket({
           </i>
         </div>
         <CasinoEffect count={quantity} className={"quantity"} />
-        {/* <span className="quantity">x{quantity}</span> */}
       </div>
     </CardBasketStyled>
   )
@@ -91,10 +103,14 @@ const CardBasketStyled = styled.div`
       }
     }
   }
-  .image {
+  .image_wrapper {
     height: 70px;
-
     width: 85px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   .quantity {
@@ -112,6 +128,7 @@ const CardBasketStyled = styled.div`
     display: none;
     z-index: 1;
   }
+  ${stickerAnimation}
 
   ${({ version }) => extraStyle[version]}
 `

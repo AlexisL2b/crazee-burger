@@ -11,6 +11,7 @@ export default function Form({
   children,
   onBlur,
   onFocus,
+  onClick,
 }) {
   return (
     <FormStyled action={action} onSubmit={onSubmit}>
@@ -22,6 +23,7 @@ export default function Form({
         index={index}
         onBlur={onBlur}
         onFocus={onFocus}
+        onClick={onClick}
       />
 
       <div className="children">{children}</div>
@@ -36,12 +38,14 @@ const FormStyled = styled.form`
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
   column-gap: 20px;
+
   .input_fields {
     grid-area: 1/2/4/2;
     grid-row-gap: 8px;
   }
 
   .children {
+    margin-top: 8px;
     grid-area: 4/2/4/2;
     white-space: nowrap;
     display: flex;

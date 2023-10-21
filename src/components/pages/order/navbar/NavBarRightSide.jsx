@@ -39,11 +39,11 @@ export default function NavBarRightSide() {
   return (
     <NavBarRightSideStyled>
       <ToggleButton
+        version={"admin"}
         isChecked={isChecked}
         onToggle={onToggle}
         labelIfChecked="DéSACTIVER LE MODE ADMIN"
         labelIfUnchecked="ACTIVER LE MODE ADMIN"
-        className="admin-button"
       />
       <Profile username={userName} />
     </NavBarRightSideStyled>

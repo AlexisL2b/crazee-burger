@@ -29,7 +29,6 @@ export default function OrderPages() {
   const [afficher, setAfficher] = useState(true)
   const [isBlured, setIsBlured] = useState(false)
   const inputRef = useRef()
-  // TODO LE BOUTON DERESET MENU SAFFICHE LORSQUE LON A RESET LE  MENU-
   const {
     handleDelete,
     handleAdd,
@@ -91,7 +90,7 @@ export default function OrderPages() {
       setTotal
     )
   }, [])
-  console.log(import.meta.env.VITE_AUTH_DOMAIN)
+
 
   //affichage
   return (

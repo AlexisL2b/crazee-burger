@@ -29,6 +29,7 @@ const DeleteButtonStyled = styled.div`
   right: 10px;
   top: 10px;
   cursor: pointer;
+  z-index: 2;
 
   &:hover {
     color: ${theme.colors.red};

@@ -19,7 +19,6 @@ export default function Desc({
   const handleAddBasket = (e, product) => {
     e.stopPropagation()
     handleAddBasketProduct(product, userName)
-    console.log(e.target)
   }
   //comportement
   return (

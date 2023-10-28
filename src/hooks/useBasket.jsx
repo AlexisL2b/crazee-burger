@@ -37,11 +37,12 @@ export const useBasket = () => {
       setTotal(copyTotalUpdated)
       setLocalStorage("total", copyTotalUpdated)
     } else {
-      setBasketProducts([
-        { ...newBasketProduct, quantity: 1 },
-        ...basketProducts,
-      ])
-      setLocalStorage(userName, newBasketProduct)
+      const copyBasketProduct = getDeepClone(basketProducts)
+      const newProductToAdd = { ...newBasketProduct, quantity: 1 }
+      const newBasketProductUpdate = [newProductToAdd, ...copyBasketProduct]
+
+      setBasketProducts(newBasketProductUpdate)
+      setLocalStorage(userName, newBasketProductUpdate)
       const copyTotal = getDeepClone(total)
       const copyTotalUpdated = {
         [newBasketProduct.id]: newBasketProduct.price,
@@ -94,7 +95,6 @@ export const useBasket = () => {
     }
 
     const { quantity, ...restOfProperties } = productBeingEditedUpdated
-    console.log(productBeingEditedUpdated)
     Object.assign(ProductToEdit, restOfProperties)
 
     //good
@@ -129,7 +129,6 @@ export const useBasket = () => {
         acc[key] = copyTotalUpdated[key]
         return acc
       }, {})
-    console.log(filteredCopyTotalUpdated)
 
     setTotal(filteredCopyTotalUpdated)
     setLocalStorage("total", copyTotalUpdated)

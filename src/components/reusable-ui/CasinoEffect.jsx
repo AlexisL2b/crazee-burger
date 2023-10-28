@@ -34,7 +34,6 @@ const CasinoEffectStyled = styled.div`
     transform: translateY(0%);
     position: absolute;
     filter: blur(1px);
-
     bottom: 0;
     right: 0;
   }

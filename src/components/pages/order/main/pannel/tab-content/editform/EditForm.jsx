@@ -45,13 +45,11 @@ export default function EditForm() {
   const handleChange = (e) => {
     const name = e.target.name
     const newValue = e.target.value
-    console.log(newValue)
     const productBeingUpdated = {
       ...existingProduct,
       [name]: newValue,
     }
     convertStringToBoolean(newValue)
-    console.log(name + " : " + convertStringToBoolean(newValue))
     const productExistingBasket = basketProducts.find(
       (productExistingBasket) => productExistingBasket.id === existingProduct.id
     )

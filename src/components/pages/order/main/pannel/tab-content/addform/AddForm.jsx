@@ -40,13 +40,6 @@ export default function AddForm() {
     setNewProduct({ ...newProduct, [name]: newValue })
   }
 
-  // const handleClick = (e) => {
-  //   const name = e.currentTarget.htmlFor
-  //   const newValue = e.currentTarget.dataset.ischecked
-  //   setNewProduct({ ...newProduct, [name]: stringToBoolean(newValue) })
-  //   console.log(newProduct)
-  //   // handleChange(e)
-  // }
   //affichage
 
   return (

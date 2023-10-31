@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { styled } from "styled-components"
 import OrderContext from "../../../../../../../context/OrderContext"
 import Form from "../../../../../../reusable-ui/forms/Form"
@@ -9,6 +9,8 @@ import PrimaryButton from "../../../../../../reusable-ui/PrimaryButton"
 
 export default function AddForm() {
   //state
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
   const {
     newProduct,
     activeTab,
@@ -38,6 +40,7 @@ export default function AddForm() {
     const name = e.target.name
     const newValue = e.target.value
     setNewProduct({ ...newProduct, [name]: newValue })
+    console.log(windowWidth)
   }
 
   //affichage
@@ -52,8 +55,13 @@ export default function AddForm() {
       // onClick={(e) => handleClick(e)}
     >
       <PrimaryButton
-        label="Ajouter un nouveau produit au menu"
+        label={
+          windowWidth > 480
+            ? "Ajouter un nouveau produit au menu"
+            : "Ajouter un nouveau produit"
+        }
         version="success"
+        className="custom-button"
       />
       <Message
         className={isVisible ? "visible" : "invisible"}

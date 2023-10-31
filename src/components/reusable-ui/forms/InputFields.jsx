@@ -36,16 +36,18 @@ export default function InputFields({
         />
       ))}
 
-      {selectInputs.map((select) => (
-        <SelectInput
-          {...select}
-          onChange={onChange}
-          key={select.id}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          Icon={select.icon}
-        />
-      ))}
+      <div className="container_select">
+        {selectInputs.map((select) => (
+          <SelectInput
+            {...select}
+            onChange={onChange}
+            key={select.id}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            Icon={select.icon}
+          />
+        ))}
+      </div>
     </InputFieldsStyled>
   )
 }
@@ -63,5 +65,24 @@ const InputFieldsStyled = styled.div`
   }
   .price {
     grid-area: 3/1/4/2;
+  }
+  .container_select {
+    display: flex;
+    grid-area: 3/2/4/4;
+    gap: 10px;
+  }
+  @media (max-width: 768px) {
+    width: 80%;
+    grid-template-rows: repeat(4, 1fr);
+    .price {
+      grid-area: 3/1/4/4;
+    }
+    .container_select {
+      display: flex;
+      grid-area: 4/1/5/4;
+    }
+  }
+  @media (max-width: 480px) {
+    width: 60%;
   }
 `

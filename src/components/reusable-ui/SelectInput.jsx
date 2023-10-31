@@ -56,4 +56,11 @@ const SelectInputStyled = styled.div`
     width: 100%;
     outline: 0;
   }
+  @media (max-width: 480px) {
+    padding: 4px 8px;
+    .icon {
+      margin-right: 0px;
+      font-size: ${theme.fonts.size.P0};
+    }
+  }
 `

@@ -70,6 +70,10 @@ const success = css`
     color: ${theme.colors.green};
     background-color: ${theme.colors.white};
   }
+  @media (max-width: 480px) {
+    font-size: ${theme.fonts.size.XS};
+    padding: 6px 13px;
+  }
 `
 const smallPrimary = css`
   font-size: ${theme.fonts.size.XS};

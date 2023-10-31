@@ -43,7 +43,7 @@ export default function CardBasket({
         />
       </div>
 
-      <div className="container">
+      <div className="container_price">
         <div className="delete-button" onClick={onDelete}>
           <i className="icon">
             <TbTrashXFilled />
@@ -58,9 +58,8 @@ const CardBasketStyled = styled.div`
   background: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
   height: 86px;
-  padding: ${theme.spacing.xs} 16px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 25% 50% 25%;
   margin-top: ${theme.spacing.md};
   margin-bottom: ${theme.spacing.md};
   box-shadow: ${theme.shadows.basket};
@@ -73,7 +72,7 @@ const CardBasketStyled = styled.div`
       top: 0;
       right: 0;
       bottom: 0;
-      width: 76px;
+      width: 25%;
       border-top-right-radius: ${theme.borderRadius.round};
       border-bottom-right-radius: ${theme.borderRadius.round};
       font-size: 24px;
@@ -104,8 +103,11 @@ const CardBasketStyled = styled.div`
     }
   }
   .image_wrapper {
-    height: 70px;
-    width: 85px;
+    height: 100%;
+    width: 100%;
+    padding: ${theme.spacing.xxs} 4px;
+    position: relative;
+
     img {
       width: 100%;
       height: 100%;
@@ -114,7 +116,7 @@ const CardBasketStyled = styled.div`
   }
 
   .quantity {
-    height: 70px;
+    height: 100%;
     font-size: ${theme.fonts.size.SM};
     font-weight: ${theme.fonts.weights.light};
     color: ${theme.colors.primary};
@@ -122,6 +124,12 @@ const CardBasketStyled = styled.div`
     width: 100%;
     display: grid;
     place-content: center;
+  }
+  .container_price {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
   }
 
   .delete-button {
@@ -131,6 +139,13 @@ const CardBasketStyled = styled.div`
   ${stickerAnimation}
 
   ${({ version }) => extraStyle[version]}
+
+  @media (max-width: 1360px) {
+    grid-template-columns: 75% 25%;
+    .image_wrapper {
+      display: none;
+    }
+  }
 `
 const selectStyled = css`
   background: ${theme.colors.primary};

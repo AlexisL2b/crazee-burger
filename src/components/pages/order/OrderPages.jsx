@@ -91,7 +91,6 @@ export default function OrderPages() {
     )
   }, [])
 
-
   //affichage
   return (
     <OrderPageStyled>
@@ -112,12 +111,18 @@ const OrderPageStyled = styled.div`
   justify-content: center;
   align-items: center;
   padding: 25px, 56px, 25px, 56px;
+  width: 100%;
 
   .container {
-    /* height: 95vh; */
-    /* width: 1400px; */
+    width: 69%;
     display: flex;
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
+  }
+
+  @media (max-width: 1460px) {
+    .container {
+      width: 90%;
+    }
   }
 `

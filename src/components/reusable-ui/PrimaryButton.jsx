@@ -51,6 +51,15 @@ const PrimaryButtonStyled = styled.button`
     z-index: 2;
   }
   ${({ version }) => extraStyle[version]}
+  @media (max-width: 1080px) {
+    font-size: 13px;
+    padding: 6px 13px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: ${theme.fonts.size.XS};
+    padding: 12px 26px;
+  }
 `
 
 const success = css`

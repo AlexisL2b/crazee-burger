@@ -70,4 +70,17 @@ const MainStyled = styled.div`
       z-index: 3;
     }
   }
+  @media (max-width: 970px) {
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 480px) {
+  }
+  @media (max-width: 375px) {
+  }
 `

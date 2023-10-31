@@ -116,6 +116,15 @@ const CardStyled = styled.div`
     }
   }
   ${({ version }) => extraStyle[version]}
+
+  @media (max-width: 1080px) {
+    width: 240px;
+    height: 330px;
+  }
+  @media (max-width: 375px) {
+    width: 192px;
+    height: 264px;
+  }
 `
 
 const selectStyled = css`

@@ -115,7 +115,7 @@ export default function OrderPages() {
     <OrderPageStyled>
       <div className="container">
         <OrderContext.Provider value={orderContextValue}>
-          <Navbar />
+          <Navbar version={windowWidth < 480 && "mobile"} />
           <Main />
         </OrderContext.Provider>
       </div>

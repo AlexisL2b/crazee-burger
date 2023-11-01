@@ -1,12 +1,14 @@
-import React from "react"
-import { styled } from "styled-components"
+import React, { useContext } from "react"
+import { css, styled } from "styled-components"
 import { theme } from "../../../../theme"
 import { Link } from "react-router-dom"
 import { PiUserCircleFill } from "react-icons/pi"
+import OrderContext from "../../../../context/OrderContext"
 
-export default function Profile({ username }) {
+export default function Profile({ username, version }) {
+  const { windowWidth } = useContext(OrderContext)
   return (
-    <ProfileSyled>
+    <ProfileSyled version={version}>
       <div className="infos">
         <span>
           Hey, <span className="username">{username}</span>
@@ -64,4 +66,15 @@ const ProfileSyled = styled.div`
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
   }
+  ${({ version }) => extraStyle[version]}
 `
+const mobile = css`
+  padding: 0;
+  .picture {
+    display: none;
+  }
+`
+
+const extraStyle = {
+  mobile,
+}

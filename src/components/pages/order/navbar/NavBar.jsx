@@ -1,11 +1,11 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../../../theme"
 import NavBarLeftSide from "./NavBarLeftSide"
 import NavBarRightSide from "./NavBarRightSide"
 
-export default function Navbar() {
+export default function Navbar({ version }) {
   return (
-    <NavBarStyled>
+    <NavBarStyled version={version}>
       <NavBarLeftSide />
       <NavBarRightSide />
     </NavBarStyled>
@@ -20,4 +20,12 @@ const NavBarStyled = styled.div`
   height: auto;
   padding: 0px 70px 0px ${theme.spacing.md};
   align-items: center;
+  ${({ version }) => extraStyle[version]}
 `
+const mobile = css`
+  padding: 8px;
+`
+
+const extraStyle = {
+  mobile,
+}

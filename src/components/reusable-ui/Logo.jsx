@@ -1,16 +1,16 @@
 import React, { Component, useContext } from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 import OrderContext from "../../context/OrderContext"
 
-export default function Logo({ className, onClick }) {
+export default function Logo({ className, onClick, version }) {
   //state
   const { windowWidth } = useContext(OrderContext)
   //comportement
 
   {
     return (
-      <LogoStyled className={className} onClick={onClick}>
+      <LogoStyled className={className} onClick={onClick} version={version}>
         {windowWidth > 770 ? <h1>CRAZEE</h1> : null}
 
         <img src="\assets\F03 logo-orange.png" alt="" />
@@ -44,4 +44,17 @@ const LogoStyled = styled.div`
     width: 80px; // for Safari and Firefox
     margin: 0 ${theme.gridUnit / 2}px;
   }
+  ${({ version }) => extraStyle[version]}
 `
+
+const mobile = css`
+  padding: 0;
+  img {
+    height: 42px;
+    width: 54px;
+    margin: 0;
+  }
+`
+const extraStyle = {
+  mobile,
+}

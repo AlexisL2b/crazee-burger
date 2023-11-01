@@ -47,7 +47,7 @@ export default function NavBarRightSide() {
         }
         labelIfUnchecked={windowWidth > 600 ? "ACTIVER LE MODE ADMIN" : "USER"}
       />
-      <Profile username={userName} />
+      <Profile username={userName} version={windowWidth < 485 && "mobile"} />
     </NavBarRightSideStyled>
   )
 }

@@ -1,11 +1,18 @@
-import React from "react"
+import React, { useContext } from "react"
 import { styled } from "styled-components"
 import { SlBasket } from "react-icons/sl"
 import { theme } from "../../../../theme"
+import OrderContext from "../../../../context/OrderContext"
 
 export default function BasketButton() {
+  const { basketMobileOpen, setBasketMobileOpen } = useContext(OrderContext)
+
+  const openBasket = () => {
+    setBasketMobileOpen(!basketMobileOpen)
+    console.log(basketMobileOpen)
+  }
   return (
-    <BasketButtonStyled>
+    <BasketButtonStyled onClick={openBasket}>
       <SlBasket />
     </BasketButtonStyled>
   )

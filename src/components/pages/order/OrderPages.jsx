@@ -30,6 +30,7 @@ export default function OrderPages() {
   const [isBlured, setIsBlured] = useState(false)
   const inputRef = useRef()
   const [windowWidth, setWindowWidth] = useState(0)
+  const [basketMobileOpen, setBasketMobileOpen] = useState(true)
 
   const {
     handleDelete,
@@ -82,6 +83,8 @@ export default function OrderPages() {
     setIsBlured,
     userName,
     windowWidth,
+    basketMobileOpen,
+    setBasketMobileOpen,
   }
 
   useEffect(() => {
@@ -108,7 +111,6 @@ export default function OrderPages() {
       window.removeEventListener("resize", handleResize)
     }
   }, [])
-  console.log(windowWidth)
 
   //affichage
   return (

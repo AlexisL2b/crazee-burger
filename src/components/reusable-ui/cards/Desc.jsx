@@ -90,32 +90,4 @@ const DescStyled = styled.div`
       font-size: ${theme.fonts.size.P1};
     }
   }
-  @media (max-width: 1080px) {
-    .title {
-      font-size: ${theme.fonts.size.P3};
-    }
-    .left-description {
-      font-size: 10px;
-    }
-  }
-  @media (max-width: 970px) {
-    .title {
-      font-size: ${theme.fonts.size.P4};
-    }
-  }
-  @media (max-width: 768px) {
-    .title {
-      font-size: ${theme.fonts.size.P4};
-    }
-  }
-  @media (max-width: 480px) {
-    .title {
-      font-size: ${theme.fonts.size.P4};
-    }
-  }
-  @media (max-width: 375px) {
-    .title {
-      font-size: ${theme.fonts.size.P3};
-    }
-  }
 `

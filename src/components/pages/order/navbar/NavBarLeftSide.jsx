@@ -19,7 +19,7 @@ export default function NavBarLeftSide() {
         onClick={() => reloadPage()}
         version={windowWidth < 680 && "mobile"}
       />
-      {windowWidth < 1370 && <BasketButton />}
+      {windowWidth < 1380 && <BasketButton />}
     </NavBarLeftSideStyled>
   )
 }

@@ -34,6 +34,8 @@ export default createContext({
   isBlured: false,
   setIsBlured: () => {},
   windowWidth: 0,
+  basketMobileOpen: false,
+  setBasketMobileOpen: () => {},
   // handleIncrementationBasketProduct: () => {},
   // ammount: 0,
 })

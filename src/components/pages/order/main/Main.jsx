@@ -12,12 +12,18 @@ import { animations } from "../../../../theme/animations"
 export default function Main() {
   //state
 
-  const { isAdmin, products } = useContext(OrderContext)
+  const { isAdmin, products, windowWidth, basketMobileOpen } =
+    useContext(OrderContext)
   //comportement
 
   return (
     <MainStyled>
-      <Basket />
+      <Basket
+        version={windowWidth < 1370 && "mobile"}
+        classname={
+          basketMobileOpen || windowWidth > 1370 ? "visible" : "invisible"
+        }
+      />
       <div className="menu_and_pannel">
         {products === undefined ? <Loading version={"menu"} /> : <Menu />}
 
@@ -43,12 +49,20 @@ const MainStyled = styled.div`
   grid-template-columns: 25% 1fr;
   grid-template-rows: 1fr;
 
-  /* .user {
+  .user {
     display: none;
   }
-  .admin {
+
+  .invisible {
+    visibility: hidden;
+  }
+  .visible {
+    visibility: visible;
+  }
+  /* .admin {
     display: block;
   } */
+
   .menu_and_pannel {
     width: 100%;
     height: 100%;
@@ -70,12 +84,11 @@ const MainStyled = styled.div`
       z-index: 3;
     }
   }
+  @media (max-width: 1380px) {
+    grid-template-columns: 1fr;
+  }
   @media (max-width: 970px) {
-    .intro {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
-    }
+    grid-template-columns: 1fr;
   }
   @media (max-width: 768px) {
   }

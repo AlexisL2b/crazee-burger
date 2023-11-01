@@ -50,8 +50,7 @@ const PrimaryButtonStyled = styled.button`
     cursor: not-allowed;
     z-index: 2;
   }
-  ${({ version }) => extraStyle[version]}
-  @media (max-width: 1080px) {
+  ${({ version }) => extraStyle[version]}/* @media (max-width: 1080px) {
     font-size: 13px;
     padding: 6px 13px;
   }
@@ -59,7 +58,7 @@ const PrimaryButtonStyled = styled.button`
   @media (max-width: 375px) {
     font-size: ${theme.fonts.size.XS};
     padding: 12px 26px;
-  }
+  } */
 `
 
 const success = css`
@@ -69,10 +68,6 @@ const success = css`
   &:hover {
     color: ${theme.colors.green};
     background-color: ${theme.colors.white};
-  }
-  @media (max-width: 480px) {
-    font-size: ${theme.fonts.size.XS};
-    padding: 6px 13px;
   }
 `
 const smallPrimary = css`

@@ -138,14 +138,12 @@ const CardBasketStyled = styled.div`
   }
   ${stickerAnimation}
 
-  ${({ version }) => extraStyle[version]}
-
-  @media (max-width: 1360px) {
+  ${({ version }) => extraStyle[version]} /* @media (max-width: 1360px) {
     grid-template-columns: 75% 25%;
     .image_wrapper {
       display: none;
     }
-  }
+  } */
 `
 const selectStyled = css`
   background: ${theme.colors.primary};

@@ -66,6 +66,12 @@ const ProfileSyled = styled.div`
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
   }
+  @media (max-width: 820px) {
+    padding-left: 20px;
+  }
+  @media (max-width: 420px) {
+    padding-left: 0px;
+  }
   ${({ version }) => extraStyle[version]}
 `
 const mobile = css`

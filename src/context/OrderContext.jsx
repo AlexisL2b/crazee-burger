@@ -33,6 +33,7 @@ export default createContext({
   afficher: false,
   isBlured: false,
   setIsBlured: () => {},
+  windowWidth: 0,
   // handleIncrementationBasketProduct: () => {},
   // ammount: 0,
 })

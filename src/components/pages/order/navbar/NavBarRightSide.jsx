@@ -12,7 +12,7 @@ export default function NavBarRightSide() {
   //state
 
   const [isChecked, setIsChecked] = useState(0)
-  const { setIsAdmin, userName } = useContext(OrderContext)
+  const { setIsAdmin, userName, windowWidth } = useContext(OrderContext)
   //comportement
   const onToggle = () => {
     if (isChecked == 0) {
@@ -39,11 +39,13 @@ export default function NavBarRightSide() {
   return (
     <NavBarRightSideStyled>
       <ToggleButton
-        version={"admin"}
+        version={windowWidth > 600 ? "" : "mobile"}
         isChecked={isChecked}
         onToggle={onToggle}
-        labelIfChecked="DéSACTIVER LE MODE ADMIN"
-        labelIfUnchecked="ACTIVER LE MODE ADMIN"
+        labelIfChecked={
+          windowWidth > 600 ? "DéSACTIVER LE MODE ADMIN" : "ADMIN"
+        }
+        labelIfUnchecked={windowWidth > 600 ? "ACTIVER LE MODE ADMIN" : "USER"}
       />
       <Profile username={userName} />
     </NavBarRightSideStyled>

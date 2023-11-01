@@ -9,7 +9,7 @@ import PrimaryButton from "../../../../../../reusable-ui/PrimaryButton"
 
 export default function AddForm() {
   //state
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const { windowWidth } = useContext(OrderContext)
 
   const {
     newProduct,

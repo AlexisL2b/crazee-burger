@@ -29,6 +29,8 @@ export default function OrderPages() {
   const [afficher, setAfficher] = useState(true)
   const [isBlured, setIsBlured] = useState(false)
   const inputRef = useRef()
+  const [windowWidth, setWindowWidth] = useState(0)
+
   const {
     handleDelete,
     handleAdd,
@@ -79,6 +81,7 @@ export default function OrderPages() {
     isBlured,
     setIsBlured,
     userName,
+    windowWidth,
   }
 
   useEffect(() => {
@@ -90,6 +93,22 @@ export default function OrderPages() {
       setTotal
     )
   }, [])
+
+  useEffect(() => {
+    // Fonction de rappel pour mettre à jour windowWidth lors du redimensionnement de la fenêtre
+    function handleResize() {
+      setWindowWidth(window.innerWidth)
+    }
+
+    // Écouter l'événement de redimensionnement de la fenêtre
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      // Nettoyer l'écouteur lorsque le composant est démonté
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+  console.log(windowWidth)
 
   //affichage
   return (

@@ -32,9 +32,6 @@ export default function ToggleButton({
 const ToggleButtonStyled = styled.div`
   display: flex;
   margin-right: 10px;
-  ${({ version }) => extraStyle[version]}
-`
-const admin = css`
   input[type="checkbox"] {
     // Hides the square box but keeps the core "toggle functionality"
     &.toggle {
@@ -133,6 +130,20 @@ const admin = css`
       background-color: ${theme.colors.primary};
     }
   }
+  ${({ version }) => extraStyle[version]}
+`
+const mobile = css`
+  input[type="checkbox"] {
+    &.toggle + label {
+      width: 100px;
+    }
+    &.toggle + label:after {
+      width: 70px;
+    }
+    &.toggle:checked + label::before {
+      left: 65px;
+    }
+  }
 `
 const avaible = css`
   // Hides the square box but keeps the core "toggle functionality"
@@ -158,6 +169,6 @@ const avaible = css`
   }
 `
 const extraStyle = {
-  admin,
+  mobile,
   avaible,
 }

@@ -1,20 +1,20 @@
-import React, { Component } from "react"
+import React, { Component, useContext } from "react"
 import styled from "styled-components"
 import { theme } from "../../theme"
+import OrderContext from "../../context/OrderContext"
 
 export default function Logo({ className, onClick }) {
   //state
-
+  const { windowWidth } = useContext(OrderContext)
   //comportement
 
   {
     return (
       <LogoStyled className={className} onClick={onClick}>
-        <h1>CRAZEE</h1>
+        {windowWidth > 770 ? <h1>CRAZEE</h1> : null}
 
         <img src="\assets\F03 logo-orange.png" alt="" />
-
-        <h1>BURGER</h1>
+        {windowWidth > 770 ? <h1>BURGER</h1> : null}
       </LogoStyled>
     )
   }

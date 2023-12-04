@@ -109,8 +109,8 @@ const CardBasketStyled = styled.div`
     position: relative;
 
     img {
-      width: 100%;
-      height: 100%;
+      width: 68px;
+      height: 70px;
       object-fit: contain;
     }
   }

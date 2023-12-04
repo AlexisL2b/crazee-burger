@@ -53,6 +53,7 @@ const DescStyled = styled.div`
       font-family: ${theme.fontsFamily.open};
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
     }
     .price {
       grid-area: 2/1/3/2;

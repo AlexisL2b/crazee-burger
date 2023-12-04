@@ -13,6 +13,7 @@ export default function Navbar({ version }) {
 }
 
 const NavBarStyled = styled.div`
+  min-width: 326px;
   display: flex;
   border-radius: ${theme.borderRadius.extraRound}
     ${theme.borderRadius.extraRound} 0px 0px;

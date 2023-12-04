@@ -15,7 +15,7 @@ export default function Basket({ version, classname }) {
   return (
     <BasketStyled version={version} className={classname}>
       <Header />
-      <Body />
+      <Body version={windowWidth <= 1370 && "mobile"} />
       <Footer version={windowWidth <= 362 && "mobile"} />
     </BasketStyled>
   )
@@ -33,6 +33,9 @@ const BasketStyled = styled.div`
 const mobile = css`
   width: 326px;
   z-index: 100;
+  /* height: 100%; */
+  position: absolute;
+
   height: calc(95vh - 10vh);
   border-bottom-right-radius: 15px;
 `

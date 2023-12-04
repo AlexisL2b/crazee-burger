@@ -48,6 +48,7 @@ const MainStyled = styled.div`
   display: grid;
   grid-template-columns: 25% 1fr;
   grid-template-rows: 1fr;
+  position: relative;
 
   .user {
     display: none;
@@ -59,9 +60,6 @@ const MainStyled = styled.div`
   .visible {
     visibility: visible;
   }
-  /* .admin {
-    display: block;
-  } */
 
   .menu_and_pannel {
     width: 100%;
@@ -84,11 +82,11 @@ const MainStyled = styled.div`
       z-index: 3;
     }
   }
+
   @media (max-width: 1380px) {
     grid-template-columns: 1fr;
   }
   @media (max-width: 970px) {
-    grid-template-columns: 1fr;
   }
   @media (max-width: 768px) {
   }

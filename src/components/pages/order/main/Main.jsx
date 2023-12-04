@@ -83,7 +83,7 @@ const MainStyled = styled.div`
     }
   }
 
-  @media (max-width: 1380px) {
+  @media (min-width: 1380px) {
     grid-template-columns: 1fr;
   }
   @media (max-width: 970px) {

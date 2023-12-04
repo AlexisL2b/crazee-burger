@@ -1,9 +1,9 @@
 import React from "react"
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 import { theme } from "../../../../../theme"
 
-export default function Footer() {
-  return <FooterStyled>Codé avec ❤️ et React.JS</FooterStyled>
+export default function Footer({ version }) {
+  return <FooterStyled version={version}>Codé avec ❤️ et React.JS</FooterStyled>
 }
 
 const FooterStyled = styled.div`
@@ -16,4 +16,12 @@ const FooterStyled = styled.div`
   justify-content: center;
   align-items: center;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  ${({ version }) => extraStyle[version]}
 `
+const mobile = css`
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
+`
+
+const extraStyle = {
+  mobile,
+}

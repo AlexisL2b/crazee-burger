@@ -60,4 +60,27 @@ const FormStyled = styled.form`
   /* .message {
     grid-area: 2/2/-1/-1;
   } */
+  @media (max-width: 1080px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+
+    overflow-x: scroll;
+    width: 100%;
+    .input_fields {
+      grid-area: 2/1/2/1;
+    }
+    .children {
+      grid-area: 3/1/3/1;
+    }
+  }
+  @media (max-width: 970px) {
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 480px) {
+    width: 170%;
+  }
+  @media (max-width: 375px) {
+    width: 170%;
+  }
 `

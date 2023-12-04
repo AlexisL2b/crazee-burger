@@ -23,16 +23,18 @@ export default function Desc({ title, price, cardVersion, product }) {
 const DescStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  width: 140px;
+  width: 100%;
   height: 86px;
+  padding: ${theme.spacing.xs} 16px;
 
   .infos {
-    margin-left: ${theme.spacing.md};
+    padding: ${theme.spacing.xxs} 4px;
+
     height: 70px;
     display: grid;
     grid-template-rows: 1fr 1fr;
     align-items: center;
-    width: 120px;
+    width: 100%;
     .title {
       white-space: nowrap;
       overflow: hidden;
@@ -51,6 +53,7 @@ const DescStyled = styled.div`
       font-family: ${theme.fontsFamily.open};
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
     }
     .price {
       grid-area: 2/1/3/2;
@@ -72,6 +75,8 @@ const DescStyled = styled.div`
     }
   }
   ${({ version }) => extraStyle[version]}
+  @media (max-width: 1440px) {
+  }
 `
 const primaryStyled = css`
   .price {

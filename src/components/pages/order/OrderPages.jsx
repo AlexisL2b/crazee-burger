@@ -29,6 +29,9 @@ export default function OrderPages() {
   const [afficher, setAfficher] = useState(true)
   const [isBlured, setIsBlured] = useState(false)
   const inputRef = useRef()
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [basketMobileOpen, setBasketMobileOpen] = useState(true)
+
   const {
     handleDelete,
     handleAdd,
@@ -79,6 +82,9 @@ export default function OrderPages() {
     isBlured,
     setIsBlured,
     userName,
+    windowWidth,
+    basketMobileOpen,
+    setBasketMobileOpen,
   }
 
   useEffect(() => {
@@ -91,13 +97,27 @@ export default function OrderPages() {
     )
   }, [])
 
+  useEffect(() => {
+    // Fonction de rappel pour mettre à jour windowWidth lors du redimensionnement de la fenêtre
+    function handleResize() {
+      setWindowWidth(window.innerWidth)
+    }
+
+    // Écouter l'événement de redimensionnement de la fenêtre
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      // Nettoyer l'écouteur lorsque le composant est démonté
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
 
   //affichage
   return (
     <OrderPageStyled>
       <div className="container">
         <OrderContext.Provider value={orderContextValue}>
-          <Navbar />
+          <Navbar version={windowWidth < 480 && "mobile"} />
           <Main />
         </OrderContext.Provider>
       </div>
@@ -112,12 +132,18 @@ const OrderPageStyled = styled.div`
   justify-content: center;
   align-items: center;
   padding: 25px, 56px, 25px, 56px;
+  width: 100%;
 
   .container {
-    /* height: 95vh; */
-    /* width: 1400px; */
+    width: 69%;
     display: flex;
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
+  }
+
+  @media (max-width: 1460px) {
+    .container {
+      width: 90%;
+    }
   }
 `

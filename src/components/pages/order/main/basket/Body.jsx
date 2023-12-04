@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 import { theme } from "../../../../../theme"
 import CardBasket from "./CardBasket/CardBasket"
 import OrderContext from "../../../../../context/OrderContext"
@@ -9,7 +9,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { animations } from "../../../../../theme/animations"
 import { convertStringToBoolean } from "../../../../../utils/bool"
 import { formatMontant } from "../../../../../utils/maths"
-export default function Body() {
+export default function Body({ version }) {
   const {
     selectedCardId,
     products,
@@ -99,3 +99,16 @@ const BodyStyled = styled.div`
   padding: 16px 20px;
   ${animations.basketCard}
 `
+
+// const mobile = css`
+//   width: 326px;
+//   z-index: 100;
+//   /* height: 100%; */
+
+//   height: calc(95vh - 10vh);
+//   border-bottom-right-radius: 15px;
+// `
+
+// const extraStyle = {
+//   mobile,
+// }

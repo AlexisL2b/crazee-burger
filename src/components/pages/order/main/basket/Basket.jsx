@@ -15,7 +15,7 @@ export default function Basket({ version, classname }) {
   return (
     <BasketStyled version={version} className={classname}>
       <Header />
-      <Body version={windowWidth <= 1370 && "mobile"} />
+      <Body />
       <Footer version={windowWidth <= 362 && "mobile"} />
     </BasketStyled>
   )

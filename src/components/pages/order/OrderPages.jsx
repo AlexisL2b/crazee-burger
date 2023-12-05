@@ -29,7 +29,7 @@ export default function OrderPages() {
   const [afficher, setAfficher] = useState(true)
   const [isBlured, setIsBlured] = useState(false)
   const inputRef = useRef()
-  const [windowWidth, setWindowWidth] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(1371)
   const [basketMobileOpen, setBasketMobileOpen] = useState(true)
 
   const {
@@ -113,6 +113,7 @@ export default function OrderPages() {
   }, [])
 
   //affichage
+  console.log()
   return (
     <OrderPageStyled>
       <div className="container">

@@ -19,7 +19,7 @@ export default function Main() {
   return (
     <MainStyled>
       <Basket
-        version={windowWidth < 1370 && "mobile"}
+        version={windowWidth <= 1370 ? "mobile" : ""}
         classname={
           basketMobileOpen || windowWidth > 1370 ? "visible" : "invisible"
         }
@@ -46,9 +46,9 @@ const MainStyled = styled.div`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.strong};
   display: grid;
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  position: relative;
+  /* position: relative; */
 
   .user {
     display: none;
@@ -59,6 +59,7 @@ const MainStyled = styled.div`
   }
   .visible {
     visibility: visible;
+    z-index: 1000;
   }
 
   .menu_and_pannel {
@@ -82,16 +83,21 @@ const MainStyled = styled.div`
       z-index: 3;
     }
   }
-
-  @media (min-width: 1380px) {
+  @media (min-width: 1371px) {
+    grid-template-columns: 25% 1fr;
+  }
+  /* @media (max-width: 2370px) {
+    grid-template-columns: 25% 1fr;
+  }
+  @media (max-width: 1370px) {
     grid-template-columns: 1fr;
   }
-  @media (max-width: 970px) {
+  @media (min-width: 970px) {
   }
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
   }
-  @media (max-width: 480px) {
+  @media (min-width: 480px) {
   }
-  @media (max-width: 375px) {
-  }
+  @media (min-width: 375px) {
+  } */
 `
